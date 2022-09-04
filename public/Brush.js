@@ -16,37 +16,29 @@ class Brush {
         this.acc2 = Math.abs(this.endX - this.accDist);  // distance for slowing down speed
 
         this.accBoost = this.topspeed / this.acc1  // increment for acc
-        this.sloBoost = this.topspeed / this.acc2  // increment for slowing down
+        this.sloBoost = this.topspeed / this.acc2 * -1  // increment for slowing down
     }
 
     update() {
 
         if (this.pos.x < this.acc1) {
-            // this.acc.add(this.accBoost);
             this.acc = this.accBoost;
-            this.vel.add(this.acc);
-            // this.velLimit = this.vel.limit(this.topspeed);
-            this.pos.add(this.vel);
-            console.log(this.vel.x)
+
         } else if (this.pos.x >= this.acc1 && this.pos.x < this.acc2) {
-            this.vel = createVector(this.topspeed, 0, 0);
-            // console.log(this.vel.x);
+            this.acc = 0;
 
         } else if (this.pos.x >= this.acc2 && this.pos.x < this.endX) {
-            this.acc.sub(this.sloBoost);
-            this.vel.sub(this.acc);
-            this.pos.sub(this.vel);
-            // console.log(this.acc.x);
-            // console.log(this.vel.x);
+            this.acc = this.sloBoost;
 
         } else if (this.pos.x >= this.endX) {
-            console.log("asfaf");
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
-            this.velLimit = this.vel.limit(this.topspeed);
+            // console.log("asfaf");
         }
+        this.vel.add(this.acc);
+        this.vel = this.vel.limit(this.topspeed);
         this.pos.add(this.vel);
-        // console.log(this.pos.x);
+        // console.log("pos: " + this.pos.x);
 
     }
 
