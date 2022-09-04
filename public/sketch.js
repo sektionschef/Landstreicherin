@@ -102,7 +102,7 @@ function setup() {
 
   createPaletteColors();
 
-  brush = new Brush(50);
+  brush = new Brush(-150, +150);
 }
 
 
@@ -124,7 +124,7 @@ function draw() {
   // ambientMaterial(255);
   // specularMaterial(255);
 
-  background(100);
+  background(200);
   if (MODE == 5) {
   }
 
