@@ -7,6 +7,7 @@ class Brush {
         this.boost = 0.06;  // increase if eiert
         this.startZ = 0;
 
+        this.killMe = false;
         this.pos = createVector(this.startX, 0, this.startZ);
         this.vel = createVector(0, 0, 0);
         this.acc = createVector(0, 0, 0);
@@ -15,6 +16,8 @@ class Brush {
         this.accDist = this.Distance / 4;  // distance for acceleration
         this.acc1 = this.startX + this.accDist;  // distance for full speed
         this.acc2 = this.endX - this.accDist;  // distance for slowing down speed
+
+        this.makeSomeNoise();
 
         this.accBoost = createVector(
             this.boost,
@@ -26,6 +29,23 @@ class Brush {
             0,
             0
         )   // increment for slowing down and change z axis
+    }
+
+    makeSomeNoise() {
+        this.noisesY = {};
+
+        let ioff = 0; // Option #1: 2D Noise
+
+        // Iterate over horizontal pixels
+        for (let i = this.startX; i <= this.endX; i++) {
+            // Calculate a y value according to noise, map to
+
+            // console.log(i);
+            this.noisesY[i] = map(noise(ioff), 0, 1, 0, 8);
+
+            // Increment x dimension for noise
+            ioff += 0.05;
+        }
     }
 
     update() {
@@ -50,6 +70,7 @@ class Brush {
         // console.log(this.vel.x);
         this.pos.add(this.vel);
 
+        this.pos.y = this.noisesY[Math.round(this.pos.x)];
         this.pos.z = map(this.vel.x, 0, 3, 0, -500);  // map the distance to velocity
         // console.log("pos z: " + this.pos.z);
     }

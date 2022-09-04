@@ -128,8 +128,8 @@ function draw() {
     background(200);
   }
 
-  brush.display();
   brush.update();
+  brush.display();
 
 }
 
