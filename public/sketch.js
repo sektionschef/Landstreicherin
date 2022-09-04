@@ -102,7 +102,7 @@ function setup() {
 
   createPaletteColors();
 
-  brush = new Brush();
+  brush = new Brush(50);
 }
 
 
