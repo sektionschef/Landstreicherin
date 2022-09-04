@@ -124,8 +124,8 @@ function draw() {
   // ambientMaterial(255);
   // specularMaterial(255);
 
-  background(200);
   if (MODE == 5) {
+    background(200);
   }
 
   brush.display();
