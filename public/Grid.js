@@ -1,51 +1,60 @@
 
-// CLASS GRID
-function create_coordinates_for_boxes(count_of_points_x, count_of_points_y) {
+class Grid {
+    constructor() {
 
-    // console.log(count_of_points_x + " random points on x axis.");
-    // console.log(count_of_points_y + " random points on y axis.");
+        this.count_of_points_x = Math.round(getRandomFromInterval(1, 5));  // 1-5
+        this.count_of_points_y = Math.round(getRandomFromInterval(1, 5));  // 1-5
+        this.grid_label = this.count_of_points_x + "x" + this.count_of_points_y;
+        console.log("Grid: " + this.grid_label);
 
-    for (let i = 0; i < count_of_points_x; i++) {
-        width_points.push(Math.floor(getRandomFromInterval(0, (width - MINIMIMUM_DISTANCE))));
-    }
-    for (let i = 0; i < count_of_points_y; i++) {
-        height_points.push(Math.floor(getRandomFromInterval(0, (height - MINIMIMUM_DISTANCE))));
-    }
+        // this.pairing_count = Math.floor(getRandomFromInterval(1, 4));
+        this.pairing_count = 0;
+        console.log("Number of pairing: " + this.pairing_count);
 
-    // add width and height
-    width_points.push(width);
-    height_points.push(height);
+        for (let i = 0; i < this.count_of_points_x; i++) {
+            width_points.push(Math.floor(getRandomFromInterval(0, (width - MINIMIMUM_DISTANCE))));
+        }
+        for (let i = 0; i < this.count_of_points_y; i++) {
+            height_points.push(Math.floor(getRandomFromInterval(0, (height - MINIMIMUM_DISTANCE))));
+        }
 
-    // simple sort
-    width_points.sort(function (a, b) {
-        return a - b;
-    });
-    height_points.sort(function (a, b) {
-        return a - b;
-    });
+        // add width and height
+        width_points.push(width);
+        height_points.push(height);
 
-    for (var i = width_points.length - 1; i >= 0; i--) {
-        if ((width_points[(i)] - width_points[i - 1]) < MINIMIMUM_DISTANCE) {
-            if (width_points[i] != width) {  // do not remove the width value
-                width_points.splice(i, 1);
+        // simple sort
+        width_points.sort(function (a, b) {
+            return a - b;
+        });
+        height_points.sort(function (a, b) {
+            return a - b;
+        });
+
+        for (var i = width_points.length - 1; i >= 0; i--) {
+            if ((width_points[(i)] - width_points[i - 1]) < MINIMIMUM_DISTANCE) {
+                if (width_points[i] != width) {  // do not remove the width value
+                    width_points.splice(i, 1);
+                }
             }
         }
-    }
 
-    for (var i = height_points.length - 1; i >= 0; i--) {
-        if ((height_points[(i)] - height_points[i - 1]) < MINIMIMUM_DISTANCE) {
-            if (height_points[i] != height) {
-                height_points.splice(i, 1);
+        for (var i = height_points.length - 1; i >= 0; i--) {
+            if ((height_points[(i)] - height_points[i - 1]) < MINIMIMUM_DISTANCE) {
+                if (height_points[i] != height) {
+                    height_points.splice(i, 1);
+                }
             }
         }
+
+        console.log("Coordinates of points on x axis: " + width_points);
+        console.log("Coordinates of points on y axis: " + height_points);
+
+        this.width_points = width_points;
+        this.height_points = height_points;
+
+        // return [width_points, height_points]
     }
-
-    console.log("Coordinates of points on x axis: " + width_points);
-    console.log("Coordinates of points on y axis: " + height_points);
-
-    return [width_points, height_points]
 }
-
 
 
 class Boxes {
