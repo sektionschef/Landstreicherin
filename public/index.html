@@ -23,7 +23,7 @@
     let alphabet = "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
     var fxhash = "oo" + Array(49).fill(0).map(_ => alphabet[(Math.random() * alphabet.length) | 0]).join('')
     // var fxhash = "oowwSmyik7UkLQp9h8nn1BAoqbxZ3Q8MwG5YuxRamp6Hzb58tPd"  // black
-    // var fxhash = "ooBACzUQhxgqEgi1nqEckqxA743PjkF5kPvn7Tzgq7kbcaj2rR9"
+    var fxhash = "ooBACzUQhxgqEgi1nqEckqxA743PjkF5kPvn7Tzgq7kbcaj2rR9"
     // var fxhash = "oodoFg2X4mS2wATEpPoQfmaU4HENpXtywy6Fx25QZyGEA7WsdQp"
     // var fxhash = "oofHCL17K1Tk8C5aBhKUTTHE7Ddba9ku1VG9adAqqw4voH2s8Kq"
     let b58dec = str => [...str].reduce((p, c) => p * alphabet.length + alphabet.indexOf(c) | 0, 0)
@@ -54,8 +54,9 @@
   </script>
 
   <script type="text/javascript" src="p5.min.js"></script>
-  <script type="text/javascript" src='Brush.js' ) }}></script>
   <script type="text/javascript" src='utils.js' ) }}></script>
+  <script type="text/javascript" src='Grid.js' ) }}></script>
+  <script type="text/javascript" src='Brush.js' ) }}></script>
   <script type="text/javascript" src='sketch.js' ) }}></script>
 
   <link type="text/css" rel="stylesheet" href="styles.css">

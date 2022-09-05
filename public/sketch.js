@@ -43,6 +43,12 @@ const PALETTESYSTEM = {
   ],
 }
 
+// grid
+let width_points = [0];
+let height_points = [0];
+let MINIMIMUM_DISTANCE = 2;
+let SCALING_FACTOR = 1;
+
 choosePalette()
 
 function choosePalette() {
@@ -72,6 +78,8 @@ function createPaletteColors() {
 function preload() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
+
+  font = loadFont('OpenSans-Regular.ttf');
 
   // if (urlParams.has('highres')) {
   //   CURRENTPIXELDENS = parseInt(urlParams.get('highres'));
@@ -106,6 +114,30 @@ function setup() {
   brush1 = new Brush(-150, +150, 0);
   brush2 = new Brush(-150, +150, -25);
   brush3 = new Brush(-150, +150, 25);
+
+  // grid
+  STROKE_SIZE = 1;
+  COUNT_OF_POINTS_X = Math.round(getRandomFromInterval(1, 5));  // 1-5
+  COUNT_OF_POINTS_Y = Math.round(getRandomFromInterval(1, 5));  // 1-5
+  GRID = COUNT_OF_POINTS_X + "x" + COUNT_OF_POINTS_Y;
+  console.log("Grid: " + GRID);
+
+
+  // PAIRING_COUNT = Math.floor(getRandomFromInterval(1, 4));
+  PAIRING_COUNT = 0;
+  console.log("Number of pairing: " + PAIRING_COUNT);
+
+  // PADDING_X = getRandomFromInterval(0, 20);
+  // PADDING_Y = getRandomFromInterval(0, 20);
+  PADDING_X = 0;
+  PADDING_Y = 0;
+
+
+
+  DISTANCE_BETWEEN_LINES = map(STROKE_SIZE, 1, 5, 10, 25, true);
+
+  let points = create_coordinates_for_boxes(COUNT_OF_POINTS_X, COUNT_OF_POINTS_Y);
+  boxes = new Boxes(points[0], points[1], PAIRING_COUNT);
 }
 
 
@@ -141,6 +173,8 @@ function draw() {
   brush2.display();
   brush3.update();
   brush3.display();
+
+  boxes.show();
 
 }
 
