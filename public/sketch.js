@@ -44,8 +44,6 @@ const PALETTESYSTEM = {
 }
 
 // grid
-let width_points = [0];
-let height_points = [0];
 let MINIMIMUM_DISTANCE = 2;
 let SCALING_FACTOR = 1;
 

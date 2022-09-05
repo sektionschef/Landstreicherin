@@ -11,46 +11,47 @@ class Grid {
         this.pairing_count = 0;
         console.log("Number of pairing: " + this.pairing_count);
 
+        this.width_points = [0];  // add 0
+        this.height_points = [0];  // add 0
+
         for (let i = 0; i < this.count_of_points_x; i++) {
-            width_points.push(Math.floor(getRandomFromInterval(0, (width - MINIMIMUM_DISTANCE))));
+            this.width_points.push(Math.floor(getRandomFromInterval(0, (width - MINIMIMUM_DISTANCE))));
         }
         for (let i = 0; i < this.count_of_points_y; i++) {
-            height_points.push(Math.floor(getRandomFromInterval(0, (height - MINIMIMUM_DISTANCE))));
+            this.height_points.push(Math.floor(getRandomFromInterval(0, (height - MINIMIMUM_DISTANCE))));
         }
 
         // add width and height
-        width_points.push(width);
-        height_points.push(height);
+        this.width_points.push(width);
+        this.height_points.push(height);
 
         // simple sort
-        width_points.sort(function (a, b) {
+        this.width_points.sort(function (a, b) {
             return a - b;
         });
-        height_points.sort(function (a, b) {
+        this.height_points.sort(function (a, b) {
             return a - b;
         });
 
-        for (var i = width_points.length - 1; i >= 0; i--) {
-            if ((width_points[(i)] - width_points[i - 1]) < MINIMIMUM_DISTANCE) {
-                if (width_points[i] != width) {  // do not remove the width value
-                    width_points.splice(i, 1);
+        for (var i = this.width_points.length - 1; i >= 0; i--) {
+            if ((this.width_points[(i)] - this.width_points[i - 1]) < MINIMIMUM_DISTANCE) {
+                if (this.width_points[i] != width) {  // do not remove the width value
+                    this.width_points.splice(i, 1);
                 }
             }
         }
 
-        for (var i = height_points.length - 1; i >= 0; i--) {
-            if ((height_points[(i)] - height_points[i - 1]) < MINIMIMUM_DISTANCE) {
-                if (height_points[i] != height) {
-                    height_points.splice(i, 1);
+        for (var i = this.height_points.length - 1; i >= 0; i--) {
+            if ((this.height_points[(i)] - this.height_points[i - 1]) < MINIMIMUM_DISTANCE) {
+                if (this.height_points[i] != height) {
+                    this.height_points.splice(i, 1);
                 }
             }
         }
 
-        console.log("Coordinates of points on x axis: " + width_points);
-        console.log("Coordinates of points on y axis: " + height_points);
+        console.log("Coordinates of points on x axis: " + this.width_points);
+        console.log("Coordinates of points on y axis: " + this.height_points);
 
-        this.width_points = width_points;
-        this.height_points = height_points;
     }
 }
 
