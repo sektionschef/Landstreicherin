@@ -51,8 +51,6 @@ class Grid {
 
         this.width_points = width_points;
         this.height_points = height_points;
-
-        // return [width_points, height_points]
     }
 }
 
@@ -105,25 +103,15 @@ class Boxes {
             for (let i = 0; i < (this.columns_count); i++) {
                 this.label_counter += 1;
 
-                this.virtual_boxes.push({
+                let data = {
                     label: (this.label_counter),
-                    a: {
-                        x: this.width_points[i],
-                        y: this.height_points[v]
-                    },
-                    b: {
-                        x: this.width_points[i + 1],
-                        y: this.height_points[v]
-                    },
-                    c: {
-                        x: this.width_points[i + 1],
-                        y: this.height_points[v + 1]
-                    },
-                    d: {
-                        x: this.width_points[i],
-                        y: this.height_points[v + 1]
-                    },
-                })
+                    a: createVector(this.width_points[i], this.height_points[v]),
+                    b: createVector(this.width_points[i + 1], this.height_points[v]),
+                    c: createVector(this.width_points[i + 1], this.height_points[v + 1]),
+                    d: createVector(this.width_points[i], this.height_points[v + 1])
+                }
+
+                this.virtual_boxes.push(new Box(data))
             }
         }
         console.log("Virtual boxes:")
@@ -280,36 +268,11 @@ class Boxes {
     //     }
     // }
 
-    show() {
-        let center_x;
-        let center_y;
 
+    show() {
 
         for (let box_real of this.real_boxes) {
-            push();
-            textFont(font);
-            textSize(1);
-            rectMode(CORNERS);
-            // translate(box_real.a.x - width / 2, box_real.a.y - height / 2);
-            translate(box_real.a.x - width / 2, box_real.a.y - height / 2);
-            // console.log(box_real.label);
-            // fill(133);
-            // fill(255);
-            noFill();
-            // if (logging.getLevel() <= 1) {
-            strokeWeight(3);
-            stroke(51);
-            // } else {
-            // noStroke();
-            // }
-            // if (logging.getLevel() <= 1) {
-            rect(0, 0, box_real.c.x, box_real.c.y);
-            fill(0)
-            center_x = (box_real.b.x - box_real.a.x) / 2
-            center_y = (box_real.d.y - box_real.a.y) / 2
-            text(box_real.label, (box_real.a.x + center_x), (box_real.a.y + center_y));
-            // }
-            pop();
+            box_real.show();
         }
     }
 
@@ -330,6 +293,44 @@ class Boxes {
                 this.boxes_completely_run = false;
             }
         }
+    }
+}
+
+
+class Box {
+    constructor(data) {
+
+        this.label = data.label;
+        this.a = data.a;
+        this.b = data.b;
+        this.c = data.c;
+        this.d = data.d;
+
+        this.center_x = (this.b.x - this.a.x) / 2
+        this.center_y = (this.d.y - this.a.y) / 2
+    }
+
+    show() {
+        push();
+        rectMode(CORNERS);
+        translate(this.a.x - width / 2, this.a.y - height / 2);
+        // fill(133);
+        // fill(255);
+        noFill();
+        // if (logging.getLevel() <= 1) {
+        strokeWeight(3);
+        stroke(51);
+        // } else {
+        // noStroke();
+        // }
+        // if (logging.getLevel() <= 1) {
+        rect(0, 0, this.c.x, this.c.y);
+        fill(0)
+        textFont(font);
+        textSize(20);
+        text(this.label, this.center_x, this.center_y);
+        // }
+        pop();
     }
 }
 
