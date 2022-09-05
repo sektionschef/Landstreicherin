@@ -122,12 +122,9 @@ function setup() {
   PADDING_X = 0;
   PADDING_Y = 0;
 
-
   DISTANCE_BETWEEN_LINES = map(STROKE_SIZE, 1, 5, 10, 25, true);
 
-  // let points = create_coordinates_for_boxes(COUNT_OF_POINTS_X, COUNT_OF_POINTS_Y);
   grid = new Grid();
-  boxes = new Boxes(grid.width_points, grid.height_points, grid.pairing_count)
 }
 
 
@@ -164,7 +161,7 @@ function draw() {
   brush3.update();
   brush3.display();
 
-  boxes.show();
+  grid.show();
 
 }
 
