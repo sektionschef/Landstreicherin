@@ -88,6 +88,7 @@ function preload() {
 function setup() {
   noiseSeed(NOISESEED);
   randomSeed(NOISESEED);
+
   setAttributes('antialias', true);
 
   scaleDynamically();
@@ -102,7 +103,9 @@ function setup() {
 
   createPaletteColors();
 
-  brush = new Brush(-150, +150);
+  brush1 = new Brush(-150, +150, 0);
+  brush2 = new Brush(-150, +150, -25);
+  brush3 = new Brush(-150, +150, 25);
 }
 
 
@@ -124,12 +127,20 @@ function draw() {
   // ambientMaterial(255);
   // specularMaterial(255);
 
+  if (frameCount == 1) {
+    background(200);
+  }
+
   if (MODE == 5) {
     background(200);
   }
 
-  brush.update();
-  brush.display();
+  brush1.update();
+  brush1.display();
+  brush2.update();
+  brush2.display();
+  brush3.update();
+  brush3.display();
 
 }
 
