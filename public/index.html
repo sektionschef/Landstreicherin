@@ -22,10 +22,7 @@
     //---- do not edit the following code (you can indent as you wish)
     let alphabet = "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
     var fxhash = "oo" + Array(49).fill(0).map(_ => alphabet[(Math.random() * alphabet.length) | 0]).join('')
-    // var fxhash = "oowwSmyik7UkLQp9h8nn1BAoqbxZ3Q8MwG5YuxRamp6Hzb58tPd"  // black
-    var fxhash = "ooBACzUQhxgqEgi1nqEckqxA743PjkF5kPvn7Tzgq7kbcaj2rR9"
-    // var fxhash = "oodoFg2X4mS2wATEpPoQfmaU4HENpXtywy6Fx25QZyGEA7WsdQp"
-    // var fxhash = "oofHCL17K1Tk8C5aBhKUTTHE7Ddba9ku1VG9adAqqw4voH2s8Kq"
+    // var fxhash = "ooKjzTnv7NcpeKxkwReuK6Pkmcva5FwkHobo5G29Gsoj7wvYJHi"  // black
     let b58dec = str => [...str].reduce((p, c) => p * alphabet.length + alphabet.indexOf(c) | 0, 0)
     let fxhashTrunc = fxhash.slice(2)
     let regex = new RegExp(".{" + ((fxhash.length / 4) | 0) + "}", 'g')
@@ -56,6 +53,7 @@
   <script type="text/javascript" src="p5.min.js"></script>
   <script type="text/javascript" src='utils.js' ) }}></script>
   <script type="text/javascript" src='Grid.js' ) }}></script>
+  <script type="text/javascript" src='Lines.js' ) }}></script>
   <script type="text/javascript" src='Brush.js' ) }}></script>
   <script type="text/javascript" src='sketch.js' ) }}></script>
 

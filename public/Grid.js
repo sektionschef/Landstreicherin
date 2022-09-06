@@ -1,7 +1,8 @@
 
 class Grid {
     constructor() {
-        this.minimumDistance = 20;
+        this.minimumDistance = 50;
+        this.padding = 50;
 
         this.boxes = [];
         // this.virtual_boxes = [];
@@ -10,8 +11,8 @@ class Grid {
         this.possible_pairings_y = [];
         this.boxes_completely_run = false;
 
-        this.count_of_points_x = Math.round(getRandomFromInterval(1, 5));  // 1-5
-        this.count_of_points_y = Math.round(getRandomFromInterval(1, 5));  // 1-5
+        this.count_of_points_x = Math.round(getRandomFromInterval(1, 3));  // 1-5
+        this.count_of_points_y = Math.round(getRandomFromInterval(1, 3));  // 1-5
         this.grid_label = this.count_of_points_x + "x" + this.count_of_points_y;
         console.log("Grid: " + this.grid_label);
 
@@ -51,20 +52,20 @@ class Grid {
 
         // remove start and end of axis
         for (var i = this.pointsXPool.length - 1; i >= 0; i--) {
-            if (i <= (0 + this.minimumDistance) || i >= (width - this.minimumDistance)) {
+            if (i <= (0 + this.padding + this.minimumDistance) || i >= (width - this.padding - this.minimumDistance)) {
                 this.pointsXPool.splice(i, 1);
             }
         }
         // console.log(this.pointsXPool);
 
-        this.pointsX = [0, width];
+        this.pointsX = [(0 + this.padding), (width - this.padding)];
 
         for (var i = this.pointsYPool.length - 1; i >= 0; i--) {
-            if (i <= (0 + this.minimumDistance) || i >= (height - this.minimumDistance)) {
+            if (i <= (0 + this.padding + this.minimumDistance) || i >= (height - this.padding - this.minimumDistance)) {
                 this.pointsYPool.splice(i, 1);
             }
         }
-        this.pointsY = [0, height];
+        this.pointsY = [(0 + this.padding), (height - this.padding)];
 
         for (var i = 0; i < this.count_of_points_x; i++) {
             this.getSinglePointX();
@@ -93,7 +94,7 @@ class Grid {
 
         // remove near points
         for (var i = this.pointsXPool.length - 1; i >= 0; i--) {
-            if (i >= (chosen_one - this.minimumDistance) && i <= (chosen_one + this.minimumDistance)) {
+            if (this.pointsXPool[i] >= (chosen_one - this.minimumDistance) && this.pointsXPool[i] <= (chosen_one + this.minimumDistance)) {
                 this.pointsXPool.splice(i, 1);
             }
         }
@@ -103,15 +104,16 @@ class Grid {
 
     getSinglePointY() {
         let chosen_one = getRandomFromList(this.pointsYPool);
-        // console.log(chosen_one);
+        console.log(chosen_one);
 
         // remove near points
         for (var i = this.pointsYPool.length - 1; i >= 0; i--) {
-            if (i >= (chosen_one - this.minimumDistance) && i <= (chosen_one + this.minimumDistance)) {
+            if (this.pointsYPool[i] >= (chosen_one - this.minimumDistance) && this.pointsYPool[i] <= (chosen_one + this.minimumDistance)) {
+                // console.log(chosen_one + ": " + i);
                 this.pointsYPool.splice(i, 1);
             }
         }
-        // console.log(this.pointsYPool);
+        console.log(this.pointsYPool);
         this.pointsY.push(chosen_one);
     }
 

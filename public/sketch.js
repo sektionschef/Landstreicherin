@@ -94,7 +94,7 @@ function setup() {
   noiseSeed(NOISESEED);
   randomSeed(NOISESEED);
 
-  setAttributes('antialias', true);
+  // setAttributes('antialias', true);
 
   scaleDynamically();
 
@@ -161,6 +161,8 @@ function draw() {
   brush3.display();
 
   grid.show();
+
+  noLoop();
 
 }
 
