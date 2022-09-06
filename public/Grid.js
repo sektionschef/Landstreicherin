@@ -3,6 +3,13 @@ class Grid {
     constructor() {
         this.minimumDistance = 20;
 
+        this.boxes = [];
+        // this.virtual_boxes = [];
+        // this.real_boxes = [];
+        this.possible_pairings_x = [];
+        this.possible_pairings_y = [];
+        this.boxes_completely_run = false;
+
         this.count_of_points_x = Math.round(getRandomFromInterval(1, 5));  // 1-5
         this.count_of_points_y = Math.round(getRandomFromInterval(1, 5));  // 1-5
         this.grid_label = this.count_of_points_x + "x" + this.count_of_points_y;
@@ -13,25 +20,14 @@ class Grid {
         this.boxes_count = (this.columns_count) * (this.row_count)
         console.log("Grid with " + this.columns_count + " columns, " + this.row_count + " rows, " + this.boxes_count + " boxes and " + this.pairing_count + " planned pairings.")
 
-        // this.pairing_count = Math.floor(getRandomFromInterval(1, 4));
-        this.pairing_count = 0;
+        this.pairing_count = Math.floor(getRandomFromInterval(1, 4));
+        // this.pairing_count = 0;
         console.log("Number of pairing: " + this.pairing_count);
 
         this.getPoints();
-
-        this.virtual_boxes = [];
-        this.possible_pairings_x = [];
-        this.possible_pairings_y = [];
-        this.real_boxes = [];
-
-        this.boxes_completely_run = false;
-
-        this.create_virtual_boxes();
+        this.create_unpaired_boxes();
 
         this.scout_possible_pairings();
-
-        // populate the resulting boxes
-        this.real_boxes = this.virtual_boxes;
 
         for (var i = 0; i < this.pairing_count; i++) {
             if (this.pairing_count > 0 && this.possible_pairings_x.length > 0 && this.possible_pairings_y.length > 0) {
@@ -41,7 +37,7 @@ class Grid {
             }
         }
         console.log("The real boxes are:");
-        console.log(this.real_boxes);
+        console.log(this.boxes);
 
         // this.create_lines();
     }
@@ -72,7 +68,6 @@ class Grid {
 
         for (var i = 0; i < this.count_of_points_x; i++) {
             this.getSinglePointX();
-            console.log(i);
         }
 
         for (var i = 0; i < this.count_of_points_y; i++) {
@@ -120,7 +115,7 @@ class Grid {
         this.pointsY.push(chosen_one);
     }
 
-    create_virtual_boxes() {
+    create_unpaired_boxes() {
         this.label_counter = 0;
 
         for (let v = 0; v < (this.row_count); v++) {
@@ -135,29 +130,29 @@ class Grid {
                     d: createVector(this.pointsX[i], this.pointsY[v + 1])
                 }
 
-                this.virtual_boxes.push(new Box(data))
+                this.boxes.push(new Box(data))
             }
         }
-        console.log("Virtual boxes:")
-        console.log(this.virtual_boxes)
+        // console.log("Unpaired Boxes:")
+        // console.log(this.boxes)
     }
 
     scout_possible_pairings() {
 
         // skip boxes at the end of the row
-        for (let i = 0; i < this.virtual_boxes.length; i++) {
-            if (this.virtual_boxes[i].label % this.columns_count != 0) {
+        for (let i = 0; i < this.boxes.length; i++) {
+            if (this.boxes[i].label % this.columns_count != 0) {
                 this.possible_pairings_x.push({
-                    left: this.virtual_boxes[i].label,
-                    right: this.virtual_boxes[(i + 1)].label
+                    left: this.boxes[i].label,
+                    right: this.boxes[(i + 1)].label
                 })
             }
             // skip last row
-            if (this.virtual_boxes[i].label <= (this.virtual_boxes.length - this.columns_count)) {
+            if (this.boxes[i].label <= (this.boxes.length - this.columns_count)) {
                 this.possible_pairings_y.push({
-                    left: this.virtual_boxes[i].label,
-                    // right: this.virtual_boxes[(i + this.row_count + 1)].label  // next row
-                    right: this.virtual_boxes[(i + this.columns_count)].label  // next row
+                    left: this.boxes[i].label,
+                    // right: this.boxes[(i + this.row_count + 1)].label  // next row
+                    right: this.boxes[(i + this.columns_count)].label  // next row
                 })
             }
         }
@@ -188,7 +183,7 @@ class Grid {
         let left_temp;
         let right_temp;
 
-        for (let box of this.virtual_boxes) {
+        for (let box of this.boxes) {
             if (box.label == this.chosen.left) {
                 left_temp = {
                     a: box.a, b: box.b, c: box.c, d: box.d
@@ -204,7 +199,7 @@ class Grid {
         }
 
         if (this.chosen_axis == "x") {
-            this.paired_box = {
+            let data = {
                 label: this.left_label + "+" + this.right_label,
                 a: {
                     x: left_temp.a.x,
@@ -223,8 +218,9 @@ class Grid {
                     y: left_temp.d.y
                 },
             };
+            this.paired_box = new Box(data);
         } else {
-            this.paired_box = {
+            let data = {
                 label: this.left_label + "+" + this.right_label,
                 a: {
                     x: left_temp.a.x,
@@ -243,20 +239,21 @@ class Grid {
                     y: right_temp.d.y
                 },
             };
+            this.paired_box = new Box(data);
         }
 
         console.log("Adding the newly paired box: ");
         console.log(this.paired_box);
 
-        this.real_boxes.push(this.paired_box)
+        this.boxes.push(this.paired_box)
 
         console.log("Remove original boxes from array.");
-        for (var i = this.real_boxes.length - 1; i >= 0; i--) {
-            if (this.real_boxes[i].label == this.left_label) {
-                this.real_boxes.splice(i, 1);
+        for (var i = this.boxes.length - 1; i >= 0; i--) {
+            if (this.boxes[i].label == this.left_label) {
+                this.boxes.splice(i, 1);
             }
-            if (this.real_boxes[i].label == this.right_label) {
-                this.real_boxes.splice(i, 1);
+            if (this.boxes[i].label == this.right_label) {
+                this.boxes.splice(i, 1);
             }
         }
     }
@@ -287,7 +284,7 @@ class Grid {
     }
 
     // create_lines() {
-    //     for (let box_real of this.real_boxes) {
+    //     for (let box_real of this.boxes) {
     //         box_real.lines = new Lines(box_real.a.x, box_real.a.y, box_real.b.x, box_real.c.y, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
     //     }
     // }
@@ -295,14 +292,14 @@ class Grid {
 
     show() {
 
-        for (let box_real of this.real_boxes) {
-            box_real.show();
+        for (let box of this.boxes) {
+            box.show();
         }
     }
 
     // show_lines() {
 
-    //     for (let box_real of this.real_boxes) {
+    //     for (let box_real of this.boxes) {
     //         box_real.lines.show();
     //     }
     // }
@@ -311,7 +308,7 @@ class Grid {
 
         this.boxes_completely_run = true;
 
-        for (let box_real of this.real_boxes) {
+        for (let box_real of this.boxes) {
             box_real.lines.check_all_complete();
             if (box_real.lines.all_lines_complete == false) {
                 this.boxes_completely_run = false;
