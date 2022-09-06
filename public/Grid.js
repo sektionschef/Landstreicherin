@@ -40,7 +40,7 @@ class Grid {
         console.log("The real boxes are:");
         console.log(this.boxes);
 
-        // this.create_lines();
+        this.create_lines();
     }
 
 
@@ -104,7 +104,7 @@ class Grid {
 
     getSinglePointY() {
         let chosen_one = getRandomFromList(this.pointsYPool);
-        console.log(chosen_one);
+        // console.log(chosen_one);
 
         // remove near points
         for (var i = this.pointsYPool.length - 1; i >= 0; i--) {
@@ -113,7 +113,7 @@ class Grid {
                 this.pointsYPool.splice(i, 1);
             }
         }
-        console.log(this.pointsYPool);
+        // console.log(this.pointsYPool);
         this.pointsY.push(chosen_one);
     }
 
@@ -285,11 +285,11 @@ class Grid {
         }
     }
 
-    // create_lines() {
-    //     for (let box_real of this.boxes) {
-    //         box_real.lines = new Lines(box_real.a.x, box_real.a.y, box_real.b.x, box_real.c.y, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-    //     }
-    // }
+    create_lines() {
+        for (let box of this.boxes) {
+            box.lines = new Lines(box.a.x, box.a.y, box.b.x, box.c.y, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+        }
+    }
 
 
     show() {
@@ -299,12 +299,12 @@ class Grid {
         }
     }
 
-    // show_lines() {
+    show_lines() {
 
-    //     for (let box_real of this.boxes) {
-    //         box_real.lines.show();
-    //     }
-    // }
+        for (let box of this.boxes) {
+            box.lines.show();
+        }
+    }
 
     check_boxes_complete() {
 

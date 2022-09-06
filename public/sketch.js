@@ -161,8 +161,9 @@ function draw() {
   brush3.display();
 
   grid.show();
+  grid.show_lines();
 
-  noLoop();
+  // noLoop();
 
 }
 

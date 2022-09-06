@@ -1,3 +1,8 @@
+STROKE_COLOR = "black";
+STROKE_NOISE = 1;
+STROKE_NOISE_2 = 1;
+STROKE_DISTORT = 1;
+
 class Line {
     constructor(orientation, x, y, limit_x, limit_y) {
         this.orientation = orientation;
@@ -84,14 +89,24 @@ class Line {
             }
 
             // brush
-            line_canvas.push();
-            line_canvas.noStroke();
-            line_canvas.fill(this.line_color);
-            line_canvas.circle(this.x * SCALING_FACTOR, this.y * SCALING_FACTOR, this.stroke_size_dynamic);
-            // line_canvas.fill(0);
-            line_canvas.fill(this.line_color_second);
-            line_canvas.circle(this.x * SCALING_FACTOR, this.y * SCALING_FACTOR, 1);
-            line_canvas.pop()
+            // line_canvas.push();
+            // line_canvas.noStroke();
+            // line_canvas.fill(this.line_color);
+            // line_canvas.circle(this.x * SCALING_FACTOR, this.y * SCALING_FACTOR, this.stroke_size_dynamic);
+            // // line_canvas.fill(0);
+            // line_canvas.fill(this.line_color_second);
+            // line_canvas.circle(this.x * SCALING_FACTOR, this.y * SCALING_FACTOR, 1);
+            // line_canvas.pop()
+
+            push();
+            translate(-width / 2, -height / 2);
+            noStroke();
+            fill(this.line_color);
+            circle(this.x, this.y, 5);
+            // fill(0);
+            fill(this.line_color_second);
+            circle(this.x, this.y, 1);
+            pop();
         }
     }
 }
@@ -110,7 +125,7 @@ class Lines {
         this.all_lines_complete = false;
 
         let chosen_axis = getRandomFromList(["x", "y", "xy", "yx", "blank"])
-        logging.debug(chosen_axis + " axis randomly chosen.");
+        console.log(chosen_axis + " axis randomly chosen.");
 
         if (chosen_axis == "x") {
             this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
@@ -190,15 +205,15 @@ class Lines {
         }
     }
 
-    check_all_complete() {
-        // skip if already complete
-        if (this.all_lines_complete == false) {
-            this.all_lines_complete = true;
-            for (var line of this.bodies) {
-                if (line.run_complete == false) {
-                    this.all_lines_complete = false;
-                }
-            }
-        }
-    }
+    // check_all_complete() {
+    //     // skip if already complete
+    //     if (this.all_lines_complete == false) {
+    //         this.all_lines_complete = true;
+    //         for (var line of this.bodies) {
+    //             if (line.run_complete == false) {
+    //                 this.all_lines_complete = false;
+    //             }
+    //         }
+    //     }
+    // }
 }
