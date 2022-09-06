@@ -44,7 +44,6 @@ const PALETTESYSTEM = {
 }
 
 // grid
-let MINIMIMUM_DISTANCE = 2;
 let SCALING_FACTOR = 1;
 
 choosePalette()
@@ -132,7 +131,7 @@ function draw() {
 
   pixelDensity(CURRENTPIXELDENS);
 
-  camera(0, 0, (height / 2) / tan(PI / 6), 0, 0, 0, 0, 1, 0);  // default
+  // camera(0, 0, (height / 2) / tan(PI / 6), 0, 0, 0, 0, 1, 0);  // default
   // if (MODE == 5) {
   //   camera(0, 800, 0, 0, 0, 0, 0, 0, 1); // debug - on top view
   //   // camera(-1500, 0, 0, 0, 0, 0, 0, -1, 0); // debug -- side view
