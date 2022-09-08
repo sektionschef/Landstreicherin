@@ -1,7 +1,7 @@
 class Brush {
     constructor(orientation, start, end, otherOne) {
         this.boost = 0.06;  // speed increment increase if eiert
-        this.radius = 3;
+        this.radius = 2;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker
         this.noiseYzoom = 0.05;  // zoom on noise
         this.amplitudeNoiseY = 2.5;  // up and down on Y axis
@@ -12,7 +12,11 @@ class Brush {
         this.otherOne = otherOne;  // y axis
 
         this.killMe = false;
-        this.pos = createVector(this.start, 0, 0);
+        if (this.orientation == "x") {
+            this.pos = createVector(this.start, 0, 0);
+        } else if (this.orientation == "y") {
+            this.pos = createVector(0, this.start, 0);
+        }
         this.vel = createVector(0, 0, 0);
         this.acc = createVector(0, 0, 0);
         this.Distance = this.end - this.start;
@@ -21,8 +25,14 @@ class Brush {
         this.acc2 = this.end - this.accDist;  // distance for slowing down speed
 
 
-        this.accBoost = createVector(this.boost, 0, 0)  // increment for acc and change z axis
-        this.sloBoost = createVector(this.boost * -1, 0, 0)   // increment for slowing down and change z axis
+        if (this.orientation == "x") {
+            this.accBoost = createVector(this.boost, 0, 0)  // increment for acc and change z axis
+            this.sloBoost = createVector(this.boost * -1, 0, 0)   // increment for slowing down and change z axis
+        } else if (this.orientation == "y") {
+            this.accBoost = createVector(0, this.boost, 0)  // increment for acc and change z axis
+            this.sloBoost = createVector(0, this.boost * -1, 0)   // increment for slowing down and change z axis
+        }
+
 
         this.makeSomeNoise();
     }
@@ -46,29 +56,40 @@ class Brush {
 
     update() {
 
+        let mover = 0;
+        if (this.orientation == "x") {
+            mover = this.pos.x;
+        } else if (this.orientation == "y") {
+            mover = this.pos.y;
+        }
+
         // start - boost
-        if (this.pos.x < this.acc1) {
+        if (mover < this.acc1) {
             this.acc = this.accBoost;
 
             // full speed
-        } else if (this.pos.x >= this.acc1 && this.pos.x < this.acc2) {
+        } else if (mover >= this.acc1 && mover < this.acc2) {
             this.acc = createVector(0, 0, 0);
 
             // slow down
-        } else if (this.pos.x >= this.acc2 && this.pos.x < this.end) {
+        } else if (mover >= this.acc2 && mover < this.end) {
 
             this.acc = this.sloBoost;
 
             // stop
-        } else if (this.pos.x > this.end) {
-            // console.log("pos x: " + this.pos.x + " end: " + this.end);
+        } else if (mover > this.end) {
+            // console.log("pos x: " + mover + " end: " + this.end);
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
         }
         this.vel.add(this.acc);
         this.pos.add(this.vel);
 
-        this.pos.y = this.otherOne + this.noisesY[Math.round(this.pos.x)];
+        if (this.orientation == "x") {
+            this.pos.y = this.otherOne + this.noisesY[Math.round(mover)];
+        } else if (this.orientation == "y") {
+            this.pos.x = this.otherOne + this.noisesY[Math.round(mover)];
+        }
         this.radius = map(this.vel.x, 0, 3, 3.75, 1.75)
     }
 
@@ -79,7 +100,7 @@ class Brush {
         noStroke();
         fill("black");
         // sphere(this.radius);
-        ellipse(0, 0, this.radius * 2, this.radius);
+        ellipse(0, 0, this.radius, this.radius);
         pop();
 
         if (MODE == 5) {
