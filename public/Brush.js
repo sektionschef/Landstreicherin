@@ -73,6 +73,7 @@ class Brush {
 
     display() {
         push();
+        translate(-width / 2, -height / 2);
         translate(this.pos);
         noStroke();
         fill("black");
