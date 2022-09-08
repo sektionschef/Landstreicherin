@@ -1,23 +1,24 @@
 class Brush {
-    constructor(startX, endX, y) {
+    constructor(orientation, start, end, otherOne) {
         this.boost = 0.06;  // speed increment increase if eiert
         this.radius = 3;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker
         this.noiseYzoom = 0.05;  // zoom on noise
         this.amplitudeNoiseY = 2.5;  // up and down on Y axis
 
-        this.startX = startX;  // start of line
-        this.endX = endX;  // end of line
-        this.y = y;
+        this.orientation = orientation;
+        this.start = start;  // start of line
+        this.end = end;  // end of line
+        this.otherOne = otherOne;  // y axis
 
         this.killMe = false;
-        this.pos = createVector(this.startX, 0, 0);
+        this.pos = createVector(this.start, 0, 0);
         this.vel = createVector(0, 0, 0);
         this.acc = createVector(0, 0, 0);
-        this.Distance = this.endX - this.startX;
+        this.Distance = this.end - this.start;
         this.accDist = this.Distance / this.distanceBoost;  // distance for acceleration and slow down
-        this.acc1 = this.startX + this.accDist;  // distance for full speed
-        this.acc2 = this.endX - this.accDist;  // distance for slowing down speed
+        this.acc1 = this.start + this.accDist;  // distance for full speed
+        this.acc2 = this.end - this.accDist;  // distance for slowing down speed
 
 
         this.accBoost = createVector(this.boost, 0, 0)  // increment for acc and change z axis
@@ -32,7 +33,7 @@ class Brush {
         let ioff = getRandomFromInterval(0, 200);  // start at different location for each line
 
         // Iterate over horizontal pixels
-        for (let i = this.startX; i <= this.endX; i++) {
+        for (let i = this.start; i <= this.end; i++) {
             // Calculate a y value according to noise, map to
 
             // console.log(i);
@@ -54,20 +55,20 @@ class Brush {
             this.acc = createVector(0, 0, 0);
 
             // slow down
-        } else if (this.pos.x >= this.acc2 && this.pos.x < this.endX) {
+        } else if (this.pos.x >= this.acc2 && this.pos.x < this.end) {
 
             this.acc = this.sloBoost;
 
             // stop
-        } else if (this.pos.x > this.endX) {
-            // console.log("pos x: " + this.pos.x + " endX: " + this.endX);
+        } else if (this.pos.x > this.end) {
+            // console.log("pos x: " + this.pos.x + " end: " + this.end);
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
         }
         this.vel.add(this.acc);
         this.pos.add(this.vel);
 
-        this.pos.y = this.y + this.noisesY[Math.round(this.pos.x)];
+        this.pos.y = this.otherOne + this.noisesY[Math.round(this.pos.x)];
         this.radius = map(this.vel.x, 0, 3, 3.75, 1.75)
     }
 
@@ -82,9 +83,9 @@ class Brush {
         pop();
 
         if (MODE == 5) {
-            // startX
+            // start
             push();
-            translate(this.startX, this.pos.y, 0);
+            translate(this.start, this.pos.y, 0);
             noStroke();
             fill("purple");
             sphere(2);
@@ -110,12 +111,12 @@ class Brush {
             push();
             strokeWeight(1);
             stroke("green");
-            line(this.startX, 0, 0, this.endX, 0, 0);
+            line(this.start, 0, 0, this.end, 0, 0);
             pop();
 
-            // endX
+            // end
             push();
-            translate(this.endX, this.pos.y, 0);
+            translate(this.end, this.pos.y, 0);
             noStroke();
             fill("purple");
             sphere(2);
