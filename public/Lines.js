@@ -125,8 +125,8 @@ class Lines {
         this.all_lines_complete = false;
 
         // let chosen_axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
-        let chosen_axis = getRandomFromList(["x", "y", "xy", "blank"]);
-        // let chosen_axis = getRandomFromList(["y"]);
+        // let chosen_axis = getRandomFromList(["x", "y", "xy", "blank"]);
+        let chosen_axis = getRandomFromList(["yx"]);
         console.log(chosen_axis + " axis randomly chosen.");
 
         // if (chosen_axis == "x") {
@@ -245,6 +245,31 @@ class Lines {
                     this.x_stop - this.padding_x,
                     (this.y_start + this.padding_y + this.distance_between_lines * i),
                     (this.y_stop - this.padding_y)));
+            }
+        } else if (chosen_axis == "yx") {
+            this.count_lines = ((this.x_stop - this.x_start) - 2 * this.padding_x) / this.distance_between_lines;
+
+            for (let i = 0; i < this.count_lines; i++) {
+                this.bodies.push(new Brush(
+                    chosen_axis,
+                    this.x_start + this.padding_x + this.distance_between_lines * i,
+                    (this.y_stop - this.padding_y),
+                    (this.x_stop - this.padding_x),
+                    (this.y_start + this.padding_y)
+                )
+                );
+            }
+            this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
+
+            for (let i = 1; i < this.count_lines; i++) {
+                this.bodies.push(new Brush(
+                    chosen_axis,
+                    this.x_start + this.padding_x,
+                    (this.y_stop - this.padding_y - this.distance_between_lines * i),
+                    (this.x_stop - this.padding_x),
+                    (this.y_start + this.padding_y)
+                )
+                );
             }
         } else if (chosen_axis == "blank") {
         }

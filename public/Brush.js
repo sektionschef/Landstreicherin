@@ -19,7 +19,10 @@ class Brush {
             this.pos = createVector(0, this.start, 0);
         } else if (this.orientation == "xy") {
             this.pos = createVector(this.start, this.start2, 0);
+        } else if (this.orientation == "yx") {
+            this.pos = createVector(this.start2, this.start, 0);
         }
+
         this.vel = createVector(0, 0, 0);
         this.acc = createVector(0, 0, 0);
         this.Distance = this.end - this.start;
@@ -38,11 +41,10 @@ class Brush {
         } else if (this.orientation == "y") {
             this.accBoost = createVector(0, this.boost, 0)  // increment for acc and change z axis
             this.sloBoost = createVector(0, this.boost * -1, 0)   // increment for slowing down and change z axis
-        } else if (this.orientation == "xy") {
+        } else if (this.orientation == "xy" || this.orientation == "yx") {
             this.accBoost = createVector(this.boost, this.boost, 0)  // increment for acc and change z axis
             this.sloBoost = createVector(this.boost * -1, this.boost * -1, 0)   // increment for slowing down and change z axis
         }
-
 
         this.makeSomeNoise();
     }
@@ -93,6 +95,7 @@ class Brush {
             this.pos.x = this.start2 + this.noisesY[Math.round(mover)];
         } else if (this.orientation == "xy") {
         }
+        // MISSING THE NOISE
     }
 
     update() {
@@ -101,7 +104,7 @@ class Brush {
             this.move(this.pos.x, this.accA, this.accB);
         } else if (this.orientation == "y") {
             this.move(this.pos.y, this.accA, this.accB);
-        } else if (this.orientation == "xy") {
+        } else if (this.orientation == "xy" || this.orientation == "yx") {
             this.move(this.pos.x, this.accA, this.accB);
             this.move(this.pos.y, this.accA2, this.accB2);
         }
