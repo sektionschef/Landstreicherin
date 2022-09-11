@@ -1,6 +1,6 @@
-const MODE = 1  // "FINE ART";
+// const MODE = 1  // "FINE ART";
 // const MODE = 2  // DEBUG MESSAGES
-// const MODE = 5 // all debug messages
+const MODE = 5 // all debug messages
 
 const NOISESEED = hashFnv32a(fxhash);
 if (MODE > 1) {
@@ -108,9 +108,9 @@ function setup() {
 
   createPaletteColors();
 
-  // brush1 = new Brush(-150, +150, 0);
-  // brush2 = new Brush(-150, +150, -25);
-  // brush3 = new Brush(-150, +150, 25);
+  brush1 = new Brush("x", 150, 350, 200, 200);
+  brush2 = new Brush("x", 150, 350, 175, 175);
+  brush3 = new Brush("x", 150, 350, 225, 225);
 
   // grid
   STROKE_SIZE = 1;
@@ -123,7 +123,7 @@ function setup() {
 
   DISTANCE_BETWEEN_LINES = map(STROKE_SIZE, 1, 5, 10, 25, true);
 
-  grid = new Grid();
+  // grid = new Grid();
 }
 
 
@@ -153,15 +153,16 @@ function draw() {
     background(200);
   }
 
-  // brush1.update();
-  // brush1.display();
-  // brush2.update();
-  // brush2.display();
-  // brush3.update();
-  // brush3.display();
+  brush1.update();
+  brush1.display();
+  brush2.update();
+  brush2.display();
+  brush3.update();
+  brush3.display();
 
-  grid.show();
-  grid.show_lines();
+
+  // grid.show();
+  // grid.show_lines();
 
   // noLoop();
 

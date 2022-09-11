@@ -81,11 +81,11 @@ class Brush {
             this.acc = this.sloBoost;
 
             // stop
-        } else if (mover > this.end) {
-            // console.log("pos x: " + mover + " end: " + this.end);
+        } else if (mover >= (this.end - 10)) {
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
         }
+        // console.log("pos x: " + mover + " end: " + this.end);
         this.vel.add(this.acc);
         this.pos.add(this.vel);
 
@@ -126,6 +126,7 @@ class Brush {
         if (MODE == 5) {
             // start
             push();
+            translate(-width / 2, -height / 2);
             translate(this.start, this.pos.y, 0);
             noStroke();
             fill("purple");
@@ -134,6 +135,7 @@ class Brush {
 
             // accA
             push();
+            translate(-width / 2, -height / 2);
             translate(this.accA, this.pos.y, 0);
             noStroke();
             fill("red");
@@ -142,6 +144,7 @@ class Brush {
 
             // accB
             push();
+            translate(-width / 2, -height / 2);
             translate(this.accB, this.pos.y, 0);
             noStroke();
             fill("red");
@@ -152,11 +155,13 @@ class Brush {
             push();
             strokeWeight(1);
             stroke("green");
+            translate(-width / 2, -height / 2);
             line(this.start, 0, 0, this.end, 0, 0);
             pop();
 
             // end
             push();
+            translate(-width / 2, -height / 2);
             translate(this.end, this.pos.y, 0);
             noStroke();
             fill("purple");
