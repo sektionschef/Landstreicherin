@@ -340,31 +340,21 @@ class Box {
     }
 
     show() {
-        push();
-        // rectMode(CORNERS);
-        rectMode(CENTER);
-        // translate(this.a.x - width / 2, this.a.y - height / 2);
-        translate(this.center_x - width / 2, this.center_y - height / 2);
-        // fill(133);
-        // fill(255);
-        noFill();
-        // if (logging.getLevel() <= 1) {
-        strokeWeight(1);
-        stroke(51);
-        // } else {
-        // noStroke();
-        // }
-        // if (logging.getLevel() <= 1) {
-        // rect(0, 0, this.c.x, this.c.y);
-        rect(0, 0, this.radiusX * 2, this.radiusY * 2);
-        fill(0)
-        ellipse(0, 0, 2);
-        textFont(font);
-        textSize(20);
-        // text(this.label, this.center_x, this.center_y);
-        text(this.label, 10, 20);
-        // }
-        pop();
+        if (MODE >= 5) {
+            push();
+            rectMode(CENTER);
+            translate(this.center_x - width / 2, this.center_y - height / 2);
+            noFill();
+            strokeWeight(1);
+            stroke(51);
+            rect(0, 0, this.radiusX * 2, this.radiusY * 2);
+            fill(0)
+            ellipse(0, 0, 2);
+            textFont(font);
+            textSize(20);
+            text(this.label, 10, 20);
+            pop();
+        }
     }
 }
 

@@ -126,7 +126,7 @@ class Lines {
 
         // let chosen_axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
         // let chosen_axis = getRandomFromList(["x", "y", "xy", "blank"]);
-        let chosen_axis = getRandomFromList(["xy"]);
+        let chosen_axis = getRandomFromList(["x", "y"]);
         console.log(chosen_axis + " axis randomly chosen.");
 
         // if (chosen_axis == "x") {
