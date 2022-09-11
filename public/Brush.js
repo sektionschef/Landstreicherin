@@ -1,13 +1,14 @@
 class Brush {
     constructor(orientation, start, end, start2, end2) {
         this.fullspeed = 4.5;
-        this.radius = 2;
+        this.radius = 1;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
         this.noiseYzoom = 0.005;  // zoom on noise
         this.amplitudeNoiseY = 2.5;  // up and down on Y axis
         this.OkLevel = 2;  // some offset is ok.
         this.fillColor = color(180);
-        this.strokeColor = color(150);
+        // this.strokeColor = color(150);
+        this.strokeColor = color("#705303");
 
         this.orientation = orientation;
         this.start = start;  // start of line
@@ -130,7 +131,7 @@ class Brush {
         translate(-width / 2, -height / 2);
         translate(this.pos);
         // noStroke();
-        strokeWeight(0.2);
+        strokeWeight(0.1);
         stroke(this.strokeColor);
         // fill(this.fillColor);
         noFill();

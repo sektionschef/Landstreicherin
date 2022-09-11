@@ -125,6 +125,7 @@ function setup() {
 
   grid = new Grid();
   sphere = new paintedSphere();
+  sphere.show();
 }
 
 
@@ -147,15 +148,18 @@ function draw() {
   // specularMaterial(255);
 
   if (frameCount == 1) {
-    background(200);
+    // background(200);
+    background(color("#c79712"));
+    push()
+    translate(-width / 2, -height / 2);
+    image(sphere.buffer, 0, 0);
+    pop();
   }
 
   if (MODE == 5) {
     background(200);
   }
 
-  sphere.show();
-  image(sphere.buffer, 0, 0);
 
   // brush1.update();
   // brush1.display();

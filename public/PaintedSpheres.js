@@ -8,19 +8,21 @@ class paintedSphere {
             data = {
                 custom_width: width,
                 custom_height: height,
-                posX: -width / 2,
-                posY: -height / 2,
+                posX: 0,
+                posY: 0,
+                // posX: -width / 2,
+                // posY: -height / 2,
                 elementSizeMin: 10,
                 elementSizeMax: 50,
-                colorObject: color(200),
+                colorObject: color("#f7c331"),
                 margin: 50,
-                fillColorNoise: 20,
-                fillColorOpacityMax: 100,
+                fillColorNoise: 10,
+                fillColorOpacityMax: 5,
                 noStroke: true,
                 strokeWeight: 10,
                 strokeColorNoise: 20,
                 strokeOpacityMax: 50,
-                numberQuantisizer: 4,
+                numberQuantisizer: 40,
             }
         }
 
@@ -103,6 +105,7 @@ class paintedSphere {
             this.buffer.ellipseMode(CENTER);
 
             // this.buffer.ellipse(element.posXEl / exportRatio, element.posYEl / exportRatio, element.widthShape / exportRatio, element.heightShape / exportRatio);
+            this.buffer.ellipse(element.posXEl, element.posYEl, element.widthShape, element.heightShape);
             // this.buffer.rect(element.posXRe / exportRatio, element.posYRe / exportRatio, element.widthShape / exportRatio, element.heightShape / exportRatio);
             this.buffer.rect(element.posXRe, element.posYRe, element.widthShape, element.heightShape);
             this.buffer.pop();
