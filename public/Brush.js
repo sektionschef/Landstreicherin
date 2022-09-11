@@ -1,10 +1,11 @@
 class Brush {
     constructor(orientation, start, end, start2, end2) {
-        this.boost = 0.06;  // speed increment increase if eiert
+        this.fullspeed = 4;
         this.radius = 2;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
         this.noiseYzoom = 0.005;  // zoom on noise
         this.amplitudeNoiseY = 2.5;  // up and down on Y axis
+        this.OkLevel = 2;  // some offset is ok.
 
         this.orientation = orientation;
         this.start = start;  // start of line
@@ -29,10 +30,15 @@ class Brush {
         this.Distance2 = this.end2 - this.start2;
         this.accDist = this.Distance / this.distanceBoost;  // distance for acceleration and slow down
         this.accDist2 = this.Distance2 / this.distanceBoost;  // distance for acceleration and slow down
+        this.boost = this.fullspeed / this.accDist;
         this.accA = this.start + this.accDist;  // distance for full speed
         this.accA2 = this.start2 + this.accDist2;  // distance for full speed
         this.accB = this.end - this.accDist;  // distance for slowing down speed
         this.accB2 = this.end2 - this.accDist2;  // distance for slowing down speed
+
+        console.log("accdist: " + this.accDist);
+        console.log("boost: " + this.boost);
+        console.log("step: " + this.accDist / this.boost);
 
 
         if (this.orientation == "x") {
@@ -67,23 +73,26 @@ class Brush {
     }
 
     move(mover, primaryAcc, secondaryAcc) {
-        // start - boost
+
         if (mover < primaryAcc) {
+            // start
             this.acc = this.accBoost;
+            // console.log("accelerate");
 
-            // full speed
         } else if (mover >= primaryAcc && mover < secondaryAcc) {
+            // full speed
             this.acc = createVector(0, 0, 0);
+            // console.log("full speed");
 
-            // slow down
-        } else if (mover >= secondaryAcc && mover < this.end) {
-
-            this.acc = this.sloBoost;
-
+        } else if (mover >= (this.end - this.OkLevel)) {
             // stop
-        } else if (mover >= (this.end - 10)) {
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
+            // console.log("stop");
+        } else if (mover >= secondaryAcc && mover < this.end) {
+            // slow down
+            this.acc = this.sloBoost;
+            // console.log("slow down");
         }
         // console.log("pos x: " + mover + " end: " + this.end);
         this.vel.add(this.acc);
@@ -96,6 +105,7 @@ class Brush {
         } else if (this.orientation == "xy") {
         }
         // MISSING THE NOISE
+
     }
 
     update() {

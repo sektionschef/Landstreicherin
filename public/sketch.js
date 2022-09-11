@@ -109,8 +109,8 @@ function setup() {
   createPaletteColors();
 
   brush1 = new Brush("x", 150, 350, 200, 200);
-  brush2 = new Brush("x", 150, 350, 175, 175);
-  brush3 = new Brush("x", 150, 350, 225, 225);
+  // brush2 = new Brush("x", 150, 350, 175, 175);
+  // brush3 = new Brush("x", 150, 350, 225, 225);
 
   // grid
   STROKE_SIZE = 1;
@@ -155,10 +155,10 @@ function draw() {
 
   brush1.update();
   brush1.display();
-  brush2.update();
-  brush2.display();
-  brush3.update();
-  brush3.display();
+  // brush2.update();
+  // brush2.display();
+  // brush3.update();
+  // brush3.display();
 
 
   // grid.show();
