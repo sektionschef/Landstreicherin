@@ -17,7 +17,7 @@ class Brush {
         this.start2 = start2;  // y axis
         this.end2 = end2;  // y axis
 
-        this.killMe = false;
+        this.alive = true;
         if (this.orientation == "x") {
             this.pos = createVector(this.start, 0, 0);
         } else if (this.orientation == "y") {
@@ -93,6 +93,7 @@ class Brush {
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
             // console.log("stop");
+            this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
         } else if (mover >= secondaryAcc && mover < this.end) {
             // slow down
             this.acc = this.sloBoost;
@@ -128,64 +129,72 @@ class Brush {
     }
 
     display() {
-        push();
-        translate(-width / 2, -height / 2);
-        translate(this.pos);
-        // noStroke();
-        strokeWeight(this.strokeSize);
-        stroke(this.strokeColor);
-        // fill(this.fillColor);
-        noFill();
-        // sphere(this.radius);
-        ellipse(0, 0, this.radius, this.radius);
-        pop();
 
-        if (MODE == 5) {
-            // start
+
+        if (this.alive) {
+
             push();
             translate(-width / 2, -height / 2);
-            translate(this.start, this.pos.y, 0);
-            noStroke();
-            fill("purple");
-            sphere(2);
+            translate(this.pos);
+            if (MODE >= 5) {
+                noStroke();
+                // fill(this.fillColor);
+                fill("black");
+            } else {
+                strokeWeight(this.strokeSize);
+                stroke(this.strokeColor);
+                noFill();
+            }
+            // sphere(this.radius);
+            ellipse(0, 0, this.radius, this.radius);
             pop();
 
-            // accA
-            push();
-            translate(-width / 2, -height / 2);
-            translate(this.accA, this.pos.y, 0);
-            noStroke();
-            fill("red");
-            sphere(2);
-            pop();
+            if (MODE == 5) {
+                // start
+                push();
+                translate(-width / 2, -height / 2);
+                translate(this.start, this.pos.y, 0);
+                noStroke();
+                fill("purple");
+                ellipse(2);
+                pop();
 
-            // accB
-            push();
-            translate(-width / 2, -height / 2);
-            translate(this.accB, this.pos.y, 0);
-            noStroke();
-            fill("red");
-            sphere(2);
-            pop();
+                // accA
+                push();
+                translate(-width / 2, -height / 2);
+                translate(this.accA, this.pos.y, 0);
+                noStroke();
+                fill("red");
+                ellipse(2);
+                pop();
 
-            // line
-            push();
-            strokeWeight(1);
-            stroke("green");
-            translate(-width / 2, -height / 2);
-            line(this.start, 0, 0, this.end, 0, 0);
-            pop();
+                // accB
+                push();
+                translate(-width / 2, -height / 2);
+                translate(this.accB, this.pos.y, 0);
+                noStroke();
+                fill("red");
+                ellipse(2);
+                pop();
 
-            // end
-            push();
-            translate(-width / 2, -height / 2);
-            translate(this.end, this.pos.y, 0);
-            noStroke();
-            fill("purple");
-            sphere(2);
-            pop();
+                // line
+                push();
+                strokeWeight(1);
+                stroke("green");
+                translate(-width / 2, -height / 2);
+                line(this.start, 0, 0, this.end, 0, 0);
+                pop();
+
+                // end
+                push();
+                translate(-width / 2, -height / 2);
+                translate(this.end, this.pos.y, 0);
+                noStroke();
+                fill("purple");
+                ellipse(2);
+                pop();
+            }
         }
-
     }
 
 

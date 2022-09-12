@@ -124,6 +124,8 @@ function setup() {
   DISTANCE_BETWEEN_LINES = map(STROKE_SIZE, 1, 5, 10, 25, true);
 
   grid = new Grid();
+  // grid2 = new Grid();
+
   sphere = new paintedSphere();
   sphere.show();
 }
@@ -171,6 +173,9 @@ function draw() {
 
   grid.show();
   grid.show_lines();
+
+  // grid2.show();
+  // grid2.show_lines();
 
   // noLoop();
 

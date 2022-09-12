@@ -117,8 +117,10 @@ class paintedSphere {
             this.buffer.strokeWeight(2);
             this.buffer.stroke("black");
             this.buffer.rectMode(CENTER);
-            this.buffer.translate((this.posX + this.custom_width / 2) / exportRatio, (this.posY + this.custom_height / 2) / exportRatio);
-            this.buffer.rect(0, 0, this.custom_width / exportRatio, this.custom_height / exportRatio);
+            // this.buffer.translate((this.posX + this.custom_width / 2) / exportRatio, (this.posY + this.custom_height / 2) / exportRatio);
+            this.buffer.translate((this.posX + this.custom_width / 2), (this.posY + this.custom_height / 2));
+            // this.buffer.rect(0, 0, this.custom_width / exportRatio, this.custom_height / exportRatio);
+            this.buffer.rect(0, 0, this.custom_width, this.custom_height);
             this.buffer.pop();
         }
     }

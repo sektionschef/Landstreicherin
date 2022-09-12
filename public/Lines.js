@@ -126,7 +126,7 @@ class Lines {
 
         // let chosen_axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
         // let chosen_axis = getRandomFromList(["x", "y", "xy", "blank"]);
-        let chosen_axis = getRandomFromList(["x", "y"]);
+        let chosen_axis = getRandomFromList(["xy", "blank"]);
         console.log(chosen_axis + " axis randomly chosen.");
 
         // if (chosen_axis == "x") {
@@ -228,6 +228,14 @@ class Lines {
             this.count_lines = ((this.x_stop - this.x_start) - 2 * this.padding_x) / this.distance_between_lines;
 
             for (let i = 0; i < this.count_lines; i++) {
+
+                // getting
+                // console.log(chosen_axis, this.x_start + this.padding_x,
+                //     this.x_stop - this.padding_x,
+                //     this.y_start + this.padding_y + this.distance_between_lines * i
+                // )
+                // asdfasfaf
+
                 this.bodies.push(new Brush(
                     chosen_axis,
                     (this.x_start + this.padding_x + this.distance_between_lines * i),
