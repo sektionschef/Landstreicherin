@@ -140,13 +140,14 @@ class Brush {
                 noStroke();
                 // fill(this.fillColor);
                 fill("black");
+                ellipse(0, 0, this.radius * 3, this.radius * 3);
             } else {
                 strokeWeight(this.strokeSize);
                 stroke(this.strokeColor);
                 noFill();
+                // sphere(this.radius);
+                ellipse(0, 0, this.radius, this.radius);
             }
-            // sphere(this.radius);
-            ellipse(0, 0, this.radius, this.radius);
             pop();
 
             if (MODE == 5) {

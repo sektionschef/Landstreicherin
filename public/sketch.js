@@ -1,6 +1,6 @@
-const MODE = 1  // "FINE ART";
+// const MODE = 1  // "FINE ART";
 // const MODE = 2  // DEBUG MESSAGES
-// const MODE = 5 // all debug messages
+const MODE = 5 // all debug messages
 
 const NOISESEED = hashFnv32a(fxhash);
 if (MODE > 1) {
@@ -112,6 +112,8 @@ function setup() {
   // brush2 = new Brush("x", 150, 350, 175, 175);
   // brush3 = new Brush("x", 150, 350, 225, 225);
 
+  brush4 = new Brush("xy", 50, 898, 1294);
+
   // grid
   STROKE_SIZE = 1;
 
@@ -123,8 +125,10 @@ function setup() {
 
   DISTANCE_BETWEEN_LINES = map(STROKE_SIZE, 1, 5, 10, 25, true);
 
-  grid = new Grid();
+  // grid = new Grid();
   // grid2 = new Grid();
+
+  lines = new Lines(300, 300, 450, 600, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 
   sphere = new paintedSphere();
   sphere.show();
@@ -162,6 +166,15 @@ function draw() {
     background(200);
   }
 
+  push();
+  translate(-width / 2, -height / 2);
+  translate(375, 450)
+  box(150, 300, 0);
+  pop();
+
+
+  lines.show();
+
 
   // brush1.update();
   // brush1.display();
@@ -170,9 +183,12 @@ function draw() {
   // brush3.update();
   // brush3.display();
 
+  brush4.update();
+  brush4.display();
 
-  grid.show();
-  grid.show_lines();
+
+  // grid.show();
+  // grid.show_lines();
 
   // grid2.show();
   // grid2.show_lines();

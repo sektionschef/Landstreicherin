@@ -129,77 +129,6 @@ class Lines {
         let chosen_axis = getRandomFromList(["xy", "blank"]);
         console.log(chosen_axis + " axis randomly chosen.");
 
-        // if (chosen_axis == "x") {
-        //     this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
-
-        //     for (let i = 0; i < this.count_lines; i++) {
-        //         this.bodies.push(new Line(
-        //             chosen_axis,
-        //             (this.x_start + this.padding_x),
-        //             (this.y_start + this.padding_y + this.distance_between_lines * i),
-        //             (this.x_stop - this.padding_x),
-        //             this.y_stop - this.padding_y));
-        //     }
-        // } else if (chosen_axis == "y") {
-        //     this.count_lines = ((this.x_stop - this.x_start) - 2 * this.padding_x) / this.distance_between_lines;
-
-        //     for (let i = 0; i < this.count_lines; i++) {
-        //         this.bodies.push(new Line(
-        //             chosen_axis,
-        //             (this.x_start + this.padding_x + this.distance_between_lines * i),
-        //             (this.y_start + this.padding_y),
-        //             this.x_stop - this.padding_x,
-        //             (this.y_stop - this.padding_x)));
-        //     }
-        // } else if (chosen_axis == "xy") {
-        //     this.count_lines = ((this.x_stop - this.x_start) - 2 * this.padding_x) / this.distance_between_lines;
-
-        //     for (let i = 0; i < this.count_lines; i++) {
-        //         this.bodies.push(new Line(
-        //             chosen_axis,
-        //             (this.x_start + this.padding_x + this.distance_between_lines * i),
-        //             (this.y_start + this.padding_y),
-        //             this.x_stop - this.padding_x,
-        //             (this.y_stop - this.padding_y)));
-        //     }
-        //     this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
-        //     // skip first one
-        //     for (let i = 1; i < this.count_lines; i++) {
-        //         this.bodies.push(new Line(
-        //             chosen_axis,
-        //             (this.x_start + this.padding_x),
-        //             (this.y_start + this.padding_y + this.distance_between_lines * i),
-        //             this.x_stop - this.padding_x,
-        //             (this.y_stop - this.padding_y)));
-        //     }
-        // } else if (chosen_axis == "yx") {
-        //     this.count_lines = ((this.x_stop - this.x_start) - 2 * this.padding_x) / this.distance_between_lines;
-
-        //     for (let i = 0; i < this.count_lines; i++) {
-        //         this.bodies.push(new Line(
-        //             chosen_axis,
-        //             this.x_start + this.padding_x + this.distance_between_lines * i,
-        //             (this.y_stop - this.padding_y),
-        //             (this.x_stop - this.padding_x),
-        //             (this.y_start + this.padding_y)
-        //         )
-        //         );
-        //     }
-        //     this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
-
-        //     for (let i = 1; i < this.count_lines; i++) {
-        //         this.bodies.push(new Line(
-        //             chosen_axis,
-        //             this.x_start + this.padding_x,
-        //             (this.y_stop - this.padding_y - this.distance_between_lines * i),
-        //             (this.x_stop - this.padding_x),
-        //             (this.y_start + this.padding_y)
-        //         )
-        //         );
-        //     }
-        // } else if (chosen_axis == "blank") {
-        // }
-
         if (chosen_axis == "x") {
             this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
 
@@ -230,11 +159,11 @@ class Lines {
             for (let i = 0; i < this.count_lines; i++) {
 
                 // getting
-                // console.log(chosen_axis, this.x_start + this.padding_x,
-                //     this.x_stop - this.padding_x,
-                //     this.y_start + this.padding_y + this.distance_between_lines * i
-                // )
-                // asdfasfaf
+                console.log(chosen_axis, this.x_start + this.padding_x,
+                    this.x_stop - this.padding_x,
+                    this.y_start + this.padding_y + this.distance_between_lines * i
+                )
+                // // asdfasfaf
 
                 this.bodies.push(new Brush(
                     chosen_axis,
