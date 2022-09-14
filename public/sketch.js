@@ -112,7 +112,7 @@ function setup() {
   // brush2 = new Brush("x", 150, 350, 175, 175);
   // brush3 = new Brush("x", 150, 350, 225, 225);
 
-  brush4 = new Brush("xy", 50, 898, 1294);
+  brush4 = new Brush("xy", 300, 450, 460, 600);
 
   // grid
   STROKE_SIZE = 1;
@@ -173,7 +173,7 @@ function draw() {
   pop();
 
 
-  lines.show();
+  // lines.show();
 
 
   // brush1.update();

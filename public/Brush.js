@@ -40,9 +40,9 @@ class Brush {
         this.accB = this.end - this.accDist;  // distance for slowing down speed
         this.accB2 = this.end2 - this.accDist2;  // distance for slowing down speed
 
-        // console.log("accdist: " + this.accDist);
-        // console.log("boost: " + this.boost);
-        // console.log("step: " + this.accDist / this.boost);
+        console.log("accdist: " + this.accDist);
+        console.log("boost: " + this.boost);
+        console.log("step: " + this.accDist / this.boost);
 
 
         if (this.orientation == "x") {
@@ -120,7 +120,7 @@ class Brush {
         } else if (this.orientation == "y") {
             this.move(this.pos.y, this.accA, this.accB);
         } else if (this.orientation == "xy" || this.orientation == "yx") {
-            this.move(this.pos.x, this.accA, this.accB);
+            // this.move(this.pos.x, this.accA, this.accB);
             this.move(this.pos.y, this.accA2, this.accB2);
         }
 
