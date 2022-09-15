@@ -178,12 +178,12 @@ class Lines {
 
 
             for (let i = 1; i < this.count_lines; i++) {
-                console.log(
-                    chosen_axis,
-                    (this.x_start + this.padding_x),
-                    this.x_stop - this.padding_x,
-                    (this.y_start + this.padding_y + this.distance_between_lines * i),
-                    (this.y_stop - this.padding_y))
+                // console.log(
+                //     chosen_axis,
+                //     (this.x_start + this.padding_x),
+                //     this.x_stop - this.padding_x,
+                //     (this.y_start + this.padding_y + this.distance_between_lines * i),
+                //     (this.y_stop - this.padding_y))
 
                 // skip first one
                 this.bodies.push(new Brush(

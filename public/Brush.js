@@ -13,10 +13,10 @@ class Brush {
 
         this.orientation = orientation;
         this.start = createVector(start, start2, 0);  // start of line
-        this.end = p5.Vector.add(this.start, createVector(end, end2, 0));  // end of line
+        this.end = createVector(end, end2, 0);
         // this.start2 = start2;  // y axis
         // this.end2 = end2;  // y axis
-        console.log(this.end);
+        // console.log(this.end);
 
         this.alive = true;
         if (this.orientation == "x") {
@@ -25,14 +25,14 @@ class Brush {
             this.pos = createVector(0, this.start, 0);
         } else if (this.orientation == "xy") {
             // this.pos = createVector(this.start, this.start2, 0);
-            this.pos = this.start;
+            this.pos = this.start.copy();
         } else if (this.orientation == "yx") {
             this.pos = createVector(this.start2, this.start, 0);
         }
 
         this.vel = createVector(0, 0, 0);
         this.acc = createVector(0, 0, 0);
-        this.Distance = this.end.sub(this.start);
+        this.Distance = p5.Vector.sub(this.end, this.start);
         this.DistanceLength = this.Distance.mag();
         // this.Distance2 = this.end2 - this.start2;
         this.accDist = this.DistanceLength / this.distanceBoost;  // distance for acceleration and slow down
@@ -148,17 +148,14 @@ class Brush {
         ellipse(0, 0, 10);
         pop();
 
-
         // accA
         push();
         translate(-width / 2, -height / 2);
-        // translate(this.accA);
+        translate(this.accA);
         noStroke();
         fill("red");
         ellipse(0, 0, 10);
         stroke(5);
-        line(0, 0, this.start.x, this.start.y);
-        line(0, 0, this.end.x, this.end.y);
         // line(0, 0, this.Distance.x, this.Distance.y);
         pop();
 

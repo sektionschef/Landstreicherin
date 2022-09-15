@@ -128,7 +128,7 @@ function setup() {
   // grid = new Grid();
   // grid2 = new Grid();
 
-  lines = new Lines(300, 300, 450, 600, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // lines = new Lines(300, 300, 450, 600, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 
   sphere = new paintedSphere();
   sphere.show();
