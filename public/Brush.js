@@ -43,7 +43,7 @@ class Brush {
         this.accA = p5.Vector.add(this.start, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
         // this.accB = this.end - this.accDist;  // distance for slowing down speed
         // this.accB2 = this.end2 - this.accDist2;  // distance for slowing down speed
-        this.accB = p5.Vector.add(this.start, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
+        this.accB = p5.Vector.sub(this.end, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
 
         // console.log("accdist: " + this.accDist);
         // console.log("boost: " + this.boost);
@@ -57,7 +57,8 @@ class Brush {
             this.accBoost = createVector(0, this.boost, 0)  // increment for acc and change z axis
             this.sloBoost = createVector(0, this.boost * -1, 0)   // increment for slowing down and change z axis
         } else if (this.orientation == "xy" || this.orientation == "yx") {
-            this.accBoost = createVector(this.boost, this.boost, 0)  // increment for acc and change z axis
+            // this.accBoost = createVector(this.boost, this.boost, 0)  // increment for acc and change z axis
+            this.accBoost = p5.Vector.mult(p5.Vector.normalize(this.Distance), this.boost);
             this.sloBoost = createVector(this.boost * -1, this.boost * -1, 0)   // increment for slowing down and change z axis
         }
 
@@ -161,13 +162,13 @@ class Brush {
 
 
         // accB
-        // push();
-        // translate(-width / 2, -height / 2);
-        // translate(this.accB);
-        // noStroke();
-        // fill("red");
-        // ellipse(0, 0, 10);
-        // pop();
+        push();
+        translate(-width / 2, -height / 2);
+        translate(this.accB);
+        noStroke();
+        fill("red");
+        ellipse(0, 0, 10);
+        pop();
 
 
         // end
