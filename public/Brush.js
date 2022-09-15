@@ -1,6 +1,6 @@
 class Brush {
     constructor(orientation, start, end, start2, end2) {
-        this.fullspeed = 3;
+        this.fullspeed = 8;
         this.radius = 0.7;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
         this.noiseYzoom = 0.007;  // zoom on noise
@@ -59,7 +59,8 @@ class Brush {
         } else if (this.orientation == "xy" || this.orientation == "yx") {
             // this.accBoost = createVector(this.boost, this.boost, 0)  // increment for acc and change z axis
             this.accBoost = p5.Vector.mult(p5.Vector.normalize(this.Distance), this.boost);
-            this.sloBoost = createVector(this.boost * -1, this.boost * -1, 0)   // increment for slowing down and change z axis
+            // this.sloBoost = createVector(this.boost * -1, this.boost * -1, 0)   // increment for slowing down and change z axis
+            this.sloBoost = p5.Vector.mult(this.accBoost, -1);
         }
 
         this.makeSomeNoise();
@@ -90,10 +91,10 @@ class Brush {
             this.acc = this.accBoost;
             // console.log("accelerate");
 
-            // } else if (this.pos.x >= primaryAcc && this.pos.x < secondaryAcc) {
-            //     // full speed
-            //     this.acc = createVector(0, 0, 0);
-            //     // console.log("full speed");
+        } else if (this.pos >= this.accA && this.pos < this.accB) {
+            // full speed
+            this.acc = createVector(0, 0, 0);
+            // console.log("full speed");
 
         } else if (this.pos >= p5.Vector.sub(this.end, this.OkLevel)) {
             // stop
@@ -101,10 +102,10 @@ class Brush {
             this.vel = createVector(0, 0, 0);
             // console.log("stop");
             this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
-            // } else if (this.pos.x >= secondaryAcc && this.pos.x < this.end) {
-            //     // slow down
-            //     this.acc = this.sloBoost;
-            //     // console.log("slow down");
+        } else if (this.pos >= this.accB && this.pos < this.end) {
+            // slow down
+            this.acc = this.sloBoost;
+            // console.log("slow down");
         }
         // console.log("pos x: " + mover + " end: " + this.end);
         this.vel.add(this.acc);
