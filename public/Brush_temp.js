@@ -1,3 +1,5 @@
+// limit speed
+
 class Brush {
     constructor(orientation, start, end, start2, end2) {
         this.fullspeed = 8;
@@ -19,49 +21,50 @@ class Brush {
         // console.log(this.end);
 
         this.alive = true;
-        // if (this.orientation == "x") {
-        //     this.pos = createVector(this.start, 0, 0);
-        // } else if (this.orientation == "y") {
-        //     this.pos = createVector(0, this.start, 0);
-        // } else if (this.orientation == "xy") {
-        // this.pos = createVector(this.start, this.start2, 0);
-        this.pos = this.start.copy();
-        // } else if (this.orientation == "yx") {
-        //     this.pos = createVector(this.start2, this.start, 0);
-        // }
+        if (this.orientation == "x") {
+            this.pos = createVector(this.start, 0, 0);
+        } else if (this.orientation == "y") {
+            this.pos = createVector(0, this.start, 0);
+        } else if (this.orientation == "xy") {
+            // this.pos = createVector(this.start, this.start2, 0);
+            this.pos = this.start.copy();
+            this.Distance = this.end.x - this.start.x;
+        } else if (this.orientation == "yx") {
+            this.pos = createVector(this.start2, this.start, 0);
+        }
 
         this.vel = createVector(0, 0, 0);
         this.acc = createVector(0, 0, 0);
-        this.Distance = p5.Vector.sub(this.end, this.start);
-        this.DistanceLength = this.Distance.mag();
+
+        // this.DistanceLength = this.Distance.mag();
         // this.Distance2 = this.end2 - this.start2;
-        this.accDist = this.DistanceLength / this.distanceBoost;  // distance for acceleration and slow down
+        this.accDist = this.Distance / this.distanceBoost;  // distance for acceleration and slow down
         // this.accDist2 = this.Distance2 / this.distanceBoost;  // distance for acceleration and slow down
         this.boost = this.fullspeed / this.accDist;
-        // this.accA = this.start + this.accDist;  // distance for full speed
+        this.accA = this.start.x + this.accDist;  // distance for full speed
         // this.accA2 = this.start2 + this.accDist2;  // distance for full speed
-        this.accA = p5.Vector.add(this.start, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
-        // this.accB = this.end - this.accDist;  // distance for slowing down speed
+        // this.accA = p5.Vector.add(this.start, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
+        this.accB = this.end.x - this.accDist;  // distance for slowing down speed
         // this.accB2 = this.end2 - this.accDist2;  // distance for slowing down speed
-        this.accB = p5.Vector.sub(this.end, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
+        // this.accB = p5.Vector.sub(this.end, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
 
         // console.log("accdist: " + this.accDist);
         // console.log("boost: " + this.boost);
         // console.log("step: " + this.accDist / this.boost);
 
 
-        // if (this.orientation == "x") {
-        //     this.accBoost = createVector(this.boost, 0, 0)  // increment for acc and change z axis
-        //     this.sloBoost = createVector(this.boost * -1, 0, 0)   // increment for slowing down and change z axis
-        // } else if (this.orientation == "y") {
-        //     this.accBoost = createVector(0, this.boost, 0)  // increment for acc and change z axis
-        //     this.sloBoost = createVector(0, this.boost * -1, 0)   // increment for slowing down and change z axis
-        // } else if (this.orientation == "xy" || this.orientation == "yx") {
-        // this.accBoost = createVector(this.boost, this.boost, 0)  // increment for acc and change z axis
-        this.accBoost = p5.Vector.mult(p5.Vector.normalize(this.Distance), this.boost);
-        // this.sloBoost = createVector(this.boost * -1, this.boost * -1, 0)   // increment for slowing down and change z axis
-        this.sloBoost = p5.Vector.mult(this.accBoost, -1);
-        // }
+        if (this.orientation == "x") {
+            this.accBoost = createVector(this.boost, 0, 0)  // increment for acc and change z axis
+            this.sloBoost = createVector(this.boost * -1, 0, 0)   // increment for slowing down and change z axis
+        } else if (this.orientation == "y") {
+            this.accBoost = createVector(0, this.boost, 0)  // increment for acc and change z axis
+            this.sloBoost = createVector(0, this.boost * -1, 0)   // increment for slowing down and change z axis
+        } else if (this.orientation == "xy" || this.orientation == "yx") {
+            this.accBoost = createVector(this.boost, this.boost, 0)  // increment for acc and change z axis
+            // this.accBoost = p5.Vector.mult(p5.Vector.normalize(this.Distance), this.boost);
+            this.sloBoost = createVector(this.boost * -1, this.boost * -1, 0)   // increment for slowing down and change z axis
+            // this.sloBoost = p5.Vector.mult(this.accBoost, -1);
+        }
 
         this.makeSomeNoise();
     }
@@ -85,36 +88,35 @@ class Brush {
 
     // move(mover, primaryAcc, secondaryAcc) {
     move() {
+        if (this.pos.x >= (this.end.x - this.OkLevel) || this.pos.y >= this.end.y) {
 
-        if (this.pos < this.accA) {
-            // start
-            this.acc = this.accBoost;
-            // console.log("accelerate");
-
-        } else if (this.pos >= this.accA && this.pos < this.accB) {
-            // full speed
-            this.acc = createVector(0, 0, 0);
-            // console.log("full speed");
-
-        } else if (this.pos >= p5.Vector.sub(this.end, this.OkLevel)) {
             // stop
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
             // console.log("stop");
             this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
-        } else if (this.pos >= this.accB && this.pos < this.end) {
+        } else if (this.pos.x >= this.accA && this.pos.x < this.accB) {
+            // full speed
+            this.acc = createVector(0, 0, 0);
+            // console.log("full speed");
+        } else if (this.pos.x >= this.accB && this.pos.x < this.end.x) {
             // slow down
             this.acc = this.sloBoost;
             // console.log("slow down");
+        } else if (this.pos.x < this.accA) {
+            // start
+            this.acc = this.accBoost;
+            // console.log("accelerate");
         }
+
         // console.log("pos x: " + mover + " end: " + this.end);
         this.vel.add(this.acc);
         this.pos.add(this.vel);
 
         if (this.orientation == "x") {
-            // this.pos.y = this.start2 + this.noisesY[Math.round(mover)];
+            this.pos.y = this.start2 + this.noisesY[Math.round(mover)];
         } else if (this.orientation == "y") {
-            // this.pos.x = this.start2 + this.noisesY[Math.round(mover)];
+            this.pos.x = this.start2 + this.noisesY[Math.round(mover)];
         } else if (this.orientation == "xy") {
         }
         // MISSING THE NOISE
@@ -123,15 +125,15 @@ class Brush {
 
     update() {
 
-        // if (this.orientation == "x") {
-        //     this.move(this.pos.x, this.accA, this.accB);
-        // } else if (this.orientation == "y") {
-        //     this.move(this.pos.y, this.accA, this.accB);
-        // } else if (this.orientation == "xy" || this.orientation == "yx") {
-        // this.move(this.pos.x, this.accA, this.accB);
-        // this.move(this.pos.y, this.accA2, this.accB2);
-        this.move();
-        // }
+        if (this.orientation == "x") {
+            this.move(this.pos.x, this.accA, this.accB);
+        } else if (this.orientation == "y") {
+            this.move(this.pos.y, this.accA, this.accB);
+        } else if (this.orientation == "xy" || this.orientation == "yx") {
+            // this.move(this.pos.x, this.accA, this.accB);
+            // this.move(this.pos.y, this.accA2, this.accB2);
+            this.move();
+        }
 
         this.radius = map(this.vel.x, 0, 3, 2.75, 1.75)
     }
@@ -140,7 +142,7 @@ class Brush {
 
         // start
         push();
-        // strokeWeight(3);
+        strokeWeight(3);
         // stroke(255, 255, 0);
         translate(-width / 2, -height / 2);
         translate(this.start);
@@ -153,22 +155,24 @@ class Brush {
         // accA
         push();
         translate(-width / 2, -height / 2);
-        translate(this.accA);
-        noStroke();
-        fill("red");
-        ellipse(0, 0, 5);
+        // translate(this.accA);
+        // noStroke();
+        // fill("red");
+        // ellipse(0, 0, 10);
         stroke(5);
-        // line(0, 0, this.Distance.x, this.Distance.y);
+        line(this.accA, 0, this.accA, height);
         pop();
 
 
         // accB
         push();
         translate(-width / 2, -height / 2);
-        translate(this.accB);
-        noStroke();
-        fill("red");
-        ellipse(0, 0, 5);
+        // translate(this.accB);
+        // noStroke();
+        // fill("red");
+        // ellipse(0, 0, 10);
+        stroke(5);
+        line(this.accB, 0, this.accB, height);
         pop();
 
 

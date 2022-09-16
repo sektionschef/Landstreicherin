@@ -128,7 +128,7 @@ function setup() {
   // grid = new Grid();
   // grid2 = new Grid();
 
-  // lines = new Lines(300, 300, 450, 600, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // slines = new Slines(300, 300, 450, 600, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 
   sphere = new paintedSphere();
   sphere.show();
@@ -166,14 +166,14 @@ function draw() {
     background(200);
   }
 
-  push();
-  translate(-width / 2, -height / 2);
-  translate(375, 450)
-  box(150, 300, 0);
-  pop();
+  // push();
+  // translate(-width / 2, -height / 2);
+  // translate(375, 450)
+  // box(150, 300, 0);
+  // pop();
 
 
-  // lines.show();
+  // slines.show();
 
 
   // brush1.update();
