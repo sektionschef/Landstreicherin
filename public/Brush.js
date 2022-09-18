@@ -138,48 +138,50 @@ class Brush {
 
     display() {
 
-        // start
-        push();
-        // strokeWeight(3);
-        // stroke(255, 255, 0);
-        translate(-width / 2, -height / 2);
-        translate(this.start);
-        // line(0, 0, this.Distance.x, this.Distance.y);
-        // line(0, 0, this.Distance.x / 4, this.Distance.y / 4);
-        fill("blue");
-        ellipse(0, 0, 10);
-        pop();
+        if (MODE >= 5) {
+            // start
+            push();
+            // strokeWeight(3);
+            // stroke(255, 255, 0);
+            translate(-width / 2, -height / 2);
+            translate(this.start);
+            // line(0, 0, this.Distance.x, this.Distance.y);
+            // line(0, 0, this.Distance.x / 4, this.Distance.y / 4);
+            fill("blue");
+            ellipse(0, 0, 10);
+            pop();
 
-        // accA
-        push();
-        translate(-width / 2, -height / 2);
-        translate(this.accA);
-        noStroke();
-        fill("red");
-        ellipse(0, 0, 5);
-        stroke(5);
-        // line(0, 0, this.Distance.x, this.Distance.y);
-        pop();
-
-
-        // accB
-        push();
-        translate(-width / 2, -height / 2);
-        translate(this.accB);
-        noStroke();
-        fill("red");
-        ellipse(0, 0, 5);
-        pop();
+            // accA
+            push();
+            translate(-width / 2, -height / 2);
+            translate(this.accA);
+            noStroke();
+            fill("red");
+            ellipse(0, 0, 5);
+            stroke(5);
+            // line(0, 0, this.Distance.x, this.Distance.y);
+            pop();
 
 
-        // end
-        push();
-        translate(-width / 2, -height / 2);
-        translate(this.end);
-        noStroke();
-        fill("purple");
-        ellipse(0, 0, 10);
-        pop();
+            // accB
+            push();
+            translate(-width / 2, -height / 2);
+            translate(this.accB);
+            noStroke();
+            fill("red");
+            ellipse(0, 0, 5);
+            pop();
+
+
+            // end
+            push();
+            translate(-width / 2, -height / 2);
+            translate(this.end);
+            noStroke();
+            fill("purple");
+            ellipse(0, 0, 10);
+            pop();
+        }
 
         if (this.alive) {
 
@@ -200,43 +202,6 @@ class Brush {
             }
             pop();
 
-            if (MODE == 5) {
-                //     // start
-                //     push();
-                //     translate(-width / 2, -height / 2);
-                //     translate(this.start, this.pos.y, 0);
-                //     noStroke();
-                //     fill("purple");
-                //     ellipse(2);
-                //     pop();
-
-
-                //     // accB
-                //     push();
-                //     translate(-width / 2, -height / 2);
-                //     translate(this.accB, this.pos.y, 0);
-                //     noStroke();
-                //     fill("red");
-                //     ellipse(2);
-                //     pop();
-
-                //     // line
-                //     push();
-                //     strokeWeight(1);
-                //     stroke("green");
-                //     translate(-width / 2, -height / 2);
-                //     line(this.start, 0, 0, this.end, 0, 0);
-                //     pop();
-
-                //     // end
-                //     push();
-                //     translate(-width / 2, -height / 2);
-                //     translate(this.end, this.pos.y, 0);
-                //     noStroke();
-                //     fill("purple");
-                //     ellipse(2);
-                //     pop();
-            }
         }
     }
 

@@ -112,7 +112,7 @@ function setup() {
   // brush2 = new Brush("x", 150, 350, 175, 175);
   // brush3 = new Brush("x", 150, 350, 225, 225);
 
-  brush4 = new Brush("xy", 300, 450, 460, 600);
+  // brush4 = new Brush("xy", 300, 450, 460, 600);
 
   // grid
   STROKE_SIZE = 1;
@@ -128,7 +128,7 @@ function setup() {
   // grid = new Grid();
   // grid2 = new Grid();
 
-  // slines = new Slines(300, 300, 450, 600, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  hatches = new Hatches(300, 300, 450, 600, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 
   sphere = new paintedSphere();
   sphere.show();
@@ -173,7 +173,7 @@ function draw() {
   // pop();
 
 
-  // slines.show();
+  hatches.show();
 
 
   // brush1.update();
@@ -183,8 +183,8 @@ function draw() {
   // brush3.update();
   // brush3.display();
 
-  brush4.update();
-  brush4.display();
+  // brush4.update();
+  // brush4.display();
 
 
   // grid.show();
