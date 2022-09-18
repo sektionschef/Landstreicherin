@@ -1,5 +1,5 @@
 class Brush {
-    constructor(orientation, start, end, start2, end2) {
+    constructor(start, end) {
         this.fullspeed = 8;
         this.radius = 0.7;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
@@ -11,9 +11,9 @@ class Brush {
         this.strokeColor = color("#c79712");
         this.strokeSize = 0.3;
 
-        this.orientation = orientation;
-        this.start = createVector(start, start2, 0);  // start of line
-        this.end = createVector(end, end2, 0);
+        this.start = start // createVector(start, start2, 0);  // start of line
+        this.end = end // createVector(end, end2, 0);
+
         // this.start2 = start2;  // y axis
         // this.end2 = end2;  // y axis
         // console.log(this.end);
@@ -111,12 +111,12 @@ class Brush {
         this.vel.add(this.acc);
         this.pos.add(this.vel);
 
-        if (this.orientation == "x") {
-            // this.pos.y = this.start2 + this.noisesY[Math.round(mover)];
-        } else if (this.orientation == "y") {
-            // this.pos.x = this.start2 + this.noisesY[Math.round(mover)];
-        } else if (this.orientation == "xy") {
-        }
+        // if (this.orientation == "x") {
+        // this.pos.y = this.start2 + this.noisesY[Math.round(mover)];
+        // } else if (this.orientation == "y") {
+        // this.pos.x = this.start2 + this.noisesY[Math.round(mover)];
+        // } else if (this.orientation == "xy") {
+        // }
         // MISSING THE NOISE
 
     }

@@ -160,21 +160,12 @@ class Hatches {
 
         // let this.chosen_axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
         // let this.chosen_axis = getRandomFromList(["x", "y", "xy", "blank"]);
-        this.chosen_axis = getRandomFromList(["xy"]);
+        this.chosen_axis = getRandomFromList(["x"]);
         console.log(this.chosen_axis + " axis randomly chosen.");
 
-        if (this.chosen_axis == "x") {
-            this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
 
-            for (let i = 0; i < this.count_lines; i++) {
-                // console.log(i);
-                this.bodies.push(new Brush(
-                    this.chosen_axis,
-                    this.x_start + this.padding_x,
-                    this.x_stop - this.padding_x,
-                    this.y_start + this.padding_y + this.distance_between_lines * i,
-                ));
-            }
+        if (this.chosen_axis == "x") {
+            this.x();
         } else if (this.chosen_axis == "y") {
 
             this.count_lines = ((this.x_stop - this.x_start) - 2 * this.padding_x) / this.distance_between_lines;
@@ -218,6 +209,27 @@ class Hatches {
         }
     }
 
+    x() {
+
+        let count_lines;
+        let start;
+        let end;
+
+        count_lines = ((this.cornerRight.y - this.cornerLeft.y) - 2 * this.padding_y) / this.distance_between_lines;
+
+        for (let i = 0; i < count_lines; i++) {
+
+            start = createVector(this.cornerLeft.x + this.padding_x, this.cornerLeft.y + this.padding_y + this.distance_between_lines * i, 0);
+            end = createVector(this.cornerRight.x - this.padding_x, this.cornerLeft.y + this.padding_y + this.distance_between_lines * i, 0);
+
+            // console.log(i);
+            this.bodies.push(new Brush(
+                start,
+                end,
+            ));
+        }
+    }
+
     xy() {
 
         // y = kx + d
@@ -226,75 +238,60 @@ class Hatches {
         // y = cornerRight.x or y = cornerRight.y
         // intersection: cornerRight.x or cornerRight.y = -1x -> 
 
+        let count_lines;
+        let start;
+        let end;
+
 
         if (this.width < this.height) {
-            this.count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
+            count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
         } else {
-            this.count_lines = (this.height - 2 * this.padding_x) / this.distance_between_lines;
+            count_lines = (this.height - 2 * this.padding_x) / this.distance_between_lines;
         }
 
         // main body
-        for (let i = 0; i < this.count_lines; i++) {
+        for (let i = 0; i < count_lines; i++) {
+
+            start = createVector(this.cornerLeft.x, this.cornerLeft.y + this.distance_between_lines * i, 0);
+            end = createVector(this.cornerRight.x, this.cornerLeft.y + (this.cornerRight.x - this.cornerLeft.x) + this.distance_between_lines * i, 0);
 
             this.bodies.push(new Brush(
-                this.chosen_axis,
-                this.cornerLeft.x,
-                this.cornerRight.x,
-                this.cornerLeft.y + this.distance_between_lines * i,
-                this.cornerLeft.y + (this.cornerRight.x - this.cornerLeft.x) + this.distance_between_lines * i,
+                start,
+                end,
             ));
         }
 
         // triangle beneath
         // console.log(this.height - this.width);
-        let count_lines = (this.height - this.width) / this.distance_between_lines;
+        count_lines = (this.height - this.width) / this.distance_between_lines;
+
 
         for (let i = 0; i < count_lines; i++) {
+
+            start = createVector(this.cornerLeft.x, this.cornerLeft.y + (this.height - this.width) + this.distance_between_lines * i);
+            end = createVector(this.cornerRight.x - this.distance_between_lines * i, this.cornerRight.y);
+
             this.bodies.push(new Brush(
-                this.chosen_axis,
-                this.cornerLeft.x,
-                this.cornerRight.x - this.distance_between_lines * i,
-                this.cornerLeft.y + (this.height - this.width) + this.distance_between_lines * i,
-                this.cornerRight.y,
+                start,
+                end
             ));
         }
 
 
-        // triangle beneath
+        // // triangle beneath
         count_lines = (this.height - this.width) / this.distance_between_lines;
 
         for (let i = 0; i < count_lines; i++) {
+
+            start = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerLeft.y);
+            end = createVector(this.cornerRight.x, this.cornerRight.y - (this.height - this.width) - this.distance_between_lines * i);
+
             this.bodies.push(new Brush(
-                this.chosen_axis,
-                this.cornerLeft.x + this.distance_between_lines * i,
-                this.cornerRight.x,
-                this.cornerLeft.y,
-                this.cornerRight.y - (this.height - this.width) - this.distance_between_lines * i,
+                start,
+                end,
             ));
         }
 
-
-
-        // this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
-
-
-        // for (let i = 1; i < this.count_lines; i++) {
-        // console.log(
-        //     this.chosen_axis,
-        //     (this.x_start + this.padding_x),
-        //     this.x_stop - this.padding_x,
-        //     (this.y_start + this.padding_y + this.distance_between_lines * i),
-        //     (this.y_stop - this.padding_y))
-
-
-        // skip first one
-        // this.bodies.push(new Brush(
-        //     this.chosen_axis,
-        //     (this.x_start + this.padding_x),
-        //     this.x_stop - this.padding_x,
-        //     (this.y_start + this.padding_y + this.distance_between_lines * i),
-        //     (this.y_stop - this.padding_y)));
-        // }
     }
 
     show() {
