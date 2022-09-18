@@ -245,6 +245,7 @@ class Hatches {
             ));
         }
 
+        // triangle beneath
         // console.log(this.height - this.width);
         let count_lines = (this.height - this.width) / this.distance_between_lines;
 
@@ -257,6 +258,21 @@ class Hatches {
                 this.cornerRight.y,
             ));
         }
+
+
+        // triangle beneath
+        count_lines = (this.height - this.width) / this.distance_between_lines;
+
+        for (let i = 0; i < count_lines; i++) {
+            this.bodies.push(new Brush(
+                this.chosen_axis,
+                this.cornerLeft.x + this.distance_between_lines * i,
+                this.cornerRight.x,
+                this.cornerLeft.y,
+                this.cornerRight.y - (this.height - this.width) - this.distance_between_lines * i,
+            ));
+        }
+
 
 
         // this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
