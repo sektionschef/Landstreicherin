@@ -220,9 +220,6 @@ class Hatches {
 
     xy() {
 
-        let v = createVector(1, -1);
-        let w = createVector(0, -1);
-
         // y = kx + d
         // k = -1/1  - https://de.serlo.org/mathe/1785/geradensteigung
         // y = -1x + 0;  // line 1
@@ -236,18 +233,8 @@ class Hatches {
             this.count_lines = (this.height - 2 * this.padding_x) / this.distance_between_lines;
         }
 
-
+        // main body
         for (let i = 0; i < this.count_lines; i++) {
-
-            // this.width - this.distance_between_lines * i;
-            // this.height - this.distance_between_lines * i;
-
-            //     // getting
-            //     // console.log(this.chosen_axis, this.x_start + this.padding_x,
-            //     //     this.x_stop - this.padding_x,
-            //     //     this.y_start + this.padding_y + this.distance_between_lines * i
-            //     // )
-            //     // // asdfasfaf
 
             this.bodies.push(new Brush(
                 this.chosen_axis,
@@ -257,6 +244,21 @@ class Hatches {
                 this.cornerLeft.y + (this.cornerRight.x - this.cornerLeft.x) + this.distance_between_lines * i,
             ));
         }
+
+        // console.log(this.height - this.width);
+        let count_lines = (this.height - this.width) / this.distance_between_lines;
+
+        for (let i = 0; i < count_lines; i++) {
+            this.bodies.push(new Brush(
+                this.chosen_axis,
+                this.cornerLeft.x,
+                this.cornerRight.x - this.distance_between_lines * i,
+                this.cornerLeft.y + (this.height - this.width) + this.distance_between_lines * i,
+                this.cornerRight.y,
+            ));
+        }
+
+
         // this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
 
 
@@ -281,12 +283,14 @@ class Hatches {
 
     show() {
 
-        push();
-        translate(-width / 2, -height / 2);
-        translate(this.x_start + this.width / 2, this.y_start + this.height / 2, 0)
-        fill("white");
-        box(this.width, this.height, 0);
-        pop();
+        if (MODE >= 5) {
+            push();
+            translate(-width / 2, -height / 2);
+            translate(this.cornerLeft.x + this.width / 2, this.cornerLeft.y + this.height / 2, 0)
+            fill("white");
+            box(this.width, this.height, 0);
+            pop();
+        }
 
 
         // if (MODE >= 5) {

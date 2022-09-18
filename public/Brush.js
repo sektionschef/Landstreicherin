@@ -5,7 +5,7 @@ class Brush {
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
         this.noiseYzoom = 0.007;  // zoom on noise
         this.amplitudeNoiseY = 3.5;  // up and down on Y axis
-        this.OkLevel = 2;  // some offset is ok.
+        this.OkLevel = 3;  // some offset is ok.
         this.fillColor = color(180);
         // this.strokeColor = color(150);
         this.strokeColor = color("#c79712");
