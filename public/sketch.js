@@ -108,10 +108,10 @@ function setup() {
 
   createPaletteColors();
 
-  brushX = new Brush(createVector(150, 200), createVector(350, 200));
-  brushXY = new Brush(createVector(400, 450), createVector(560, 600));
-  brushY = new Brush(createVector(300, 400), createVector(300, 800));
-  brushYX = new Brush(createVector(400, 600), createVector(560, 450));
+  // brushX = new Brush(createVector(150, 200), createVector(350, 200));
+  // brushXY = new Brush(createVector(400, 450), createVector(560, 600));
+  // brushY = new Brush(createVector(300, 400), createVector(300, 800));
+  // brushYX = new Brush(createVector(400, 600), createVector(560, 450));
 
   // grid
   STROKE_SIZE = 1;
@@ -126,7 +126,7 @@ function setup() {
   // grid = new Grid();
   // grid2 = new Grid();
 
-  // hatches = new Hatches(300, 300, 450, 600, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  hatches = new Hatches(300, 300, 450, 600, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 
   sphere = new paintedSphere();
   sphere.show();
@@ -171,18 +171,18 @@ function draw() {
   // pop();
 
 
-  // hatches.show();
+  hatches.show();
 
 
   // brush examples
-  brushX.update();
-  brushX.display();
-  brushXY.update();
-  brushXY.display();
-  brushY.update();
-  brushY.display();
-  brushYX.update();
-  brushYX.display();
+  // brushX.update();
+  // brushX.display();
+  // brushXY.update();
+  // brushXY.display();
+  // brushY.update();
+  // brushY.display();
+  // brushYX.update();
+  // brushYX.display();
 
 
   // grid.show();

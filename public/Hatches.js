@@ -142,11 +142,7 @@ class Lines {
 
 class Hatches {
     constructor(x_start, y_start, x_stop, y_stop, padding_x, padding_y, distance_between_lines) {
-        // this.x_start = x_start;
-        // this.y_start = y_start;
         this.cornerLeft = createVector(x_start, y_start);
-        // this.x_stop = x_stop;
-        // this.y_stop = y_stop;
         this.cornerRight = createVector(x_stop, y_stop);
         this.padding_x = padding_x;
         this.padding_y = padding_y;
@@ -160,7 +156,7 @@ class Hatches {
 
         // let this.chosen_axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
         // let this.chosen_axis = getRandomFromList(["x", "y", "xy", "blank"]);
-        this.chosen_axis = getRandomFromList(["y"]);
+        this.chosen_axis = getRandomFromList(["yx"]);
         console.log(this.chosen_axis + " axis randomly chosen.");
 
 
@@ -171,30 +167,31 @@ class Hatches {
         } else if (this.chosen_axis == "xy") {
             this.xy();
         } else if (this.chosen_axis == "yx") {
-            this.count_lines = ((this.x_stop - this.x_start) - 2 * this.padding_x) / this.distance_between_lines;
+            this.yx();
+            // this.count_lines = ((this.x_stop - this.x_start) - 2 * this.padding_x) / this.distance_between_lines;
 
-            for (let i = 0; i < this.count_lines; i++) {
-                this.bodies.push(new Brush(
-                    this.chosen_axis,
-                    this.x_start + this.padding_x + this.distance_between_lines * i,
-                    (this.x_stop - this.padding_x),
-                    (this.y_stop - this.padding_y),
-                    (this.y_start + this.padding_y)
-                )
-                );
-            }
-            this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
+            // for (let i = 0; i < this.count_lines; i++) {
+            //     this.bodies.push(new Brush(
+            //         this.chosen_axis,
+            //         this.x_start + this.padding_x + this.distance_between_lines * i,
+            //         (this.x_stop - this.padding_x),
+            //         (this.y_stop - this.padding_y),
+            //         (this.y_start + this.padding_y)
+            //     )
+            //     );
+            // }
+            // this.count_lines = ((this.y_stop - this.y_start) - 2 * this.padding_y) / this.distance_between_lines;
 
-            for (let i = 1; i < this.count_lines; i++) {
-                this.bodies.push(new Brush(
-                    this.chosen_axis,
-                    this.x_start + this.padding_x,
-                    (this.x_stop - this.padding_x),
-                    (this.y_stop - this.padding_y - this.distance_between_lines * i),
-                    (this.y_start + this.padding_y)
-                )
-                );
-            }
+            // for (let i = 1; i < this.count_lines; i++) {
+            //     this.bodies.push(new Brush(
+            //         this.chosen_axis,
+            //         this.x_start + this.padding_x,
+            //         (this.x_stop - this.padding_x),
+            //         (this.y_stop - this.padding_y - this.distance_between_lines * i),
+            //         (this.y_start + this.padding_y)
+            //     )
+            //     );
+            // }
         } else if (this.chosen_axis == "blank") {
         }
     }
@@ -294,6 +291,63 @@ class Hatches {
 
             start = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerLeft.y);
             end = createVector(this.cornerRight.x, this.cornerRight.y - (this.height - this.width) - this.distance_between_lines * i);
+
+            this.bodies.push(new Brush(
+                start,
+                end,
+            ));
+        }
+
+    }
+
+
+    yx() {
+        let count_lines;
+        let start;
+        let end;
+
+        if (this.width < this.height) {
+            count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
+        } else {
+            count_lines = (this.height - 2 * this.padding_x) / this.distance_between_lines;
+        }
+
+        // main body
+        for (let i = 0; i < count_lines; i++) {
+
+            start = createVector(this.cornerLeft.x, this.cornerLeft.y + (this.cornerRight.x - this.cornerLeft.x) + this.distance_between_lines * i, 0);
+            end = createVector(this.cornerRight.x, this.cornerLeft.y + this.distance_between_lines * i, 0);
+
+            this.bodies.push(new Brush(
+                start,
+                end,
+            ));
+        }
+
+        // triangle beneath
+        // console.log(this.height - this.width);
+        count_lines = (this.height - this.width) / this.distance_between_lines;
+
+
+        for (let i = 0; i < count_lines; i++) {
+            // + (this.height - this.width)
+            start = createVector(this.cornerLeft.x, this.cornerLeft.y + this.distance_between_lines * i);
+            end = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerLeft.y);
+
+            this.bodies.push(new Brush(
+                start,
+                end
+            ));
+        }
+
+
+        // // // triangle beneath
+        count_lines = (this.height - this.width) / this.distance_between_lines;
+
+        for (let i = 0; i < count_lines; i++) {
+
+            start = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerRight.y);
+            end = createVector(this.cornerRight.x, this.cornerRight.y - (this.height - this.width) + this.distance_between_lines * i);
 
             this.bodies.push(new Brush(
                 start,
