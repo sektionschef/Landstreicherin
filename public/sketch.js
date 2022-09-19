@@ -108,16 +108,13 @@ function setup() {
 
   createPaletteColors();
 
-  // brush1 = new Brush("x", 150, 350, 200, 200);
-  // brush2 = new Brush("x", 150, 350, 175, 175);
-  // brush3 = new Brush("x", 150, 350, 225, 225);
-
-  brushXY = new Brush(createVector(300, 450), createVector(460, 600));
-  // brush5 = new Brush(createVector(300, 400), createVector(300, 800));
+  brushX = new Brush(createVector(150, 200), createVector(350, 200));
+  brushXY = new Brush(createVector(400, 450), createVector(560, 600));
+  brushY = new Brush(createVector(300, 400), createVector(300, 800));
+  brushYX = new Brush(createVector(400, 600), createVector(560, 450));
 
   // grid
   STROKE_SIZE = 1;
-
 
   // PADDING_X = getRandomFromInterval(0, 20);
   // PADDING_Y = getRandomFromInterval(0, 20);
@@ -177,18 +174,15 @@ function draw() {
   // hatches.show();
 
 
-  // brush1.update();
-  // brush1.display();
-  // brush2.update();
-  // brush2.display();
-  // brush3.update();
-  // brush3.display();
-
+  // brush examples
+  brushX.update();
+  brushX.display();
   brushXY.update();
   brushXY.display();
-
-  // brush5.update();
-  // brush5.display();
+  brushY.update();
+  brushY.display();
+  brushYX.update();
+  brushYX.display();
 
 
   // grid.show();

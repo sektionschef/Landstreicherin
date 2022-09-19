@@ -7,61 +7,31 @@ class Brush {
         this.amplitudeNoiseY = 3.5;  // up and down on Y axis
         this.OkLevel = 5;  // some offset is ok.
         this.fillColor = color(180);
-        // this.strokeColor = color(150);
         this.strokeColor = color("#c79712");
         this.strokeSize = 0.3;
 
-        this.start = start // createVector(start, start2, 0);  // start of line
-        this.end = end // createVector(end, end2, 0);
-
-        // this.start2 = start2;  // y axis
-        // this.end2 = end2;  // y axis
-        // console.log(this.end);
+        this.start = start;
+        this.end = end;
 
         this.alive = true;
-        // if (this.orientation == "x") {
-        //     this.pos = createVector(this.start, 0, 0);
-        // } else if (this.orientation == "y") {
-        //     this.pos = createVector(0, this.start, 0);
-        // } else if (this.orientation == "xy") {
-        // this.pos = createVector(this.start, this.start2, 0);
         this.pos = this.start.copy();
-        // } else if (this.orientation == "yx") {
-        //     this.pos = createVector(this.start2, this.start, 0);
-        // }
 
         this.vel = createVector(0, 0, 0);
         this.acc = createVector(0, 0, 0);
         this.Distance = p5.Vector.sub(this.end, this.start);
         this.DistanceLength = this.Distance.mag();
-        // this.Distance2 = this.end2 - this.start2;
-        this.accDist = this.DistanceLength / this.distanceBoost;  // distance for acceleration and slow down
-        // this.accDist2 = this.Distance2 / this.distanceBoost;  // distance for acceleration and slow down
-        this.boost = this.fullspeed / this.accDist;
-        // this.accA = this.start + this.accDist;  // distance for full speed
-        // this.accA2 = this.start2 + this.accDist2;  // distance for full speed
-        this.accA = p5.Vector.add(this.start, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
-        // this.accB = this.end - this.accDist;  // distance for slowing down speed
-        // this.accB2 = this.end2 - this.accDist2;  // distance for slowing down speed
-        this.accB = p5.Vector.sub(this.end, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
 
-        // console.log("accdist: " + this.accDist);
+        this.distAccSlo = this.DistanceLength / this.distanceBoost;  // distance for acceleration and slow down
+        this.boost = this.fullspeed / this.distAccSlo;
+        this.checkpointA = p5.Vector.add(this.start, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
+        this.checkpointB = p5.Vector.sub(this.end, p5.Vector.div(this.Distance, this.distanceBoost));  // distance for full speed
+
+        // console.log("accdist: " + this.distAccSlo);
         // console.log("boost: " + this.boost);
-        // console.log("step: " + this.accDist / this.boost);
+        // console.log("step: " + this.distAccSlo / this.boost);
 
-
-        // if (this.orientation == "x") {
-        //     this.accBoost = createVector(this.boost, 0, 0)  // increment for acc and change z axis
-        //     this.sloBoost = createVector(this.boost * -1, 0, 0)   // increment for slowing down and change z axis
-        // } else if (this.orientation == "y") {
-        //     this.accBoost = createVector(0, this.boost, 0)  // increment for acc and change z axis
-        //     this.sloBoost = createVector(0, this.boost * -1, 0)   // increment for slowing down and change z axis
-        // } else if (this.orientation == "xy" || this.orientation == "yx") {
-        // this.accBoost = createVector(this.boost, this.boost, 0)  // increment for acc and change z axis
         this.accBoost = p5.Vector.mult(p5.Vector.normalize(this.Distance), this.boost);
-        // this.sloBoost = createVector(this.boost * -1, this.boost * -1, 0)   // increment for slowing down and change z axis
         this.sloBoost = p5.Vector.mult(this.accBoost, -1);
-        // }
 
         this.makeSomeNoise();
     }
@@ -83,15 +53,13 @@ class Brush {
         }
     }
 
-    // move(mover, primaryAcc, secondaryAcc) {
     move() {
-
-        if (this.pos < this.accA) {
+        if (this.pos < this.checkpointA) {
             // start
             this.acc = this.accBoost;
             // console.log("accelerate");
 
-        } else if (this.pos >= this.accA && this.pos < this.accB) {
+        } else if (this.pos >= this.checkpointA && this.pos < this.checkpointB) {
             // full speed
             this.acc = createVector(0, 0, 0);
             // console.log("full speed");
@@ -100,15 +68,13 @@ class Brush {
             // stop
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
-            console.log("stop");
+            // console.log("stop");
             this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
-        } else if (this.pos >= this.accB && this.pos < this.end) {
+        } else if (this.pos >= this.checkpointB && this.pos < this.end) {
             // slow down
             this.acc = this.sloBoost;
             // console.log("slow down");
-            console.log(this.end.dist(this.pos))
         }
-        // console.log("pos x: " + mover + " end: " + this.end);
         this.vel.add(this.acc);
         this.pos.add(this.vel);
 
@@ -124,21 +90,15 @@ class Brush {
 
     update() {
 
-        // if (this.orientation == "x") {
-        //     this.move(this.pos.x, this.accA, this.accB);
-        // } else if (this.orientation == "y") {
-        //     this.move(this.pos.y, this.accA, this.accB);
-        // } else if (this.orientation == "xy" || this.orientation == "yx") {
-        // this.move(this.pos.x, this.accA, this.accB);
-        // this.move(this.pos.y, this.accA2, this.accB2);
-        this.move();
-        // }
-
-        if (this.vel.x > 0) {
-            this.radius = map(this.vel.x, 0, 3, 2.75, 1.75)
-        } else if (this.vel.y > 0) {
-            this.radius = map(this.vel.y, 0, 3, 2.75, 1.75)
+        if (this.alive) {
+            this.move();
+            if (this.vel.x > 0) {
+                this.radius = map(this.vel.x, 0, 3, 2.75, 1.75)
+            } else if (this.vel.y > 0) {
+                this.radius = map(this.vel.y, 0, 3, 2.75, 1.75)
+            }
         }
+
     }
 
     display() {
@@ -146,12 +106,9 @@ class Brush {
         if (MODE >= 5) {
             // start
             push();
-            // strokeWeight(3);
-            // stroke(255, 255, 0);
             translate(-width / 2, -height / 2);
             translate(this.start);
-            // line(0, 0, this.Distance.x, this.Distance.y);
-            // line(0, 0, this.Distance.x / 4, this.Distance.y / 4);
+            noStroke();
             fill("blue");
             ellipse(0, 0, 10);
             pop();
@@ -159,19 +116,18 @@ class Brush {
             // accA
             push();
             translate(-width / 2, -height / 2);
-            translate(this.accA);
+            translate(this.checkpointA);
             noStroke();
             fill("red");
             ellipse(0, 0, 5);
             stroke(5);
-            // line(0, 0, this.Distance.x, this.Distance.y);
             pop();
 
 
             // accB
             push();
             translate(-width / 2, -height / 2);
-            translate(this.accB);
+            translate(this.checkpointB);
             noStroke();
             fill("red");
             ellipse(0, 0, 5);
