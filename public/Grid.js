@@ -287,8 +287,11 @@ class Grid {
 
     create_lines() {
         for (let box of this.boxes) {
-            // box.lines = new Lines(box.a.x, box.a.y, box.b.x, box.c.y, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-            box.lines = new Hatches(box.a.x, box.a.y, box.c.x, box.c.y, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+            let axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
+            // let axis = getRandomFromList(["yx"]);
+            console.log(axis + " axis randomly chosen.");
+
+            box.lines = new Hatches(axis, box.a, box.c, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
         }
     }
 
