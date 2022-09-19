@@ -160,24 +160,14 @@ class Hatches {
 
         // let this.chosen_axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
         // let this.chosen_axis = getRandomFromList(["x", "y", "xy", "blank"]);
-        this.chosen_axis = getRandomFromList(["x"]);
+        this.chosen_axis = getRandomFromList(["y"]);
         console.log(this.chosen_axis + " axis randomly chosen.");
 
 
         if (this.chosen_axis == "x") {
             this.x();
         } else if (this.chosen_axis == "y") {
-
-            this.count_lines = ((this.x_stop - this.x_start) - 2 * this.padding_x) / this.distance_between_lines;
-
-            for (let i = 0; i < this.count_lines; i++) {
-                this.bodies.push(new Brush(
-                    this.chosen_axis,
-                    (this.y_start + this.padding_y),
-                    (this.y_stop - this.padding_x),
-                    (this.x_start + this.padding_x + this.distance_between_lines * i)
-                ));
-            }
+            this.y();
         } else if (this.chosen_axis == "xy") {
             this.xy();
         } else if (this.chosen_axis == "yx") {
@@ -223,6 +213,25 @@ class Hatches {
             end = createVector(this.cornerRight.x - this.padding_x, this.cornerLeft.y + this.padding_y + this.distance_between_lines * i, 0);
 
             // console.log(i);
+            this.bodies.push(new Brush(
+                start,
+                end,
+            ));
+        }
+    }
+
+    y() {
+        let count_lines;
+        let start;
+        let end;
+
+        count_lines = ((this.cornerRight.x - this.cornerLeft.x) - 2 * this.padding_x) / this.distance_between_lines;
+
+        for (let i = 0; i < count_lines; i++) {
+
+            start = createVector(this.cornerLeft.x + this.padding_x + this.distance_between_lines * i, this.cornerLeft.y + this.padding_y);
+            end = createVector(this.cornerLeft.x + this.padding_x + this.distance_between_lines * i, this.cornerRight.y - this.padding_x);
+
             this.bodies.push(new Brush(
                 start,
                 end,

@@ -5,7 +5,7 @@ class Brush {
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
         this.noiseYzoom = 0.007;  // zoom on noise
         this.amplitudeNoiseY = 3.5;  // up and down on Y axis
-        this.OkLevel = 3;  // some offset is ok.
+        this.OkLevel = 5;  // some offset is ok.
         this.fillColor = color(180);
         // this.strokeColor = color(150);
         this.strokeColor = color("#c79712");
@@ -96,16 +96,17 @@ class Brush {
             this.acc = createVector(0, 0, 0);
             // console.log("full speed");
 
-        } else if (this.pos >= p5.Vector.sub(this.end, this.OkLevel)) {
+        } else if (this.end.dist(this.pos) <= this.OkLevel) {
             // stop
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
-            // console.log("stop");
+            console.log("stop");
             this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
         } else if (this.pos >= this.accB && this.pos < this.end) {
             // slow down
             this.acc = this.sloBoost;
             // console.log("slow down");
+            console.log(this.end.dist(this.pos))
         }
         // console.log("pos x: " + mover + " end: " + this.end);
         this.vel.add(this.acc);
@@ -133,7 +134,11 @@ class Brush {
         this.move();
         // }
 
-        this.radius = map(this.vel.x, 0, 3, 2.75, 1.75)
+        if (this.vel.x > 0) {
+            this.radius = map(this.vel.x, 0, 3, 2.75, 1.75)
+        } else if (this.vel.y > 0) {
+            this.radius = map(this.vel.y, 0, 3, 2.75, 1.75)
+        }
     }
 
     display() {
