@@ -65,8 +65,6 @@ class Hatches {
             start = createVector(this.cornerLeft.x + this.padding_x + this.distance_between_lines * i, this.cornerLeft.y + this.padding_y);
             end = createVector(this.cornerLeft.x + this.padding_x + this.distance_between_lines * i, this.cornerRight.y - this.padding_x);
 
-            console.log(start, end);
-
             this.bodies.push(new Brush(
                 start,
                 end,

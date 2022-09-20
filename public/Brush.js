@@ -67,16 +67,16 @@ class Brush {
 
         }
         if (this.passedA == false) {
-            console.log("accelerate");
+            // console.log("accelerate");
             this.acc = this.accBoost;
         } else if (this.passedA == true && this.passedB == false) {
-            console.log("full speed");
+            // console.log("full speed");
             this.acc = createVector(0, 0, 0);
         } else if (this.passedA == true && this.passedB == true) {
-            console.log("slow down");
+            // console.log("slow down");
             this.acc = this.sloBoost;
         } else if (this.alive == false) {
-            console.log("stop");
+            // console.log("stop");
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
         }
