@@ -1,6 +1,6 @@
-const MODE = 1  // "FINE ART";
+// const MODE = 1  // "FINE ART";
 // const MODE = 2  // DEBUG MESSAGES
-// const MODE = 5 // all debug messages
+const MODE = 5 // all debug messages
 
 const NOISESEED = hashFnv32a(fxhash);
 if (MODE > 1) {
@@ -113,6 +113,8 @@ function setup() {
   // brushY = new Brush(createVector(300, 400), createVector(300, 800));
   // brushYX = new Brush(createVector(400, 600), createVector(560, 450));
 
+  brushBug = new Brush(createVector(807, 50), createVector(807, 898));
+
   // grid
   STROKE_SIZE = 1;
 
@@ -123,11 +125,15 @@ function setup() {
 
   DISTANCE_BETWEEN_LINES = map(STROKE_SIZE, 1, 5, 10, 25, true);
 
+  // hatchesHigh = new Hatches("yx", createVector(100, 300), createVector(250, 600), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // hatchesLong = new Hatches("yx", createVector(300, 300), createVector(650, 400), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // hatchesHigh = new Hatches("yx", createVector(100, 100), createVector(450, 900), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // hatchesLong = new Hatches("y", createVector(500, 100), createVector(750, 800), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+
+  // hatchesBug = new Hatches("y", createVector(717, 50), createVector(898, 898), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+
   // grid = new Grid();
   // grid2 = new Grid();
-
-  hatchesHigh = new Hatches("yx", createVector(100, 300), createVector(250, 600), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-  hatchesLong = new Hatches("yx", createVector(300, 300), createVector(650, 400), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 
   sphere = new paintedSphere();
   sphere.show();
@@ -172,8 +178,10 @@ function draw() {
   // pop();
 
 
-  hatchesHigh.show();
-  hatchesLong.show();
+  // hatchesHigh.show();
+  // hatchesLong.show();
+
+  // hatchesBug.show();
 
 
   // brush examples
@@ -186,6 +194,8 @@ function draw() {
   // brushYX.update();
   // brushYX.display();
 
+  brushBug.update();
+  brushBug.display();
 
   // grid.show();
   // grid.show_lines();

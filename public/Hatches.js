@@ -58,12 +58,14 @@ class Hatches {
         let start;
         let end;
 
-        count_lines = ((this.cornerRight.x - this.cornerLeft.x) - 2 * this.padding_x) / this.distance_between_lines;
+        count_lines = Math.round(((this.cornerRight.x - this.cornerLeft.x) - 2 * this.padding_x) / this.distance_between_lines);
 
         for (let i = 0; i < count_lines; i++) {
 
             start = createVector(this.cornerLeft.x + this.padding_x + this.distance_between_lines * i, this.cornerLeft.y + this.padding_y);
             end = createVector(this.cornerLeft.x + this.padding_x + this.distance_between_lines * i, this.cornerRight.y - this.padding_x);
+
+            console.log(start, end);
 
             this.bodies.push(new Brush(
                 start,
@@ -94,7 +96,7 @@ class Hatches {
 
         // main body
         if (type == "height") {
-            count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
+            count_lines = (this.height - this.width - 2 * this.padding_x) / this.distance_between_lines;
 
             for (let i = 0; i < count_lines; i++) {
 
@@ -126,7 +128,7 @@ class Hatches {
         if (type == "height") {
             // triangle beneath
             // console.log(this.height - this.width);
-            count_lines = (this.height - this.width) / this.distance_between_lines;
+            count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
 
             for (let i = 0; i < count_lines; i++) {
 
@@ -159,7 +161,7 @@ class Hatches {
         if (type == "height") {
 
             // // triangle beneath
-            count_lines = (this.height - this.width) / this.distance_between_lines;
+            count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
 
             for (let i = 0; i < count_lines; i++) {
 
@@ -207,7 +209,7 @@ class Hatches {
 
 
         if (type == "height") {
-            count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
+            count_lines = (this.height - this.width - 2 * this.padding_x) / this.distance_between_lines;
             // main body
             for (let i = 0; i < count_lines; i++) {
 
@@ -239,7 +241,7 @@ class Hatches {
         if (type == "height") {
             // triangle beneath
             // console.log(this.height - this.width);
-            count_lines = (this.height - this.width) / this.distance_between_lines;
+            count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
 
 
             for (let i = 0; i < count_lines; i++) {
@@ -272,12 +274,12 @@ class Hatches {
 
         if (type == "height") {
             // // // triangle beneath
-            count_lines = (this.height - this.width) / this.distance_between_lines;
+            count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
 
             for (let i = 0; i < count_lines; i++) {
 
                 start = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerRight.y);
-                end = createVector(this.cornerRight.x, this.cornerRight.y - (this.height - this.width) + this.distance_between_lines * i);
+                end = createVector(this.cornerRight.x, this.cornerRight.y - this.width + this.distance_between_lines * i);
 
                 this.bodies.push(new Brush(
                     start,
@@ -311,7 +313,7 @@ class Hatches {
             push();
             translate(-width / 2, -height / 2);
             translate(this.cornerLeft.x + this.width / 2, this.cornerLeft.y + this.height / 2, 0)
-            fill("white");
+            fill(255, 255, 255, 100);
             box(this.width, this.height, 0);
             pop();
         }

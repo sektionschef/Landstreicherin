@@ -5,7 +5,7 @@ class Brush {
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
         this.noiseYzoom = 0.007;  // zoom on noise
         this.amplitudeNoiseY = 3.5;  // up and down on Y axis
-        this.OkLevel = 5;  // some offset is ok.
+        this.OkLevel = 8;  // some offset is ok.
         this.fillColor = color(180);
         this.strokeColor = color("#c79712");
         this.strokeSize = 0.3;
@@ -14,6 +14,9 @@ class Brush {
         this.end = end;
 
         this.alive = true;
+        this.passedA = false;
+        this.passedB = false;
+
         this.pos = this.start.copy();
 
         this.vel = createVector(0, 0, 0);
@@ -54,29 +57,57 @@ class Brush {
     }
 
     move() {
-        if (this.pos < this.checkpointA) {
-            // start
+
+        if (this.pos.dist(this.end) <= this.OkLevel) {
+            this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
+        } else if (this.pos.dist(this.checkpointA) <= 2) {
+            this.passedA = true;
+        } else if (this.pos.dist(this.checkpointB) <= 2) {
+            this.passedB = true;
+
+        }
+        if (this.passedA == false) {
+            console.log("accelerate");
             this.acc = this.accBoost;
-            // console.log("accelerate");
-
-        } else if (this.pos >= this.checkpointA && this.pos < this.checkpointB) {
-            // full speed
+        } else if (this.passedA == true && this.passedB == false) {
+            console.log("full speed");
             this.acc = createVector(0, 0, 0);
-            // console.log("full speed");
-
-        } else if (this.end.dist(this.pos) <= this.OkLevel) {
-            // stop
+        } else if (this.passedA == true && this.passedB == true) {
+            console.log("slow down");
+            this.acc = this.sloBoost;
+        } else if (this.alive == false) {
+            console.log("stop");
             this.acc = createVector(0, 0, 0);
             this.vel = createVector(0, 0, 0);
-            // console.log("stop");
-            this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
-        } else if (this.pos >= this.checkpointB && this.pos < this.end) {
-            // slow down
-            this.acc = this.sloBoost;
-            // console.log("slow down");
         }
+
+
+        // if (this.pos < this.checkpointA) {
+        //     // start
+        //     this.acc = this.accBoost;
+        //     // console.log("accelerate");
+
+        // } else if (this.pos >= this.checkpointA && this.pos < this.checkpointB) {
+        //     // full speed
+        //     this.acc = createVector(0, 0, 0);
+        //     // console.log("full speed");
+
+        // } else if (this.end.dist(this.pos) <= this.OkLevel) {
+        //     // stop
+        //     this.acc = createVector(0, 0, 0);
+        //     this.vel = createVector(0, 0, 0);
+        //     // console.log("stop");
+        //     this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
+        // } else if (this.pos >= this.checkpointB && this.pos < this.end) {
+        //     // slow down
+        //     this.acc = this.sloBoost;
+        //     // console.log("slow down");
+        // }
+
+
         this.vel.add(this.acc);
         this.pos.add(this.vel);
+
 
         // if (this.orientation == "x") {
         // this.pos.y = this.start2 + this.noisesY[Math.round(mover)];
