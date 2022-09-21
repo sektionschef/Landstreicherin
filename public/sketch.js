@@ -140,6 +140,8 @@ function setup() {
 
   sphere = new paintedSphere();
   sphere.show();
+
+  pubsi = createGraphics(width, height);
 }
 
 
@@ -210,6 +212,12 @@ function draw() {
   grid3.show_lines();
 
   // noLoop();
+
+  push()
+  pubsi.ellipse(50, 50, 50);
+  translate(-width / 2, -height / 2);
+  image(pubsi, 0, 0);
+  pop();
 
 }
 

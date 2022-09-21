@@ -6,6 +6,9 @@ STROKE_DISTORT = 1;
 
 class Hatches {
     constructor(axis, cornerLeft, cornerRight, padding_x, padding_y, distance_between_lines) {
+        this.offsetPointMin = 15;
+        this.offsetPointMax = 18;
+
         this.axis = axis;
         this.cornerLeft = cornerLeft  // createVector(x_start, y_start);
         this.cornerRight = cornerRight // createVector(x_stop, y_stop);
@@ -45,6 +48,9 @@ class Hatches {
             start = createVector(this.cornerLeft.x + this.padding_x, this.cornerLeft.y + this.padding_y + this.distance_between_lines * i, 0);
             end = createVector(this.cornerRight.x - this.padding_x, this.cornerLeft.y + this.padding_y + this.distance_between_lines * i, 0);
 
+            start.add(this.offsetter());
+            end.add(this.offsetter());
+
             // console.log(i);
             this.bodies.push(new Brush(
                 start,
@@ -64,6 +70,9 @@ class Hatches {
 
             start = createVector(this.cornerLeft.x + this.padding_x + this.distance_between_lines * i, this.cornerLeft.y + this.padding_y);
             end = createVector(this.cornerLeft.x + this.padding_x + this.distance_between_lines * i, this.cornerRight.y - this.padding_x);
+
+            start.add(this.offsetter());
+            end.add(this.offsetter());
 
             this.bodies.push(new Brush(
                 start,
@@ -101,6 +110,11 @@ class Hatches {
                 start = createVector(this.cornerLeft.x, this.cornerLeft.y + this.distance_between_lines * i, 0);
                 end = createVector(this.cornerRight.x, this.cornerLeft.y + (this.cornerRight.x - this.cornerLeft.x) + this.distance_between_lines * i, 0);
 
+
+                start.add(this.offsetter());
+                end.add(this.offsetter());
+
+
                 this.bodies.push(new Brush(
                     start,
                     end,
@@ -114,6 +128,9 @@ class Hatches {
 
                 start = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerLeft.y, 0);
                 end = createVector(this.cornerLeft.x + this.height + this.distance_between_lines * i, this.cornerRight.y, 0);
+
+                start.add(this.offsetter());
+                end.add(this.offsetter());
 
                 this.bodies.push(new Brush(
                     start,
@@ -133,6 +150,9 @@ class Hatches {
                 start = createVector(this.cornerLeft.x, this.cornerLeft.y + (this.height - this.width) + this.distance_between_lines * i);
                 end = createVector(this.cornerRight.x - this.distance_between_lines * i, this.cornerRight.y);
 
+                start.add(this.offsetter());
+                end.add(this.offsetter());
+
                 this.bodies.push(new Brush(
                     start,
                     end
@@ -148,6 +168,9 @@ class Hatches {
 
                 start = createVector(this.cornerLeft.x, this.cornerLeft.y + this.distance_between_lines * i);
                 end = createVector(this.cornerLeft.x + this.height - this.distance_between_lines * i, this.cornerRight.y);
+
+                start.add(this.offsetter());
+                end.add(this.offsetter());
 
                 this.bodies.push(new Brush(
                     start,
@@ -166,6 +189,9 @@ class Hatches {
                 start = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerLeft.y);
                 end = createVector(this.cornerRight.x, this.cornerRight.y - (this.height - this.width) - this.distance_between_lines * i);
 
+                start.add(this.offsetter());
+                end.add(this.offsetter());
+
                 this.bodies.push(new Brush(
                     start,
                     end,
@@ -180,6 +206,9 @@ class Hatches {
 
                 start = createVector(this.cornerRight.x - this.height + this.distance_between_lines * i, this.cornerLeft.y);
                 end = createVector(this.cornerRight.x, this.cornerRight.y - this.distance_between_lines * i);
+
+                start.add(this.offsetter());
+                end.add(this.offsetter());
 
                 this.bodies.push(new Brush(
                     start,
@@ -210,13 +239,13 @@ class Hatches {
             count_lines = (this.height - this.width - 2 * this.padding_x) / this.distance_between_lines;
             // main body
 
-
-
-
             for (let i = 0; i < count_lines; i++) {
 
                 start = createVector(this.cornerLeft.x, this.cornerLeft.y + (this.cornerRight.x - this.cornerLeft.x) + this.distance_between_lines * i, 0);
                 end = createVector(this.cornerRight.x, this.cornerLeft.y + this.distance_between_lines * i, 0);
+
+                start.add(this.offsetter());
+                end.add(this.offsetter());
 
                 this.bodies.push(new Brush(
                     start,
@@ -231,6 +260,9 @@ class Hatches {
                 // + (this.height - this.width)
                 start = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerRight.y);
                 end = createVector(this.cornerLeft.x + this.height + this.distance_between_lines * i, this.cornerLeft.y);
+
+                start.add(this.offsetter());
+                end.add(this.offsetter());
 
                 this.bodies.push(new Brush(
                     start,
@@ -250,6 +282,9 @@ class Hatches {
                 start = createVector(this.cornerLeft.x, this.cornerLeft.y + this.distance_between_lines * i);
                 end = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerLeft.y);
 
+                start.add(this.offsetter());
+                end.add(this.offsetter());
+
                 this.bodies.push(new Brush(
                     start,
                     end
@@ -263,6 +298,9 @@ class Hatches {
 
                 start = createVector(this.cornerRight.x - this.height + this.distance_between_lines * i, this.cornerRight.y, 0);
                 end = createVector(this.cornerRight.x, this.cornerLeft.y + this.distance_between_lines * i, 0);
+
+                start.add(this.offsetter());
+                end.add(this.offsetter());
 
                 this.bodies.push(new Brush(
                     start,
@@ -282,6 +320,9 @@ class Hatches {
                 start = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerRight.y);
                 end = createVector(this.cornerRight.x, this.cornerRight.y - this.width + this.distance_between_lines * i);
 
+                start.add(this.offsetter());
+                end.add(this.offsetter());
+
                 this.bodies.push(new Brush(
                     start,
                     end,
@@ -296,6 +337,9 @@ class Hatches {
                 start = createVector(this.cornerLeft.x, this.cornerLeft.y + this.distance_between_lines * i);
                 end = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerLeft.y);
 
+                start.add(this.offsetter());
+                end.add(this.offsetter());
+
                 this.bodies.push(new Brush(
                     start,
                     end,
@@ -304,6 +348,10 @@ class Hatches {
 
         }
 
+    }
+
+    offsetter() {
+        return createVector(getRandomFromInterval(this.offsetPointMin, this.offsetPointMax), getRandomFromInterval(this.offsetPointMin, this.offsetPointMax), 0);
     }
 
     show() {
