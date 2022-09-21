@@ -128,7 +128,7 @@ function setup() {
   // hatchesHigh = new Hatches("yx", createVector(100, 300), createVector(250, 600), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
   // hatchesLong = new Hatches("yx", createVector(300, 300), createVector(650, 400), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
   // hatchesHigh = new Hatches("yx", createVector(100, 100), createVector(450, 900), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-  // hatchesLong = new Hatches("y", createVector(500, 100), createVector(750, 800), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // hatchesLong = new Hatches("yx", createVector(100, 100), createVector(750, 300), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 
   // hatchesBug = new Hatches("y", createVector(717, 50), createVector(898, 898), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 

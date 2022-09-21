@@ -128,7 +128,7 @@ class Hatches {
             // console.log(this.height - this.width);
             count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
 
-            for (let i = 0; i < count_lines; i++) {
+            for (let i = 0; i < count_lines; i++) {  // skip first line
 
                 start = createVector(this.cornerLeft.x, this.cornerLeft.y + (this.height - this.width) + this.distance_between_lines * i);
                 end = createVector(this.cornerRight.x - this.distance_between_lines * i, this.cornerRight.y);
@@ -144,7 +144,7 @@ class Hatches {
             // left to floor
             count_lines = (this.height - 2 * this.padding_x) / this.distance_between_lines;
 
-            for (let i = 0; i < count_lines; i++) {
+            for (let i = 1; i < count_lines; i++) {  // skip first line
 
                 start = createVector(this.cornerLeft.x, this.cornerLeft.y + this.distance_between_lines * i);
                 end = createVector(this.cornerLeft.x + this.height - this.distance_between_lines * i, this.cornerRight.y);
@@ -161,7 +161,7 @@ class Hatches {
             // // triangle beneath
             count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
 
-            for (let i = 0; i < count_lines; i++) {
+            for (let i = 1; i < count_lines; i++) {  // skip first line
 
                 start = createVector(this.cornerLeft.x + this.distance_between_lines * i, this.cornerLeft.y);
                 end = createVector(this.cornerRight.x, this.cornerRight.y - (this.height - this.width) - this.distance_between_lines * i);
@@ -176,7 +176,7 @@ class Hatches {
             // // triangle ceiling to right
             count_lines = (this.height - 2 * this.padding_x) / this.distance_between_lines;
 
-            for (let i = 0; i < count_lines; i++) {
+            for (let i = 0; i < count_lines; i++) {  // skip first line
 
                 start = createVector(this.cornerRight.x - this.height + this.distance_between_lines * i, this.cornerLeft.y);
                 end = createVector(this.cornerRight.x, this.cornerRight.y - this.distance_between_lines * i);
@@ -209,6 +209,10 @@ class Hatches {
         if (type == "height") {
             count_lines = (this.height - this.width - 2 * this.padding_x) / this.distance_between_lines;
             // main body
+
+
+
+
             for (let i = 0; i < count_lines; i++) {
 
                 start = createVector(this.cornerLeft.x, this.cornerLeft.y + (this.cornerRight.x - this.cornerLeft.x) + this.distance_between_lines * i, 0);
@@ -238,7 +242,6 @@ class Hatches {
 
         if (type == "height") {
             // triangle beneath
-            // console.log(this.height - this.width);
             count_lines = (this.width - 2 * this.padding_x) / this.distance_between_lines;
 
 
