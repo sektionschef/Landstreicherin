@@ -206,6 +206,8 @@ function exportCanvas(canvasName) {
     let timestamp = getTimestamp();
 
     save(canvasName, fxhash + "_" + timestamp, 'png');
+    // saveCanvas(canvasName, fxhash + "_" + timestamp, 'png');
+
 }
 
 function getTimestamp() {

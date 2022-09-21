@@ -17,6 +17,8 @@ let rescaling_height;
 let PALETTE;
 let PALETTE_LABEL;
 
+let BACKGROUNDCOLOR = "#c79712";
+
 let CURRENTPIXELDENS = 1;
 
 let PaperDimensions = {
@@ -78,10 +80,10 @@ function preload() {
 
   font = loadFont('OpenSans-Regular.ttf');
 
-  // if (urlParams.has('highres')) {
-  //   CURRENTPIXELDENS = parseInt(urlParams.get('highres'));
-  // }
-  // console.log("CURRENTPIXELDENS: " + CURRENTPIXELDENS);
+  if (urlParams.has('highres')) {
+    CURRENTPIXELDENS = parseInt(urlParams.get('highres'));
+  }
+  console.log("CURRENTPIXELDENS: " + CURRENTPIXELDENS);
 
   // if (urlParams.has('infinity')) {
   //   INFINITYSTRING = urlParams.get('infinity');
@@ -161,7 +163,7 @@ function draw() {
 
   if (frameCount == 1) {
     // background(200);
-    background(color("#c79712"));
+    background(color(BACKGROUNDCOLOR));  // first one
     push()
     translate(-width / 2, -height / 2);
     image(sphere.buffer, 0, 0);

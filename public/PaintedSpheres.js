@@ -89,6 +89,8 @@ class paintedSphere {
 
     show() {
 
+        this.buffer.background(color(BACKGROUNDCOLOR));
+
         for (var element of this.elements) {
             this.buffer.push();
             // this.buffer.translate((this.posX) / exportRatio, (this.posY) / exportRatio);
