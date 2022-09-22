@@ -8,7 +8,7 @@ class Brush {
         this.OkLevel = 8;  // some offset is ok.
         this.fillColor = colorObject;  // color(180);
         this.strokeColor = colorObject; // color("#c79712");
-        this.strokeSize = 0.75;
+        this.strokeSize = 0.5;
 
         this.start = start;
         this.end = end;
@@ -71,7 +71,8 @@ class Brush {
             this.acc = this.accBoost;
         } else if (this.passedA == true && this.passedB == false) {
             // console.log("full speed");
-            this.acc = createVector(0, 0, 0);
+            // this.acc = createVector(0, 0, 0);
+            this.acc = createVector(getRandomFromInterval(-0.001, 0.001), getRandomFromInterval(-0.001, 0.001), 0);
         } else if (this.passedA == true && this.passedB == true) {
             // console.log("slow down");
             this.acc = this.sloBoost;
@@ -192,7 +193,10 @@ class Brush {
                 noFill();
                 // sphere(this.radius);
                 // fill(this.fillColor);
-                ellipse(0, 0, this.radius, this.radius);
+                // rotate(frameCount % 3);
+                rectMode(CENTER);
+                // ellipse(0, 0, this.radius, this.radius);
+                rect(0, 0, this.radius, this.radius);
             }
             pop();
 
