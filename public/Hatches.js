@@ -9,6 +9,9 @@ class Hatches {
         this.offsetPointMin = 15;
         this.offsetPointMax = 18;
 
+        this.brushColor = color(BRUSHCOLOR);
+        this.brushColorDistort = 10;
+
         this.axis = axis;
         this.cornerLeft = cornerLeft  // createVector(x_start, y_start);
         this.cornerRight = cornerRight // createVector(x_stop, y_stop);
@@ -51,10 +54,12 @@ class Hatches {
             start.add(this.offsetter());
             end.add(this.offsetter());
 
+
             // console.log(i);
             this.bodies.push(new Brush(
                 start,
                 end,
+                brightenColor(this.brushColor, this.brushColorDistort)
             ));
         }
     }
@@ -77,6 +82,7 @@ class Hatches {
             this.bodies.push(new Brush(
                 start,
                 end,
+                brightenColor(this.brushColor, this.brushColorDistort)
             ));
         }
     }
@@ -118,6 +124,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
         } else {
@@ -135,6 +142,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
 
@@ -155,7 +163,8 @@ class Hatches {
 
                 this.bodies.push(new Brush(
                     start,
-                    end
+                    end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
 
@@ -174,7 +183,8 @@ class Hatches {
 
                 this.bodies.push(new Brush(
                     start,
-                    end
+                    end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
         }
@@ -195,6 +205,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
         } else {
@@ -213,6 +224,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
 
@@ -250,6 +262,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
         } else {
@@ -266,7 +279,8 @@ class Hatches {
 
                 this.bodies.push(new Brush(
                     start,
-                    end
+                    end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
 
@@ -287,7 +301,8 @@ class Hatches {
 
                 this.bodies.push(new Brush(
                     start,
-                    end
+                    end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
         } else {
@@ -305,6 +320,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
 
@@ -326,6 +342,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
         } else {
@@ -343,6 +360,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
+                    brightenColor(this.brushColor, this.brushColorDistort)
                 ));
             }
 

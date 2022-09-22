@@ -17,8 +17,9 @@ let rescaling_height;
 let PALETTE;
 let PALETTE_LABEL;
 
+let BRUSHCOLOR = "#8f6900";
 let PRIMARYCOLOR = "#f7c331";
-let BACKGROUNDCOLOR = "#c79712";
+let BACKGROUNDCOLOR = "#8f6900";
 
 let CURRENTPIXELDENS = 1;
 
@@ -137,7 +138,7 @@ function setup() {
 
   grid = new Grid();
   grid2 = new Grid();
-  grid3 = new Grid();
+  // grid3 = new Grid();
 
 
   // background(200);
@@ -151,7 +152,27 @@ function setup() {
   // rect(0, 0, width, height);
   // pop()
 
-  sphere = new paintedSphere();
+
+
+  sphere = new paintedSphere({
+    custom_width: width,
+    custom_height: height,
+    posX: 0,
+    posY: 0,
+    // posX: -width / 2,
+    // posY: -height / 2,
+    elementSizeMin: 10,
+    elementSizeMax: 50,
+    colorObject: color(PRIMARYCOLOR),
+    margin: 50,
+    fillColorNoise: 35,
+    fillColorOpacityMax: 15,
+    noStroke: true,
+    strokeWeight: 10,
+    strokeColorNoise: 20,
+    strokeOpacityMax: 20,
+    numberQuantisizer: 40,
+  });
   sphere.show();
 
   // background(200);
@@ -219,8 +240,8 @@ function draw() {
   grid2.show();
   grid2.show_lines();
 
-  grid3.show();
-  grid3.show_lines();
+  // grid3.show();
+  // grid3.show_lines();
 
   // noLoop();
 

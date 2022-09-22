@@ -111,6 +111,11 @@ class paintedSphere {
             this.buffer.ellipse(element.posXEl, element.posYEl, element.widthShape, element.heightShape);
             // this.buffer.rect(element.posXRe / exportRatio, element.posYRe / exportRatio, element.widthShape / exportRatio, element.heightShape / exportRatio);
             this.buffer.rect(element.posXRe, element.posYRe, element.widthShape, element.heightShape);
+
+            // dirtlines
+            this.buffer.stroke(BACKGROUNDCOLOR + "10");
+            this.buffer.strokeWeight(1);
+            this.buffer.line(getRandomFromInterval(0, width), getRandomFromInterval(0, height), getRandomFromInterval(0, width), getRandomFromInterval(0, height));
             this.buffer.pop();
         }
 
@@ -118,7 +123,7 @@ class paintedSphere {
             this.buffer.push();
             this.buffer.noFill();
             this.buffer.strokeWeight(2);
-            this.buffer.stroke("black");
+            this.buffer.stroke("#000000");
             this.buffer.rectMode(CENTER);
             // translate((this.posX + this.custom_width / 2) / exportRatio, (this.posY + this.custom_height / 2) / exportRatio);
             this.buffer.translate((this.posX + this.custom_width / 2), (this.posY + this.custom_height / 2));

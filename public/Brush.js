@@ -1,14 +1,14 @@
 class Brush {
-    constructor(start, end) {
-        this.fullspeed = 8;
-        this.radius = 0.7;
+    constructor(start, end, colorObject) {
+        this.fullspeed = 5;
+        this.radius = 0.5;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
         this.noiseYzoom = 0.007;  // zoom on noise
         this.amplitudeNoiseY = 3.5;  // up and down on Y axis
         this.OkLevel = 8;  // some offset is ok.
-        this.fillColor = color(180);
-        this.strokeColor = color("#c79712");
-        this.strokeSize = 0.3;
+        this.fillColor = colorObject;  // color(180);
+        this.strokeColor = colorObject; // color("#c79712");
+        this.strokeSize = 0.75;
 
         this.start = start;
         this.end = end;
@@ -186,10 +186,12 @@ class Brush {
                 fill("black");
                 ellipse(0, 0, this.radius * 3, this.radius * 3);
             } else {
+                noStroke();
                 strokeWeight(this.strokeSize);
                 stroke(this.strokeColor);
                 noFill();
                 // sphere(this.radius);
+                // fill(this.fillColor);
                 ellipse(0, 0, this.radius, this.radius);
             }
             pop();
