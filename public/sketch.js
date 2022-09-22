@@ -17,6 +17,7 @@ let rescaling_height;
 let PALETTE;
 let PALETTE_LABEL;
 
+let PRIMARYCOLOR = "#f7c331";
 let BACKGROUNDCOLOR = "#c79712";
 
 let CURRENTPIXELDENS = 1;
@@ -138,10 +139,28 @@ function setup() {
   grid2 = new Grid();
   grid3 = new Grid();
 
+
+  // background(200);
+  background(color(BACKGROUNDCOLOR));
+
+  // basic fill for transparency
+  // push()
+  // fill(BACKGROUNDCOLOR);
+  // noStroke();
+  // translate(-width / 2, -height / 2);
+  // rect(0, 0, width, height);
+  // pop()
+
   sphere = new paintedSphere();
   sphere.show();
 
-  pubsi = createGraphics(width, height);
+  // background(200);
+  background(color(BACKGROUNDCOLOR));  // first one
+  push()
+  translate(-width / 2, -height / 2);
+  image(sphere.buffer, 0, 0);
+  pop();
+
 }
 
 
@@ -163,14 +182,6 @@ function draw() {
   // ambientMaterial(255);
   // specularMaterial(255);
 
-  if (frameCount == 1) {
-    // background(200);
-    background(color(BACKGROUNDCOLOR));  // first one
-    push()
-    translate(-width / 2, -height / 2);
-    image(sphere.buffer, 0, 0);
-    pop();
-  }
 
   if (MODE == 5) {
     background(200);
@@ -212,12 +223,6 @@ function draw() {
   grid3.show_lines();
 
   // noLoop();
-
-  push()
-  pubsi.ellipse(50, 50, 50);
-  translate(-width / 2, -height / 2);
-  image(pubsi, 0, 0);
-  pop();
 
 }
 

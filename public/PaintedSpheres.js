@@ -14,15 +14,15 @@ class paintedSphere {
                 // posY: -height / 2,
                 elementSizeMin: 10,
                 elementSizeMax: 50,
-                colorObject: color("#f7c331"),
+                colorObject: color(PRIMARYCOLOR),
                 margin: 50,
                 fillColorNoise: 10,
-                fillColorOpacityMax: 5,
+                fillColorOpacityMax: 10,
                 noStroke: true,
                 strokeWeight: 10,
                 strokeColorNoise: 20,
                 strokeOpacityMax: 50,
-                numberQuantisizer: 40,
+                numberQuantisizer: 20,
             }
         }
 
@@ -35,6 +35,7 @@ class paintedSphere {
         this.elementSizeMin = data.elementSizeMin;
         this.elementSizeMax = data.elementSizeMax;
         this.colorObject = data.colorObject;
+        this.backgroundColor = data.backgroundColor;
         this.margin = data.margin;
         this.fillColorNoise = data.fillColorNoise;
         this.fillColorOpacityMax = data.fillColorOpacityMax;
@@ -89,11 +90,11 @@ class paintedSphere {
 
     show() {
 
-        this.buffer.background(color(BACKGROUNDCOLOR));
+        this.buffer.background(BACKGROUNDCOLOR);
 
         for (var element of this.elements) {
             this.buffer.push();
-            // this.buffer.translate((this.posX) / exportRatio, (this.posY) / exportRatio);
+            // translate((this.posX) / exportRatio, (this.posY) / exportRatio);
             this.buffer.translate((this.posX), (this.posY));
             if (this.noStroke == true) {
                 this.buffer.noStroke();
@@ -119,9 +120,9 @@ class paintedSphere {
             this.buffer.strokeWeight(2);
             this.buffer.stroke("black");
             this.buffer.rectMode(CENTER);
-            // this.buffer.translate((this.posX + this.custom_width / 2) / exportRatio, (this.posY + this.custom_height / 2) / exportRatio);
+            // translate((this.posX + this.custom_width / 2) / exportRatio, (this.posY + this.custom_height / 2) / exportRatio);
             this.buffer.translate((this.posX + this.custom_width / 2), (this.posY + this.custom_height / 2));
-            // this.buffer.rect(0, 0, this.custom_width / exportRatio, this.custom_height / exportRatio);
+            // rect(0, 0, this.custom_width / exportRatio, this.custom_height / exportRatio);
             this.buffer.rect(0, 0, this.custom_width, this.custom_height);
             this.buffer.pop();
         }
@@ -167,6 +168,7 @@ class RandomPaintedSpheres {
                     elementSizeMax: 100,
                     // colorObject: color(getRandomFromList([20, 40, 200, 240])),
                     colorObject: this.colorObject,
+                    backgroundColor: color(BACKGROUNDCOLOR),
                     margin: 0,
                     fillColorNoise: 30,
                     fillColorOpacityMax: 2,  // THISONE
