@@ -71,8 +71,8 @@ class Brush {
             this.acc = this.accBoost;
         } else if (this.passedA == true && this.passedB == false) {
             // console.log("full speed");
-            // this.acc = createVector(0, 0, 0);
-            this.acc = createVector(getRandomFromInterval(-0.001, 0.001), getRandomFromInterval(-0.001, 0.001), 0);
+            this.acc = createVector(0, 0, 0);
+            // this.acc = createVector(getRandomFromInterval(-0.001, 0.001), getRandomFromInterval(-0.001, 0.001), 0);
         } else if (this.passedA == true && this.passedB == true) {
             // console.log("slow down");
             this.acc = this.sloBoost;

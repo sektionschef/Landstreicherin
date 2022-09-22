@@ -2,7 +2,7 @@
 class Grid {
     constructor() {
         this.minimumDistance = 50;
-        this.padding = 50;
+        this.margin = 50;
 
         this.boxes = [];
         // this.virtual_boxes = [];
@@ -52,20 +52,20 @@ class Grid {
 
         // remove start and end of axis
         for (var i = this.pointsXPool.length - 1; i >= 0; i--) {
-            if (i <= (0 + this.padding + this.minimumDistance) || i >= (width - this.padding - this.minimumDistance)) {
+            if (i <= (0 + this.margin + this.minimumDistance) || i >= (width - this.margin - this.minimumDistance)) {
                 this.pointsXPool.splice(i, 1);
             }
         }
         // console.log(this.pointsXPool);
 
-        this.pointsX = [(0 + this.padding), (width - this.padding)];
+        this.pointsX = [(0 + this.margin), (width - this.margin)];
 
         for (var i = this.pointsYPool.length - 1; i >= 0; i--) {
-            if (i <= (0 + this.padding + this.minimumDistance) || i >= (height - this.padding - this.minimumDistance)) {
+            if (i <= (0 + this.margin + this.minimumDistance) || i >= (height - this.margin - this.minimumDistance)) {
                 this.pointsYPool.splice(i, 1);
             }
         }
-        this.pointsY = [(0 + this.padding), (height - this.padding)];
+        this.pointsY = [(0 + this.margin), (height - this.margin)];
 
         for (var i = 0; i < this.count_of_points_x; i++) {
             this.getSinglePointX();

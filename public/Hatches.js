@@ -6,8 +6,7 @@ STROKE_DISTORT = 1;
 
 class Hatches {
     constructor(axis, cornerLeft, cornerRight, padding_x, padding_y, distance_between_lines) {
-        this.offsetPointMin = 15;
-        this.offsetPointMax = 18;
+        this.offsetPoint = 3;
 
         this.brushColor = color(BRUSHCOLOR);
         this.brushColorDistort = 10;
@@ -369,7 +368,7 @@ class Hatches {
     }
 
     offsetter() {
-        return createVector(getRandomFromInterval(this.offsetPointMin, this.offsetPointMax), getRandomFromInterval(this.offsetPointMin, this.offsetPointMax), 0);
+        return createVector(getRandomFromInterval(-this.offsetPoint, this.offsetPoint), getRandomFromInterval(-this.offsetPoint, this.offsetPoint), 0);
     }
 
     show() {

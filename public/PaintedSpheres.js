@@ -124,11 +124,13 @@ class paintedSphere {
             this.buffer.noFill();
             this.buffer.strokeWeight(2);
             this.buffer.stroke("#000000");
-            this.buffer.rectMode(CENTER);
             // translate((this.posX + this.custom_width / 2) / exportRatio, (this.posY + this.custom_height / 2) / exportRatio);
-            this.buffer.translate((this.posX + this.custom_width / 2), (this.posY + this.custom_height / 2));
+            // this.buffer.translate((this.posX + this.custom_width / 2), (this.posY + this.custom_height / 2));
+            this.buffer.rectMode(CENTER);
+            this.buffer.translate(this.custom_width / 2, this.custom_height / 2, 0);
+            // this.buffer.translate(this.margin, this.margin, 0);
             // rect(0, 0, this.custom_width / exportRatio, this.custom_height / exportRatio);
-            this.buffer.rect(0, 0, this.custom_width, this.custom_height);
+            this.buffer.rect(0, 0, this.custom_width - this.margin * 2, this.custom_height - this.margin * 2);
             this.buffer.pop();
         }
     }
