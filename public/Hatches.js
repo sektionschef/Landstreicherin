@@ -6,7 +6,7 @@ STROKE_DISTORT = 1;
 
 class Hatches {
     constructor(axis, cornerLeft, cornerRight, padding_x, padding_y, distance_between_lines) {
-        this.offsetPoint = 3;
+        this.offsetPoint = 2;
 
         this.brushColor = color(BRUSHCOLOR);
         this.brushColorDistort = 10;

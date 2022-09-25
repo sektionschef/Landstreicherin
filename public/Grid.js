@@ -287,6 +287,7 @@ class Grid {
 
     create_lines() {
         for (let box of this.boxes) {
+
             let axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
             // let axis = getRandomFromList(["yx"]);
             console.log(axis + " axis randomly chosen.");
