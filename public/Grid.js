@@ -298,29 +298,37 @@ class Grid {
 
 
     show() {
+        this.boxes_completely_run = true;
 
         for (let box of this.boxes) {
             box.show();
-        }
-    }
-
-    show_lines() {
-
-        for (let box of this.boxes) {
             box.lines.show();
-        }
-    }
 
-    check_boxes_complete() {
-
-        this.boxes_completely_run = true;
-
-        for (let box_real of this.boxes) {
-            box_real.lines.check_all_complete();
-            if (box_real.lines.all_lines_complete == false) {
+            box.lines.check_all_complete();
+            if (box.lines.all_lines_complete == false) {
                 this.boxes_completely_run = false;
             }
         }
+    }
+
+    // show_lines() {
+
+    //     for (let box of this.boxes) {
+    //         box.lines.show();
+    //     }
+    // }
+
+    check_boxes_complete() {
+
+        // this.boxes_completely_run = true;
+
+        // for (let box_real of this.boxes) {
+        //     box_real.lines.check_all_complete();
+        //     if (box_real.lines.all_lines_complete == false) {
+        //         this.boxes_completely_run = false;
+        //         console.log("asfasf");
+        //     }
+        // }
     }
 }
 

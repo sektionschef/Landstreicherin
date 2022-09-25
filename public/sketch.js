@@ -175,12 +175,33 @@ function setup() {
   });
   sphere.show();
 
+  dirtLines = new dirtLines({
+    custom_width: width,
+    custom_height: height,
+    posX: 0,
+    posY: 0,
+    // posX: -width / 2,
+    // posY: -height / 2,
+    elementSizeMin: 10,
+    elementSizeMax: 50,
+    colorObject: color(PRIMARYCOLOR),
+    margin: 50,
+    fillColorNoise: 35,
+    fillColorOpacityMax: 15,
+    noStroke: true,
+    strokeWeight: 10,
+    strokeColorNoise: 20,
+    strokeOpacityMax: 20,
+    numberQuantisizer: 1,
+  });
+
   // background(200);
   background(color(BACKGROUNDCOLOR));  // first one
   push()
   translate(-width / 2, -height / 2);
   image(sphere.buffer, 0, 0);
   pop();
+
 
 }
 
@@ -235,15 +256,21 @@ function draw() {
   // brushBug.display();
 
   grid.show();
-  grid.show_lines();
+  // grid.show_lines();
 
   grid2.show();
-  grid2.show_lines();
+  // grid2.show_lines();
 
   // grid3.show();
   // grid3.show_lines();
 
   // noLoop();
+
+  if (grid.boxes_completely_run) {
+    dirtLines.show();
+    console.log("bubu");
+    noLoop();
+  }
 
 }
 
