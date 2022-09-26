@@ -394,17 +394,37 @@ class Hatches {
     }
 
     check_all_complete() {
+
         // skip if already complete
         if (this.all_lines_complete == false) {
-            this.all_lines_complete = true;
+            this.brushes_alive_status = [];
+
+            // this.all_lines_complete = true;
             for (var brush of this.bodies) {
-                if (brush.alive) {
-                    this.all_lines_complete = false;
-                }
+
+                this.brushes_alive_status.push(brush.alive);
+
+                // if (brush.alive) {
+                //     this.all_lines_complete = false;
+                // }
             }
+
+            this.all_lines_complete = this.brushes_alive_status.every(element => element == false);
         } else {
             // console.log("all drawn");
         }
+
+        // // skip if already complete
+        // if (this.all_lines_complete == false) {
+        //     this.all_lines_complete = true;
+        //     for (var brush of this.bodies) {
+        //         if (brush.alive) {
+        //             this.all_lines_complete = false;
+        //         }
+        //     }
+        // } else {
+        //     // console.log("all drawn");
+        // }
     }
 }
 

@@ -4,11 +4,13 @@ class Grid {
         this.minimumDistance = 50;
         this.margin = 50;
 
+
         this.boxes = [];
         // this.virtual_boxes = [];
         // this.real_boxes = [];
         this.possible_pairings_x = [];
         this.possible_pairings_y = [];
+        this.boxes_complete_status = [];
         this.boxes_completely_run = false;
 
         this.count_of_points_x = Math.round(getRandomFromInterval(1, 3));  // 1-5
@@ -298,17 +300,21 @@ class Grid {
 
 
     show() {
-        this.boxes_completely_run = true;
+        this.boxes_complete_status = [];
 
         for (let box of this.boxes) {
             box.show();
             box.lines.show();
 
             box.lines.check_all_complete();
-            if (box.lines.all_lines_complete == false) {
-                this.boxes_completely_run = false;
+
+            if (this.boxes_completely_run == false) {
+
+                this.boxes_complete_status.push(box.lines.all_lines_complete)
             }
         }
+
+        this.boxes_completely_run = this.boxes_complete_status.every(element => element == true);
     }
 
     // show_lines() {
