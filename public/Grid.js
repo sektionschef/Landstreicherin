@@ -317,18 +317,6 @@ class Grid {
         this.boxes_completely_run = this.boxes_complete_status.every(element => element === true);
     }
 
-    check_boxes_complete() {
-
-        // this.boxes_completely_run = true;
-
-        // for (let box_real of this.boxes) {
-        //     box_real.lines.check_all_complete();
-        //     if (box_real.lines.all_lines_complete == false) {
-        //         this.boxes_completely_run = false;
-        //         console.log("asfasf");
-        //     }
-        // }
-    }
 }
 
 
@@ -340,9 +328,6 @@ class Box {
         this.b = data.b;
         this.c = data.c;
         this.d = data.d;
-
-        // this.center_x = (this.b.x - this.a.x) / 2
-        // this.center_y = (this.d.y - this.a.y) / 2
 
         this.radiusX = (this.b.x - this.a.x) / 2
         this.radiusY = (this.d.y - this.a.y) / 2

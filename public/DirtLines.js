@@ -10,9 +10,9 @@ class dirtLines {
                 margin: 50,
                 posX: 0,
                 posY: 0,
-                strokeColor: color(200),
+                strokeColor: color(200, 200, 200),
                 strokeWeight: 0.1,
-                strokeColorNoise: 20,
+                strokeColorNoise: 0,
                 numberQuantisizer: 0.5,
             }
         }
@@ -27,10 +27,9 @@ class dirtLines {
         this.strokeColorNoise = data.strokeColorNoise;
         this.numberQuantisizer = data.numberQuantisizer;
 
-        // this.strokColorWhitenessMin = 
-        // this.colorObjectRed = this.colorObject.levels[0];
-        // this.colorObjectGreen = this.colorObject.levels[1];
-        // this.colorObjectBlue = this.colorObject.levels[2];
+        this.colorObjectRed = red(this.strokeColor);
+        this.colorObjectGreen = green(this.strokeColor);
+        this.colorObjectBlue = blue(this.strokeColor);
 
         this.area = this.custom_width * this.custom_height;
         this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
@@ -38,16 +37,13 @@ class dirtLines {
         this.elements = []
 
         for (var i = 0; i < this.shapeNumber; i++) {
-            // easier with hsb?
-            // let fillColorRed = getRandomFromInterval(this.colorObjectRed - this.fillColorNoise, this.colorObjectRed + this.fillColorNoise);
-            // let fillColorGreen = getRandomFromInterval(this.colorObjectGreen - this.fillColorNoise, this.colorObjectGreen + this.fillColorNoise);
-            // let fillColorBlue = getRandomFromInterval(this.colorObjectBlue - this.fillColorNoise, this.colorObjectBlue + this.fillColorNoise);
+            this.colorObjectRed = getRandomFromInterval(this.colorObjectRed - this.strokeColorNoise, this.colorObjectRed + this.strokeColorNoise);
+            this.colorObjectGreen = getRandomFromInterval(this.colorObjectGreen - this.strokeColorNoise, this.colorObjectGreen + this.strokeColorNoise);
+            this.colorObjectBlue = getRandomFromInterval(this.colorObjectBlue - this.strokeColorNoise, this.colorObjectBlue + this.strokeColorNoise);
 
-            // let fillColor = color(fillColorRed, fillColorGreen, fillColorBlue, fillColorOpacity);
+            this.strokeColor = color(this.colorObjectRed, this.colorObjectGreen, this.colorObjectBlue);
 
             this.elements.push({
-                // strokeColor: color(this.colorObjectRed + this.strokeColorNoise, this.colorObjectGreen + this.strokeColorNoise, this.colorObjectBlue + this.strokeColorNoise, strokeColorOpacity),
-                // strokeColor: color(fillColorRed, fillColorGreen, fillColorBlue, strokeColorOpacity),
                 strokeColor: this.strokeColor,
                 strokeWeight: this.strokeWeight,
                 position: createVector(getRandomFromInterval(this.margin, this.custom_width - this.margin), getRandomFromInterval(this.margin, this.custom_height - this.margin))

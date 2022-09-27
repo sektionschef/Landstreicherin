@@ -408,17 +408,6 @@ class Hatches {
             this.all_lines_complete = this.brushes_alive_status.every(element => element === false);
         }
 
-        // // skip if already complete
-        // if (this.all_lines_complete == false) {
-        //     this.all_lines_complete = true;
-        //     for (var brush of this.bodies) {
-        //         if (brush.alive) {
-        //             this.all_lines_complete = false;
-        //         }
-        //     }
-        // } else {
-        //     // console.log("all drawn");
-        // }
     }
 }
 
