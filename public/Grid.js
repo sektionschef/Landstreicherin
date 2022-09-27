@@ -294,7 +294,7 @@ class Grid {
             // let axis = getRandomFromList(["yx"]);
             console.log(axis + " axis randomly chosen.");
 
-            box.lines = new Hatches(axis, box.a, box.c, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+            box.hatches = new Hatches(axis, box.a, box.c, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
         }
     }
 
@@ -304,25 +304,18 @@ class Grid {
 
         for (let box of this.boxes) {
             box.show();
-            box.lines.show();
+            box.hatches.show();
 
-            box.lines.check_all_complete();
+            box.hatches.check_all_complete();
 
             if (this.boxes_completely_run == false) {
 
-                this.boxes_complete_status.push(box.lines.all_lines_complete)
+                this.boxes_complete_status.push(box.hatches.all_lines_complete)
             }
         }
 
-        this.boxes_completely_run = this.boxes_complete_status.every(element => element == true);
+        this.boxes_completely_run = this.boxes_complete_status.every(element => element === true);
     }
-
-    // show_lines() {
-
-    //     for (let box of this.boxes) {
-    //         box.lines.show();
-    //     }
-    // }
 
     check_boxes_complete() {
 

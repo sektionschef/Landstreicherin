@@ -399,19 +399,13 @@ class Hatches {
         if (this.all_lines_complete == false) {
             this.brushes_alive_status = [];
 
-            // this.all_lines_complete = true;
             for (var brush of this.bodies) {
 
                 this.brushes_alive_status.push(brush.alive);
 
-                // if (brush.alive) {
-                //     this.all_lines_complete = false;
-                // }
             }
 
-            this.all_lines_complete = this.brushes_alive_status.every(element => element == false);
-        } else {
-            // console.log("all drawn");
+            this.all_lines_complete = this.brushes_alive_status.every(element => element === false);
         }
 
         // // skip if already complete
