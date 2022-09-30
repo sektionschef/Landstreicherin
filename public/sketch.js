@@ -138,7 +138,7 @@ function setup() {
 
   grid = new Grid();
   grid2 = new Grid();
-  // grid3 = new Grid();
+  grid3 = new Grid();
 
 
   // background(200);
@@ -178,12 +178,21 @@ function setup() {
   dirtLines = new dirtLines();
 
   // background(200);
-  background(color(BACKGROUNDCOLOR));  // first one
+  background(color(BACKGROUNDCOLOR));
   push()
   translate(-width / 2, -height / 2);
   image(sphere.buffer, 0, 0);
   pop();
 
+
+  // brush color
+  // push();
+  // strokeWeight(0.3);
+  // for (var i = 0; i <= 30; i++) {
+  //   stroke(getRandomFromInterval(50, 150));
+  //   line(getRandomFromInterval(-5, 5), getRandomFromInterval(-5, 5), getRandomFromInterval(-5, 5), getRandomFromInterval(-5, 5));
+  // }
+  // pop();
 
 }
 
@@ -239,7 +248,7 @@ function draw() {
 
   grid.show();
   grid2.show();
-  // grid3.show();
+  grid3.show();
 
   // noLoop();
 
