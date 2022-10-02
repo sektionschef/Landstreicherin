@@ -17,9 +17,15 @@ let rescaling_height;
 let PALETTE;
 let PALETTE_LABEL;
 
-let BRUSHCOLOR = "#8f6900";
-let PRIMARYCOLOR = "#f7c331";
-let BACKGROUNDCOLOR = "#8f6900";
+// let BRUSHCOLOR = "#8f6900";
+// let PRIMARYCOLOR = "#f7c331";
+// let BACKGROUNDCOLOR = "#8f6900";
+
+// Living Coral (#FC766AFF) and Pacific Coast (#5B84B1FF)
+let BRUSHCOLOR = "#FC766AFF";
+let PRIMARYCOLOR = "#5B84B1FF";
+let BACKGROUNDCOLOR = "#FC766AFF";
+
 
 let CURRENTPIXELDENS = 1;
 
@@ -95,6 +101,9 @@ function preload() {
 }
 
 function setup() {
+
+  setAttributes('alpha', true);
+
   noiseSeed(NOISESEED);
   randomSeed(NOISESEED);
 
@@ -102,7 +111,8 @@ function setup() {
 
   scaleDynamically();
 
-  canvas = createCanvas(rescaling_width, rescaling_height, WEBGL);
+  // canvas = createCanvas(rescaling_width, rescaling_height, WEBGL);
+  canvas = createCanvas(rescaling_width, rescaling_height);
   canvas.id('badAssCanvas');
 
   if (MODE > 1) {
@@ -138,11 +148,8 @@ function setup() {
 
   grid = new Grid();
   grid2 = new Grid();
-  grid3 = new Grid();
+  // grid3 = new Grid();
 
-
-  // background(200);
-  background(color(BACKGROUNDCOLOR));
 
   // basic fill for transparency
   // push()
@@ -177,29 +184,42 @@ function setup() {
 
   dirtLines = new dirtLines();
 
+
+  // START DRAW
+  pixelDensity(CURRENTPIXELDENS);
   // background(200);
   background(color(BACKGROUNDCOLOR));
   push()
-  translate(-width / 2, -height / 2);
+  // translate(-width / 2, -height / 2);
   image(sphere.buffer, 0, 0);
   pop();
 
 
-  // brush color
-  // push();
-  // strokeWeight(0.3);
-  // for (var i = 0; i <= 30; i++) {
-  //   stroke(getRandomFromInterval(50, 150));
-  //   line(getRandomFromInterval(-5, 5), getRandomFromInterval(-5, 5), getRandomFromInterval(-5, 5), getRandomFromInterval(-5, 5));
-  // }
-  // pop();
+  rothko = new RothkoRect({
+    custom_width: 500,
+    custom_height: 300,
+    posX: 100,
+    posY: 300,
+    elementSizeMin: 10,
+    elementSizeMax: 50,
+    colorObject: color("yellow"),
+    margin: 0,
+    fillColorNoise: 35,
+    fillColorOpacity: 15,
+    noStroke: true,
+    strokeWeight: 10,
+    strokeColorNoise: 20,
+    strokeOpacityMax: 20,
+    numberQuantisizer: 10,
+  });
+  rothko.show();
 
 }
 
 
 function draw() {
 
-  pixelDensity(CURRENTPIXELDENS);
+  // pixelDensity(CURRENTPIXELDENS);
 
   // camera(0, 0, (height / 2) / tan(PI / 6), 0, 0, 0, 0, 1, 0);  // default
   // if (MODE == 5) {
@@ -209,7 +229,7 @@ function draw() {
   //   camera(0, 700, 0, 0, 0, 0, 0, 0, 1);
   // }
 
-  ambientLight(255, 255, 255);
+  // ambientLight(255, 255, 255);
   // directionalLight(200, 200, 200, 1, -1, 0);
   // pointLight(155, 155, 155, 20 * conv, 0 * conv, -30 * conv)
   // ambientMaterial(255);
@@ -225,6 +245,11 @@ function draw() {
   // translate(375, 450)
   // box(150, 300, 0);
   // pop();
+
+
+  // if (frameCount == 1) {
+
+  // }
 
 
   // hatchesHigh.show();
@@ -248,7 +273,7 @@ function draw() {
 
   grid.show();
   grid2.show();
-  grid3.show();
+  // grid3.show();
 
   // noLoop();
 

@@ -112,10 +112,11 @@ class paintedSphere {
             // this.buffer.rect(element.posXRe / exportRatio, element.posYRe / exportRatio, element.widthShape / exportRatio, element.heightShape / exportRatio);
             this.buffer.rect(element.posXRe, element.posYRe, element.widthShape, element.heightShape);
 
-            // dirtlines
-            this.buffer.stroke(BACKGROUNDCOLOR + "10");
-            this.buffer.strokeWeight(1);
-            this.buffer.line(getRandomFromInterval(0, width), getRandomFromInterval(0, height), getRandomFromInterval(0, width), getRandomFromInterval(0, height));
+            // DIRTLINES
+            // this.buffer.stroke(BACKGROUNDCOLOR + "10");
+            // this.buffer.strokeWeight(1);
+            // this.buffer.line(getRandomFromInterval(0, width), getRandomFromInterval(0, height), getRandomFromInterval(0, width), getRandomFromInterval(0, height));
+
             this.buffer.pop();
         }
 

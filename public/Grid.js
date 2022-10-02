@@ -340,7 +340,9 @@ class Box {
         if (MODE >= 5) {
             push();
             rectMode(CENTER);
-            translate(this.center_x - width / 2, this.center_y - height / 2);
+            // translate(this.center_x - width / 2, this.center_y - height / 2);
+            // translate(-width / 2, -height / 2);
+            translate(this.center_x, this.center_y);
             noFill();
             strokeWeight(1);
             stroke(51);

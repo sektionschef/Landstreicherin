@@ -377,7 +377,7 @@ class Hatches {
 
         if (MODE >= 5) {
             push();
-            translate(-width / 2, -height / 2);
+            // translate(-width / 2, -height / 2);
             translate(this.cornerLeft.x + this.width / 2, this.cornerLeft.y + this.height / 2, 0)
             fill(255, 255, 255, 100);
             box(this.width, this.height, 0);

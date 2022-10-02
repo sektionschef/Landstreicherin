@@ -139,7 +139,7 @@ class Brush {
         if (MODE >= 5) {
             // start
             push();
-            translate(-width / 2, -height / 2);
+            // translate(-width / 2, -height / 2);
             translate(this.start);
             noStroke();
             fill("blue");
@@ -148,7 +148,7 @@ class Brush {
 
             // accA
             push();
-            translate(-width / 2, -height / 2);
+            // translate(-width / 2, -height / 2);
             translate(this.checkpointA);
             noStroke();
             fill("red");
@@ -159,7 +159,7 @@ class Brush {
 
             // accB
             push();
-            translate(-width / 2, -height / 2);
+            // translate(-width / 2, -height / 2);
             translate(this.checkpointB);
             noStroke();
             fill("red");
@@ -169,7 +169,7 @@ class Brush {
 
             // end
             push();
-            translate(-width / 2, -height / 2);
+            // translate(-width / 2, -height / 2);
             translate(this.end);
             noStroke();
             fill("purple");
@@ -180,7 +180,7 @@ class Brush {
         if (this.alive) {
 
             push();
-            translate(-width / 2, -height / 2);
+            // translate(-width / 2, -height / 2);
             translate(this.pos);
             if (MODE >= 5) {
                 noStroke();

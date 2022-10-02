@@ -144,7 +144,7 @@ class Brush {
         push();
         strokeWeight(3);
         // stroke(255, 255, 0);
-        translate(-width / 2, -height / 2);
+        // translate(-width / 2, -height / 2);
         translate(this.start);
         // line(0, 0, this.Distance.x, this.Distance.y);
         // line(0, 0, this.Distance.x / 4, this.Distance.y / 4);
@@ -154,7 +154,7 @@ class Brush {
 
         // accA
         push();
-        translate(-width / 2, -height / 2);
+        // translate(-width / 2, -height / 2);
         // translate(this.accA);
         // noStroke();
         // fill("red");
@@ -166,7 +166,7 @@ class Brush {
 
         // accB
         push();
-        translate(-width / 2, -height / 2);
+        // translate(-width / 2, -height / 2);
         // translate(this.accB);
         // noStroke();
         // fill("red");
@@ -178,7 +178,7 @@ class Brush {
 
         // end
         push();
-        translate(-width / 2, -height / 2);
+        // translate(-width / 2, -height / 2);
         translate(this.end);
         noStroke();
         fill("purple");
@@ -188,7 +188,7 @@ class Brush {
         if (this.alive) {
 
             push();
-            translate(-width / 2, -height / 2);
+            // translate(-width / 2, -height / 2);
             translate(this.pos);
             if (MODE >= 5) {
                 noStroke();
