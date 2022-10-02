@@ -295,6 +295,7 @@ class Grid {
             console.log(axis + " axis randomly chosen.");
 
             box.hatches = new Hatches(axis, box.a, box.c, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+            // box.rothko = 
         }
     }
 

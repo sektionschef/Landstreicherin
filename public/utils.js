@@ -34,26 +34,25 @@ function distortColor(colorObject, max_diff) {
     return color(red, green, blue, opacity);
 }
 
+function distortColorNew(colorObject, diff) {
+
+    colorMode(HSB, 100);
+    brightnessNew = brightness(colorObject) + getRandomFromInterval(-diff, diff);
+    saturationNew = saturation(colorObject) + getRandomFromInterval(-diff, diff);
+    hueNew = hue(colorObject) + getRandomFromInterval(-diff / 2, diff / 2);
+    resultingColor = color(hueNew, saturationNew, brightnessNew, alpha(colorObject));
+
+    colorMode(RGB, 255);
+    return resultingColor
+}
+
 function brightenColor(colorObject, diff) {
 
-    colorMode(HSB);
+    colorMode(HSB, 100);
     brightnessNew = brightness(colorObject) + getRandomFromInterval(-diff, diff);
-    resultingColor = color(hue(colorObject), saturation(colorObject), brightnessNew);
+    resultingColor = color(hue(colorObject), saturation(colorObject), brightnessNew, alpha(colorObject));
 
-    // let diff_constant = getRandomFromInterval(-diff, diff)
-    // let red = (colorObject.levels[0] + diff_constant);
-    // let green = (colorObject.levels[1] + diff_constant);
-    // let blue = (colorObject.levels[2] + diff_constant);
-    // let opacity = colorObject.levels[3];
-
-    // // not larger than 255 and not smaller than 0
-    // red = Math.min(Math.max(parseInt(red), 0), 255);
-    // green = Math.min(Math.max(parseInt(green), 0), 255);
-    // blue = Math.min(Math.max(parseInt(blue), 0), 255);
-
-    // return color(red, green, blue, opacity);
-    colorMode(RGB);
-    // return colorObject
+    colorMode(RGB, 255);
     return resultingColor
 }
 

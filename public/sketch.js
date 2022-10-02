@@ -158,14 +158,15 @@ function setup() {
     posY: 0,
     elementSizeMin: 10,
     elementSizeMax: 50,
-    colorObject: color(PRIMARYCOLOR),
     margin: 50,
-    fillColorNoise: 35,
-    fillColorOpacity: 15,
-    noStroke: true,
-    strokeWeight: 10,
-    strokeColorNoise: 20,
-    strokeOpacity: 20,
+    fillColor: color(PRIMARYCOLOR),
+    fillColorNoise: 7,
+    fillColorOpacity: 10,
+    noStroke: false,
+    strokeColor: color(50),
+    strokeWeight: 1,
+    strokeColorNoise: 3,
+    strokeOpacity: 6,
     numberQuantisizer: 10,
   });
 
@@ -179,14 +180,15 @@ function setup() {
     posY: 300,
     elementSizeMin: 10,
     elementSizeMax: 50,
-    colorObject: color(BACKGROUNDCOLOR),
     margin: 0,
-    fillColorNoise: 35,
-    fillColorOpacity: 15,
-    noStroke: true,
-    strokeWeight: 10,
-    strokeColorNoise: 20,
-    strokeOpacity: 20,
+    fillColor: color(BACKGROUNDCOLOR),
+    fillColorNoise: 3,
+    fillColorOpacity: 10,
+    noStroke: false,
+    strokeColor: color(50),
+    strokeWeight: 1,
+    strokeColorNoise: 3,
+    strokeOpacity: 15,
     numberQuantisizer: 10,
   });
 }
@@ -222,17 +224,6 @@ function draw() {
     background(200);
   }
 
-  // push();
-  // translate(-width / 2, -height / 2);
-  // translate(375, 450)
-  // box(150, 300, 0);
-  // pop();
-
-
-  // if (frameCount == 1) {
-
-  // }
-
 
   // hatchesHigh.show();
   // hatchesLong.show();
@@ -260,6 +251,7 @@ function draw() {
   // noLoop();
 
   if (grid.boxes_completely_run && grid2.boxes_completely_run) {
+    // rothko.show();
     dirtLines.show();
     console.log("All done");
     noLoop();

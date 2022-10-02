@@ -15,6 +15,7 @@ class RothkoRect {
                 fillColorNoise: 10,
                 fillColorOpacity: 10,
                 noStroke: true,
+                strokeColor: color(50),
                 strokeWeight: 10,
                 strokeColorNoise: 20,
                 strokeOpacity: 50,
@@ -29,11 +30,12 @@ class RothkoRect {
         this.posY = data.posY;
         this.elementSizeMin = data.elementSizeMin;
         this.elementSizeMax = data.elementSizeMax;
-        this.colorObject = data.colorObject;
         this.margin = data.margin;
+        this.fillColor = data.fillColor;
         this.fillColorNoise = data.fillColorNoise;
         this.fillColorOpacity = data.fillColorOpacity;
         this.noStroke = data.noStroke;
+        this.strokeColor = data.strokeColor;
         this.strokeWeight = data.strokeWeight;
         this.strokeColorNoise = data.strokeColorNoise;
         this.strokeOpacity = data.strokeOpacity;
@@ -43,8 +45,8 @@ class RothkoRect {
         this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
 
         this.elements = []
-        color(this.colorObject).setAlpha(this.fillColorOpacity);
-        this.fillColor = this.colorObject;
+        color(this.fillColor).setAlpha(this.fillColorOpacity);
+        color(this.strokeColor).setAlpha(this.strokeOpacity);
 
         for (var i = 0; i < this.shapeNumber; i++) {
 
@@ -52,11 +54,12 @@ class RothkoRect {
             let heightShape = getRandomFromInterval(this.elementSizeMin, this.elementSizeMax);
 
             this.elements.push({
-                strokeColor: color(100, this.strokeColorOpacity),
-                fillColor: this.fillColor,
+                strokeColor: this.strokeColor,
+                fillColor: distortColorNew(this.fillColor, this.fillColorNoise),
                 widthShape: widthShape,
                 heightShape: heightShape,
                 strokeSize: this.strokeWeight,
+                strokeColor: distortColorNew(this.strokeColor, this.strokeColorNoise),
                 posXEl: getRandomFromInterval(this.margin, this.custom_width - this.margin),
                 posYEl: getRandomFromInterval(this.margin, this.custom_height - this.margin),
                 posXRe: getRandomFromInterval(this.margin, this.custom_width - this.margin),
@@ -67,31 +70,19 @@ class RothkoRect {
 
     show() {
 
-        // push();
-        // translate((this.posX), (this.posY));
-        // noStroke();
-        // fill(this.fillColor);
-
-        // rectMode(CENTER);
-        // ellipseMode(CENTER);
-
-        // ellipse(0, 0, 20, 30);
-        // rect(0, 0, 20, 30);
-        // pop();
-
 
         for (var element of this.elements) {
             push();
-            fill(this.fillColor);
+            fill(element.fillColor);
             rectMode(CENTER);
             ellipseMode(CENTER);
             translate((this.posX), (this.posY));
-            // if (this.noStroke == true) {
-            noStroke();
-            // } else {
-            //     stroke(element.strokeColor);
-            //     strokeWeight(element.strokeSize);
-            // }
+            if (this.noStroke == true) {
+                noStroke();
+            } else {
+                strokeWeight(strokeWeight);
+                stroke(element.strokeColor);
+            }
 
             ellipse(element.posXEl, element.posYEl, element.widthShape, element.heightShape);
             rect(element.posXRe, element.posYRe, element.widthShape, element.heightShape);
