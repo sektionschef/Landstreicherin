@@ -151,48 +151,25 @@ function setup() {
   // grid3 = new Grid();
 
 
-  // basic fill for transparency
-  // push()
-  // fill(BACKGROUNDCOLOR);
-  // noStroke();
-  // translate(-width / 2, -height / 2);
-  // rect(0, 0, width, height);
-  // pop()
-
-
-
-  sphere = new paintedSphere({
+  sphere = new RothkoRect({
     custom_width: width,
     custom_height: height,
     posX: 0,
     posY: 0,
-    // posX: -width / 2,
-    // posY: -height / 2,
     elementSizeMin: 10,
     elementSizeMax: 50,
     colorObject: color(PRIMARYCOLOR),
     margin: 50,
     fillColorNoise: 35,
-    fillColorOpacityMax: 15,
+    fillColorOpacity: 15,
     noStroke: true,
     strokeWeight: 10,
     strokeColorNoise: 20,
-    strokeOpacityMax: 20,
-    numberQuantisizer: 40,
+    strokeOpacity: 20,
+    numberQuantisizer: 10,
   });
-  sphere.show();
 
   dirtLines = new dirtLines();
-
-
-  // START DRAW
-  pixelDensity(CURRENTPIXELDENS);
-  // background(200);
-  background(color(BACKGROUNDCOLOR));
-  push()
-  // translate(-width / 2, -height / 2);
-  image(sphere.buffer, 0, 0);
-  pop();
 
 
   rothko = new RothkoRect({
@@ -202,18 +179,16 @@ function setup() {
     posY: 300,
     elementSizeMin: 10,
     elementSizeMax: 50,
-    colorObject: color("yellow"),
+    colorObject: color(BACKGROUNDCOLOR),
     margin: 0,
     fillColorNoise: 35,
     fillColorOpacity: 15,
     noStroke: true,
     strokeWeight: 10,
     strokeColorNoise: 20,
-    strokeOpacityMax: 20,
+    strokeOpacity: 20,
     numberQuantisizer: 10,
   });
-  rothko.show();
-
 }
 
 
@@ -234,6 +209,13 @@ function draw() {
   // pointLight(155, 155, 155, 20 * conv, 0 * conv, -30 * conv)
   // ambientMaterial(255);
   // specularMaterial(255);
+
+  if (frameCount == 1) {
+    pixelDensity(CURRENTPIXELDENS);
+    background(color(BACKGROUNDCOLOR));
+    sphere.show();
+    rothko.show();
+  }
 
 
   if (MODE == 5) {

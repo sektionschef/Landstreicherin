@@ -17,7 +17,7 @@ class RothkoRect {
                 noStroke: true,
                 strokeWeight: 10,
                 strokeColorNoise: 20,
-                strokeOpacityMax: 50,
+                strokeOpacity: 50,
                 numberQuantisizer: 20,
             }
         }
@@ -36,7 +36,7 @@ class RothkoRect {
         this.noStroke = data.noStroke;
         this.strokeWeight = data.strokeWeight;
         this.strokeColorNoise = data.strokeColorNoise;
-        this.strokeOpacityMax = data.strokeOpacityMax;
+        this.strokeOpacity = data.strokeOpacity;
         this.numberQuantisizer = data.numberQuantisizer;
 
         this.area = this.custom_width * this.custom_height;
@@ -47,13 +47,12 @@ class RothkoRect {
         this.fillColor = this.colorObject;
 
         for (var i = 0; i < this.shapeNumber; i++) {
-            let strokeColorOpacity = this.strokeOpacity;
 
             let widthShape = getRandomFromInterval(this.elementSizeMin, this.elementSizeMax);
             let heightShape = getRandomFromInterval(this.elementSizeMin, this.elementSizeMax);
 
             this.elements.push({
-                strokeColor: color(100, strokeColorOpacity),
+                strokeColor: color(100, this.strokeColorOpacity),
                 fillColor: this.fillColor,
                 widthShape: widthShape,
                 heightShape: heightShape,
