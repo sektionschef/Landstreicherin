@@ -55,14 +55,13 @@ class dirtLines {
 
         for (var element of this.elements) {
             push();
-            translate(-width / 2, -height / 2);
+            // translate(-width / 2, -height / 2);
             // translate(element.position.x, element.position.y);
 
             // dirtlines
             stroke(element.strokeColor);
             strokeWeight(element.strokeWeight);
             line(getRandomFromInterval(0, width), getRandomFromInterval(0, height), getRandomFromInterval(0, width), getRandomFromInterval(0, height));
-            line(0, 0, 400, 500);
             pop();
         }
 

@@ -45,11 +45,9 @@ let PaperDimensions = {
 }
 
 const PALETTESYSTEM = {
-  "Arielle": [
-    "#534438",
-    "#FBE1BB",
-    "#785237",
-    "#926139",
+  "BloodyDky": [
+    "#FC766AFF",
+    "#5B84B1FF",
   ],
 }
 
@@ -67,7 +65,7 @@ function choosePalette() {
   }
   // console.log(allPalettes);
   PALETTE_LABEL = getRandomFromList(allPalettes);
-  // console.log(PALETTE_LABEL);
+  console.log("Palette: " + PALETTE_LABEL);
   PALETTE = PALETTESYSTEM[PALETTE_LABEL];
 }
 
@@ -139,15 +137,15 @@ function setup() {
 
   DISTANCE_BETWEEN_LINES = map(STROKE_SIZE, 1, 5, 10, 25, true);
 
-  // hatchesHigh = new Hatches("yx", createVector(100, 300), createVector(250, 600), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-  // hatchesLong = new Hatches("yx", createVector(300, 300), createVector(650, 400), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-  // hatchesHigh = new Hatches("yx", createVector(100, 100), createVector(450, 900), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-  // hatchesLong = new Hatches("yx", createVector(100, 100), createVector(750, 300), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // hatchesHigh = new Hatches("yx", createVector(100, 300), createVector(250, 600), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // hatchesLong = new Hatches("yx", createVector(300, 300), createVector(650, 400), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // hatchesHigh = new Hatches("yx", createVector(100, 100), createVector(450, 900), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // hatchesLong = new Hatches("yx", createVector(100, 100), createVector(750, 300), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 
-  // hatchesBug = new Hatches("y", createVector(717, 50), createVector(898, 898), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // hatchesBug = new Hatches("y", createVector(717, 50), createVector(898, 898), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 
   grid = new Grid();
-  grid2 = new Grid();
+  // grid2 = new Grid();
   // grid3 = new Grid();
 
 
@@ -170,7 +168,7 @@ function setup() {
     numberQuantisizer: 10,
   });
 
-  dirtLines = new dirtLines();
+  // dirtLines = new dirtLines();
 
 
   rothko = new RothkoRect({
@@ -212,11 +210,14 @@ function draw() {
   // ambientMaterial(255);
   // specularMaterial(255);
 
+
   if (frameCount == 1) {
+    console.log(PALETTE[0]);
+    console.log(PRIMARYCOLOR);
     pixelDensity(CURRENTPIXELDENS);
-    background(color(BACKGROUNDCOLOR));
-    sphere.show();
-    rothko.show();
+    background(getRandomFromList(PALETTE));
+    // sphere.show();
+    // rothko.show();
   }
 
 
@@ -245,14 +246,15 @@ function draw() {
   // brushBug.display();
 
   grid.show();
-  grid2.show();
+  // grid2.show();
   // grid3.show();
 
   // noLoop();
 
-  if (grid.boxes_completely_run && grid2.boxes_completely_run) {
+  // if (grid.boxes_completely_run && grid2.boxes_completely_run) {
+  if (grid.boxes_completely_run) {
     // rothko.show();
-    dirtLines.show();
+    // dirtLines.show();
     console.log("All done");
     noLoop();
   }

@@ -45,8 +45,10 @@ class RothkoRect {
         this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
 
         this.elements = []
-        color(this.fillColor).setAlpha(this.fillColorOpacity);
-        color(this.strokeColor).setAlpha(this.strokeOpacity);
+        this.fillColor = color(red(this.fillColor), green(this.fillColor), blue(this.fillColor), this.fillColorOpacity);
+        this.strokeColor = color(red(this.strokeColor), green(this.strokeColor), blue(this.strokeColor), this.strokeOpacity);
+        // color(this.fillColor).setAlpha(this.fillColorOpacity);
+        // color(this.strokeColor).setAlpha(this.strokeOpacity);
 
         for (var i = 0; i < this.shapeNumber; i++) {
 

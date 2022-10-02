@@ -288,14 +288,43 @@ class Grid {
     }
 
     create_lines() {
+        let indexChooser
+        let hatchColor;
+        let rothkoColor;
+
         for (let box of this.boxes) {
 
             let axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
             // let axis = getRandomFromList(["yx"]);
             console.log(axis + " axis randomly chosen.");
 
-            box.hatches = new Hatches(axis, box.a, box.c, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-            // box.rothko = 
+            indexChooser = getRandomFromList([0, 1])
+            hatchColor = PALETTE[indexChooser];
+            if (indexChooser == 0) {
+                rothkoColor = PALETTE[1];
+            } else {
+                rothkoColor = PALETTE[0];
+            }
+
+            box.rothko = new RothkoRect({
+                custom_width: (box.c.x - box.a.x),
+                custom_height: (box.c.y - box.a.y),
+                posX: box.a.x,
+                posY: box.a.y,
+                elementSizeMin: 10,
+                elementSizeMax: 50,
+                margin: 0,
+                fillColor: rothkoColor,
+                fillColorNoise: 3,
+                fillColorOpacity: 10,
+                noStroke: false,
+                strokeColor: color(50),
+                strokeWeight: 1,
+                strokeColorNoise: 3,
+                strokeOpacity: 5,
+                numberQuantisizer: 10,
+            });
+            box.hatches = new Hatches(axis, box.a, box.c, hatchColor, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
         }
     }
 
@@ -304,6 +333,9 @@ class Grid {
         this.boxes_complete_status = [];
 
         for (let box of this.boxes) {
+            if (frameCount == 1) {
+                box.rothko.show();
+            }
             box.show();
             box.hatches.show();
 

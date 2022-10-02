@@ -125,10 +125,11 @@ class Brush {
         if (this.alive) {
             this.move();
             if (this.vel.x > 0) {
-                // this.radius = map(this.vel.x, 0, 3, 2.75, 1.75)
-                this.radius = map(this.vel.x, 0, 3, 1, 0.3)
+                // this.radius = map(this.vel.x, 0, 3, 1, 0.3)
+                this.radius = map(this.vel.x, 0, 3, 2, 1)
             } else if (this.vel.y > 0) {
-                this.radius = map(this.vel.y, 0, 3, 1, 0.3)
+                // this.radius = map(this.vel.y, 0, 3, 1, 0.3)
+                this.radius = map(this.vel.x, 0, 3, 2, 1)
             }
         }
 
