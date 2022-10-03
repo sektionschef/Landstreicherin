@@ -294,8 +294,8 @@ class Grid {
 
         for (let box of this.boxes) {
 
-            let axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
-            // let axis = getRandomFromList(["yx"]);
+            // let axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
+            let axis = getRandomFromList(["x", "y", "xy", "yx"]);
             console.log(axis + " axis randomly chosen.");
 
             indexChooser = getRandomFromList([0, 1])

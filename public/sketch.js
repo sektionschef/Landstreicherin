@@ -215,7 +215,7 @@ function draw() {
     console.log(PALETTE[0]);
     console.log(PRIMARYCOLOR);
     pixelDensity(CURRENTPIXELDENS);
-    background(getRandomFromList(PALETTE));
+    background(PALETTE[0]);
     // sphere.show();
     // rothko.show();
   }
