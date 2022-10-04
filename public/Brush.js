@@ -2,6 +2,8 @@ class Brush {
     constructor(start, end, colorObject) {
         this.fullspeed = 5;
         this.radius = 0.5;
+        this.radiusMin = 1;
+        this.radiusMax = 2;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
         this.noiseYzoom = 0.007;  // zoom on noise
         this.amplitudeNoiseY = 3.5;  // up and down on Y axis
@@ -82,33 +84,8 @@ class Brush {
             this.vel = createVector(0, 0, 0);
         }
 
-
-        // if (this.pos < this.checkpointA) {
-        //     // start
-        //     this.acc = this.accBoost;
-        //     // console.log("accelerate");
-
-        // } else if (this.pos >= this.checkpointA && this.pos < this.checkpointB) {
-        //     // full speed
-        //     this.acc = createVector(0, 0, 0);
-        //     // console.log("full speed");
-
-        // } else if (this.end.dist(this.pos) <= this.OkLevel) {
-        //     // stop
-        //     this.acc = createVector(0, 0, 0);
-        //     this.vel = createVector(0, 0, 0);
-        //     // console.log("stop");
-        //     this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
-        // } else if (this.pos >= this.checkpointB && this.pos < this.end) {
-        //     // slow down
-        //     this.acc = this.sloBoost;
-        //     // console.log("slow down");
-        // }
-
-
         this.vel.add(this.acc);
         this.pos.add(this.vel);
-
 
         // if (this.orientation == "x") {
         // this.pos.y = this.start2 + this.noisesY[Math.round(mover)];
@@ -126,10 +103,10 @@ class Brush {
             this.move();
             if (this.vel.x > 0) {
                 // this.radius = map(this.vel.x, 0, 3, 1, 0.3)
-                this.radius = map(this.vel.x, 0, 3, 2, 1)
+                this.radius = map(this.vel.x, 0, 3, this.radiusMax, this.radiusMin)
             } else if (this.vel.y > 0) {
                 // this.radius = map(this.vel.y, 0, 3, 1, 0.3)
-                this.radius = map(this.vel.x, 0, 3, 2, 1)
+                this.radius = map(this.vel.y, 0, 3, this.radiusMax, this.radiusMin)
             }
         }
 

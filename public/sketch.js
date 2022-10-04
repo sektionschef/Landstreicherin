@@ -22,9 +22,11 @@ let PALETTE_LABEL;
 // let BACKGROUNDCOLOR = "#8f6900";
 
 // Living Coral (#FC766AFF) and Pacific Coast (#5B84B1FF)
-let BRUSHCOLOR = "#FC766AFF";
-let PRIMARYCOLOR = "#5B84B1FF";
-let BACKGROUNDCOLOR = "#FC766AFF";
+// let BRUSHCOLOR = "#FC766AFF";
+// let PRIMARYCOLOR = "#5B84B1FF";
+// let BACKGROUNDCOLOR = "#FC766AFF";
+
+// 1 Grid or 2 Grids
 
 
 let CURRENTPIXELDENS = 1;
@@ -49,6 +51,10 @@ const PALETTESYSTEM = {
     "#FC766AFF",
     "#5B84B1FF",
   ],
+  "Golden BU": [
+    "#8f6900",
+    "#f7c331",
+  ]
 }
 
 // grid
@@ -157,7 +163,7 @@ function setup() {
     elementSizeMin: 10,
     elementSizeMax: 50,
     margin: 50,
-    fillColor: color(PRIMARYCOLOR),
+    fillColor: color(PALETTE[0]),
     fillColorNoise: 7,
     fillColorOpacity: 10,
     noStroke: false,
@@ -179,7 +185,7 @@ function setup() {
     elementSizeMin: 10,
     elementSizeMax: 50,
     margin: 0,
-    fillColor: color(BACKGROUNDCOLOR),
+    fillColor: color(PALETTE[1]),
     fillColorNoise: 3,
     fillColorOpacity: 10,
     noStroke: false,
@@ -189,6 +195,7 @@ function setup() {
     strokeOpacity: 15,
     numberQuantisizer: 10,
   });
+
 }
 
 
@@ -212,10 +219,8 @@ function draw() {
 
 
   if (frameCount == 1) {
-    console.log(PALETTE[0]);
-    console.log(PRIMARYCOLOR);
     pixelDensity(CURRENTPIXELDENS);
-    background(PALETTE[0]);
+    background(distortColorNew(PALETTE[0], 30));
     // sphere.show();
     // rothko.show();
   }

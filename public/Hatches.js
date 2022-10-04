@@ -58,7 +58,7 @@ class Hatches {
             this.bodies.push(new Brush(
                 start,
                 end,
-                brightenColor(this.brushColor, this.brushColorDistort)
+                distortColorNew(this.brushColor, this.brushColorDistort)
             ));
         }
     }
@@ -81,7 +81,7 @@ class Hatches {
             this.bodies.push(new Brush(
                 start,
                 end,
-                brightenColor(this.brushColor, this.brushColorDistort)
+                distortColorNew(this.brushColor, this.brushColorDistort)
             ));
         }
     }
@@ -123,7 +123,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
         } else {
@@ -141,7 +141,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
 
@@ -163,7 +163,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
 
@@ -183,7 +183,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
         }
@@ -204,7 +204,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
         } else {
@@ -223,7 +223,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
 
@@ -261,7 +261,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
         } else {
@@ -279,7 +279,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
 
@@ -301,7 +301,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
         } else {
@@ -319,7 +319,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
 
@@ -341,7 +341,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
         } else {
@@ -359,7 +359,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    brightenColor(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort)
                 ));
             }
 

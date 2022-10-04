@@ -36,41 +36,46 @@ function distortColor(colorObject, max_diff) {
 
 function distortColorNew(colorObject, diff) {
 
-    colorMode(HSB, 100);
-    brightnessNew = brightness(colorObject) + getRandomFromInterval(-diff, diff);
-    saturationNew = saturation(colorObject) + getRandomFromInterval(-diff, diff);
-    hueNew = hue(colorObject) + getRandomFromInterval(-diff / 2, diff / 2);
-    resultingColor = color(hueNew, saturationNew, brightnessNew, alpha(colorObject));
+    colorA = color(colorObject);
+    colorMode(HSB, 360, 100, 100, 1);
+    brightnessNew = brightness(colorA) + getRandomFromInterval(-diff, diff);
+    saturationNew = saturation(colorA) + getRandomFromInterval(-diff, diff);
+    hueNew = hue(colorA) + getRandomFromInterval(-diff / 4, diff / 4);
+    colorB = color(hueNew, saturationNew, brightnessNew, alpha(colorA));
 
-    colorMode(RGB, 255);
+    colorMode(RGB, 255, 255, 255, 255);
+    resultingColor = color(red(colorB), green(colorB), blue(colorB), alpha(colorA));// map(alpha(colorB), 0, 1, 0, 255));
+
     return resultingColor
+    // return colorObject
 }
 
-function brightenColor(colorObject, diff) {
+// function brightenColor(colorObject, diff) {
 
-    colorMode(HSB, 100);
-    brightnessNew = brightness(colorObject) + getRandomFromInterval(-diff, diff);
-    resultingColor = color(hue(colorObject), saturation(colorObject), brightnessNew, alpha(colorObject));
+//     colorMode(HSB, 100);
+//     brightnessNew = brightness(colorObject) + getRandomFromInterval(-diff, diff);
+//     resultingColor = color(hue(colorObject), saturation(colorObject), brightnessNew, alpha(colorObject));
 
-    colorMode(RGB, 255);
-    return resultingColor
-}
+//     colorMode(RGB, 255);
+//     // return resultingColor
+//     return colorObject
+// }
 
-function brightenColorStatic(colorObject, diff) {
-    colorMode(HSB);
-    brightnessNew = brightness(colorObject) + diff;
-    resultingColor = color(hue(colorObject), saturation(colorObject), brightnessNew);
-    colorMode(RGB);
-    return resultingColor
-}
+// function brightenColorStatic(colorObject, diff) {
+//     colorMode(HSB);
+//     brightnessNew = brightness(colorObject) + diff;
+//     resultingColor = color(hue(colorObject), saturation(colorObject), brightnessNew);
+//     colorMode(RGB);
+//     return resultingColor
+// }
 
-function saturateColorStatic(colorObject, diff) {
-    colorMode(HSB);
-    saturationNew = saturation(colorObject) + diff;
-    resultingColor = color(hue(colorObject), saturationNew, brightness(colorObject));
-    colorMode(RGB);
-    return resultingColor
-}
+// function saturateColorStatic(colorObject, diff) {
+//     colorMode(HSB);
+//     saturationNew = saturation(colorObject) + diff;
+//     resultingColor = color(hue(colorObject), saturationNew, brightness(colorObject));
+//     colorMode(RGB);
+//     return resultingColor
+// }
 
 function lessenColor(colorObject, diff) {
     let diff_constant = getRandomFromInterval(0, -diff)
