@@ -299,11 +299,12 @@ class Grid {
             console.log(axis + " axis randomly chosen.");
 
             indexChooser = getRandomFromList([0, 1])
-            hatchColor = PALETTE[indexChooser];
             if (indexChooser == 0) {
-                rothkoColor = PALETTE[1];
+                hatchColor = PALETTE.hatches[0];
+                rothkoColor = PALETTE.primaries[1];
             } else {
-                rothkoColor = PALETTE[0];
+                hatchColor = PALETTE.hatches[1];
+                rothkoColor = PALETTE.primaries[0];
             }
 
             box.rothko = new RothkoRect({
@@ -322,7 +323,7 @@ class Grid {
                 strokeWeight: 1,
                 strokeColorNoise: 3,
                 strokeOpacity: 5,
-                numberQuantisizer: 10,
+                numberQuantisizer: 20,
             });
             box.hatches = new Hatches(axis, box.a, box.c, hatchColor, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
         }

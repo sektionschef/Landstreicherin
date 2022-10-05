@@ -9,7 +9,7 @@ class Hatches {
         this.offsetPoint = 2;
 
         this.brushColor = brushColor;
-        this.brushColorDistort = 10;
+        this.brushColorDistort = 5;
 
         this.axis = axis;
         this.cornerLeft = cornerLeft  // createVector(x_start, y_start);

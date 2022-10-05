@@ -47,14 +47,35 @@ let PaperDimensions = {
 }
 
 const PALETTESYSTEM = {
-  "BloodyDky": [
-    "#FC766AFF",
-    "#5B84B1FF",
-  ],
-  "Golden BU": [
-    "#8f6900",
-    "#f7c331",
-  ]
+  // "Suzy": {
+  //   "background": 120, //"#fc766a",
+  //   "primaries": [
+  //     "#eb4a00ff",
+  //     "#929ba1ff",
+  //   ],
+  //   "hatches": [
+  //     "#c25725ff",
+  //     "#87888aff",
+  //   ]
+  // },
+  // "BloodyDky": {
+  //   "background": 70,
+  //   "primaries": [
+  //     "#FC766AFF",
+  //     "#5B84B1FF",
+  //   ]
+  // },
+  "Golden BU": {
+    "background": 70,
+    "primaries": [
+      "#978d72",
+      "#f7c331",
+    ],
+    "hatches": [
+      "#836b28",
+      "#b19036",
+    ]
+  },
 }
 
 // grid
@@ -75,16 +96,17 @@ function choosePalette() {
   PALETTE = PALETTESYSTEM[PALETTE_LABEL];
 }
 
-function createPaletteColors() {
+// convert strings to colors
+// function createPaletteColors() {
 
-  for (let palette in PALETTESYSTEM) {
-    // console.log(palette)
-    for (var i = 0; i < PALETTESYSTEM[palette].length; i++) {
-      // console.log(PALETTESYSTEM[palette][i])
-      PALETTESYSTEM[palette][i] = color(PALETTESYSTEM[palette][i]);
-    }
-  }
-}
+//   for (let palette in PALETTESYSTEM) {
+//     // console.log(palette)
+//     for (var i = 0; i < PALETTESYSTEM[palette].length; i++) {
+//       // console.log(PALETTESYSTEM[palette][i])
+//       PALETTESYSTEM[palette][i] = color(PALETTESYSTEM[palette][i]);
+//     }
+//   }
+// }
 
 function preload() {
   const queryString = window.location.search;
@@ -124,7 +146,7 @@ function setup() {
     // console.log("Pixel density: " + pixelDensity())
   }
 
-  createPaletteColors();
+  // createPaletteColors();
 
   // brushX = new Brush(createVector(150, 200), createVector(350, 200));
   // brushXY = new Brush(createVector(400, 450), createVector(560, 600));
@@ -163,7 +185,7 @@ function setup() {
     elementSizeMin: 10,
     elementSizeMax: 50,
     margin: 50,
-    fillColor: color(PALETTE[0]),
+    fillColor: color(PALETTE.primaries[0]),
     fillColorNoise: 7,
     fillColorOpacity: 10,
     noStroke: false,
@@ -185,7 +207,7 @@ function setup() {
     elementSizeMin: 10,
     elementSizeMax: 50,
     margin: 0,
-    fillColor: color(PALETTE[1]),
+    fillColor: color(PALETTE.primaries[1]),
     fillColorNoise: 3,
     fillColorOpacity: 10,
     noStroke: false,
@@ -220,7 +242,8 @@ function draw() {
 
   if (frameCount == 1) {
     pixelDensity(CURRENTPIXELDENS);
-    background(distortColorNew(PALETTE[0], 30));
+    // background(distortColorNew(PALETTE[0], 30));
+    background(color(PALETTE.background));
     // sphere.show();
     // rothko.show();
   }
