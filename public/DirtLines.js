@@ -10,10 +10,11 @@ class dirtLines {
                 margin: 50,
                 posX: 0,
                 posY: 0,
-                strokeColor: color(200, 200, 200),
+                strokeColor: color(100),
                 strokeWeight: 0.1,
                 strokeColorNoise: 0,
-                numberQuantisizer: 0.5,
+                numberQuantisizer: 3,
+                length: 80,
             }
         }
 
@@ -26,6 +27,7 @@ class dirtLines {
         this.strokeWeight = data.strokeWeight;
         this.strokeColorNoise = data.strokeColorNoise;
         this.numberQuantisizer = data.numberQuantisizer;
+        this.length = data.length;
 
         this.colorObjectRed = red(this.strokeColor);
         this.colorObjectGreen = green(this.strokeColor);
@@ -43,10 +45,15 @@ class dirtLines {
 
             this.strokeColor = color(this.colorObjectRed, this.colorObjectGreen, this.colorObjectBlue);
 
+            this.start = createVector(getRandomFromInterval(0, this.custom_width), getRandomFromInterval(0, this.custom_height));
+            this.end = p5.Vector.add(this.start, createVector(getRandomFromInterval(-this.length, this.length), getRandomFromInterval(-this.length, this.length)));
+
             this.elements.push({
                 strokeColor: this.strokeColor,
                 strokeWeight: this.strokeWeight,
-                position: createVector(getRandomFromInterval(this.margin, this.custom_width - this.margin), getRandomFromInterval(this.margin, this.custom_height - this.margin))
+                // position: createVector(getRandomFromInterval(this.margin, this.custom_width - this.margin), getRandomFromInterval(this.margin, this.custom_height - this.margin))
+                start: this.start,
+                end: this.end
             })
         }
     }
@@ -61,7 +68,8 @@ class dirtLines {
             // dirtlines
             stroke(element.strokeColor);
             strokeWeight(element.strokeWeight);
-            line(getRandomFromInterval(0, width), getRandomFromInterval(0, height), getRandomFromInterval(0, width), getRandomFromInterval(0, height));
+            // line(getRandomFromInterval(0, width), getRandomFromInterval(0, height), getRandomFromInterval(0, width), getRandomFromInterval(0, height));
+            line(element.start.x, element.start.y, element.end.x, element.end.y);
             pop();
         }
 

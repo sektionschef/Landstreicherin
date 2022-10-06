@@ -16,6 +16,7 @@ let rescaling_height;
 
 let PALETTE;
 let PALETTE_LABEL;
+let ALLDONE = false;
 
 // let BRUSHCOLOR = "#8f6900";
 // let PRIMARYCOLOR = "#f7c331";
@@ -26,7 +27,12 @@ let PALETTE_LABEL;
 // let PRIMARYCOLOR = "#5B84B1FF";
 // let BACKGROUNDCOLOR = "#FC766AFF";
 
-// 1 Grid or 2 Grids
+// FEATURES
+let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
+console.log("NUMBER_OF_GRIDS: " + NUMBER_OF_GRIDS);
+let HATCHSIZEMIN = 0.5;
+let HATCHSIZEMAX = 1.5;
+console.log("HATCHSIZEMIN: " + HATCHSIZEMIN + " " + "HATCHSIZEMAX: " + HATCHSIZEMAX);
 
 
 let CURRENTPIXELDENS = 1;
@@ -47,35 +53,28 @@ let PaperDimensions = {
 }
 
 const PALETTESYSTEM = {
-  // "Suzy": {
-  //   "background": 120, //"#fc766a",
-  //   "primaries": [
-  //     "#eb4a00ff",
-  //     "#929ba1ff",
-  //   ],
-  //   "hatches": [
-  //     "#c25725ff",
-  //     "#87888aff",
-  //   ]
-  // },
-  // "BloodyDky": {
-  //   "background": 70,
-  //   "primaries": [
-  //     "#FC766AFF",
-  //     "#5B84B1FF",
-  //   ]
-  // },
-  "Golden BU": {
-    "background": 70,
+  "Suzy": {
+    "background": "#e67171",
     "primaries": [
-      "#978d72",
-      "#f7c331",
+      "#eb4a00ff",
+      "#929ba1ff",
     ],
     "hatches": [
-      "#836b28",
-      "#b19036",
+      "#c25725ff",
+      "#87888aff",
     ]
   },
+  // "Golden BU": {
+  //   "background": "#856100",
+  //   "primaries": [
+  //     "#86a8bb",
+  //     "#f7c331",
+  //   ],
+  //   "hatches": [
+  //     "#7996a5",
+  //     "#d1a836",
+  //   ]
+  // },
 }
 
 // grid
@@ -173,9 +172,12 @@ function setup() {
   // hatchesBug = new Hatches("y", createVector(717, 50), createVector(898, 898), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
 
   grid = new Grid();
-  // grid2 = new Grid();
-  // grid3 = new Grid();
-
+  if (NUMBER_OF_GRIDS >= 2) {
+    grid2 = new Grid();
+  }
+  if (NUMBER_OF_GRIDS >= 3) {
+    grid3 = new Grid();
+  }
 
   sphere = new RothkoRect({
     custom_width: width,
@@ -196,7 +198,7 @@ function setup() {
     numberQuantisizer: 10,
   });
 
-  // dirtLines = new dirtLines();
+  dirtLines = new dirtLines();
 
 
   rothko = new RothkoRect({
@@ -274,15 +276,31 @@ function draw() {
   // brushBug.display();
 
   grid.show();
-  // grid2.show();
-  // grid3.show();
+  if (NUMBER_OF_GRIDS >= 2) {
+    grid2.show();
+  }
+  if (NUMBER_OF_GRIDS >= 3) {
+    grid3.show();
+  }
+
+
 
   // noLoop();
 
-  // if (grid.boxes_completely_run && grid2.boxes_completely_run) {
-  if (grid.boxes_completely_run) {
+
+  if (NUMBER_OF_GRIDS == 1 && grid.boxes_completely_run) {
+    ALLDONE = true;
+  }
+  if (NUMBER_OF_GRIDS == 2 && grid.boxes_completely_run && grid2.boxes_completely_run) {
+    ALLDONE = true;
+  }
+  if (NUMBER_OF_GRIDS == 3 && grid.boxes_completely_run && grid2.boxes_completely_run && grid3.boxes_completely_run) {
+    ALLDONE = true;
+  }
+
+  if (ALLDONE == true) {
     // rothko.show();
-    // dirtLines.show();
+    dirtLines.show();
     console.log("All done");
     noLoop();
   }
