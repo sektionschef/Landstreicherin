@@ -54,14 +54,15 @@ let PaperDimensions = {
 
 const PALETTESYSTEM = {
   "Suzy": {
-    "background": "#e67171",
+    // "background": "#e67171",
+    "background": "#7c452cff",
     "primaries": [
       "#eb4a00ff",
-      "#929ba1ff",
+      "#3378a3ff",
     ],
     "hatches": [
       "#c25725ff",
-      "#87888aff",
+      "#566772ff",
     ]
   },
   // "Golden BU": {
