@@ -33,6 +33,17 @@ console.log("NUMBER_OF_GRIDS: " + NUMBER_OF_GRIDS);
 let HATCHSIZEMIN = 0.5;
 let HATCHSIZEMAX = 1.5;
 console.log("HATCHSIZEMIN: " + HATCHSIZEMIN + " " + "HATCHSIZEMAX: " + HATCHSIZEMAX);
+// let BRUSHRADIUSMIN = 0.1;
+// let BRUSHRADIUSMAX = 0.5;
+// let BRUSHRADIUS = getRandomFromInterval(BRUSHRADIUSMIN, BRUSHRADIUSMAX);
+// console.log("BRUSHRADIUS: " + BRUSHRADIUS + " | " + "BRUSHRADIUSMIN: " + BRUSHRADIUSMIN + " " + "BRUSHRADIUSMAX: " + BRUSHRADIUSMAX);
+let BRUSHFULLSPEEDMIN = 2;
+let BRUSHFULLSPEEDMAX = 5;
+let BRUSHFULLSPEED = getRandomFromInterval(2, 5);
+let BRUSHFIBRESIZE = getRandomFromInterval(0.2, 0.4); // 0.4;
+console.log("BRUSHFIBRESIZE: " + BRUSHFIBRESIZE)
+let BRUSHFIBRECOLORNOISE = 20// getRandomFromInterval(3, 20); // 10;
+console.log("BRUSHFIBRECOLORNOISE: " + BRUSHFIBRECOLORNOISE);
 
 
 let CURRENTPIXELDENS = 1;
@@ -61,9 +72,10 @@ const PALETTESYSTEM = {
       "#3378a3ff",
     ],
     "hatches": [
-      "#c25725ff",
-      "#566772ff",
-    ]
+      "#8a7979ff",
+      "#3f5864ff",
+    ],
+    "dirtline": "#404040",
   },
   // "Golden BU": {
   //   "background": "#856100",
@@ -199,7 +211,20 @@ function setup() {
     numberQuantisizer: 10,
   });
 
-  dirtLines = new dirtLines();
+  dirtLines = new dirtLines(
+    data = {
+      custom_width: width,
+      custom_height: height,
+      margin: 50,
+      posX: 0,
+      posY: 0,
+      strokeColor: color(PALETTE.dirtline),
+      strokeWeight: 0.1,
+      strokeColorNoise: 0,
+      numberQuantisizer: 3,
+      length: 80,
+    }
+  );
 
 
   rothko = new RothkoRect({

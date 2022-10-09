@@ -1,16 +1,17 @@
 class Brush {
     constructor(start, end, colorObject) {
-        this.fullspeed = 5// 2-5;
-        this.radius = 0.5;
+        this.fullspeed = BRUSHFULLSPEED // 2-5;
+        // this.radius = BRUSHRADIUS; // bei fullspeed 2 -0.1
         this.radiusMin = HATCHSIZEMIN; // 1;
         this.radiusMax = HATCHSIZEMAX; // 2;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
         this.noiseYzoom = 0.007;  // zoom on noise
         this.amplitudeNoiseY = 3.5;  // up and down on Y axis
         this.OkLevel = 8;  // some offset is ok.
-        this.fillColor = colorObject;  // color(180);
-        this.strokeColor = colorObject; // color("#c79712");
-        this.strokeSize = 0.5;
+        this.fillColor = colorObject;
+        this.strokeColor = colorObject;
+        this.strokeSize = BRUSHFIBRESIZE;  // good one
+        this.strokeColorDistort = BRUSHFIBRECOLORNOISE;
 
         this.start = start;
         this.end = end;
@@ -38,25 +39,25 @@ class Brush {
         this.accBoost = p5.Vector.mult(p5.Vector.normalize(this.Distance), this.boost);
         this.sloBoost = p5.Vector.mult(this.accBoost, -1);
 
-        this.makeSomeNoise();
+        // this.makeSomeNoise();
     }
 
-    makeSomeNoise() {
-        this.noisesY = {};
+    // makeSomeNoise() {
+    //     this.noisesY = {};
 
-        let ioff = getRandomFromInterval(0, 200);  // start at different location for each line
+    //     let ioff = getRandomFromInterval(0, 200);  // start at different location for each line
 
-        // Iterate over horizontal pixels
-        for (let i = this.start; i <= this.end; i++) {
-            // Calculate a y value according to noise, map to
+    //     // Iterate over horizontal pixels
+    //     for (let i = this.start; i <= this.end; i++) {
+    //         // Calculate a y value according to noise, map to
 
-            // console.log(i);
-            this.noisesY[i] = map(noise(ioff), 0, 1, -this.amplitudeNoiseY, this.amplitudeNoiseY);
+    //         // console.log(i);
+    //         this.noisesY[i] = map(noise(ioff), 0, 1, -this.amplitudeNoiseY, this.amplitudeNoiseY);
 
-            // Increment x dimension for noise
-            ioff += this.noiseYzoom;
-        }
-    }
+    //         // Increment x dimension for noise
+    //         ioff += this.noiseYzoom;
+    //     }
+    // }
 
     move() {
 
@@ -165,10 +166,10 @@ class Brush {
                 fill("black");
                 ellipse(0, 0, this.radius * 3, this.radius * 3);
             } else {
-                noStroke();
-                strokeWeight(this.strokeSize);
-                stroke(this.strokeColor);
-                noFill();
+                // noStroke();
+                // strokeWeight(this.strokeSize);
+                // stroke(this.strokeColor);
+                // noFill();
                 // fill(this.fillColor);
                 // rotate(frameCount % 3);
                 // ellipse(0, 0, this.radius, this.radius);
@@ -186,10 +187,11 @@ class Brush {
         this.brushSize = this.radius;
 
         // push();
-        strokeWeight(0.5);
+        strokeWeight(this.strokeSize);
+        line(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize));
         for (var i = 0; i <= 5; i++) {
-            // stroke(getRandomFromInterval(this.strokeColor - 50, this.strokeColor + 50));
-            stroke(this.strokeColor);
+            // stroke(this.strokeColor);
+            stroke(distortColorNew(this.strokeColor, this.strokeColorDistort))
             line(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize));
         }
         // pop();

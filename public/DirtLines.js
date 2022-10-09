@@ -10,7 +10,7 @@ class dirtLines {
                 margin: 50,
                 posX: 0,
                 posY: 0,
-                strokeColor: color(100),
+                strokeColor: color(70),
                 strokeWeight: 0.1,
                 strokeColorNoise: 0,
                 numberQuantisizer: 3,

@@ -322,7 +322,7 @@ class Grid {
                 strokeColor: color(50),
                 strokeWeight: 1,
                 strokeColorNoise: 3,
-                strokeOpacity: 5,
+                strokeOpacity: 15,
                 numberQuantisizer: 20,
             });
             box.hatches = new Hatches(axis, box.a, box.c, hatchColor, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);

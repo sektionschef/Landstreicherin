@@ -1,9 +1,3 @@
-STROKE_COLOR = "black";
-STROKE_NOISE = 1;
-STROKE_NOISE_2 = 1;
-STROKE_DISTORT = 1;
-
-
 class Hatches {
     constructor(axis, cornerLeft, cornerRight, brushColor, padding_x, padding_y, distance_between_lines) {
         this.offsetPoint = 2;
