@@ -30,20 +30,22 @@ let ALLDONE = false;
 // FEATURES
 let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
 console.log("NUMBER_OF_GRIDS: " + NUMBER_OF_GRIDS);
-let HATCHSIZEMIN = 0.5;
-let HATCHSIZEMAX = 1.5;
-console.log("HATCHSIZEMIN: " + HATCHSIZEMIN + " " + "HATCHSIZEMAX: " + HATCHSIZEMAX);
-// let BRUSHRADIUSMIN = 0.1;
-// let BRUSHRADIUSMAX = 0.5;
-// let BRUSHRADIUS = getRandomFromInterval(BRUSHRADIUSMIN, BRUSHRADIUSMAX);
-// console.log("BRUSHRADIUS: " + BRUSHRADIUS + " | " + "BRUSHRADIUSMIN: " + BRUSHRADIUSMIN + " " + "BRUSHRADIUSMAX: " + BRUSHRADIUSMAX);
+let BRUSHSIZEMIN = 0.5;
+let BRUSHSIZEMAX = 1.5;
+console.log("BRUSHSIZEMIN: " + BRUSHSIZEMIN + " " + "BRUSHSIZEMAX: " + BRUSHSIZEMAX);
 let BRUSHFULLSPEEDMIN = 2;
 let BRUSHFULLSPEEDMAX = 5;
 let BRUSHFULLSPEED = getRandomFromInterval(2, 5);
 let BRUSHFIBRESIZE = getRandomFromInterval(0.2, 0.4); // 0.4;
-console.log("BRUSHFIBRESIZE: " + BRUSHFIBRESIZE)
-let BRUSHFIBRECOLORNOISE = 20// getRandomFromInterval(3, 20); // 10;
+console.log("BRUSHFIBRESIZE: " + BRUSHFIBRESIZE);
+let BRUSHFIBRECOLORNOISE = getRandomFromInterval(3, 10); // 10;
 console.log("BRUSHFIBRECOLORNOISE: " + BRUSHFIBRECOLORNOISE);
+let BRUSHCOLORDISTORT = getRandomFromInterval(5, 10);
+console.log("BRUSHCOLORDISTORT: " + BRUSHCOLORDISTORT);
+// let DISTANCE_BETWEEN_LINES = map(BRUSHFULLSPEEDMAX, 1, 5, 10, 25, true);
+
+let DISTANCE_BETWEEN_LINES_MULTIPLIER = getRandomFromInterval(2, 4);
+let DISTANCE_BETWEEN_LINES = BRUSHFULLSPEEDMAX * DISTANCE_BETWEEN_LINES_MULTIPLIER;
 
 
 let CURRENTPIXELDENS = 1;
@@ -167,15 +169,10 @@ function setup() {
 
   // brushBug = new Brush(createVector(807, 50), createVector(807, 898));
 
-  // grid
-  STROKE_SIZE = 1;
-
   // PADDING_X = getRandomFromInterval(0, 20);
   // PADDING_Y = getRandomFromInterval(0, 20);
   PADDING_X = 0;
   PADDING_Y = 0;
-
-  DISTANCE_BETWEEN_LINES = map(STROKE_SIZE, 1, 5, 10, 25, true);
 
   // hatchesHigh = new Hatches("yx", createVector(100, 300), createVector(250, 600), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
   // hatchesLong = new Hatches("yx", createVector(300, 300), createVector(650, 400), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);

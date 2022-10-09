@@ -1,9 +1,9 @@
 class Hatches {
     constructor(axis, cornerLeft, cornerRight, brushColor, padding_x, padding_y, distance_between_lines) {
         this.offsetPoint = 2;
+        this.brushColorDistort = BRUSHCOLORDISTORT;
 
         this.brushColor = brushColor;
-        this.brushColorDistort = 5;
 
         this.axis = axis;
         this.cornerLeft = cornerLeft  // createVector(x_start, y_start);

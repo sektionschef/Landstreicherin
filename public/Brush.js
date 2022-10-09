@@ -2,8 +2,8 @@ class Brush {
     constructor(start, end, colorObject) {
         this.fullspeed = BRUSHFULLSPEED // 2-5;
         // this.radius = BRUSHRADIUS; // bei fullspeed 2 -0.1
-        this.radiusMin = HATCHSIZEMIN; // 1;
-        this.radiusMax = HATCHSIZEMAX; // 2;
+        this.radiusMin = BRUSHSIZEMIN; // 1;
+        this.radiusMax = BRUSHSIZEMAX; // 2;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
         this.noiseYzoom = 0.007;  // zoom on noise
         this.amplitudeNoiseY = 3.5;  // up and down on Y axis
