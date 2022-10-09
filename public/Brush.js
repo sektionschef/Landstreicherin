@@ -104,10 +104,10 @@ class Brush {
             this.move();
             if (this.vel.x > 0) {
                 // this.radius = map(this.vel.x, 0, 3, 1, 0.3)
-                this.radius = map(this.vel.x, 0, 3, this.radiusMax, this.radiusMin)
+                this.radius = map(this.vel.x, BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX, this.radiusMax, this.radiusMin)
             } else if (this.vel.y > 0) {
                 // this.radius = map(this.vel.y, 0, 3, 1, 0.3)
-                this.radius = map(this.vel.y, 0, 3, this.radiusMax, this.radiusMin)
+                this.radius = map(this.vel.y, BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX, this.radiusMax, this.radiusMin)
             }
         }
 
@@ -188,7 +188,6 @@ class Brush {
 
         // push();
         strokeWeight(this.strokeSize);
-        line(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize));
         for (var i = 0; i <= 5; i++) {
             // stroke(this.strokeColor);
             stroke(distortColorNew(this.strokeColor, this.strokeColorDistort))

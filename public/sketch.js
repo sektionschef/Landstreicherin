@@ -35,10 +35,10 @@ let BRUSHSIZEMAX = 1.5;
 console.log("BRUSHSIZEMIN: " + BRUSHSIZEMIN + " " + "BRUSHSIZEMAX: " + BRUSHSIZEMAX);
 let BRUSHFULLSPEEDMIN = 2;
 let BRUSHFULLSPEEDMAX = 5;
-let BRUSHFULLSPEED = getRandomFromInterval(2, 5);
+let BRUSHFULLSPEED = getRandomFromInterval(BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX);
 let BRUSHFIBRESIZE = getRandomFromInterval(0.2, 0.4); // 0.4;
 console.log("BRUSHFIBRESIZE: " + BRUSHFIBRESIZE);
-let BRUSHFIBRECOLORNOISE = getRandomFromInterval(3, 10); // 10;
+let BRUSHFIBRECOLORNOISE = getRandomFromInterval(3, 10);
 console.log("BRUSHFIBRECOLORNOISE: " + BRUSHFIBRECOLORNOISE);
 let BRUSHCOLORDISTORT = getRandomFromInterval(5, 10);
 console.log("BRUSHCOLORDISTORT: " + BRUSHCOLORDISTORT);
@@ -74,8 +74,10 @@ const PALETTESYSTEM = {
       "#3378a3ff",
     ],
     "hatches": [
-      "#8a7979ff",
-      "#3f5864ff",
+      // "#c45927ff",
+      // "#224f6bff",
+      "#c45927ff",
+      "#224f6bff",
     ],
     "dirtline": "#404040",
   },
