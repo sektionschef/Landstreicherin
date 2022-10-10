@@ -15,7 +15,7 @@ class RothkoRect {
                 fillColorNoise: 10,
                 fillColorOpacity: 10,
                 noStroke: true,
-                strokeColor: color(50),
+                strokeColor: PALETTE.rothkoStroke,
                 strokeWeight: 10,
                 strokeColorNoise: 20,
                 strokeOpacity: 50,

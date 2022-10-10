@@ -322,7 +322,7 @@ class Grid {
                 strokeColor: color(PALETTE.rothkoStroke),
                 strokeWeight: 1,
                 strokeColorNoise: 3,
-                strokeOpacity: 15,
+                strokeOpacity: ROTHKOSTROKEOPACITY, // 50, // 15,
                 numberQuantisizer: 20,
             });
 

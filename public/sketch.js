@@ -47,6 +47,8 @@ console.log("BRUSHCOLORDISTORT: " + BRUSHCOLORDISTORT);
 let DISTANCE_BETWEEN_LINES_MULTIPLIER = getRandomFromInterval(2, 4);
 let DISTANCE_BETWEEN_LINES = BRUSHFULLSPEEDMAX * DISTANCE_BETWEEN_LINES_MULTIPLIER;
 
+ROTHKOSTROKEOPACITY = getRandomFromInterval(5, 30);
+console.log("ROTHKOSTROKEOPACITY: " + ROTHKOSTROKEOPACITY);
 
 let CURRENTPIXELDENS = 1;
 
@@ -112,7 +114,7 @@ const PALETTESYSTEM = {
       "#a2a7a7",
       "#736767",
     ],
-    "rothkoStroke": "#645d5d",
+    "rothkoStroke": "#242424",
     "dirtline": "#1f1c1c",
   },
   // "Das Zeitliche": {
