@@ -114,8 +114,8 @@ const PALETTESYSTEM = {
       "#be2020",
     ],
     "hatches": [
-      "#59686d",
-      "#9c7070",
+      "#364f55",
+      "#aa8787",
     ],
     "rothkoStroke": "#1b1818",
     "dirtline": "#3d3b3b",
