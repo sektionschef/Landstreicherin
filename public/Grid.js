@@ -13,8 +13,8 @@ class Grid {
         this.boxes_complete_status = [];
         this.boxes_completely_run = false;
 
-        this.count_of_points_x = Math.round(getRandomFromInterval(1, 4));  // 1-5
-        this.count_of_points_y = Math.round(getRandomFromInterval(1, 4));  // 1-5
+        this.count_of_points_x = Math.round(getRandomFromInterval(2, 5));  // 1-5
+        this.count_of_points_y = Math.round(getRandomFromInterval(2, 5));  // 1-5
         this.grid_label = this.count_of_points_x + "x" + this.count_of_points_y;
         console.log("Grid: " + this.grid_label);
 
