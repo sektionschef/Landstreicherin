@@ -105,17 +105,20 @@ const PALETTESYSTEM = {
   //   "dirtline": "#404040",
   // },
   "Molto": {
-    "background": "#cccdcd",
+    // "background": "#cccdcd",
+    "background": "#1e2c2c",
     "primaries": [
-      "#a2a7a7",
-      "#736767",
+      // "#a2a7a7",
+      // "#736767",
+      "#1eacac",
+      "#be2020",
     ],
     "hatches": [
-      "#a2a7a7",
-      "#736767",
+      "#59686d",
+      "#9c7070",
     ],
-    "rothkoStroke": "#242424",
-    "dirtline": "#1f1c1c",
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#3d3b3b",
   },
   // "Das Zeitliche": {
   //   "background": "#454646",
