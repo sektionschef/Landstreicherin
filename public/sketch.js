@@ -66,21 +66,18 @@ let PaperDimensions = {
 }
 
 const PALETTESYSTEM = {
-  "Suzy": {
-    // "background": "#e67171",
-    "background": "#7c452cff",
-    "primaries": [
-      "#eb4a00ff",
-      "#3378a3ff",
-    ],
-    "hatches": [
-      // "#c45927ff",
-      // "#224f6bff",
-      "#c45927ff",
-      "#224f6bff",
-    ],
-    "dirtline": "#404040",
-  },
+  // "Suzy": {
+  //   "background": "#7c452cff",
+  //   "primaries": [
+  //     "#eb4a00ff",
+  //     "#3378a3ff",
+  //   ],
+  //   "hatches": [
+  //     "#c45927ff",
+  //     "#224f6bff",
+  //   ],
+  //   "dirtline": "#404040",
+  // },
   // "Golden BU": {
   //   "background": "#856100",
   //   "primaries": [
@@ -88,9 +85,58 @@ const PALETTESYSTEM = {
   //     "#f7c331",
   //   ],
   //   "hatches": [
-  //     "#7996a5",
-  //     "#d1a836",
-  //   ]
+  //     "#597886",
+  //     "#e0b12e",
+  //   ],
+  //   "dirtline": "#404040",
+  // },
+  // "Aneignung": {
+  //   "background": "#71294b",
+  //   "primaries": [
+  //     "#c2798e",
+  //     "#a3234a",
+  //   ],
+  //   "hatches": [
+  //     "#c2798e",
+  //     "#a3234a",
+  //   ],
+  //   "dirtline": "#404040",
+  // },
+  "Molto": {
+    "background": "#cccdcd",
+    "primaries": [
+      "#a2a7a7",
+      "#736767",
+    ],
+    "hatches": [
+      "#a2a7a7",
+      "#736767",
+    ],
+    "dirtline": "#1f1c1c",
+  },
+  // "Das Zeitliche": {
+  //   "background": "#454646",
+  //   "primaries": [
+  //     "#686b6b",
+  //     "#788083",
+  //   ],
+  //   "hatches": [
+  //     "#686b6b",
+  //     "#788083",
+  //   ],
+  //   "dirtline": "#757474",
+  // },
+  // "Frischkäse": {
+  //   "background": "#54543f",
+  //   "primaries": [
+  //     "#d6a076",
+  //     "#6e6f85",
+  //   ],
+  //   "hatches": [
+  //     "#d6a076",
+  //     "#6e6f85",
+  //   ],
+  //   "dirtline": "#757474",
   // },
 }
 
@@ -210,20 +256,20 @@ function setup() {
     numberQuantisizer: 10,
   });
 
-  dirtLines = new dirtLines(
-    data = {
-      custom_width: width,
-      custom_height: height,
-      margin: 50,
-      posX: 0,
-      posY: 0,
-      strokeColor: color(PALETTE.dirtline),
-      strokeWeight: 0.1,
-      strokeColorNoise: 0,
-      numberQuantisizer: 3,
-      length: 80,
-    }
-  );
+  // dirtLines = new dirtLines(
+  //   data = {
+  //     custom_width: width,
+  //     custom_height: height,
+  //     margin: 50,
+  //     posX: 0,
+  //     posY: 0,
+  //     strokeColor: color(PALETTE.dirtline),
+  //     strokeWeight: 0.1,
+  //     strokeColorNoise: 0,
+  //     numberQuantisizer: 15,  // 3
+  //     length: 40,  // 80
+  //   }
+  // );
 
 
   rothko = new RothkoRect({
@@ -325,7 +371,7 @@ function draw() {
 
   if (ALLDONE == true) {
     // rothko.show();
-    dirtLines.show();
+    // dirtLines.show();
     console.log("All done");
     noLoop();
   }

@@ -325,6 +325,22 @@ class Grid {
                 strokeOpacity: 15,
                 numberQuantisizer: 20,
             });
+
+            box.dirtLines = new dirtLines(
+                {
+                    custom_width: (box.c.x - box.a.x),
+                    custom_height: (box.c.y - box.a.y),
+                    margin: 0,
+                    posX: box.a.x,
+                    posY: box.a.y,
+                    strokeColor: color(PALETTE.dirtline),
+                    strokeWeight: 0.1,
+                    strokeColorNoise: 0,
+                    numberQuantisizer: 15,  // 3
+                    length: 40,  // 80
+                }
+            );
+
             box.hatches = new Hatches(axis, box.a, box.c, hatchColor, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
         }
     }
@@ -336,6 +352,7 @@ class Grid {
         for (let box of this.boxes) {
             if (frameCount == 1) {
                 box.rothko.show();
+                box.dirtLines.show();
             }
             box.show();
             box.hatches.show();

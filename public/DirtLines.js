@@ -21,8 +21,7 @@ class dirtLines {
         this.custom_width = data.custom_width;
         this.custom_height = data.custom_height;
         this.margin = data.margin;
-        this.posX = data.posX;
-        this.posY = data.posY;
+        this.pos = createVector(data.posX, data.posY);
         this.strokeColor = data.strokeColor;
         this.strokeWeight = data.strokeWeight;
         this.strokeColorNoise = data.strokeColorNoise;
@@ -45,7 +44,7 @@ class dirtLines {
 
             this.strokeColor = color(this.colorObjectRed, this.colorObjectGreen, this.colorObjectBlue);
 
-            this.start = createVector(getRandomFromInterval(0, this.custom_width), getRandomFromInterval(0, this.custom_height));
+            this.start = createVector(getRandomFromInterval((0 + this.margin), (this.custom_width - this.margin)), getRandomFromInterval((0 + this.margin), (this.custom_height - this.margin)));
             this.end = p5.Vector.add(this.start, createVector(getRandomFromInterval(-this.length, this.length), getRandomFromInterval(-this.length, this.length)));
 
             this.elements.push({
@@ -60,18 +59,16 @@ class dirtLines {
 
     show() {
 
-        for (var element of this.elements) {
-            push();
-            // translate(-width / 2, -height / 2);
-            // translate(element.position.x, element.position.y);
+        push();
+        translate(this.pos.x, this.pos.y);
 
-            // dirtlines
+        for (var element of this.elements) {
             stroke(element.strokeColor);
             strokeWeight(element.strokeWeight);
             // line(getRandomFromInterval(0, width), getRandomFromInterval(0, height), getRandomFromInterval(0, width), getRandomFromInterval(0, height));
             line(element.start.x, element.start.y, element.end.x, element.end.y);
-            pop();
         }
+        pop();
 
         if (MODE >= 5) {
             push();
