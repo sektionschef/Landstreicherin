@@ -319,7 +319,7 @@ class Grid {
                 fillColorNoise: 3,
                 fillColorOpacity: 10,
                 noStroke: false,
-                strokeColor: color(50),
+                strokeColor: color(PALETTE.rothkoStroke),
                 strokeWeight: 1,
                 strokeColorNoise: 3,
                 strokeOpacity: 15,
@@ -333,9 +333,9 @@ class Grid {
                     margin: 0,
                     posX: box.a.x,
                     posY: box.a.y,
-                    strokeColor: color(PALETTE.dirtline),
+                    strokeColor: distortColorNew(color(PALETTE.dirtline), 20),
                     strokeWeight: 0.1,
-                    strokeColorNoise: 0,
+                    strokeColorNoise: 15,
                     numberQuantisizer: 15,  // 3
                     length: 40,  // 80
                 }

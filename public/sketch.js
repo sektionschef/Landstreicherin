@@ -112,6 +112,7 @@ const PALETTESYSTEM = {
       "#a2a7a7",
       "#736767",
     ],
+    "rothkoStroke": "#645d5d",
     "dirtline": "#1f1c1c",
   },
   // "Das Zeitliche": {

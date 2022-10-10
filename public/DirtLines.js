@@ -28,27 +28,18 @@ class dirtLines {
         this.numberQuantisizer = data.numberQuantisizer;
         this.length = data.length;
 
-        this.colorObjectRed = red(this.strokeColor);
-        this.colorObjectGreen = green(this.strokeColor);
-        this.colorObjectBlue = blue(this.strokeColor);
-
         this.area = this.custom_width * this.custom_height;
         this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
 
-        this.elements = []
+        this.elements = [];
 
         for (var i = 0; i < this.shapeNumber; i++) {
-            this.colorObjectRed = getRandomFromInterval(this.colorObjectRed - this.strokeColorNoise, this.colorObjectRed + this.strokeColorNoise);
-            this.colorObjectGreen = getRandomFromInterval(this.colorObjectGreen - this.strokeColorNoise, this.colorObjectGreen + this.strokeColorNoise);
-            this.colorObjectBlue = getRandomFromInterval(this.colorObjectBlue - this.strokeColorNoise, this.colorObjectBlue + this.strokeColorNoise);
-
-            this.strokeColor = color(this.colorObjectRed, this.colorObjectGreen, this.colorObjectBlue);
 
             this.start = createVector(getRandomFromInterval((0 + this.margin), (this.custom_width - this.margin)), getRandomFromInterval((0 + this.margin), (this.custom_height - this.margin)));
             this.end = p5.Vector.add(this.start, createVector(getRandomFromInterval(-this.length, this.length), getRandomFromInterval(-this.length, this.length)));
 
             this.elements.push({
-                strokeColor: this.strokeColor,
+                strokeColor: distortColorNew(this.strokeColor, this.strokeColorNoise),
                 strokeWeight: this.strokeWeight,
                 // position: createVector(getRandomFromInterval(this.margin, this.custom_width - this.margin), getRandomFromInterval(this.margin, this.custom_height - this.margin))
                 start: this.start,
