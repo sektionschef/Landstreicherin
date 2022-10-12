@@ -333,7 +333,7 @@ class Grid {
                     margin: 0,
                     posX: box.a.x,
                     posY: box.a.y,
-                    strokeColor: distortColorNew(color(PALETTE.dirtline), 20),
+                    strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
                     strokeWeight: 0.1,
                     strokeColorNoise: 15,
                     numberQuantisizer: 15,  // 3
@@ -407,4 +407,5 @@ class Box {
         }
     }
 }
+
 

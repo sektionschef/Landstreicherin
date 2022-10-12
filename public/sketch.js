@@ -104,45 +104,46 @@ const PALETTESYSTEM = {
   //   ],
   //   "dirtline": "#404040",
   // },
-  // "Molto": {
-  //   // "background": "#cccdcd",
-  //   "background": "#1e2c2c",
-  //   "primaries": [
-  //     // "#a2a7a7",
-  //     // "#736767",
-  //     "#1eacac",
-  //     "#be2020",
-  //   ],
-  //   "hatches": [
-  //     "#364f55",
-  //     "#aa8787",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#3d3b3b",
-  // },
-  "Das Zeitliche": {
-    "background": "#2d3131",
+  "Molto": {
+    // "background": "#cccdcd",
+    "background": "#323a3a",
     "primaries": [
-      "#443f3f",
-      "#788185",
+      // "#a2a7a7",
+      // "#736767",
+      "#20cccc",
+      "#be2020",
     ],
     "hatches": [
-      "#797e7e",
-      "#4c5457",
+      "#406068",
+      "#722929",
     ],
     "rothkoStroke": "#1b1818",
-    "dirtline": "#757474",
+    "dirtline": "#3d3b3b",
   },
+  // "Das Zeitliche": {
+  //   "background": "#2d3131",
+  //   "primaries": [
+  //     "#443f3f",
+  //     "#788185",
+  //   ],
+  //   "hatches": [
+  //     "#797e7eff",
+  //     "#4c5457ff",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#757474",
+  // },
   // "Frischkäse": {
-  //   "background": "#54543f",
+  //   "background": "#333338",
   //   "primaries": [
   //     "#d6a076",
   //     "#6e6f85",
   //   ],
   //   "hatches": [
   //     "#d6a076",
-  //     "#6e6f85",
+  //     "#363968",
   //   ],
+  //   "rothkoStroke": "#3b3939",
   //   "dirtline": "#757474",
   // },
 }
