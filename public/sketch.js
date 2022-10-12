@@ -68,6 +68,45 @@ let PaperDimensions = {
 }
 
 const PALETTESYSTEM = {
+  // "Dead": {
+  //   "background": "#32746D",
+  //   "primaries": [
+  //     "#9EC5AB",
+  //     "#104F55",
+  //   ],
+  //   "hatches": [
+  //     "#88ac94",
+  //     "#14545a",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  // },
+  "Feinstaub": {
+    "background": "#532100",
+    "primaries": [
+      "#F3752B",
+      "#F52F57",
+    ],
+    "hatches": [
+      "#cf6426",
+      "#dd2449",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#404040",
+  },
+  // "Horsti": {
+  //   "background": "#7ca3bb",
+  //   "primaries": [
+  //     "#669BBC",
+  //     "#F3A712",
+  //   ],
+  //   "hatches": [
+  //     "#669BBC",
+  //     "#F3A712",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  // },
   // "Suzy": {
   //   "background": "#7c452cff",
   //   "primaries": [
@@ -78,22 +117,24 @@ const PALETTESYSTEM = {
   //     "#c45927ff",
   //     "#224f6bff",
   //   ],
+  //   "rothkoStroke": "#1b1818",
   //   "dirtline": "#404040",
   // },
   // "Golden BU": {
-  //   "background": "#856100",
+  //   "background": "#c7c6c5",
   //   "primaries": [
   //     "#86a8bb",
   //     "#f7c331",
   //   ],
   //   "hatches": [
-  //     "#597886",
-  //     "#e0b12e",
+  //     "#37718b",
+  //     "#bd9937",
   //   ],
+  //   "rothkoStroke": "#1b1818",
   //   "dirtline": "#404040",
   // },
   // "Aneignung": {
-  //   "background": "#71294b",
+  //   "background": "#612541",
   //   "primaries": [
   //     "#c2798e",
   //     "#a3234a",
@@ -102,24 +143,35 @@ const PALETTESYSTEM = {
   //     "#c2798e",
   //     "#a3234a",
   //   ],
+  //   "rothkoStroke": "#1b1818",
   //   "dirtline": "#404040",
   // },
-  "Molto": {
-    // "background": "#cccdcd",
-    "background": "#323a3a",
-    "primaries": [
-      // "#a2a7a7",
-      // "#736767",
-      "#20cccc",
-      "#be2020",
-    ],
-    "hatches": [
-      "#406068",
-      "#722929",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#3d3b3b",
-  },
+  // "MoltoVolto": {
+  //   "background": "#cccdcd",
+  //   "primaries": [
+  //     "#a2a7a7",
+  //     "#736767",
+  //   ],
+  //   "hatches": [
+  //     "#8e9191",
+  //     "#6d5c5c",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#3d3b3b",
+  // },
+  // "Molto": {
+  //   "background": "#323a3a",
+  //   "primaries": [
+  //     "#20cccc",
+  //     "#be2020",
+  //   ],
+  //   "hatches": [
+  //     "#406068",
+  //     "#722929",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#3d3b3b",
+  // },
   // "Das Zeitliche": {
   //   "background": "#2d3131",
   //   "primaries": [
