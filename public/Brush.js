@@ -40,6 +40,7 @@ class Brush {
         this.sloBoost = p5.Vector.mult(this.accBoost, -1);
 
         // this.makeSomeNoise();
+        this.get_orientation();
     }
 
     // makeSomeNoise() {
@@ -58,6 +59,29 @@ class Brush {
     //         ioff += this.noiseYzoom;
     //     }
     // }
+
+    get_orientation() {
+
+        this.acceptanceLevel = PI / 24
+        // console.log("this.acceptanceLevel: " + this.acceptanceLevel);
+
+
+        // this.orientation = p5.Vector.normalize(p5.Vector.sub(this.end, this.start));
+        this.orientation = p5.Vector.sub(this.end, this.start).heading();
+        // console.log("this.orientation: " + this.orientation);
+
+        if (this.orientation > -this.acceptanceLevel && this.orientation < this.acceptanceLevel) {
+            console.log("horizontal");
+            this.strokeColor = "red";
+        } else if (this.orientation > (PI / 4 - this.acceptanceLevel) && this.orientation < (PI / 4 + this.acceptanceLevel)) {
+            console.log("top-left to bottom-right");
+            this.strokeColor = "purple";
+        } else if (this.orientation > (PI / 2 - this.acceptanceLevel) && this.orientation < (PI / 2 + this.acceptanceLevel)) {
+            this.strokeColor = "green";
+        } else if (this.orientation < -(PI / 4 - this.acceptanceLevel) && this.orientation > -(PI / 4 + this.acceptanceLevel)) {
+            this.strokeColor = "blue";
+        }
+    }
 
     move() {
 

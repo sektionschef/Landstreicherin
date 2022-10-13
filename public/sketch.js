@@ -68,32 +68,32 @@ let PaperDimensions = {
 }
 
 const PALETTESYSTEM = {
-  // "Dead": {
-  //   "background": "#32746D",
-  //   "primaries": [
-  //     "#9EC5AB",
-  //     "#104F55",
-  //   ],
-  //   "hatches": [
-  //     "#88ac94",
-  //     "#14545a",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#404040",
-  // },
-  "Feinstaub": {
-    "background": "#532100",
+  "Dead": {
+    "background": "#32746D",
     "primaries": [
-      "#F3752B",
-      "#F52F57",
+      "#9EC5AB",
+      "#104F55",
     ],
     "hatches": [
-      "#cf6426",
-      "#dd2449",
+      "#88ac94",
+      "#14545a",
     ],
     "rothkoStroke": "#1b1818",
     "dirtline": "#404040",
   },
+  // "Feinstaub": {
+  //   "background": "#532100",
+  //   "primaries": [
+  //     "#F3752B",
+  //     "#F52F57",
+  //   ],
+  //   "hatches": [
+  //     "#cf6426",
+  //     "#dd2449",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  // },
   // "Horsti": {
   //   "background": "#7ca3bb",
   //   "primaries": [
