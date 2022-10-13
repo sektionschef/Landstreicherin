@@ -63,23 +63,21 @@ class Brush {
     get_orientation() {
 
         this.acceptanceLevel = PI / 24
-        // console.log("this.acceptanceLevel: " + this.acceptanceLevel);
 
+        this.angle = p5.Vector.sub(this.end, this.start).heading();
 
-        // this.orientation = p5.Vector.normalize(p5.Vector.sub(this.end, this.start));
-        this.orientation = p5.Vector.sub(this.end, this.start).heading();
-        // console.log("this.orientation: " + this.orientation);
-
-        if (this.orientation > -this.acceptanceLevel && this.orientation < this.acceptanceLevel) {
-            console.log("horizontal");
-            this.strokeColor = "red";
-        } else if (this.orientation > (PI / 4 - this.acceptanceLevel) && this.orientation < (PI / 4 + this.acceptanceLevel)) {
-            console.log("top-left to bottom-right");
-            this.strokeColor = "purple";
-        } else if (this.orientation > (PI / 2 - this.acceptanceLevel) && this.orientation < (PI / 2 + this.acceptanceLevel)) {
-            this.strokeColor = "green";
-        } else if (this.orientation < -(PI / 4 - this.acceptanceLevel) && this.orientation > -(PI / 4 + this.acceptanceLevel)) {
-            this.strokeColor = "blue";
+        if (this.angle > -this.acceptanceLevel && this.angle < this.acceptanceLevel) {
+            // this.strokeColor = "red";
+            this.orientation = "left-right";
+        } else if (this.angle > (PI / 4 - this.acceptanceLevel) && this.angle < (PI / 4 + this.acceptanceLevel)) {
+            // this.strokeColor = "purple";
+            this.orientation = "top/left-bottom/right";
+        } else if (this.angle > (PI / 2 - this.acceptanceLevel) && this.angle < (PI / 2 + this.acceptanceLevel)) {
+            // this.strokeColor = "green";
+            this.orientation = "top-bottom";
+        } else if (this.angle < -(PI / 4 - this.acceptanceLevel) && this.angle > -(PI / 4 + this.acceptanceLevel)) {
+            // this.strokeColor = "blue";
+            this.orientation = "left/bottom-top/right";
         }
     }
 
