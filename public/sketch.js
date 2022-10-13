@@ -1,6 +1,6 @@
-const MODE = 1  // "FINE ART";
+// const MODE = 1  // "FINE ART";
 // const MODE = 2  // DEBUG MESSAGES
-// const MODE = 5 // all debug messages
+const MODE = 5 // all debug messages
 
 const NOISESEED = hashFnv32a(fxhash);
 if (MODE > 1) {
@@ -270,10 +270,10 @@ function setup() {
 
   // createPaletteColors();
 
-  // brushX = new Brush(createVector(150, 200), createVector(350, 200));
-  // brushXY = new Brush(createVector(400, 450), createVector(560, 600));
-  // brushY = new Brush(createVector(300, 400), createVector(300, 800));
-  // brushYX = new Brush(createVector(400, 600), createVector(560, 450));
+  brushX = new Brush(createVector(150, 200), createVector(350, 200));
+  brushXY = new Brush(createVector(400, 450), createVector(560, 600));
+  brushY = new Brush(createVector(300, 400), createVector(300, 800));
+  brushYX = new Brush(createVector(400, 600), createVector(560, 450));
 
   // brushBug = new Brush(createVector(807, 50), createVector(807, 898));
 
@@ -394,25 +394,25 @@ function draw() {
 
 
   // brush examples
-  // brushX.update();
-  // brushX.display();
-  // brushXY.update();
-  // brushXY.display();
-  // brushY.update();
-  // brushY.display();
-  // brushYX.update();
-  // brushYX.display();
+  brushX.update();
+  brushX.display();
+  brushXY.update();
+  brushXY.display();
+  brushY.update();
+  brushY.display();
+  brushYX.update();
+  brushYX.display();
 
   // brushBug.update();
   // brushBug.display();
 
-  grid.show();
-  if (NUMBER_OF_GRIDS >= 2) {
-    grid2.show();
-  }
-  if (NUMBER_OF_GRIDS >= 3) {
-    grid3.show();
-  }
+  // grid.show();
+  // if (NUMBER_OF_GRIDS >= 2) {
+  //   grid2.show();
+  // }
+  // if (NUMBER_OF_GRIDS >= 3) {
+  //   grid3.show();
+  // }
 
 
 

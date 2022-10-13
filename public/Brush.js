@@ -62,35 +62,91 @@ class Brush {
 
     get_orientation() {
 
-        this.acceptanceLevel = PI / 24
+        this.acceptanceLevel = PI / 12
 
         this.angle = p5.Vector.sub(this.end, this.start).heading();
 
         if (this.angle > -this.acceptanceLevel && this.angle < this.acceptanceLevel) {
-            // this.strokeColor = "red";
+            this.strokeColor = "red";
             this.orientation = "left-right";
         } else if (this.angle > (PI / 4 - this.acceptanceLevel) && this.angle < (PI / 4 + this.acceptanceLevel)) {
-            // this.strokeColor = "purple";
+            this.strokeColor = "purple";
             this.orientation = "top/left-bottom/right";
         } else if (this.angle > (PI / 2 - this.acceptanceLevel) && this.angle < (PI / 2 + this.acceptanceLevel)) {
-            // this.strokeColor = "green";
+            this.strokeColor = "green";
             this.orientation = "top-bottom";
         } else if (this.angle < -(PI / 4 - this.acceptanceLevel) && this.angle > -(PI / 4 + this.acceptanceLevel)) {
-            // this.strokeColor = "blue";
+            this.strokeColor = "blue";
             this.orientation = "left/bottom-top/right";
+        } else {
+            console.log("some noise with this.angle: " + this.angle);
+            // throw "no orientation"
+            this.alive = false;
         }
+    }
+
+    get_status() {
+
+        // SOLUTION WITH TOTAL DISTANCE - achtung kein else if
+        // if (this.pos.dist(this.end) <= this.OkLevel) {
+        //     this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
+        // } else if (this.pos.dist(this.checkpointA) <= 2) {
+        //     this.passedA = true;
+        // } else if (this.pos.dist(this.checkpointB) <= 2) {
+        //     this.passedB = true;
+        // }
+
+        if (this.orientation == "left-right") {
+            if (this.pos.x > (this.end.x - this.OkLevel)) {
+                this.alive = false;
+            }
+            if (this.pos.x > this.checkpointA.x) {
+                this.passedA = true;
+            }
+            if (this.pos.x > this.checkpointB.x) {
+                this.passedB = true;
+            }
+        } else if (this.orientation == "top/left-bottom/right") {
+            if (this.pos.x > (this.end.x - this.OkLevel) && this.pos.y > (this.end.y - this.OkLevel)) {
+                this.alive = false;
+            }
+            if (this.pos.x > this.checkpointA.x && this.pos.y > this.checkpointA.y) {
+                this.passedA = true;
+            }
+            if (this.pos.x > this.checkpointB.x && this.pos.y > this.checkpointB.y) {
+                this.passedB = true;
+            }
+        } else if (this.orientation == "top-bottom") {
+            if (this.pos.y > (this.end.y - this.OkLevel)) {
+                this.alive = false;
+            }
+            if (this.pos.y > this.checkpointA.y) {
+                this.passedA = true;
+            }
+            if (this.pos.y > this.checkpointB.y) {
+                this.passedB = true;
+            }
+        } else if (this.orientation == "left/bottom-top/right") {
+            if (this.pos.x > (this.end.x - this.OkLevel) && this.pos.y < (this.end.y + this.OkLevel)) {
+                this.alive = false;
+            }
+            if (this.pos.x > this.checkpointA.x && this.pos.y < this.checkpointA.y) {
+                this.passedA = true;
+            }
+            if (this.pos.x > this.checkpointB.x && this.pos.y < this.checkpointB.y) {
+                this.passedB = true;
+            }
+        } else {
+
+        }
+
     }
 
     move() {
 
-        if (this.pos.dist(this.end) <= this.OkLevel) {
-            this.alive = false;  // reaching the goal of one axis is enough (xy & yx case)
-        } else if (this.pos.dist(this.checkpointA) <= 2) {
-            this.passedA = true;
-        } else if (this.pos.dist(this.checkpointB) <= 2) {
-            this.passedB = true;
+        this.get_status();
 
-        }
+
         if (this.passedA == false) {
             // console.log("accelerate");
             this.acc = this.accBoost;
