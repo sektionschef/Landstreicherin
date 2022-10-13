@@ -67,16 +67,16 @@ class Brush {
         this.angle = p5.Vector.sub(this.end, this.start).heading();
 
         if (this.angle > -this.acceptanceLevel && this.angle < this.acceptanceLevel) {
-            this.strokeColor = "red";
+            // this.strokeColor = "red";
             this.orientation = "left-right";
         } else if (this.angle > (PI / 4 - this.acceptanceLevel) && this.angle < (PI / 4 + this.acceptanceLevel)) {
-            this.strokeColor = "purple";
+            // this.strokeColor = "purple";
             this.orientation = "top/left-bottom/right";
         } else if (this.angle > (PI / 2 - this.acceptanceLevel) && this.angle < (PI / 2 + this.acceptanceLevel)) {
-            this.strokeColor = "green";
+            // this.strokeColor = "green";
             this.orientation = "top-bottom";
         } else if (this.angle < -(PI / 4 - this.acceptanceLevel) && this.angle > -(PI / 4 + this.acceptanceLevel)) {
-            this.strokeColor = "blue";
+            // this.strokeColor = "blue";
             this.orientation = "left/bottom-top/right";
         } else {
             console.log("some noise with this.angle: " + this.angle);
