@@ -297,24 +297,24 @@ function setup() {
     grid3 = new Grid();
   }
 
-  sphere = new RothkoRect({
-    custom_width: width,
-    custom_height: height,
-    posX: 0,
-    posY: 0,
-    elementSizeMin: 10,
-    elementSizeMax: 50,
-    margin: 50,
-    fillColor: color(PALETTE.primaries[0]),
-    fillColorNoise: 7,
-    fillColorOpacity: 10,
-    noStroke: false,
-    strokeColor: color(50),
-    strokeWeight: 1,
-    strokeColorNoise: 3,
-    strokeOpacity: 6,
-    numberQuantisizer: 10,
-  });
+  // sphere = new RothkoRect({
+  //   custom_width: width,
+  //   custom_height: height,
+  //   posX: 0,
+  //   posY: 0,
+  //   elementSizeMin: 10,
+  //   elementSizeMax: 50,
+  //   margin: 50,
+  //   fillColor: color(PALETTE.primaries[0]),
+  //   fillColorNoise: 7,
+  //   fillColorOpacity: 10,
+  //   noStroke: false,
+  //   strokeColor: color(50),
+  //   strokeWeight: 1,
+  //   strokeColorNoise: 3,
+  //   strokeOpacity: 6,
+  //   numberQuantisizer: 10,
+  // });
 
   // dirtLines = new dirtLines(
   //   data = {
@@ -331,25 +331,24 @@ function setup() {
   //   }
   // );
 
-
-  rothko = new RothkoRect({
-    custom_width: 500,
-    custom_height: 300,
-    posX: 100,
-    posY: 300,
-    elementSizeMin: 10,
-    elementSizeMax: 50,
-    margin: 0,
-    fillColor: color(PALETTE.primaries[1]),
-    fillColorNoise: 3,
-    fillColorOpacity: 10,
-    noStroke: false,
-    strokeColor: color(50),
-    strokeWeight: 1,
-    strokeColorNoise: 3,
-    strokeOpacity: 15,
-    numberQuantisizer: 10,
-  });
+  // rothko = new RothkoRect({
+  //   custom_width: 200,
+  //   custom_height: 100,
+  //   posX: 100,
+  //   posY: 300,
+  //   elementSizeMin: 5,
+  //   elementSizeMax: 20,
+  //   margin: 0,
+  //   fillColor: color(200),
+  //   fillColorNoise: 3,
+  //   fillColorOpacity: 10,
+  //   noStroke: false,
+  //   strokeColor: color(50),
+  //   strokeWeight: 1,
+  //   strokeColorNoise: 3,
+  //   strokeOpacity: 15,
+  //   numberQuantisizer: 10,
+  // });
 
   dirtCircles = new dirtCircles(
     {
@@ -358,11 +357,14 @@ function setup() {
       margin: 0,
       posX: 0,
       posY: 0,
-      strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
+      fillColor: color(100),
+      fillColorNoise: 100,
+      strokeColor: distortColorNew(color(PALETTE.dirtline), 100),
       strokeWeight: 0.1,
       strokeColorNoise: 15,
-      numberQuantisizer: 15,  // 3
-      length: 40,  // 80
+      numberQuantisizer: 200,  // 3
+      radiusBase: 0.75,
+      radiusNoise: 0.5,
     }
   );
 
@@ -393,7 +395,7 @@ function draw() {
     // background(distortColorNew(PALETTE[0], 30));
     background(color(PALETTE.background));
     // sphere.show();
-    // rothko.show();
+    // dirtCircles.show();
   }
 
 
