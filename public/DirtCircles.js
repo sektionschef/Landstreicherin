@@ -40,7 +40,7 @@ class dirtCircles {
         for (var element of this.elements) {
             // stroke(element.strokeColor);
             // strokeWeight(element.strokeWeight);
-            fill(this.fillColor);
+            fill(element.fillColor);
             noStroke();
             circle(element.pos.x, element.pos.y, getRandomFromInterval(this.radiusBase - this.radiusNoise, this.radiusBase + this.radiusNoise));
         }

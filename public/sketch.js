@@ -350,21 +350,31 @@ function setup() {
   //   numberQuantisizer: 10,
   // });
 
-  dirtCircles = new dirtCircles(
+  dirtCirclesFRONT = new dirtCircles(
     {
       custom_width: width,
       custom_height: height,
       margin: 0,
       posX: 0,
       posY: 0,
-      fillColor: color(100),
-      fillColorNoise: 100,
-      strokeColor: distortColorNew(color(PALETTE.dirtline), 100),
+      fillColor: color(100, 100),
+      fillColorNoise: 30,
+      strokeColor: color(100, 30),
       strokeWeight: 0.1,
       strokeColorNoise: 15,
-      numberQuantisizer: 200,  // 3
-      radiusBase: 0.75,
+      numberQuantisizer: 100,
+      radiusBase: 1,
       radiusNoise: 0.5,
+    }
+  );
+
+  corroded = new Corroded(
+    {
+      custom_width: width,
+      custom_height: height,
+      posX: 0,
+      posY: 0,
+      fillColor: color(PALETTE.background),
     }
   );
 
@@ -395,7 +405,7 @@ function draw() {
     // background(distortColorNew(PALETTE[0], 30));
     background(color(PALETTE.background));
     // sphere.show();
-    // dirtCircles.show();
+    corroded.show();
   }
 
 
@@ -449,7 +459,7 @@ function draw() {
   if (ALLDONE == true) {
     // rothko.show();
     // dirtLines.show();
-    dirtCircles.show();
+    // dirtCirclesFRONT.show();
     console.log("All done");
     noLoop();
   }

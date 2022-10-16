@@ -44,10 +44,9 @@ function distortColorNew(colorObject, diff) {
     colorB = color(hueNew, saturationNew, brightnessNew, alpha(colorA));
 
     colorMode(RGB, 255, 255, 255, 255);
-    resultingColor = color(red(colorB), green(colorB), blue(colorB), alpha(colorA));// map(alpha(colorB), 0, 1, 0, 255));
+    resultingColor = color(red(colorB), green(colorB), blue(colorB), alpha(colorA)); // map(alpha(colorB), 0, 1, 0, 255));
 
     return resultingColor
-    // return colorObject
 }
 
 // function brightenColor(colorObject, diff) {
