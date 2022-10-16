@@ -350,19 +350,19 @@ function setup() {
   //   numberQuantisizer: 10,
   // });
 
-  dirtCirclesFRONT = new dirtCircles(
+  dirtCircles = new dirtCircles(
     {
       custom_width: width,
       custom_height: height,
       margin: 0,
       posX: 0,
       posY: 0,
-      fillColor: color(100, 100),
+      fillColor: color(100, 70),
       fillColorNoise: 30,
       strokeColor: color(100, 30),
       strokeWeight: 0.1,
       strokeColorNoise: 15,
-      numberQuantisizer: 100,
+      numberQuantisizer: 200,
       radiusBase: 1,
       radiusNoise: 0.5,
     }
@@ -459,7 +459,7 @@ function draw() {
   if (ALLDONE == true) {
     // rothko.show();
     // dirtLines.show();
-    // dirtCirclesFRONT.show();
+    dirtCircles.show();
     console.log("All done");
     noLoop();
   }

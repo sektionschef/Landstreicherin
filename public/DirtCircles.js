@@ -40,9 +40,9 @@ class dirtCircles {
         for (var element of this.elements) {
             // stroke(element.strokeColor);
             // strokeWeight(element.strokeWeight);
-            fill(element.fillColor);
             noStroke();
-            circle(element.pos.x, element.pos.y, getRandomFromInterval(this.radiusBase - this.radiusNoise, this.radiusBase + this.radiusNoise));
+            fill(element.fillColor);
+            ellipse(element.pos.x, element.pos.y, getRandomFromInterval(this.radiusBase - this.radiusNoise, this.radiusBase + this.radiusNoise), getRandomFromInterval(this.radiusBase - this.radiusNoise, this.radiusBase + this.radiusNoise));
         }
         pop();
 
