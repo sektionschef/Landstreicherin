@@ -1,16 +1,15 @@
 class dirtCircles {
 
     constructor(data) {
-
         this.custom_width = data.custom_width;
         this.custom_height = data.custom_height;
         this.margin = data.margin;
         this.pos = createVector(data.posX, data.posY);
         this.fillColor = data.fillColor;
         this.fillColorNoise = data.fillColorNoise;
-        this.strokeColor = data.strokeColor;
-        this.strokeWeight = data.strokeWeight;
-        this.strokeColorNoise = data.strokeColorNoise;
+        // this.strokeColor = data.strokeColor;
+        // this.strokeWeight = data.strokeWeight;
+        // this.strokeColorNoise = data.strokeColorNoise;
         this.numberQuantisizer = data.numberQuantisizer;
         this.radiusBase = data.radiusBase;
         this.radiusNoise = data.radiusNoise;
@@ -24,9 +23,8 @@ class dirtCircles {
 
             this.elements.push({
                 fillColor: distortColorNew(this.fillColor, this.fillColorNoise),
-                strokeColor: distortColorNew(this.strokeColor, this.strokeColorNoise),
-                strokeWeight: this.strokeWeight,
-                // position: createVector(getRandomFromInterval(this.margin, this.custom_width - this.margin), getRandomFromInterval(this.margin, this.custom_height - this.margin))
+                // strokeColor: distortColorNew(this.strokeColor, this.strokeColorNoise),
+                // strokeWeight: this.strokeWeight,
                 pos: createVector(getRandomFromInterval((0 + this.margin), (this.custom_width - this.margin)), getRandomFromInterval((0 + this.margin), (this.custom_height - this.margin)))
             })
         }

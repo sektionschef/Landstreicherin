@@ -341,7 +341,22 @@ class Grid {
                 }
             );
 
-            box.hatches = new Hatches(axis, box.a, box.c, hatchColor, PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+            box.dirtCircles = new dirtCircles(
+                {
+                    custom_width: (box.c.x - box.a.x),
+                    custom_height: (box.c.y - box.a.y),
+                    margin: 0,
+                    posX: box.a.x,
+                    posY: box.a.y,
+                    fillColor: color(PALETTE.dirtCircles),
+                    fillColorNoise: 10,
+                    numberQuantisizer: 100,
+                    radiusBase: 0.75,
+                    radiusNoise: 0.25,
+                }
+            );
+
+            box.hatches = new Hatches(axis, box.a, box.c, hatchColor, 0, 0, DISTANCE_BETWEEN_LINES);
         }
     }
 
@@ -353,6 +368,7 @@ class Grid {
             if (frameCount == 1) {
                 box.rothko.show();
                 box.dirtLines.show();
+                box.dirtCircles.show();
             }
             box.show();
             box.hatches.show();
@@ -367,7 +383,6 @@ class Grid {
 
         this.boxes_completely_run = this.boxes_complete_status.every(element => element === true);
     }
-
 }
 
 

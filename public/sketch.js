@@ -7,9 +7,6 @@ if (MODE > 1) {
   console.log("Noise seed: " + NOISESEED);
 }
 
-// convert pixel to real world physics
-const conv = 10;
-
 let canvas;
 let rescaling_width;
 let rescaling_height;
@@ -17,15 +14,6 @@ let rescaling_height;
 let PALETTE;
 let PALETTE_LABEL;
 let ALLDONE = false;
-
-// let BRUSHCOLOR = "#8f6900";
-// let PRIMARYCOLOR = "#f7c331";
-// let BACKGROUNDCOLOR = "#8f6900";
-
-// Living Coral (#FC766AFF) and Pacific Coast (#5B84B1FF)
-// let BRUSHCOLOR = "#FC766AFF";
-// let PRIMARYCOLOR = "#5B84B1FF";
-// let BACKGROUNDCOLOR = "#FC766AFF";
 
 // FEATURES
 let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
@@ -72,58 +60,62 @@ let PaperDimensions = {
 }
 
 const PALETTESYSTEM = {
-  "Dead": {
-    "background": "#32746D",
-    "primaries": [
-      "#9EC5AB",
-      "#104F55",
-    ],
-    "hatches": [
-      "#88ac94",
-      "#14545a",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-  },
-  "Feinstaub": {
-    "background": "#532100",
-    "primaries": [
-      "#F3752B",
-      "#F52F57",
-    ],
-    "hatches": [
-      "#cf6426",
-      "#dd2449",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-  },
-  "Horsti": {
-    "background": "#7ca3bb",
-    "primaries": [
-      "#669BBC",
-      "#F3A712",
-    ],
-    "hatches": [
-      "#669BBC",
-      "#F3A712",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-  },
-  "Suzy": {
-    "background": "#7c452cff",
-    "primaries": [
-      "#eb4a00ff",
-      "#3378a3ff",
-    ],
-    "hatches": [
-      "#c45927ff",
-      "#224f6bff",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-  },
+  // "Dead": {
+  //   "background": "#32746D",
+  //   "primaries": [
+  //     "#9EC5AB",
+  //     "#104F55",
+  //   ],
+  //   "hatches": [
+  //     "#88ac94",
+  //     "#14545a",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#32746D",
+  // },
+  // "Feinstaub": {
+  //   "background": "#b1b1b1",
+  //   "primaries": [
+  //     "#ff993a",
+  //     "#F52F57",
+  //   ],
+  //   "hatches": [
+  //     "#cf6426",
+  //     "#ec4163",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#747474",
+  // },
+  // "Horsti": {
+  //   "background": "#7ca3bb",
+  //   "primaries": [
+  //     "#669BBC",
+  //     "#F3A712",
+  //   ],
+  //   "hatches": [
+  //     "#669BBC",
+  //     "#F3A712",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#7ca3bb",
+  // },
+  // "Suzy": {
+  //   "background": "#7c452cff",
+  //   "primaries": [
+  //     "#eb4a00ff",
+  //     "#3378a3ff",
+  //   ],
+  //   "hatches": [
+  //     "#c45927ff",
+  //     "#224f6bff",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#7c452cff",
+  // },
   "Golden BU": {
     "background": "#c7c6c5",
     "primaries": [
@@ -136,76 +128,74 @@ const PALETTESYSTEM = {
     ],
     "rothkoStroke": "#1b1818",
     "dirtline": "#404040",
+    "dirtCircles": "#575757ff",
   },
-  "Aneignung": {
-    "background": "#612541",
-    "primaries": [
-      "#c2798e",
-      "#a3234a",
-    ],
-    "hatches": [
-      "#c2798e",
-      "#a3234a",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-  },
-  "MoltoVolto": {
-    "background": "#cccdcd",
-    "primaries": [
-      "#a2a7a7",
-      "#736767",
-    ],
-    "hatches": [
-      "#8e9191",
-      "#6d5c5c",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#3d3b3b",
-  },
-  "Molto": {
-    "background": "#323a3a",
-    "primaries": [
-      "#20cccc",
-      "#be2020",
-    ],
-    "hatches": [
-      "#406068",
-      "#722929",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#3d3b3b",
-  },
-  "Das Zeitliche": {
-    "background": "#2d3131",
-    "primaries": [
-      "#443f3f",
-      "#788185",
-    ],
-    "hatches": [
-      "#797e7eff",
-      "#4c5457ff",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#757474",
-  },
-  "Frischkäse": {
-    "background": "#333338",
-    "primaries": [
-      "#d6a076",
-      "#6e6f85",
-    ],
-    "hatches": [
-      "#d6a076",
-      "#363968",
-    ],
-    "rothkoStroke": "#3b3939",
-    "dirtline": "#757474",
-  },
+  // "Aneignung": {
+  //   "background": "#612541",
+  //   "primaries": [
+  //     "#c2798e",
+  //     "#a3234a",
+  //   ],
+  //   "hatches": [
+  //     "#c2798e",
+  //     "#a3234a",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  // },
+  // "MoltoVolto": {
+  //   "background": "#cccdcd",
+  //   "primaries": [
+  //     "#a2a7a7",
+  //     "#736767",
+  //   ],
+  //   "hatches": [
+  //     "#8e9191",
+  //     "#6d5c5c",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#3d3b3b",
+  // },
+  // "Molto": {
+  //   "background": "#323a3a",
+  //   "primaries": [
+  //     "#20cccc",
+  //     "#be2020",
+  //   ],
+  //   "hatches": [
+  //     "#406068",
+  //     "#722929",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#3d3b3b",
+  // },
+  // "Das Zeitliche": {
+  //   "background": "#2d3131",
+  //   "primaries": [
+  //     "#443f3f",
+  //     "#788185",
+  //   ],
+  //   "hatches": [
+  //     "#797e7eff",
+  //     "#4c5457ff",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#757474",
+  // },
+  // "Frischkäse": {
+  //   "background": "#333338",
+  //   "primaries": [
+  //     "#d6a076",
+  //     "#6e6f85",
+  //   ],
+  //   "hatches": [
+  //     "#d6a076",
+  //     "#363968",
+  //   ],
+  //   "rothkoStroke": "#3b3939",
+  //   "dirtline": "#757474",
+  // },
 }
-
-// grid
-let SCALING_FACTOR = 1;
 
 choosePalette()
 
@@ -222,23 +212,11 @@ function choosePalette() {
   PALETTE = PALETTESYSTEM[PALETTE_LABEL];
 }
 
-// convert strings to colors
-// function createPaletteColors() {
-
-//   for (let palette in PALETTESYSTEM) {
-//     // console.log(palette)
-//     for (var i = 0; i < PALETTESYSTEM[palette].length; i++) {
-//       // console.log(PALETTESYSTEM[palette][i])
-//       PALETTESYSTEM[palette][i] = color(PALETTESYSTEM[palette][i]);
-//     }
-//   }
-// }
-
 function preload() {
+  font = loadFont('OpenSans-Regular.ttf');
+
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-
-  font = loadFont('OpenSans-Regular.ttf');
 
   if (urlParams.has('highres')) {
     CURRENTPIXELDENS = parseInt(urlParams.get('highres'));
@@ -272,8 +250,7 @@ function setup() {
     // console.log("Pixel density: " + pixelDensity())
   }
 
-  // createPaletteColors();
-
+  // EXAMPLES for DEV
   // brushX = new Brush(createVector(150, 200), createVector(350, 200));
   // brushXY = new Brush(createVector(400, 450), createVector(560, 600));
   // brushY = new Brush(createVector(300, 400), createVector(300, 800));
@@ -281,94 +258,25 @@ function setup() {
 
   // brushBug = new Brush(createVector(807, 50), createVector(807, 898));
 
-  // PADDING_X = getRandomFromInterval(0, 20);
-  // PADDING_Y = getRandomFromInterval(0, 20);
-  PADDING_X = 0;
-  PADDING_Y = 0;
+  // hatchesHigh = new Hatches("yx", createVector(100, 300), createVector(250, 600), color(30), 0, 0, DISTANCE_BETWEEN_LINES);
+  // hatchesLong = new Hatches("yx", createVector(300, 300), createVector(650, 400), color(30), 0, 0, DISTANCE_BETWEEN_LINES);
+  // hatchesHigh = new Hatches("yx", createVector(100, 100), createVector(450, 900), color(30), 0, 0, DISTANCE_BETWEEN_LINES);
+  // hatchesLong = new Hatches("yx", createVector(100, 100), createVector(750, 300), color(30), 0, 0, DISTANCE_BETWEEN_LINES);
 
-  // hatchesHigh = new Hatches("yx", createVector(100, 300), createVector(250, 600), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-  // hatchesLong = new Hatches("yx", createVector(300, 300), createVector(650, 400), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-  // hatchesHigh = new Hatches("yx", createVector(100, 100), createVector(450, 900), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-  // hatchesLong = new Hatches("yx", createVector(100, 100), createVector(750, 300), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
+  // hatchesBug = new Hatches("y", createVector(717, 50), createVector(898, 898), color(30), 0, 0, DISTANCE_BETWEEN_LINES);
 
-  // hatchesBug = new Hatches("y", createVector(717, 50), createVector(898, 898), color(30), PADDING_X, PADDING_Y, DISTANCE_BETWEEN_LINES);
-
-  grid = new Grid();
-  if (NUMBER_OF_GRIDS >= 2) {
-    grid2 = new Grid();
-  }
-  if (NUMBER_OF_GRIDS >= 3) {
-    grid3 = new Grid();
-  }
-
-  // sphere = new RothkoRect({
-  //   custom_width: width,
-  //   custom_height: height,
-  //   posX: 0,
-  //   posY: 0,
-  //   elementSizeMin: 10,
-  //   elementSizeMax: 50,
-  //   margin: 50,
-  //   fillColor: color(PALETTE.primaries[0]),
-  //   fillColorNoise: 7,
-  //   fillColorOpacity: 10,
-  //   noStroke: false,
-  //   strokeColor: color(50),
-  //   strokeWeight: 1,
-  //   strokeColorNoise: 3,
-  //   strokeOpacity: 6,
-  //   numberQuantisizer: 10,
-  // });
-
-  // dirtLines = new dirtLines(
-  //   data = {
-  //     custom_width: width,
-  //     custom_height: height,
-  //     margin: 50,
-  //     posX: 0,
-  //     posY: 0,
-  //     strokeColor: color(PALETTE.dirtline),
-  //     strokeWeight: 0.1,
-  //     strokeColorNoise: 0,
-  //     numberQuantisizer: 15,  // 3
-  //     length: 40,  // 80
-  //   }
-  // );
-
-  // rothko = new RothkoRect({
-  //   custom_width: 200,
-  //   custom_height: 100,
-  //   posX: 100,
-  //   posY: 300,
-  //   elementSizeMin: 5,
-  //   elementSizeMax: 20,
-  //   margin: 0,
-  //   fillColor: color(200),
-  //   fillColorNoise: 3,
-  //   fillColorOpacity: 10,
-  //   noStroke: false,
-  //   strokeColor: color(50),
-  //   strokeWeight: 1,
-  //   strokeColorNoise: 3,
-  //   strokeOpacity: 15,
-  //   numberQuantisizer: 10,
-  // });
-
-  dirtCircles = new dirtCircles(
+  backgroundDirtCircles = new dirtCircles(
     {
       custom_width: width,
       custom_height: height,
       margin: 0,
       posX: 0,
       posY: 0,
-      fillColor: color(100, 70),
-      fillColorNoise: 30,
-      strokeColor: color(100, 30),
-      strokeWeight: 0.1,
-      strokeColorNoise: 15,
+      fillColor: color(PALETTE.background),
+      fillColorNoise: 10,
       numberQuantisizer: 200,
-      radiusBase: 1,
-      radiusNoise: 0.75,
+      radiusBase: 0.75,
+      radiusNoise: 0.25,
     }
   );
 
@@ -381,6 +289,14 @@ function setup() {
       fillColor: color(PALETTE.background),
     }
   );
+
+  grid = new Grid();
+  if (NUMBER_OF_GRIDS >= 2) {
+    grid2 = new Grid();
+  }
+  if (NUMBER_OF_GRIDS >= 3) {
+    grid3 = new Grid();
+  }
 
 }
 
@@ -408,8 +324,8 @@ function draw() {
     pixelDensity(CURRENTPIXELDENS);
     // background(distortColorNew(PALETTE[0], 30));
     background(color(PALETTE.background));
-    // sphere.show();
     corroded.show();
+    backgroundDirtCircles.show();
   }
 
 
@@ -446,10 +362,6 @@ function draw() {
   }
 
 
-
-  // noLoop();
-
-
   if (NUMBER_OF_GRIDS == 1 && grid.boxes_completely_run) {
     ALLDONE = true;
   }
@@ -461,9 +373,7 @@ function draw() {
   }
 
   if (ALLDONE == true) {
-    // rothko.show();
-    // dirtLines.show();
-    dirtCircles.show();
+    // dirtCircles.show();
     console.log("All done");
     noLoop();
   }
