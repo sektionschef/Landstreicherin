@@ -4,9 +4,10 @@ class Brush {
         // this.radius = BRUSHRADIUS; // bei fullspeed 2 -0.1
         this.radiusMin = BRUSHSIZEMIN; // 1;
         this.radiusMax = BRUSHSIZEMAX; // 2;
+        this.brushShape = BRUSHSHAPE;
         this.distanceBoost = 4; // 4 faster, 8 slower, but thicker - where the points are
-        this.noiseYzoom = 0.007;  // zoom on noise
-        this.amplitudeNoiseY = 3.5;  // up and down on Y axis
+        // this.noiseYzoom = 0.007;  // zoom on noise
+        // this.amplitudeNoiseY = 3.5;  // up and down on Y axis
         this.OkLevel = 8;  // some offset is ok.
         this.fillColor = colorObject;
         this.strokeColor = colorObject;
@@ -269,7 +270,17 @@ class Brush {
         for (var i = 0; i <= 5; i++) {
             // stroke(this.strokeColor);
             stroke(distortColorNew(this.strokeColor, this.strokeColorDistort))
-            line(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize));
+            if (BRUSHSHAPE == "Line") {
+                line(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize));
+            } else if (BRUSHSHAPE == "Ellipse") {
+                noFill();
+                ellipse(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(0, this.brushSize / 2), getRandomFromInterval(0, this.brushSize / 2));
+            } else if (BRUSHSHAPE == "Triangle") {
+                noFill();
+                triangle(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize),);
+            } else {
+                console.warn("No brush shape specified, oida!")
+            }
         }
         // pop();
     }

@@ -2,28 +2,6 @@ class RothkoRect {
 
     constructor(data) {
 
-        if (typeof data === 'undefined') {
-            data = {
-                custom_width: width,
-                custom_height: height,
-                posX: 0,
-                posY: 0,
-                elementSizeMin: 10,
-                elementSizeMax: 50,
-                colorObject: color(PRIMARYCOLOR),
-                margin: 50,
-                fillColorNoise: 10,
-                fillColorOpacity: 10,
-                noStroke: true,
-                strokeColor: PALETTE.rothkoStroke,
-                strokeWeight: 10,
-                strokeColorNoise: 20,
-                strokeOpacity: 50,
-                numberQuantisizer: 20,
-            }
-        }
-
-
         this.custom_width = data.custom_width;
         this.custom_height = data.custom_height;
         this.posX = data.posX;

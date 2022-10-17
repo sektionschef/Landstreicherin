@@ -34,7 +34,7 @@ let BRUSHSIZEMIN = 0.5;
 let BRUSHSIZEMAX = 1.5;
 console.log("BRUSHSIZEMIN: " + BRUSHSIZEMIN + " " + "BRUSHSIZEMAX: " + BRUSHSIZEMAX);
 let BRUSHFULLSPEEDMIN = 2;
-let BRUSHFULLSPEEDMAX = 5;
+let BRUSHFULLSPEEDMAX = 6;
 let BRUSHFULLSPEED = getRandomFromInterval(BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX);
 let BRUSHFIBRESIZE = getRandomFromInterval(0.2, 0.4); // 0.4;
 console.log("BRUSHFIBRESIZE: " + BRUSHFIBRESIZE);
@@ -44,11 +44,15 @@ let BRUSHCOLORDISTORT = getRandomFromInterval(5, 10);
 console.log("BRUSHCOLORDISTORT: " + BRUSHCOLORDISTORT);
 // let DISTANCE_BETWEEN_LINES = map(BRUSHFULLSPEEDMAX, 1, 5, 10, 25, true);
 
-let DISTANCE_BETWEEN_LINES_MULTIPLIER = getRandomFromInterval(2, 4);
-let DISTANCE_BETWEEN_LINES = BRUSHFULLSPEEDMAX * DISTANCE_BETWEEN_LINES_MULTIPLIER;
+let DISTANCE_BETWEEN_LINES_MULTIPLIER = getRandomFromInterval(6, 16);
+let DISTANCE_BETWEEN_LINES = BRUSHSIZEMAX * DISTANCE_BETWEEN_LINES_MULTIPLIER;
+console.log("DISTANCE_BETWEEN_LINES: " + DISTANCE_BETWEEN_LINES);
 
 ROTHKOSTROKEOPACITY = getRandomFromInterval(5, 30);
 console.log("ROTHKOSTROKEOPACITY: " + ROTHKOSTROKEOPACITY);
+
+BRUSHSHAPE = getRandomFromList(["Line", "Ellipse", "Triangle"]);
+console.log("BRUSHSHAPE: " + BRUSHSHAPE);
 
 let CURRENTPIXELDENS = 1;
 
@@ -81,123 +85,123 @@ const PALETTESYSTEM = {
     "rothkoStroke": "#1b1818",
     "dirtline": "#404040",
   },
-  // "Feinstaub": {
-  //   "background": "#532100",
-  //   "primaries": [
-  //     "#F3752B",
-  //     "#F52F57",
-  //   ],
-  //   "hatches": [
-  //     "#cf6426",
-  //     "#dd2449",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#404040",
-  // },
-  // "Horsti": {
-  //   "background": "#7ca3bb",
-  //   "primaries": [
-  //     "#669BBC",
-  //     "#F3A712",
-  //   ],
-  //   "hatches": [
-  //     "#669BBC",
-  //     "#F3A712",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#404040",
-  // },
-  // "Suzy": {
-  //   "background": "#7c452cff",
-  //   "primaries": [
-  //     "#eb4a00ff",
-  //     "#3378a3ff",
-  //   ],
-  //   "hatches": [
-  //     "#c45927ff",
-  //     "#224f6bff",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#404040",
-  // },
-  // "Golden BU": {
-  //   "background": "#c7c6c5",
-  //   "primaries": [
-  //     "#86a8bb",
-  //     "#f7c331",
-  //   ],
-  //   "hatches": [
-  //     "#37718b",
-  //     "#bd9937",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#404040",
-  // },
-  // "Aneignung": {
-  //   "background": "#612541",
-  //   "primaries": [
-  //     "#c2798e",
-  //     "#a3234a",
-  //   ],
-  //   "hatches": [
-  //     "#c2798e",
-  //     "#a3234a",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#404040",
-  // },
-  // "MoltoVolto": {
-  //   "background": "#cccdcd",
-  //   "primaries": [
-  //     "#a2a7a7",
-  //     "#736767",
-  //   ],
-  //   "hatches": [
-  //     "#8e9191",
-  //     "#6d5c5c",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#3d3b3b",
-  // },
-  // "Molto": {
-  //   "background": "#323a3a",
-  //   "primaries": [
-  //     "#20cccc",
-  //     "#be2020",
-  //   ],
-  //   "hatches": [
-  //     "#406068",
-  //     "#722929",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#3d3b3b",
-  // },
-  // "Das Zeitliche": {
-  //   "background": "#2d3131",
-  //   "primaries": [
-  //     "#443f3f",
-  //     "#788185",
-  //   ],
-  //   "hatches": [
-  //     "#797e7eff",
-  //     "#4c5457ff",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#757474",
-  // },
-  // "Frischkäse": {
-  //   "background": "#333338",
-  //   "primaries": [
-  //     "#d6a076",
-  //     "#6e6f85",
-  //   ],
-  //   "hatches": [
-  //     "#d6a076",
-  //     "#363968",
-  //   ],
-  //   "rothkoStroke": "#3b3939",
-  //   "dirtline": "#757474",
-  // },
+  "Feinstaub": {
+    "background": "#532100",
+    "primaries": [
+      "#F3752B",
+      "#F52F57",
+    ],
+    "hatches": [
+      "#cf6426",
+      "#dd2449",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#404040",
+  },
+  "Horsti": {
+    "background": "#7ca3bb",
+    "primaries": [
+      "#669BBC",
+      "#F3A712",
+    ],
+    "hatches": [
+      "#669BBC",
+      "#F3A712",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#404040",
+  },
+  "Suzy": {
+    "background": "#7c452cff",
+    "primaries": [
+      "#eb4a00ff",
+      "#3378a3ff",
+    ],
+    "hatches": [
+      "#c45927ff",
+      "#224f6bff",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#404040",
+  },
+  "Golden BU": {
+    "background": "#c7c6c5",
+    "primaries": [
+      "#86a8bb",
+      "#f7c331",
+    ],
+    "hatches": [
+      "#37718b",
+      "#bd9937",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#404040",
+  },
+  "Aneignung": {
+    "background": "#612541",
+    "primaries": [
+      "#c2798e",
+      "#a3234a",
+    ],
+    "hatches": [
+      "#c2798e",
+      "#a3234a",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#404040",
+  },
+  "MoltoVolto": {
+    "background": "#cccdcd",
+    "primaries": [
+      "#a2a7a7",
+      "#736767",
+    ],
+    "hatches": [
+      "#8e9191",
+      "#6d5c5c",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#3d3b3b",
+  },
+  "Molto": {
+    "background": "#323a3a",
+    "primaries": [
+      "#20cccc",
+      "#be2020",
+    ],
+    "hatches": [
+      "#406068",
+      "#722929",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#3d3b3b",
+  },
+  "Das Zeitliche": {
+    "background": "#2d3131",
+    "primaries": [
+      "#443f3f",
+      "#788185",
+    ],
+    "hatches": [
+      "#797e7eff",
+      "#4c5457ff",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#757474",
+  },
+  "Frischkäse": {
+    "background": "#333338",
+    "primaries": [
+      "#d6a076",
+      "#6e6f85",
+    ],
+    "hatches": [
+      "#d6a076",
+      "#363968",
+    ],
+    "rothkoStroke": "#3b3939",
+    "dirtline": "#757474",
+  },
 }
 
 // grid
@@ -364,7 +368,7 @@ function setup() {
       strokeColorNoise: 15,
       numberQuantisizer: 200,
       radiusBase: 1,
-      radiusNoise: 0.5,
+      radiusNoise: 0.75,
     }
   );
 
