@@ -14,6 +14,7 @@ let rescaling_height;
 let PALETTE;
 let PALETTE_LABEL;
 let ALLDONE = false;
+let DOMINANTSIDE;
 
 // FEATURES
 let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
@@ -380,6 +381,7 @@ function draw() {
     // dirtCircles.show();
     console.log("All done");
     noLoop();
+    fxpreview();
   }
 
 }

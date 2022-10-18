@@ -1,9 +1,8 @@
 
 class Grid {
     constructor() {
-        this.minimumDistance = 50;
-        this.margin = 50;
-
+        this.minimumDistance = width * 0.05 // 50;
+        this.margin = width * 0.05 // 50;
 
         this.boxes = [];
         // this.virtual_boxes = [];
@@ -323,7 +322,7 @@ class Grid {
                 strokeWeight: 1,
                 strokeColorNoise: 3,
                 strokeOpacity: ROTHKOSTROKEOPACITY, // 50, // 15,
-                numberQuantisizer: 20,
+                numberQuantisizer: 80, // 20
             });
 
             box.dirtLines = new dirtLines(

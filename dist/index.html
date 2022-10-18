@@ -1,10 +1,7 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Medusa</title><meta name="description" content="Painting created with p5.js."><meta name="author" content="Stefan Schwaha"><meta property="og:title" content="Medusa"><meta property="og:type" content="website"><meta property="og:url" content="https://digitalitility.com"><meta property="og:description" content="artwork - washed ashore of the tides of war."><link rel="icon" href="favicon.ico"><script id="fxhash-snippet">//---- do not edit the following code (you can indent as you wish)
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sneep</title><meta name="description" content="Painting created with p5.js."><meta name="author" content="Stefan Schwaha"><meta property="og:title" content="Sneep"><meta property="og:type" content="website"><meta property="og:url" content="https://digitalitility.com"><meta property="og:description" content="artwork - washed ashore of the tides of war."><link rel="icon" href="favicon.ico"><script id="fxhash-snippet">//---- do not edit the following code (you can indent as you wish)
     let alphabet = "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
     var fxhash = "oo" + Array(49).fill(0).map(_ => alphabet[(Math.random() * alphabet.length) | 0]).join('')
-    // var fxhash = "oowwSmyik7UkLQp9h8nn1BAoqbxZ3Q8MwG5YuxRamp6Hzb58tPd"  // black
-    // var fxhash = "ooBACzUQhxgqEgi1nqEckqxA743PjkF5kPvn7Tzgq7kbcaj2rR9"
-    // var fxhash = "oodoFg2X4mS2wATEpPoQfmaU4HENpXtywy6Fx25QZyGEA7WsdQp"
-    // var fxhash = "oofHCL17K1Tk8C5aBhKUTTHE7Ddba9ku1VG9adAqqw4voH2s8Kq"
+    // var fxhash = "ooJoMhwdJp7dxNQudTnBTLEcwoEkvRz1e8V4PiaA3TDZy1yUx5p"  // black
     let b58dec = str => [...str].reduce((p, c) => p * alphabet.length + alphabet.indexOf(c) | 0, 0)
     let fxhashTrunc = fxhash.slice(2)
     let regex = new RegExp(".{" + ((fxhash.length / 4) | 0) + "}", 'g')
@@ -29,4 +26,4 @@
     function fxpreview() {
       console.log("fxhash: TRIGGER PREVIEW")
     }
-      //---- /do not edit the following code</script><script src="oimo.min.seeded.js"></script><script src="p5.min.js"></script><script src="body.js" ) }}></script><script src="utils.js" ) }}></script><script src="sketch.js" ) }}></script><link rel="stylesheet" href="styles.css"></head><body><div class="container"><div id="canvasHolder"></div></div><script defer="defer" src="./bundle.js"></script></body></html>
+      //---- /do not edit the following code</script><script src="p5.min.js"></script><script src="utils.js" ) }}></script><script src="Hatches.js" ) }}></script><script src="DirtLines.js" ) }}></script><script src="DirtCircles.js" ) }}></script><script src="Corroded.js" ) }}></script><script src="RothkoRect.js" ) }}></script><script src="Brush.js" ) }}></script><script src="Grid.js" ) }}></script><script src="sketch.js" ) }}></script><link rel="stylesheet" href="styles.css"></head><body><div class="container"><div id="canvasHolder"></div></div><script defer="defer" src="./bundle.js"></script></body></html>

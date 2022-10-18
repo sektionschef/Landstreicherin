@@ -20,7 +20,11 @@ class RothkoRect {
         this.numberQuantisizer = data.numberQuantisizer;
 
         this.area = this.custom_width * this.custom_height;
-        this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
+        // this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
+        this.shapeNumber = this.area / width / height * 100 * this.numberQuantisizer;  // relative to size
+        console.log("this.shapeNumber:" + this.shapeNumber); // 250 / 500 - quantisizer ist 20
+        // this.shapeNumber = 3000
+
 
         this.elements = []
         this.fillColor = color(red(this.fillColor), green(this.fillColor), blue(this.fillColor), this.fillColorOpacity);
