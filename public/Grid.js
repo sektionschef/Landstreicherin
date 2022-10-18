@@ -31,6 +31,7 @@ class Grid {
 
         this.scout_possible_pairings();
 
+
         for (var i = 0; i < this.pairing_count; i++) {
             if (this.pairing_count > 0 && this.possible_pairings_x.length > 0 && this.possible_pairings_y.length > 0) {
                 this.choose_pairing();
@@ -311,19 +312,20 @@ class Grid {
                 custom_height: (box.c.y - box.a.y),
                 posX: box.a.x,
                 posY: box.a.y,
-                elementSizeMin: 10,
-                elementSizeMax: 50,
+                elementSizeMin: width * 0.01,
+                elementSizeMax: width * 0.05,
                 margin: 0,
                 fillColor: rothkoColor,
                 fillColorNoise: 3,
                 fillColorOpacity: 10,
                 noStroke: false,
                 strokeColor: color(PALETTE.rothkoStroke),
-                strokeWeight: 1,
+                strokeWeight: width * 0.001,
                 strokeColorNoise: 3,
                 strokeOpacity: ROTHKOSTROKEOPACITY, // 50, // 15,
-                numberQuantisizer: 80, // 20
+                numberQuantisizer: 90, // 20
             });
+
 
             box.dirtLines = new dirtLines(
                 {
@@ -333,12 +335,13 @@ class Grid {
                     posX: box.a.x,
                     posY: box.a.y,
                     strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
-                    strokeWeight: 0.1,
+                    strokeWeight: width * 0.0002,
                     strokeColorNoise: 15,
-                    numberQuantisizer: 15,  // 3
-                    length: 40,  // 80
+                    numberQuantisizer: 120,  // 3
+                    length: width * 0.042,  // 40
                 }
             );
+            console.warn("FXRANDO: " + fxrand());
 
             box.dirtCircles = new dirtCircles(
                 {
@@ -349,7 +352,7 @@ class Grid {
                     posY: box.a.y,
                     fillColor: color(PALETTE.dirtCircles),
                     fillColorNoise: 10,
-                    numberQuantisizer: 100,
+                    numberQuantisizer: 2000,
                     radiusBase: 0.75,
                     radiusNoise: 0.25,
                 }

@@ -280,11 +280,12 @@ function setup() {
       posY: 0,
       fillColor: color(PALETTE.background),
       fillColorNoise: 10,
-      numberQuantisizer: 200,
+      numberQuantisizer: 2000,
       radiusBase: 0.75,
       radiusNoise: 0.25,
     }
   );
+
 
   corroded = new Corroded(
     {

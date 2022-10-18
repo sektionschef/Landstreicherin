@@ -3,7 +3,7 @@ class dirtCircles {
     constructor(data) {
         this.custom_width = data.custom_width;
         this.custom_height = data.custom_height;
-        this.margin = data.margin;
+        this.margin = data.margin;  // should be relative
         this.pos = createVector(data.posX, data.posY);
         this.fillColor = data.fillColor;
         this.fillColorNoise = data.fillColorNoise;
@@ -15,7 +15,7 @@ class dirtCircles {
         this.radiusNoise = data.radiusNoise;
 
         this.area = this.custom_width * this.custom_height;
-        this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
+        this.shapeNumber = this.area / width / height * 100 * this.numberQuantisizer;  // relative to size
 
         this.elements = [];
 

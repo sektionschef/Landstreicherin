@@ -3,21 +3,6 @@ class dirtLines {
 
     constructor(data) {
 
-        if (typeof data === 'undefined') {
-            data = {
-                custom_width: width,
-                custom_height: height,
-                margin: 50,
-                posX: 0,
-                posY: 0,
-                strokeColor: color(70),
-                strokeWeight: 0.1,
-                strokeColorNoise: 0,
-                numberQuantisizer: 3,
-                length: 80,
-            }
-        }
-
         this.custom_width = data.custom_width;
         this.custom_height = data.custom_height;
         this.margin = data.margin;
@@ -29,7 +14,8 @@ class dirtLines {
         this.length = data.length;
 
         this.area = this.custom_width * this.custom_height;
-        this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
+        // this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
+        this.shapeNumber = Math.floor(this.custom_width / width * this.custom_height / height * 100) * this.numberQuantisizer;  // relative to size
 
         this.elements = [];
 
