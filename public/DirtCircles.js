@@ -14,8 +14,9 @@ class dirtCircles {
         this.radiusBase = data.radiusBase;
         this.radiusNoise = data.radiusNoise;
 
-        this.area = this.custom_width * this.custom_height;
-        this.shapeNumber = this.area / width / height * 100 * this.numberQuantisizer;  // relative to size
+        // this.shapeNumber = this.area / width / height * 100 * this.numberQuantisizer;  // relative to size
+        this.shapeNumber = Math.floor((this.custom_width * this.custom_height) / (width * height) * 100) * this.numberQuantisizer;  // relative to size
+        // console.log(Math.floor(this.area / (width * height) * 100));
 
         this.elements = [];
 

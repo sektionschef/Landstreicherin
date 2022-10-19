@@ -341,7 +341,6 @@ class Grid {
                     length: width * 0.042,  // 40
                 }
             );
-            console.warn("FXRANDO: " + fxrand());
 
             box.dirtCircles = new dirtCircles(
                 {
@@ -352,11 +351,12 @@ class Grid {
                     posY: box.a.y,
                     fillColor: color(PALETTE.dirtCircles),
                     fillColorNoise: 10,
-                    numberQuantisizer: 2000,
+                    numberQuantisizer: 200,
                     radiusBase: 0.75,
                     radiusNoise: 0.25,
                 }
             );
+            console.warn("FXRANDO: " + fxrand());
 
             box.hatches = new Hatches(axis, box.a, box.c, hatchColor, 0, 0, DISTANCE_BETWEEN_LINES);
         }
