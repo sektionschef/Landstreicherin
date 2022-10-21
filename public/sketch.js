@@ -28,7 +28,7 @@ console.log("BRUSHSIZEMIN: " + BRUSHSIZEMIN + " " + "BRUSHSIZEMAX: " + BRUSHSIZE
 
 let BRUSHFULLSPEEDMIN = 2;
 let BRUSHFULLSPEEDMAX = 6;
-let BRUSHFULLSPEED = Math.round(getRandomFromInterval(BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX) * 10) / 10;
+let BRUSHFULLSPEED = Math.round(getRandomFromInterval(BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX) * 100) / 100;
 console.log("BRUSHFULLSPEED: " + BRUSHFULLSPEED);
 
 let BRUSHFIBRESIZE = Math.round(getRandomFromInterval(0.2, 0.4) * 100) / 100; // 0.4;
@@ -69,20 +69,20 @@ let PaperDimensions = {
 }
 
 const PALETTESYSTEM = {
-  "Dead": {
-    "background": "#32746D",
-    "primaries": [
-      "#9EC5AB",
-      "#104F55",
-    ],
-    "hatches": [
-      "#88ac94",
-      "#14545a",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-    "dirtCircles": "#32746D",
-  },
+  // "Dead": {
+  //   "background": "#32746D",
+  //   "primaries": [
+  //     "#9EC5AB",
+  //     "#104F55",
+  //   ],
+  //   "hatches": [
+  //     "#88ac94",
+  //     "#14545a",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#32746D",
+  // },
   "Feinstaub": {
     "background": "#b1b1b1",
     "primaries": [
@@ -97,118 +97,118 @@ const PALETTESYSTEM = {
     "dirtline": "#404040",
     "dirtCircles": "#747474",
   },
-  "Horsti": {
-    "background": "#7ca3bb",
-    "primaries": [
-      "#669BBC",
-      "#F3A712",
-    ],
-    "hatches": [
-      "#669BBC",
-      "#F3A712",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-    "dirtCircles": "#7ca3bb",
-  },
-  "Suzy": {
-    "background": "#7c452cff",
-    "primaries": [
-      "#eb4a00ff",
-      "#3378a3ff",
-    ],
-    "hatches": [
-      "#c45927ff",
-      "#224f6bff",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-    "dirtCircles": "#7c452cff",
-  },
-  "Golden BU": {
-    "background": "#c7c6c5",
-    "primaries": [
-      "#86a8bb",
-      "#f7c331",
-    ],
-    "hatches": [
-      "#4ea1c7",
-      "#dbb345",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#616161",
-    "dirtCircles": "#818181ff",
-  },
-  "Aneignung": {
-    "background": "#612541",
-    "primaries": [
-      "#c2798e",
-      "#a3234a",
-    ],
-    "hatches": [
-      "#c2798e",
-      "#a3234a",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-    "dirtCircles": "#7a3656",
-  },
-  "MoltoVolto": {
-    "background": "#cccdcd",
-    "primaries": [
-      "#78a5a5",
-      "#776161",
-    ],
-    "hatches": [
-      "#709797",
-      "#6d5c5c",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#3d3b3b",
-    "dirtCircles": "#797979",
-  },
-  "Molto": {
-    "background": "#323a3a",
-    "primaries": [
-      "#20cccc",
-      "#be2020",
-    ],
-    "hatches": [
-      "#337c8f",
-      "#a70c0c",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#3d3b3b",
-    "dirtCircles": "#666666",
-  },
-  "Das Zeitliche": {
-    "background": "#2d3131",
-    "primaries": [
-      "#504242",
-      "#687980",
-    ],
-    "hatches": [
-      "#3d3d3dff",
-      "#556266ff",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#757474",
-    "dirtCircles": "#666666",
-  },
-  "Frischkäse": {
-    "background": "#333338",
-    "primaries": [
-      "#d6a076",
-      "#6e6f85",
-    ],
-    "hatches": [
-      "#b18563",
-      "#363968",
-    ],
-    "rothkoStroke": "#3b3939",
-    "dirtline": "#757474",
-    "dirtCircles": "#666666",
-  },
+  // "Horsti": {
+  //   "background": "#7ca3bb",
+  //   "primaries": [
+  //     "#669BBC",
+  //     "#F3A712",
+  //   ],
+  //   "hatches": [
+  //     "#669BBC",
+  //     "#F3A712",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#7ca3bb",
+  // },
+  // "Suzy": {
+  //   "background": "#7c452cff",
+  //   "primaries": [
+  //     "#eb4a00ff",
+  //     "#3378a3ff",
+  //   ],
+  //   "hatches": [
+  //     "#c45927ff",
+  //     "#224f6bff",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#7c452cff",
+  // },
+  // "Golden BU": {
+  //   "background": "#c7c6c5",
+  //   "primaries": [
+  //     "#86a8bb",
+  //     "#f7c331",
+  //   ],
+  //   "hatches": [
+  //     "#4ea1c7",
+  //     "#dbb345",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#616161",
+  //   "dirtCircles": "#818181ff",
+  // },
+  // "Aneignung": {
+  //   "background": "#612541",
+  //   "primaries": [
+  //     "#c2798e",
+  //     "#a3234a",
+  //   ],
+  //   "hatches": [
+  //     "#c2798e",
+  //     "#a3234a",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#7a3656",
+  // },
+  // "MoltoVolto": {
+  //   "background": "#cccdcd",
+  //   "primaries": [
+  //     "#78a5a5",
+  //     "#776161",
+  //   ],
+  //   "hatches": [
+  //     "#709797",
+  //     "#6d5c5c",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#3d3b3b",
+  //   "dirtCircles": "#797979",
+  // },
+  // "Molto": {
+  //   "background": "#323a3a",
+  //   "primaries": [
+  //     "#20cccc",
+  //     "#be2020",
+  //   ],
+  //   "hatches": [
+  //     "#337c8f",
+  //     "#a70c0c",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#3d3b3b",
+  //   "dirtCircles": "#666666",
+  // },
+  // "Das Zeitliche": {
+  //   "background": "#2d3131",
+  //   "primaries": [
+  //     "#504242",
+  //     "#687980",
+  //   ],
+  //   "hatches": [
+  //     "#3d3d3dff",
+  //     "#556266ff",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#757474",
+  //   "dirtCircles": "#666666",
+  // },
+  // "Frischkäse": {
+  //   "background": "#333338",
+  //   "primaries": [
+  //     "#d6a076",
+  //     "#6e6f85",
+  //   ],
+  //   "hatches": [
+  //     "#b18563",
+  //     "#363968",
+  //   ],
+  //   "rothkoStroke": "#3b3939",
+  //   "dirtline": "#757474",
+  //   "dirtCircles": "#666666",
+  // },
 }
 
 choosePalette()
@@ -265,13 +265,14 @@ function setup() {
   }
 
   // Resolution independent features
-  BRUSHSIZEMIN = Math.round(BRUSHSIZEMIN / RESCALINGCONSTANT * DOMINANTSIDE * 10) / 10;
-  BRUSHSIZEMAX = Math.round(BRUSHSIZEMAX / RESCALINGCONSTANT * DOMINANTSIDE * 10) / 10;
-  BRUSHFIBRESIZE = Math.round(BRUSHFIBRESIZE / RESCALINGCONSTANT * DOMINANTSIDE * 10) / 10;
-  HATCHOFFSET = Math.round(HATCHOFFSET / RESCALINGCONSTANT * DOMINANTSIDE * 10) / 10;
+  BRUSHSIZEMIN = Math.round(BRUSHSIZEMIN / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
+  BRUSHSIZEMAX = Math.round(BRUSHSIZEMAX / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
+  BRUSHFIBRESIZE = Math.round(BRUSHFIBRESIZE / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
+  HATCHOFFSET = Math.round(HATCHOFFSET / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
   // DISTANCE_BETWEEN_LINES_MULTIPLIER = Math.round(DISTANCE_BETWEEN_LINES_MULTIPLIER / RESCALINGCONSTANT * DOMINANTSIDE);
   // DISTANCE_BETWEEN_LINES = Math.round(BRUSHSIZEMAX * DISTANCE_BETWEEN_LINES_MULTIPLIER);
   DISTANCE_BETWEEN_LINES = Math.round(DISTANCE_BETWEEN_LINES / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
+  HATCHOFFSET = Math.round(HATCHOFFSET / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
 
 
   // EXAMPLES for DEV

@@ -296,7 +296,9 @@ class Grid {
 
             // let axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
             let axis = getRandomFromList(["x", "y", "xy", "yx"]);
-            console.log(axis + " axis randomly chosen.");
+            if (MODE > 1) {
+                console.log(axis + " axis randomly chosen.");
+            }
 
             indexChooser = getRandomFromList([0, 1])
             if (indexChooser == 0) {
@@ -323,7 +325,7 @@ class Grid {
                 strokeWeight: 1 / RESCALINGCONSTANT * DOMINANTSIDE,// width * 0.001,
                 strokeColorNoise: 3,
                 strokeOpacity: ROTHKOSTROKEOPACITY, // 50, // 15,
-                numberQuantisizer: 5, // 20
+                numberQuantisizer: 20, // 20
             });
 
             box.dirtLines = new dirtLines(
@@ -356,7 +358,6 @@ class Grid {
                 }
             );
 
-            // console.warn("FXRANDO: " + fxrand());
             box.hatches = new Hatches(axis, box.a, box.c, hatchColor, 0, 0, DISTANCE_BETWEEN_LINES);
         }
     }

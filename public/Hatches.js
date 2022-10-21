@@ -19,7 +19,7 @@ class Hatches {
         this.width = this.cornerRight.x - this.cornerLeft.x;
         this.height = this.cornerRight.y - this.cornerLeft.y;
 
-        console.warn("FXRANDO: " + fxrand());
+        // console.warn("FXRANDO: " + fxrand());
         // if (this.axis == "x") {
         //     this.x();
         // } else if (this.axis == "y") {
@@ -31,6 +31,7 @@ class Hatches {
         // } else if (this.axis == "blank") {
         // }
         this.x();
+        // console.warn("FXRANDO: " + fxrand());
 
     }
 
@@ -41,9 +42,9 @@ class Hatches {
         let end;
 
         count_lines = Math.round((this.cornerRight.y - this.cornerLeft.y - 2 * this.padding_y) / this.distance_between_lines);
-        console.warn("distance: " + this.distance_between_lines);
-        console.warn("area: " + (this.cornerRight.y - this.cornerLeft.y - 2 * this.padding_y));
-        console.warn("count_lines: " + count_lines);
+        // console.warn("distance: " + this.distance_between_lines);
+        // console.warn("area: " + (this.cornerRight.y - this.cornerLeft.y - 2 * this.padding_y));
+        // console.warn("count_lines: " + count_lines);
 
         for (let i = 0; i < count_lines; i++) {
 

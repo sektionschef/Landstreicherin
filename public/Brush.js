@@ -42,6 +42,8 @@ class Brush {
 
 
         // this.makeSomeNoise();
+
+        // console.warn("FXRANDO: " + fxrand());
         this.get_orientation();
     }
 
@@ -184,10 +186,10 @@ class Brush {
             this.move();
             if (this.vel.x > 0) {
                 // this.radius = map(this.vel.x, 0, 3, 1, 0.3)
-                this.radius = Math.round(map(this.vel.x, BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX, this.radiusMax, this.radiusMin) * 10) / 10
+                this.radius = Math.round(map(this.vel.x, BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX, this.radiusMax, this.radiusMin) * 100) / 100
             } else if (this.vel.y > 0) {
                 // this.radius = map(this.vel.y, 0, 3, 1, 0.3)
-                this.radius = Math.round(map(this.vel.y, BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX, this.radiusMax, this.radiusMin) * 10) / 10
+                this.radius = Math.round(map(this.vel.y, BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX, this.radiusMax, this.radiusMin) * 100) / 100
             }
         }
 
