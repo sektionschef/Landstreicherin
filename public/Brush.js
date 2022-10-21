@@ -43,7 +43,6 @@ class Brush {
 
         // this.makeSomeNoise();
         this.get_orientation();
-        console.warn("FXRANDO: " + fxrand());
     }
 
     // makeSomeNoise() {

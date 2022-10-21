@@ -19,17 +19,18 @@ class Hatches {
         this.width = this.cornerRight.x - this.cornerLeft.x;
         this.height = this.cornerRight.y - this.cornerLeft.y;
 
-        if (this.axis == "x") {
-            this.x();
-        } else if (this.axis == "y") {
-            this.y();
-        } else if (this.axis == "xy") {
-            this.xy();
-        } else if (this.axis == "yx") {
-            this.yx();
-        } else if (this.axis == "blank") {
-        }
         console.warn("FXRANDO: " + fxrand());
+        // if (this.axis == "x") {
+        //     this.x();
+        // } else if (this.axis == "y") {
+        //     this.y();
+        // } else if (this.axis == "xy") {
+        //     this.xy();
+        // } else if (this.axis == "yx") {
+        //     this.yx();
+        // } else if (this.axis == "blank") {
+        // }
+        this.x();
 
     }
 

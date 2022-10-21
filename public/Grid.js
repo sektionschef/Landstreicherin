@@ -1,8 +1,8 @@
 
 class Grid {
     constructor() {
-        this.minimumDistance = width * 0.05 // 50;
-        this.margin = width * 0.05 // 50;
+        this.minimumDistance = 50 / RESCALINGCONSTANT * DOMINANTSIDE;  // width * 0.05 // 50;
+        this.margin = 50 / RESCALINGCONSTANT * DOMINANTSIDE; // width * 0.05 // 50;
 
         this.boxes = [];
         // this.virtual_boxes = [];
@@ -334,10 +334,10 @@ class Grid {
                     posX: box.a.x,
                     posY: box.a.y,
                     strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
-                    strokeWeight: width * 0.0002,
+                    strokeWeight: 0.2 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.0002,
                     strokeColorNoise: 15,
                     numberQuantisizer: 120,  // 3
-                    length: width * 0.042,  // 40
+                    length: 40 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.042,  // 40
                 }
             );
 
@@ -356,8 +356,8 @@ class Grid {
                 }
             );
 
-            box.hatches = new Hatches(axis, box.a, box.c, hatchColor, 0, 0, DISTANCE_BETWEEN_LINES);
             // console.warn("FXRANDO: " + fxrand());
+            box.hatches = new Hatches(axis, box.a, box.c, hatchColor, 0, 0, DISTANCE_BETWEEN_LINES);
         }
     }
 
