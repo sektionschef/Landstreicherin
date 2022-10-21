@@ -19,7 +19,7 @@ class RothkoRect {
         this.strokeOpacity = data.strokeOpacity;
         this.numberQuantisizer = data.numberQuantisizer;
 
-        this.area = Math.ceil((this.custom_width * this.custom_height) / (width * height) * 10);
+        this.area = Math.round((this.custom_width * this.custom_height) / (width * height) * 10);
         // console.log("area: " + this.area);
         // this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
         // this.shapeNumber = (this.custom_width * this.custom_height) / (width * height) * this.numberQuantisizer;  // relative to size

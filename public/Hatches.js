@@ -19,18 +19,17 @@ class Hatches {
         this.width = this.cornerRight.x - this.cornerLeft.x;
         this.height = this.cornerRight.y - this.cornerLeft.y;
 
+        if (this.axis == "x") {
+            this.x();
+        } else if (this.axis == "y") {
+            this.y();
+        } else if (this.axis == "xy") {
+            this.xy();
+        } else if (this.axis == "yx") {
+            this.yx();
+        } else if (this.axis == "blank") {
+        }
         console.warn("FXRANDO: " + fxrand());
-        // if (this.axis == "x") {
-        //     this.x();
-        // } else if (this.axis == "y") {
-        //     this.y();
-        // } else if (this.axis == "xy") {
-        //     this.xy();
-        // } else if (this.axis == "yx") {
-        //     this.yx();
-        // } else if (this.axis == "blank") {
-        // }
-        this.x();
 
     }
 
@@ -67,7 +66,7 @@ class Hatches {
         let start;
         let end;
 
-        count_lines = Math.floor(((this.cornerRight.x - this.cornerLeft.x) - 2 * this.padding_x) / this.distance_between_lines);
+        count_lines = Math.round(((this.cornerRight.x - this.cornerLeft.x) - 2 * this.padding_x) / this.distance_between_lines);
 
         for (let i = 0; i < count_lines; i++) {
 
@@ -107,7 +106,7 @@ class Hatches {
 
         // main body
         if (type == "height") {
-            count_lines = Math.floor((this.height - this.width - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.height - this.width - 2 * this.padding_x) / this.distance_between_lines);
 
             for (let i = 0; i < count_lines; i++) {
 
@@ -127,7 +126,7 @@ class Hatches {
             }
         } else {
 
-            count_lines = Math.floor((this.width - this.height - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.width - this.height - 2 * this.padding_x) / this.distance_between_lines);
 
             for (let i = 0; i < count_lines; i++) {
 
@@ -149,7 +148,7 @@ class Hatches {
         if (type == "height") {
             // triangle beneath
             // console.log(this.height - this.width);
-            count_lines = Math.floor((this.width - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.width - 2 * this.padding_x) / this.distance_between_lines);
 
             for (let i = 0; i < count_lines; i++) {  // skip first line
 
@@ -169,7 +168,7 @@ class Hatches {
         } else {
 
             // left to floor
-            count_lines = Math.floor((this.height - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.height - 2 * this.padding_x) / this.distance_between_lines);
 
             for (let i = 1; i < count_lines; i++) {  // skip first line
 
@@ -190,7 +189,7 @@ class Hatches {
         if (type == "height") {
 
             // // triangle beneath
-            count_lines = Math.floor((this.width - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.width - 2 * this.padding_x) / this.distance_between_lines);
 
             for (let i = 1; i < count_lines; i++) {  // skip first line
 
@@ -209,7 +208,7 @@ class Hatches {
         } else {
 
             // // triangle ceiling to right
-            count_lines = Math.floor((this.height - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.height - 2 * this.padding_x) / this.distance_between_lines);
 
             for (let i = 0; i < count_lines; i++) {  // skip first line
 
@@ -246,7 +245,7 @@ class Hatches {
 
 
         if (type == "height") {
-            count_lines = Math.floor((this.height - this.width - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.height - this.width - 2 * this.padding_x) / this.distance_between_lines);
             // main body
 
             for (let i = 0; i < count_lines; i++) {
@@ -265,7 +264,7 @@ class Hatches {
             }
         } else {
             // main body
-            count_lines = Math.floor((this.width - this.height) / this.distance_between_lines);
+            count_lines = Math.round((this.width - this.height) / this.distance_between_lines);
 
             for (let i = 0; i < count_lines; i++) {
                 // + (this.height - this.width)
@@ -286,7 +285,7 @@ class Hatches {
 
         if (type == "height") {
             // triangle beneath
-            count_lines = Math.floor((this.width - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.width - 2 * this.padding_x) / this.distance_between_lines);
 
 
             for (let i = 0; i < count_lines; i++) {
@@ -305,7 +304,7 @@ class Hatches {
             }
         } else {
             // floor to right
-            count_lines = Math.floor((this.height - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.height - 2 * this.padding_x) / this.distance_between_lines);
 
             for (let i = 0; i < count_lines; i++) {
 
@@ -327,7 +326,7 @@ class Hatches {
 
         if (type == "height") {
             // // // triangle beneath
-            count_lines = Math.floor((this.width - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.width - 2 * this.padding_x) / this.distance_between_lines);
 
             for (let i = 0; i < count_lines; i++) {
 
@@ -345,7 +344,7 @@ class Hatches {
             }
         } else {
             // left to ceiling
-            count_lines = Math.floor((this.height - 2 * this.padding_x) / this.distance_between_lines);
+            count_lines = Math.round((this.height - 2 * this.padding_x) / this.distance_between_lines);
 
             for (let i = 0; i < count_lines; i++) {
 

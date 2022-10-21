@@ -22,7 +22,7 @@ class Grid {
         this.boxes_count = (this.columns_count) * (this.row_count)
         console.log("Grid with " + this.columns_count + " columns, " + this.row_count + " rows, " + this.boxes_count + " boxes and " + this.pairing_count + " planned pairings.")
 
-        this.pairing_count = Math.floor(getRandomFromInterval(1, 4));
+        this.pairing_count = Math.round(getRandomFromInterval(1, 4));
         // this.pairing_count = 0;
         console.log("Number of pairing: " + this.pairing_count);
 
