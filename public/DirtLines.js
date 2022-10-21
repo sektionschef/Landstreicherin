@@ -15,7 +15,7 @@ class dirtLines {
 
         this.area = this.custom_width * this.custom_height;
         // this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
-        this.shapeNumber = Math.floor(this.custom_width / width * this.custom_height / height * 100) * this.numberQuantisizer;  // relative to size
+        this.shapeNumber = Math.floor(this.custom_width / width * this.custom_height / height * 10) * 10 * this.numberQuantisizer;  // relative to size
 
         this.elements = [];
 

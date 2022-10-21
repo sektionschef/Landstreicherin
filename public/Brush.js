@@ -40,8 +40,10 @@ class Brush {
         this.accBoost = p5.Vector.mult(p5.Vector.normalize(this.Distance), this.boost);
         this.sloBoost = p5.Vector.mult(this.accBoost, -1);
 
+
         // this.makeSomeNoise();
         this.get_orientation();
+        console.warn("FXRANDO: " + fxrand());
     }
 
     // makeSomeNoise() {
@@ -183,10 +185,10 @@ class Brush {
             this.move();
             if (this.vel.x > 0) {
                 // this.radius = map(this.vel.x, 0, 3, 1, 0.3)
-                this.radius = map(this.vel.x, BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX, this.radiusMax, this.radiusMin)
+                this.radius = Math.floor(map(this.vel.x, BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX, this.radiusMax, this.radiusMin) * 10) / 10
             } else if (this.vel.y > 0) {
                 // this.radius = map(this.vel.y, 0, 3, 1, 0.3)
-                this.radius = map(this.vel.y, BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX, this.radiusMax, this.radiusMin)
+                this.radius = Math.floor(map(this.vel.y, BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX, this.radiusMax, this.radiusMin) * 10) / 10
             }
         }
 

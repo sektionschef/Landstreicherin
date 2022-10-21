@@ -312,20 +312,19 @@ class Grid {
                 custom_height: (box.c.y - box.a.y),
                 posX: box.a.x,
                 posY: box.a.y,
-                elementSizeMin: width * 0.01,
-                elementSizeMax: width * 0.05,
+                elementSizeMin: 10 / RESCALINGCONSTANT * DOMINANTSIDE, //width * 0.01,
+                elementSizeMax: 50 / RESCALINGCONSTANT * DOMINANTSIDE, //width * 0.05,
                 margin: 0,
                 fillColor: rothkoColor,
                 fillColorNoise: 3,
                 fillColorOpacity: 10,
                 noStroke: false,
                 strokeColor: color(PALETTE.rothkoStroke),
-                strokeWeight: width * 0.001,
+                strokeWeight: 1 / RESCALINGCONSTANT * DOMINANTSIDE,// width * 0.001,
                 strokeColorNoise: 3,
                 strokeOpacity: ROTHKOSTROKEOPACITY, // 50, // 15,
-                numberQuantisizer: 90, // 20
+                numberQuantisizer: 5, // 20
             });
-
 
             box.dirtLines = new dirtLines(
                 {
@@ -356,9 +355,9 @@ class Grid {
                     radiusNoise: 0.25,
                 }
             );
-            console.warn("FXRANDO: " + fxrand());
 
             box.hatches = new Hatches(axis, box.a, box.c, hatchColor, 0, 0, DISTANCE_BETWEEN_LINES);
+            // console.warn("FXRANDO: " + fxrand());
         }
     }
 
@@ -374,7 +373,6 @@ class Grid {
             }
             box.show();
             box.hatches.show();
-
             box.hatches.check_all_complete();
 
             if (this.boxes_completely_run == false) {
