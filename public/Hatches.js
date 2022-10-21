@@ -40,8 +40,8 @@ class Hatches {
         let start;
         let end;
 
-        count_lines = Math.floor((this.cornerRight.y - this.cornerLeft.y - 2 * this.padding_y) / this.distance_between_lines);
-        console.warn(this.distance_between_lines);
+        count_lines = Math.round((this.cornerRight.y - this.cornerLeft.y - 2 * this.padding_y) / this.distance_between_lines);
+        console.warn("distance: " + this.distance_between_lines);
         console.warn("area: " + (this.cornerRight.y - this.cornerLeft.y - 2 * this.padding_y));
         console.warn("count_lines: " + count_lines);
 
