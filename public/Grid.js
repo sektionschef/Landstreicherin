@@ -15,16 +15,22 @@ class Grid {
         this.count_of_points_x = Math.round(getRandomFromInterval(2, 5));  // 1-5
         this.count_of_points_y = Math.round(getRandomFromInterval(2, 5));  // 1-5
         this.grid_label = this.count_of_points_x + "x" + this.count_of_points_y;
+        // if (MODE > 1) {
         console.log("Grid: " + this.grid_label);
+        // }
 
         this.columns_count = this.count_of_points_x + 1;
         this.row_count = this.count_of_points_y + 1;
         this.boxes_count = (this.columns_count) * (this.row_count)
-        console.log("Grid with " + this.columns_count + " columns, " + this.row_count + " rows, " + this.boxes_count + " boxes and " + this.pairing_count + " planned pairings.")
+        if (MODE > 1) {
+            console.log("Grid with " + this.columns_count + " columns, " + this.row_count + " rows, " + this.boxes_count + " boxes and " + this.pairing_count + " planned pairings.")
+        }
 
         this.pairing_count = Math.round(getRandomFromInterval(1, 4));
         // this.pairing_count = 0;
-        console.log("Number of pairing: " + this.pairing_count);
+        if (MODE > 1) {
+            console.log("Number of pairing: " + this.pairing_count);
+        }
 
         this.getPoints();
         this.create_unpaired_boxes();
@@ -39,8 +45,10 @@ class Grid {
                 this.remove_used_pairs();
             }
         }
-        console.log("The real boxes are:");
-        console.log(this.boxes);
+        if (MODE > 1) {
+            console.log("The real boxes are:");
+            console.log(this.boxes);
+        }
 
         this.create_lines();
     }
@@ -48,7 +56,7 @@ class Grid {
 
     getPoints() {
 
-        // start
+        // start - generate a list from  0 to width
         this.pointsXPool = [...Array(width).keys()];
         this.pointsYPool = [...Array(height).keys()];
 
@@ -86,13 +94,15 @@ class Grid {
             return a - b;
         });
 
-        console.log("Coordinates of points on x axis: " + this.pointsX);
-        console.log("Coordinates of points on y axis: " + this.pointsY);
+        if (MODE > 1) {
+            console.log("Coordinates of points on x axis: " + this.pointsX);
+            console.log("Coordinates of points on y axis: " + this.pointsY);
+        }
     }
 
     getSinglePointX() {
         let chosen_one = getRandomFromList(this.pointsXPool);
-        // console.log(chosen_one);
+        console.log(chosen_one);
 
         // remove near points
         for (var i = this.pointsXPool.length - 1; i >= 0; i--) {
@@ -161,10 +171,12 @@ class Grid {
             }
         }
 
-        console.log(this.possible_pairings_x.length + " possible combinations for x:");
-        console.log(this.possible_pairings_x);
-        console.log(this.possible_pairings_y.length + " possible combinations for y: ");
-        console.log(this.possible_pairings_y);
+        if (MODE > 1) {
+            console.log(this.possible_pairings_x.length + " possible combinations for x:");
+            console.log(this.possible_pairings_x);
+            console.log(this.possible_pairings_y.length + " possible combinations for y: ");
+            console.log(this.possible_pairings_y);
+        }
     }
 
     choose_pairing() {
@@ -300,7 +312,9 @@ class Grid {
                 console.log(axis + " axis randomly chosen.");
             }
 
-            indexChooser = getRandomFromList([0, 1])
+            // console.warn(fxrand());
+            indexChooser = Math.round(getRandomFromInterval(0, 1));
+            console.log(indexChooser);
             if (indexChooser == 0) {
                 hatchColor = PALETTE.hatches[0];
                 rothkoColor = PALETTE.primaries[1];
@@ -328,37 +342,37 @@ class Grid {
                 numberQuantisizer: 20, // 20
             });
 
-            box.dirtLines = new dirtLines(
-                {
-                    custom_width: (box.c.x - box.a.x),
-                    custom_height: (box.c.y - box.a.y),
-                    margin: 0,
-                    posX: box.a.x,
-                    posY: box.a.y,
-                    strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
-                    strokeWeight: 0.2 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.0002,
-                    strokeColorNoise: 15,
-                    numberQuantisizer: 120,  // 3
-                    length: 40 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.042,  // 40
-                }
-            );
+            // box.dirtLines = new dirtLines(
+            //     {
+            //         custom_width: (box.c.x - box.a.x),
+            //         custom_height: (box.c.y - box.a.y),
+            //         margin: 0,
+            //         posX: box.a.x,
+            //         posY: box.a.y,
+            //         strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
+            //         strokeWeight: 0.2 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.0002,
+            //         strokeColorNoise: 15,
+            //         numberQuantisizer: 120,  // 3
+            //         length: 40 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.042,  // 40
+            //     }
+            // );
 
-            box.dirtCircles = new dirtCircles(
-                {
-                    custom_width: (box.c.x - box.a.x),
-                    custom_height: (box.c.y - box.a.y),
-                    margin: 0,
-                    posX: box.a.x,
-                    posY: box.a.y,
-                    fillColor: color(PALETTE.dirtCircles),
-                    fillColorNoise: 10,
-                    numberQuantisizer: 200,
-                    radiusBase: 0.75,
-                    radiusNoise: 0.25,
-                }
-            );
+            // box.dirtCircles = new dirtCircles(
+            //     {
+            //         custom_width: (box.c.x - box.a.x),
+            //         custom_height: (box.c.y - box.a.y),
+            //         margin: 0,
+            //         posX: box.a.x,
+            //         posY: box.a.y,
+            //         fillColor: color(PALETTE.dirtCircles),
+            //         fillColorNoise: 10,
+            //         numberQuantisizer: 200,
+            //         radiusBase: 0.75,
+            //         radiusNoise: 0.25,
+            //     }
+            // );
 
-            box.hatches = new Hatches(axis, box.a, box.c, hatchColor, 0, 0, DISTANCE_BETWEEN_LINES);
+            // box.hatches = new Hatches(axis, box.a, box.c, hatchColor, 0, 0, DISTANCE_BETWEEN_LINES);
         }
     }
 
@@ -369,17 +383,21 @@ class Grid {
         for (let box of this.boxes) {
             if (frameCount == 1) {
                 box.rothko.show();
-                box.dirtLines.show();
-                box.dirtCircles.show();
+                // box.dirtLines.show();
+                // box.dirtCircles.show();
             }
             box.show();
-            box.hatches.show();
-            box.hatches.check_all_complete();
+            // console.warn("hatches.show: " + fxrand());
+            // here start
+            // box.hatches.show();
+            // here end
+            // console.error("hatches.show end: " + fxrand());
+            // box.hatches.check_all_complete();
 
-            if (this.boxes_completely_run == false) {
+            // if (this.boxes_completely_run == false) {
 
-                this.boxes_complete_status.push(box.hatches.all_lines_complete)
-            }
+            //     this.boxes_complete_status.push(box.hatches.all_lines_complete)
+            // }
         }
 
         this.boxes_completely_run = this.boxes_complete_status.every(element => element === true);

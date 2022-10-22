@@ -345,7 +345,6 @@ function draw() {
   // ambientMaterial(255);
   // specularMaterial(255);
 
-
   if (frameCount == 1) {
     pixelDensity(CURRENTPIXELDENS);
     // background(distortColorNew(PALETTE[0], 30));
@@ -353,6 +352,7 @@ function draw() {
     corroded.show();
     backgroundDirtCircles.show();
   }
+
 
 
   if (MODE == 5) {
@@ -378,7 +378,11 @@ function draw() {
   // brushBug.update();
   // brushBug.display();
 
+  // console.warn("grid: " + fxrand());
+  // here
   grid.show();
+  // console.error("grid e: " + fxrand());
+
   if (NUMBER_OF_GRIDS >= 2) {
     grid2.show();
   }
@@ -402,6 +406,7 @@ function draw() {
     console.log("All done");
     noLoop();
     fxpreview();
+    console.warn(fxrand());
   }
 
 }

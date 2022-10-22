@@ -257,7 +257,8 @@ class Brush {
                 // ellipse(0, 0, this.radius, this.radius);
                 // rectMode(CENTER);
                 // rect(0, 0, this.radius, this.radius);
-                this.drawBrush();
+
+                // this.drawBrush();
             }
             pop();
 
@@ -274,13 +275,16 @@ class Brush {
             // stroke(this.strokeColor);
             stroke(distortColorNew(this.strokeColor, this.strokeColorDistort))
             if (BRUSHSHAPE == "Line") {
-                line(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize));
+                // line(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize));
+                line(getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize));
             } else if (BRUSHSHAPE == "Ellipse") {
                 noFill();
-                ellipse(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(0, this.brushSize / 2), getRandomFromInterval(0, this.brushSize / 2));
+                // ellipse(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(0, this.brushSize / 2), getRandomFromInterval(0, this.brushSize / 2));
+                ellipse(getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(0, this.brushSize / 2), getP5RandomFromInterval(0, this.brushSize / 2));
             } else if (BRUSHSHAPE == "Triangle") {
                 noFill();
-                triangle(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize),);
+                // triangle(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize),);
+                triangle(getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize),);
             } else {
                 console.warn("No brush shape specified, oida!")
             }
