@@ -19,13 +19,14 @@ class RothkoRect {
         this.strokeOpacity = data.strokeOpacity;
         this.numberQuantisizer = data.numberQuantisizer;
 
-        this.area = Math.round((this.custom_width * this.custom_height) / (DOMINANTSIDE * DOMINANTSIDE) * 1000) / 1000;
+        // this.area = Math.round((this.custom_width * this.custom_height) / (DOMINANTSIDE * DOMINANTSIDE) * 1000) / 1000;
+        this.area = Math.round(Math.round(this.custom_width / DOMINANTSIDE * 100) * Math.round(this.custom_height / DOMINANTSIDE * 100)) / 100;
         // console.log("area: " + this.area);
         // this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
         // this.shapeNumber = (this.custom_width * this.custom_height) / (width * height) * this.numberQuantisizer;  // relative to size
         // this.shapeNumber = Math.floor(this.custom_width / width * this.custom_height / height * 100) * this.numberQuantisizer;  // relative to size
         // this.shapeNumber = this.area / 1000 * 20;  // relative to size
-        this.shapeNumber = this.area * 1000 * this.numberQuantisizer;  // relative to size
+        this.shapeNumber = Math.round(this.area * 10 * this.numberQuantisizer);  // relative to size
         // console.log("this.shapeNumber:" + this.shapeNumber); // 250 / 500 - quantisizer ist 20
 
         this.elements = [];
@@ -34,6 +35,7 @@ class RothkoRect {
         // color(this.fillColor).setAlpha(this.fillColorOpacity);
         // color(this.strokeColor).setAlpha(this.strokeOpacity);
 
+        console.log("asdfa: " + this.shapeNumber)
         for (var i = 0; i < this.shapeNumber; i++) {
 
             let widthShape = getRandomFromInterval(this.elementSizeMin, this.elementSizeMax);

@@ -101,7 +101,14 @@ class Grid {
     }
 
     getSinglePointX() {
-        let chosen_one = getRandomFromList(this.pointsXPool);
+        this.standardStart = 0;
+        this.standardEnd = 100;
+        this.standardPool = [...Array(this.standardEnd).keys()];
+
+        // let chosen_one = getRandomFromList(this.pointsXPool);
+        let chosen_one = getRandomFromList(this.standardPool);
+        console.log("original: " + chosen_one);
+        chosen_one = Math.round(map(chosen_one, this.standardStart, this.standardEnd, 0, width));
         console.log(chosen_one);
 
         // remove near points
@@ -115,8 +122,17 @@ class Grid {
     }
 
     getSinglePointY() {
-        let chosen_one = getRandomFromList(this.pointsYPool);
+        // let chosen_one = getRandomFromList(this.pointsYPool);
         // console.log(chosen_one);
+
+        this.standardStart = 0;
+        this.standardEnd = 100;
+        this.standardPool = [...Array(this.standardEnd).keys()];
+
+        let chosen_one = getRandomFromList(this.standardPool);
+        console.log("original: " + chosen_one);
+        chosen_one = Math.round(map(chosen_one, this.standardStart, this.standardEnd, 0, height));
+        console.log(chosen_one);
 
         // remove near points
         for (var i = this.pointsYPool.length - 1; i >= 0; i--) {
