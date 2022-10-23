@@ -56,22 +56,35 @@ class Grid {
 
     getPoints() {
 
+        // pool of points are resolution independent
+        // points are dependent
+
         // start - generate a list from  0 to width
-        this.pointsXPool = [...Array(width).keys()];
-        this.pointsYPool = [...Array(height).keys()];
+        // this.pointsXPool = [...Array(width).keys()];
+        // this.pointsYPool = [...Array(height).keys()];
+
+        this.standardStartX = 0;
+        this.standardEndX = 100;
+        this.standardPoolX = [...Array(this.standardEndX).keys()];
+        this.standardStartY = 0;
+        this.standardEndY = 100;
+        this.standardPoolY = [...Array(this.standardEndY).keys()];
+
+        this.marginStandard = Math.round(map(this.margin, 0, width, this.standardStartX, this.standardEndX));
+        this.minimumDistanceStandard = Math.round(map(this.minimumDistance, 0, width, this.standardStartX, this.standardEndX));
+        // console.error(this.minimumDistanceStandard);
 
         // remove start and end of axis
-        for (var i = this.pointsXPool.length - 1; i >= 0; i--) {
-            if (i <= (0 + this.margin + this.minimumDistance) || i >= (width - this.margin - this.minimumDistance)) {
-                this.pointsXPool.splice(i, 1);
+        for (var i = this.standardPoolX.length - 1; i >= 0; i--) {
+            if (i <= (0 + this.marginStandard + this.minimumDistanceStandard) || i >= (this.standardEndX - this.marginStandard - this.minimumDistanceStandard)) {
+                this.standardPoolX.splice(i, 1);
             }
         }
-
         this.pointsX = [(0 + this.margin), (width - this.margin)];
 
-        for (var i = this.pointsYPool.length - 1; i >= 0; i--) {
-            if (i <= (0 + this.margin + this.minimumDistance) || i >= (height - this.margin - this.minimumDistance)) {
-                this.pointsYPool.splice(i, 1);
+        for (var i = this.standardPoolY.length - 1; i >= 0; i--) {
+            if (i <= (0 + this.marginStandard + this.minimumDistanceStandard) || i >= (this.standardEndY - this.marginStandard - this.minimumDistanceStandard)) {
+                this.standardPoolY.splice(i, 1);
             }
         }
         this.pointsY = [(0 + this.margin), (height - this.margin)];
@@ -83,7 +96,6 @@ class Grid {
         for (var i = 0; i < this.count_of_points_y; i++) {
             this.getSinglePointY();
         }
-
 
         // simple sort
         this.pointsX.sort(function (a, b) {
@@ -102,24 +114,23 @@ class Grid {
     }
 
     getSinglePointX() {
-        this.standardStart = 0;
-        this.standardEnd = 100;
-        this.standardPool = [...Array(this.standardEnd).keys()];
 
         // let chosen_one = getRandomFromList(this.pointsXPool);
-        let chosen_one = getRandomFromList(this.standardPool);  // standard for resolution independence
+        let chosen_oneStandard = getRandomFromList(this.standardPoolX);  // standard for resolution independence
         // console.log("original: " + chosen_one);
-        chosen_one = Math.round(map(chosen_one, this.standardStart, this.standardEnd, 0, width));
-        // console.log(chosen_one);
+        let chosen_one = Math.round(map(chosen_oneStandard, this.standardStartX, this.standardEndX, 0, width));
+        // console.error("chosen_one: " + chosen_one);
+        // console.error("standardStartX: " + this.standardStartX);
+        // console.error("standardEndX: " + this.standardEndX);
 
         // remove near points
-        for (var i = this.pointsXPool.length - 1; i >= 0; i--) {
-            if (this.pointsXPool[i] >= (chosen_one - this.minimumDistance) && this.pointsXPool[i] <= (chosen_one + this.minimumDistance)) {
-                // console.warn(this.pointsXPool[i])
-                this.pointsXPool.splice(i, 1);
+        for (var i = this.standardPoolX.length - 1; i >= 0; i--) {
+            if (this.standardPoolX[i] >= (chosen_oneStandard - this.minimumDistanceStandard) && this.standardPoolX[i] <= (chosen_oneStandard + this.minimumDistanceStandard)) {
+                // console.warn(this.standardPoolX[i])
+                this.standardPoolX.splice(i, 1);
             }
         }
-        // console.log(this.pointsXPool);
+        // console.log(this.standardPoolX);
         this.pointsX.push(chosen_one);
     }
 
@@ -127,23 +138,19 @@ class Grid {
         // let chosen_one = getRandomFromList(this.pointsYPool);
         // console.log(chosen_one);
 
-        this.standardStart = 0;
-        this.standardEnd = 100;
-        this.standardPool = [...Array(this.standardEnd).keys()];
-
-        let chosen_one = getRandomFromList(this.standardPool);
+        let chosen_oneStandard = getRandomFromList(this.standardPoolY);
         // console.log("original: " + chosen_one);
-        chosen_one = Math.round(map(chosen_one, this.standardStart, this.standardEnd, 0, height));
+        let chosen_one = Math.round(map(chosen_oneStandard, this.standardStartY, this.standardEndY, 0, height));
         // console.log(chosen_one);
 
         // remove near points
-        for (var i = this.pointsYPool.length - 1; i >= 0; i--) {
-            if (this.pointsYPool[i] >= (chosen_one - this.minimumDistance) && this.pointsYPool[i] <= (chosen_one + this.minimumDistance)) {
+        for (var i = this.standardPoolY.length - 1; i >= 0; i--) {
+            if (this.standardPoolY[i] >= (chosen_oneStandard - this.minimumDistanceStandard) && this.standardPoolY[i] <= (chosen_oneStandard + this.minimumDistanceStandard)) {
                 // console.log(chosen_one + ": " + i);
-                this.pointsYPool.splice(i, 1);
+                this.standardPoolY.splice(i, 1);
             }
         }
-        // console.log(this.pointsYPool);
+        // console.log(this.standardPoolY);
         this.pointsY.push(chosen_one);
     }
 
