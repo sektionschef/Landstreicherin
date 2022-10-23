@@ -107,9 +107,9 @@ class Grid {
 
         // let chosen_one = getRandomFromList(this.pointsXPool);
         let chosen_one = getRandomFromList(this.standardPool);
-        console.log("original: " + chosen_one);
+        // console.log("original: " + chosen_one);
         chosen_one = Math.round(map(chosen_one, this.standardStart, this.standardEnd, 0, width));
-        console.log(chosen_one);
+        // console.log(chosen_one);
 
         // remove near points
         for (var i = this.pointsXPool.length - 1; i >= 0; i--) {
@@ -130,9 +130,9 @@ class Grid {
         this.standardPool = [...Array(this.standardEnd).keys()];
 
         let chosen_one = getRandomFromList(this.standardPool);
-        console.log("original: " + chosen_one);
+        // console.log("original: " + chosen_one);
         chosen_one = Math.round(map(chosen_one, this.standardStart, this.standardEnd, 0, height));
-        console.log(chosen_one);
+        // console.log(chosen_one);
 
         // remove near points
         for (var i = this.pointsYPool.length - 1; i >= 0; i--) {
@@ -324,6 +324,7 @@ class Grid {
 
             // let axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
             let axis = getRandomFromList(["x", "y", "xy", "yx"]);
+            axis = "xy";
             if (MODE > 1) {
                 console.log(axis + " axis randomly chosen.");
             }
@@ -358,37 +359,37 @@ class Grid {
                 numberQuantisizer: 20, // 20
             });
 
-            // box.dirtLines = new dirtLines(
-            //     {
-            //         custom_width: (box.c.x - box.a.x),
-            //         custom_height: (box.c.y - box.a.y),
-            //         margin: 0,
-            //         posX: box.a.x,
-            //         posY: box.a.y,
-            //         strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
-            //         strokeWeight: 0.2 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.0002,
-            //         strokeColorNoise: 15,
-            //         numberQuantisizer: 120,  // 3
-            //         length: 40 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.042,  // 40
-            //     }
-            // );
+            box.dirtLines = new dirtLines(
+                {
+                    custom_width: (box.c.x - box.a.x),
+                    custom_height: (box.c.y - box.a.y),
+                    margin: 0,
+                    posX: box.a.x,
+                    posY: box.a.y,
+                    strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
+                    strokeWeight: 0.2 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.0002,
+                    strokeColorNoise: 15,
+                    numberQuantisizer: 120,  // 3
+                    length: 40 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.042,  // 40
+                }
+            );
 
-            // box.dirtCircles = new dirtCircles(
-            //     {
-            //         custom_width: (box.c.x - box.a.x),
-            //         custom_height: (box.c.y - box.a.y),
-            //         margin: 0,
-            //         posX: box.a.x,
-            //         posY: box.a.y,
-            //         fillColor: color(PALETTE.dirtCircles),
-            //         fillColorNoise: 10,
-            //         numberQuantisizer: 200,
-            //         radiusBase: 0.75,
-            //         radiusNoise: 0.25,
-            //     }
-            // );
+            box.dirtCircles = new dirtCircles(
+                {
+                    custom_width: (box.c.x - box.a.x),
+                    custom_height: (box.c.y - box.a.y),
+                    margin: 0,
+                    posX: box.a.x,
+                    posY: box.a.y,
+                    fillColor: color(PALETTE.dirtCircles),
+                    fillColorNoise: 10,
+                    numberQuantisizer: 200,
+                    radiusBase: 0.75,
+                    radiusNoise: 0.25,
+                }
+            );
 
-            // box.hatches = new Hatches(axis, box.a, box.c, hatchColor, 0, 0, DISTANCE_BETWEEN_LINES);
+            box.hatches = new Hatches(axis, box.a, box.c, hatchColor, 0, 0, DISTANCE_BETWEEN_LINES);
         }
     }
 
@@ -399,21 +400,17 @@ class Grid {
         for (let box of this.boxes) {
             if (frameCount == 1) {
                 box.rothko.show();
-                // box.dirtLines.show();
-                // box.dirtCircles.show();
+                box.dirtLines.show();
+                box.dirtCircles.show();
             }
             box.show();
-            // console.warn("hatches.show: " + fxrand());
-            // here start
-            // box.hatches.show();
-            // here end
-            // console.error("hatches.show end: " + fxrand());
-            // box.hatches.check_all_complete();
+            box.hatches.show();
+            box.hatches.check_all_complete();
 
-            // if (this.boxes_completely_run == false) {
+            if (this.boxes_completely_run == false) {
 
-            //     this.boxes_complete_status.push(box.hatches.all_lines_complete)
-            // }
+                this.boxes_complete_status.push(box.hatches.all_lines_complete)
+            }
         }
 
         this.boxes_completely_run = this.boxes_complete_status.every(element => element === true);

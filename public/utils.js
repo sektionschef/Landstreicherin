@@ -38,13 +38,19 @@ function distortColor(colorObject, max_diff) {
     return color(red, green, blue, opacity);
 }
 
-function distortColorNew(colorObject, diff) {
+function distortColorNew(colorObject, diff, strict = true) {
 
     colorA = color(colorObject);
     colorMode(HSB, 360, 100, 100, 1);
-    brightnessNew = brightness(colorA) + getRandomFromInterval(-diff, diff);
-    saturationNew = saturation(colorA) + getRandomFromInterval(-diff, diff);
-    hueNew = hue(colorA) + getRandomFromInterval(-diff / 4, diff / 4);
+    if (strict) {
+        brightnessNew = brightness(colorA) + getRandomFromInterval(-diff, diff);
+        saturationNew = saturation(colorA) + getRandomFromInterval(-diff, diff);
+        hueNew = hue(colorA) + getRandomFromInterval(-diff / 4, diff / 4);
+    } else {
+        brightnessNew = brightness(colorA) + getP5RandomFromInterval(-diff, diff);
+        saturationNew = saturation(colorA) + getP5RandomFromInterval(-diff, diff);
+        hueNew = hue(colorA) + getP5RandomFromInterval(-diff / 4, diff / 4);
+    }
     colorB = color(hueNew, saturationNew, brightnessNew, alpha(colorA));
 
     colorMode(RGB, 255, 255, 255, 255);

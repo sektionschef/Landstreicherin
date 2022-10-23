@@ -35,7 +35,7 @@ class RothkoRect {
         // color(this.fillColor).setAlpha(this.fillColorOpacity);
         // color(this.strokeColor).setAlpha(this.strokeOpacity);
 
-        console.log("asdfa: " + this.shapeNumber)
+        // console.log("asdfa: " + this.shapeNumber)
         for (var i = 0; i < this.shapeNumber; i++) {
 
             let widthShape = getRandomFromInterval(this.elementSizeMin, this.elementSizeMax);

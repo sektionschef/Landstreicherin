@@ -16,23 +16,19 @@ class Hatches {
         this.bodies = [];
         this.all_lines_complete = false;
 
-        this.width = this.cornerRight.x - this.cornerLeft.x;
-        this.height = this.cornerRight.y - this.cornerLeft.y;
+        this.width = Math.round(this.cornerRight.x - this.cornerLeft.x);
+        this.height = Math.round(this.cornerRight.y - this.cornerLeft.y);
 
-        // console.warn("FXRANDO: " + fxrand());
-        // if (this.axis == "x") {
-        //     this.x();
-        // } else if (this.axis == "y") {
-        //     this.y();
-        // } else if (this.axis == "xy") {
-        //     this.xy();
-        // } else if (this.axis == "yx") {
-        //     this.yx();
-        // } else if (this.axis == "blank") {
-        // }
-        this.x();
-        // console.warn("FXRANDO: " + fxrand());
-
+        if (this.axis == "x") {
+            this.x();
+        } else if (this.axis == "y") {
+            this.y();
+        } else if (this.axis == "xy") {
+            this.xy();
+        } else if (this.axis == "yx") {
+            this.yx();
+        } else if (this.axis == "blank") {
+        }
     }
 
     x() {
@@ -44,7 +40,7 @@ class Hatches {
         count_lines = Math.round((this.cornerRight.y - this.cornerLeft.y - 2 * this.padding_y) / this.distance_between_lines);
         // console.warn("distance: " + this.distance_between_lines);
         // console.warn("area: " + (this.cornerRight.y - this.cornerLeft.y - 2 * this.padding_y));
-        // console.warn("count_lines: " + count_lines);
+        console.warn("count_lines: " + count_lines);
 
         for (let i = 0; i < count_lines; i++) {
 
@@ -108,22 +104,24 @@ class Hatches {
 
         // main body
         if (type == "height") {
+            console.log("this.height: " + this.height);
+            console.log("this.width: " + this.width);
+            console.log("this.distance_between_lines: " + this.distance_between_lines);
             count_lines = Math.round((this.height - this.width - 2 * this.padding_x) / this.distance_between_lines);
+            console.warn("count_lines: " + count_lines);
 
             for (let i = 0; i < count_lines; i++) {
 
                 start = createVector(this.cornerLeft.x, this.cornerLeft.y + this.distance_between_lines * i, 0);
                 end = createVector(this.cornerRight.x, this.cornerLeft.y + (this.cornerRight.x - this.cornerLeft.x) + this.distance_between_lines * i, 0);
 
-
                 start.add(this.offsetter());
                 end.add(this.offsetter());
-
 
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    distortColorNew(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort, false)
                 ));
             }
         } else {
@@ -141,7 +139,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    distortColorNew(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort, false)
                 ));
             }
 
@@ -163,7 +161,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    distortColorNew(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort, false)
                 ));
             }
 
@@ -183,7 +181,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    distortColorNew(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort, false)
                 ));
             }
         }
@@ -204,7 +202,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    distortColorNew(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort, false)
                 ));
             }
         } else {
@@ -223,7 +221,7 @@ class Hatches {
                 this.bodies.push(new Brush(
                     start,
                     end,
-                    distortColorNew(this.brushColor, this.brushColorDistort)
+                    distortColorNew(this.brushColor, this.brushColorDistort, false)
                 ));
             }
 
@@ -368,7 +366,7 @@ class Hatches {
     }
 
     offsetter() {
-        return createVector(getRandomFromInterval(-this.offsetPoint, this.offsetPoint), getRandomFromInterval(-this.offsetPoint, this.offsetPoint), 0);
+        return createVector(getP5RandomFromInterval(-this.offsetPoint, this.offsetPoint), getP5RandomFromInterval(-this.offsetPoint, this.offsetPoint), 0);
     }
 
     show() {

@@ -258,7 +258,7 @@ class Brush {
                 // rectMode(CENTER);
                 // rect(0, 0, this.radius, this.radius);
 
-                // this.drawBrush();
+                this.drawBrush();
             }
             pop();
 
@@ -272,8 +272,8 @@ class Brush {
         // push();
         strokeWeight(this.strokeSize);
         for (var i = 0; i <= 5; i++) {
-            // stroke(this.strokeColor);
-            stroke(distortColorNew(this.strokeColor, this.strokeColorDistort))
+            stroke(this.strokeColor);
+            // stroke(distortColorNew(this.strokeColor, this.strokeColorDistort))
             if (BRUSHSHAPE == "Line") {
                 // line(getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize), getRandomFromInterval(-this.brushSize, this.brushSize));
                 line(getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize), getP5RandomFromInterval(-this.brushSize, this.brushSize));
