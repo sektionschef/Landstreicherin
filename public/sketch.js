@@ -1,6 +1,6 @@
-// const MODE = 1  // "FINE ART";
+const MODE = 1  // "FINE ART";
 // const MODE = 2  // DEBUG MESSAGES
-const MODE = 5 // all debug messages
+// const MODE = 5 // all debug messages
 
 const NOISESEED = hashFnv32a(fxhash);
 if (MODE > 1) {

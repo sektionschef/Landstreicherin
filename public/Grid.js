@@ -50,7 +50,7 @@ class Grid {
             console.log(this.boxes);
         }
 
-        // this.create_lines();
+        this.create_lines();
     }
 
 
@@ -405,22 +405,22 @@ class Grid {
         this.boxes_complete_status = [];
 
         for (let box of this.boxes) {
-            //     if (frameCount == 1) {
-            //         box.rothko.show();
-            //         box.dirtLines.show();
-            //         box.dirtCircles.show();
-            //     }
+            if (frameCount == 1) {
+                box.rothko.show();
+                box.dirtLines.show();
+                box.dirtCircles.show();
+            }
             box.show();
-            //     box.hatches.show();
-            //     box.hatches.check_all_complete();
+            box.hatches.show();
+            box.hatches.check_all_complete();
 
-            //     if (this.boxes_completely_run == false) {
+            if (this.boxes_completely_run == false) {
 
-            //         this.boxes_complete_status.push(box.hatches.all_lines_complete)
-            //     }
+                this.boxes_complete_status.push(box.hatches.all_lines_complete)
+            }
         }
 
-        // this.boxes_completely_run = this.boxes_complete_status.every(element => element === true);
+        this.boxes_completely_run = this.boxes_complete_status.every(element => element === true);
     }
 }
 
