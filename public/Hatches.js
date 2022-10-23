@@ -40,7 +40,7 @@ class Hatches {
         count_lines = Math.round((this.cornerRight.y - this.cornerLeft.y - 2 * this.padding_y) / this.distance_between_lines);
         // console.warn("distance: " + this.distance_between_lines);
         // console.warn("area: " + (this.cornerRight.y - this.cornerLeft.y - 2 * this.padding_y));
-        console.warn("count_lines: " + count_lines);
+        // console.warn("count_lines: " + count_lines);
 
         for (let i = 0; i < count_lines; i++) {
 
@@ -104,11 +104,11 @@ class Hatches {
 
         // main body
         if (type == "height") {
-            console.log("this.height: " + this.height);
-            console.log("this.width: " + this.width);
-            console.log("this.distance_between_lines: " + this.distance_between_lines);
+            // console.log("this.height: " + this.height);
+            // console.log("this.width: " + this.width);
+            // console.log("this.distance_between_lines: " + this.distance_between_lines);
             count_lines = Math.round((this.height - this.width - 2 * this.padding_x) / this.distance_between_lines);
-            console.warn("count_lines: " + count_lines);
+            // console.warn("count_lines: " + count_lines);
 
             for (let i = 0; i < count_lines; i++) {
 

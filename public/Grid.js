@@ -50,7 +50,7 @@ class Grid {
             console.log(this.boxes);
         }
 
-        this.create_lines();
+        // this.create_lines();
     }
 
 
@@ -66,7 +66,6 @@ class Grid {
                 this.pointsXPool.splice(i, 1);
             }
         }
-        // console.log(this.pointsXPool);
 
         this.pointsX = [(0 + this.margin), (width - this.margin)];
 
@@ -98,6 +97,8 @@ class Grid {
             console.log("Coordinates of points on x axis: " + this.pointsX);
             console.log("Coordinates of points on y axis: " + this.pointsY);
         }
+
+        // console.log(this.pointsXPool);
     }
 
     getSinglePointX() {
@@ -106,7 +107,7 @@ class Grid {
         this.standardPool = [...Array(this.standardEnd).keys()];
 
         // let chosen_one = getRandomFromList(this.pointsXPool);
-        let chosen_one = getRandomFromList(this.standardPool);
+        let chosen_one = getRandomFromList(this.standardPool);  // standard for resolution independence
         // console.log("original: " + chosen_one);
         chosen_one = Math.round(map(chosen_one, this.standardStart, this.standardEnd, 0, width));
         // console.log(chosen_one);
@@ -114,6 +115,7 @@ class Grid {
         // remove near points
         for (var i = this.pointsXPool.length - 1; i >= 0; i--) {
             if (this.pointsXPool[i] >= (chosen_one - this.minimumDistance) && this.pointsXPool[i] <= (chosen_one + this.minimumDistance)) {
+                // console.warn(this.pointsXPool[i])
                 this.pointsXPool.splice(i, 1);
             }
         }
@@ -330,7 +332,6 @@ class Grid {
 
             // console.warn(fxrand());
             indexChooser = Math.round(getRandomFromInterval(0, 1));
-            console.log(indexChooser);
             if (indexChooser == 0) {
                 hatchColor = PALETTE.hatches[0];
                 rothkoColor = PALETTE.primaries[1];
@@ -397,22 +398,22 @@ class Grid {
         this.boxes_complete_status = [];
 
         for (let box of this.boxes) {
-            if (frameCount == 1) {
-                box.rothko.show();
-                box.dirtLines.show();
-                box.dirtCircles.show();
-            }
+            //     if (frameCount == 1) {
+            //         box.rothko.show();
+            //         box.dirtLines.show();
+            //         box.dirtCircles.show();
+            //     }
             box.show();
-            box.hatches.show();
-            box.hatches.check_all_complete();
+            //     box.hatches.show();
+            //     box.hatches.check_all_complete();
 
-            if (this.boxes_completely_run == false) {
+            //     if (this.boxes_completely_run == false) {
 
-                this.boxes_complete_status.push(box.hatches.all_lines_complete)
-            }
+            //         this.boxes_complete_status.push(box.hatches.all_lines_complete)
+            //     }
         }
 
-        this.boxes_completely_run = this.boxes_complete_status.every(element => element === true);
+        // this.boxes_completely_run = this.boxes_complete_status.every(element => element === true);
     }
 }
 
