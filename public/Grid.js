@@ -324,7 +324,6 @@ class Grid {
 
             // let axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
             let axis = getRandomFromList(["x", "y", "xy", "yx"]);
-            axis = "xy";
             if (MODE > 1) {
                 console.log(axis + " axis randomly chosen.");
             }

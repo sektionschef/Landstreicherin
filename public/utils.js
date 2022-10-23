@@ -13,12 +13,12 @@ function getP5RandomFromInterval(min, max) {
     return random() * (max - min) + min;
 }
 
-function getRealRandomFromInterval(min, max) {
-    return random() * (max - min) + min;
-}
-
 function getRandomFromList(items) {
     return items[Math.floor(fxrand() * items.length)];
+}
+
+function getP5RandomFromList(items) {
+    return items[Math.floor(random() * items.length)];
 }
 
 function distortColor(colorObject, max_diff) {
