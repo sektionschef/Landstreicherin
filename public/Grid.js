@@ -329,6 +329,7 @@ class Grid {
         let hatchColor;
         let rothkoColor;
 
+
         for (let box of this.boxes) {
 
             // let axis = getRandomFromList(["x", "y", "xy", "yx", "blank"]);
@@ -337,7 +338,6 @@ class Grid {
                 console.log(axis + " axis randomly chosen.");
             }
 
-            // console.warn(fxrand());
             indexChooser = Math.round(getRandomFromInterval(0, 1));
             if (indexChooser == 0) {
                 hatchColor = PALETTE.hatches[0];
@@ -376,8 +376,8 @@ class Grid {
                     strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
                     strokeWeight: 0.2 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.0002,
                     strokeColorNoise: 15,
-                    numberQuantisizer: 120,  // 3
-                    length: 40 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.042,  // 40
+                    numberQuantisizer: 400, //getP5RandomFromInterval(200, 600),  // 3
+                    length: 20 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.042,  // 40
                 }
             );
 
@@ -411,11 +411,10 @@ class Grid {
                 box.dirtCircles.show();
             }
             box.show();
+
             box.hatches.show();
             box.hatches.check_all_complete();
-
             if (this.boxes_completely_run == false) {
-
                 this.boxes_complete_status.push(box.hatches.all_lines_complete)
             }
         }

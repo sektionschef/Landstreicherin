@@ -54,7 +54,7 @@ class Hatches {
             this.bodies.push(new Brush(
                 start,
                 end,
-                distortColorNew(this.brushColor, this.brushColorDistort)
+                distortColorNew(this.brushColor, this.brushColorDistort, false)
             ));
         }
     }
@@ -77,7 +77,7 @@ class Hatches {
             this.bodies.push(new Brush(
                 start,
                 end,
-                distortColorNew(this.brushColor, this.brushColorDistort)
+                distortColorNew(this.brushColor, this.brushColorDistort, false)
             ));
         }
     }

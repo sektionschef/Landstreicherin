@@ -19,7 +19,7 @@ let DOMINANTSIDE;
 let RESCALINGCONSTANT = 948;  // the width the painting was designed in
 
 // FEATURES
-let NUMBER_OF_GRIDS = 1 // getRandomFromList([1, 2, 3]);
+let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
 console.log("NUMBER_OF_GRIDS: " + NUMBER_OF_GRIDS);
 
 let BRUSHSIZEMIN = 0.5;
@@ -70,145 +70,148 @@ let PaperDimensions = {
 
 const PALETTESYSTEM = {
   "Dead": {
-    "background": "#32746D",
+    // "background": "#32746D",
+    "background": "#041311",
     "primaries": [
       "#9EC5AB",
       "#104F55",
     ],
     "hatches": [
-      "#88ac94",
-      "#14545a",
+      // "#88ac94",
+      // "#14545a",
+      "#104F55",
+      "#9EC5AB",
     ],
     "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
+    "dirtline": "#504f4f",
     "dirtCircles": "#32746D",
   },
-  "Feinstaub": {
-    "background": "#b1b1b1",
-    "primaries": [
-      "#ff993a",
-      "#F52F57",
-    ],
-    "hatches": [
-      "#cf6426",
-      "#ec4163",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#db0000",
-    "dirtCircles": "#747474",
-  },
-  "Horsti": {
-    "background": "#7ca3bb",
-    "primaries": [
-      "#669BBC",
-      "#F3A712",
-    ],
-    "hatches": [
-      "#669BBC",
-      "#F3A712",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-    "dirtCircles": "#7ca3bb",
-  },
-  "Suzy": {
-    "background": "#7c452cff",
-    "primaries": [
-      "#eb4a00ff",
-      "#3378a3ff",
-    ],
-    "hatches": [
-      "#c45927ff",
-      "#224f6bff",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-    "dirtCircles": "#7c452cff",
-  },
-  "Golden BU": {
-    "background": "#c7c6c5",
-    "primaries": [
-      "#86a8bb",
-      "#f7c331",
-    ],
-    "hatches": [
-      "#4ea1c7",
-      "#dbb345",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#616161",
-    "dirtCircles": "#818181ff",
-  },
-  "Aneignung": {
-    "background": "#612541",
-    "primaries": [
-      "#c2798e",
-      "#a3234a",
-    ],
-    "hatches": [
-      "#c2798e",
-      "#a3234a",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#404040",
-    "dirtCircles": "#7a3656",
-  },
-  "MoltoVolto": {
-    "background": "#cccdcd",
-    "primaries": [
-      "#78a5a5",
-      "#776161",
-    ],
-    "hatches": [
-      "#709797",
-      "#6d5c5c",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#3d3b3b",
-    "dirtCircles": "#797979",
-  },
-  "Molto": {
-    "background": "#323a3a",
-    "primaries": [
-      "#20cccc",
-      "#be2020",
-    ],
-    "hatches": [
-      "#337c8f",
-      "#a70c0c",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#3d3b3b",
-    "dirtCircles": "#666666",
-  },
-  "Das Zeitliche": {
-    "background": "#2d3131",
-    "primaries": [
-      "#504242",
-      "#687980",
-    ],
-    "hatches": [
-      "#3d3d3dff",
-      "#556266ff",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#757474",
-    "dirtCircles": "#666666",
-  },
-  "Frischkäse": {
-    "background": "#333338",
-    "primaries": [
-      "#d6a076",
-      "#6e6f85",
-    ],
-    "hatches": [
-      "#b18563",
-      "#363968",
-    ],
-    "rothkoStroke": "#3b3939",
-    "dirtline": "#757474",
-    "dirtCircles": "#666666",
-  },
+  // "Feinstaub": {
+  //   "background": "#b1b1b1",
+  //   "primaries": [
+  //     "#ff993a",
+  //     "#F52F57",
+  //   ],
+  //   "hatches": [
+  //     "#cf6426",
+  //     "#ec4163",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#db0000",
+  //   "dirtCircles": "#747474",
+  // },
+  // "Horsti": {
+  //   "background": "#7ca3bb",
+  //   "primaries": [
+  //     "#669BBC",
+  //     "#F3A712",
+  //   ],
+  //   "hatches": [
+  //     "#669BBC",
+  //     "#F3A712",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#7ca3bb",
+  // },
+  // "Suzy": {
+  //   "background": "#7c452cff",
+  //   "primaries": [
+  //     "#eb4a00ff",
+  //     "#3378a3ff",
+  //   ],
+  //   "hatches": [
+  //     "#c45927ff",
+  //     "#224f6bff",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#7c452cff",
+  // },
+  // "Golden BU": {
+  //   "background": "#c7c6c5",
+  //   "primaries": [
+  //     "#86a8bb",
+  //     "#f7c331",
+  //   ],
+  //   "hatches": [
+  //     "#4ea1c7",
+  //     "#dbb345",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#616161",
+  //   "dirtCircles": "#818181ff",
+  // },
+  // "Aneignung": {
+  //   "background": "#612541",
+  //   "primaries": [
+  //     "#c2798e",
+  //     "#a3234a",
+  //   ],
+  //   "hatches": [
+  //     "#c2798e",
+  //     "#a3234a",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#404040",
+  //   "dirtCircles": "#7a3656",
+  // },
+  // "MoltoVolto": {
+  //   "background": "#cccdcd",
+  //   "primaries": [
+  //     "#78a5a5",
+  //     "#776161",
+  //   ],
+  //   "hatches": [
+  //     "#709797",
+  //     "#6d5c5c",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#3d3b3b",
+  //   "dirtCircles": "#797979",
+  // },
+  // "Molto": {
+  //   "background": "#323a3a",
+  //   "primaries": [
+  //     "#20cccc",
+  //     "#be2020",
+  //   ],
+  //   "hatches": [
+  //     "#337c8f",
+  //     "#a70c0c",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#3d3b3b",
+  //   "dirtCircles": "#666666",
+  // },
+  // "Das Zeitliche": {
+  //   "background": "#2d3131",
+  //   "primaries": [
+  //     "#504242",
+  //     "#687980",
+  //   ],
+  //   "hatches": [
+  //     "#3d3d3dff",
+  //     "#556266ff",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#757474",
+  //   "dirtCircles": "#666666",
+  // },
+  // "Frischkäse": {
+  //   "background": "#333338",
+  //   "primaries": [
+  //     "#d6a076",
+  //     "#6e6f85",
+  //   ],
+  //   "hatches": [
+  //     "#b18563",
+  //     "#363968",
+  //   ],
+  //   "rothkoStroke": "#3b3939",
+  //   "dirtline": "#757474",
+  //   "dirtCircles": "#666666",
+  // },
 }
 
 choosePalette()
@@ -235,7 +238,9 @@ function preload() {
   if (urlParams.has('highres')) {
     CURRENTPIXELDENS = parseInt(urlParams.get('highres'));
   }
-  console.log("CURRENTPIXELDENS: " + CURRENTPIXELDENS);
+  if (MODE > 1) {
+    console.log("CURRENTPIXELDENS: " + CURRENTPIXELDENS);
+  }
 
   // if (urlParams.has('infinity')) {
   //   INFINITYSTRING = urlParams.get('infinity');
@@ -323,7 +328,6 @@ function setup() {
   if (NUMBER_OF_GRIDS >= 3) {
     grid3 = new Grid();
   }
-
 }
 
 
@@ -347,7 +351,7 @@ function draw() {
 
   if (frameCount == 1) {
     pixelDensity(CURRENTPIXELDENS);
-    // background(distortColorNew(PALETTE[0], 30));
+
     background(color(PALETTE.background));
     corroded.show();
     backgroundDirtCircles.show();

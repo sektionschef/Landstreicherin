@@ -28,11 +28,11 @@ class Corroded {
                 strokeWeight(0.1);
                 // noStroke();
 
-                fill(distortColorNew(color(red(this.fillColor), green(this.fillColor), blue(this.fillColor), 2), 20));
+                fill(distortColorNew(color(red(this.fillColor), green(this.fillColor), blue(this.fillColor), 2), 20, false));
                 // noFill();
-                var r = getRandomFromInterval(this.radius * 0.8, this.radius * 1.2);
-                var x_ = getRandomFromInterval(x * 0.8, x * 1.2);
-                var y_ = getRandomFromInterval(y * 0.8, y * 1.2);
+                var r = getP5RandomFromInterval(this.radius * 0.8, this.radius * 1.2);
+                var x_ = getP5RandomFromInterval(x * 0.8, x * 1.2);
+                var y_ = getP5RandomFromInterval(y * 0.8, y * 1.2);
                 rect(x_, y_, r, r);
                 // rect(x, y, this.radius);
 
