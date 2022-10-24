@@ -83,7 +83,9 @@ class Brush {
             // this.strokeColor = "blue";
             this.orientation = "left/bottom-top/right";
         } else {
-            console.log("some noise with this.angle: " + this.angle);
+            if (MODE > 1) {
+                console.warn("some noise with this.angle: " + this.angle);
+            }
             // throw "no orientation"
             this.alive = false;
         }

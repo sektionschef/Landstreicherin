@@ -18,39 +18,19 @@ let DOMINANTSIDE;
 
 let RESCALINGCONSTANT = 948;  // the width the painting was designed in
 
-// FEATURES
 let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
-console.log("NUMBER_OF_GRIDS: " + NUMBER_OF_GRIDS);
-
 let BRUSHSIZEMIN = 0.5;
 let BRUSHSIZEMAX = 1.5;
-console.log("BRUSHSIZEMIN: " + BRUSHSIZEMIN + " " + "BRUSHSIZEMAX: " + BRUSHSIZEMAX);
-
 let BRUSHFULLSPEEDMIN = 2;
 let BRUSHFULLSPEEDMAX = 6;
 let BRUSHFULLSPEED = Math.round(getRandomFromInterval(BRUSHFULLSPEEDMIN, BRUSHFULLSPEEDMAX) * 100) / 100;
-console.log("BRUSHFULLSPEED: " + BRUSHFULLSPEED);
-
-let BRUSHFIBRESIZE = Math.round(getRandomFromInterval(0.2, 0.4) * 100) / 100; // 0.4;
-console.log("BRUSHFIBRESIZE: " + BRUSHFIBRESIZE);
-
-let BRUSHFIBRECOLORNOISE = getRandomFromInterval(3, 10);
-console.log("BRUSHFIBRECOLORNOISE: " + BRUSHFIBRECOLORNOISE);
-let BRUSHCOLORDISTORT = getRandomFromInterval(5, 10);
-console.log("BRUSHCOLORDISTORT: " + BRUSHCOLORDISTORT);
-
-let DISTANCE_BETWEEN_LINES = Math.round(getRandomFromInterval(6, 16));  // 6, 16
-console.log("DISTANCE_BETWEEN_LINES: " + DISTANCE_BETWEEN_LINES);
-
-ROTHKOSTROKEOPACITY = getRandomFromInterval(5, 30);
-console.log("ROTHKOSTROKEOPACITY: " + ROTHKOSTROKEOPACITY);
-
-BRUSHSHAPE = getRandomFromList(["Line", "Ellipse", "Triangle"]);
-console.log("BRUSHSHAPE: " + BRUSHSHAPE);
-
-let HATCHOFFSET = 2
-console.log("HATCHOFFSET: " + HATCHOFFSET);
-
+let BRUSHFIBRESIZE = Math.round(getRandomFromInterval(0.2, 0.4) * 100) / 100;
+let BRUSHFIBRECOLORNOISE = Math.round(getRandomFromInterval(3, 10) * 100) / 100;
+let BRUSHCOLORDISTORT = Math.round(getRandomFromInterval(5, 10) * 100) / 100;
+let DISTANCE_BETWEEN_LINES = Math.round(getRandomFromInterval(6, 16));
+let ROTHKOSTROKEOPACITY = Math.round(getRandomFromInterval(5, 30) * 100) / 100;
+let BRUSHSHAPE = getRandomFromList(["Line", "Ellipse", "Triangle"]);
+let HATCHOFFSET = 2;
 let CURRENTPIXELDENS = 1;
 
 let PaperDimensions = {
@@ -111,48 +91,34 @@ const PALETTESYSTEM = {
   //   "dirtline": "#9c9c9c",
   //   "dirtCircles": "#3180b1",
   // },
-  "Suzy": {
-    "background": "#490f00ff",
+  // "Suzy": {
+  //   "background": "#490f00ff",
+  //   "primaries": [
+  //     "#eb4a00ff",
+  //     "#4793c2ff",
+  //   ],
+  //   "hatches": [
+  //     "#bd460fff",
+  //     "#30729bff",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#858080",
+  //   "dirtCircles": "#64331cff",
+  // },
+  "Aneignung": {
+    "background": "#3b1628",
     "primaries": [
-      "#eb4a00ff",
-      "#4793c2ff",
+      "#ca1246",
+      "#da4e78",
     ],
     "hatches": [
-      "#bd460fff",
-      "#30729bff",
+      "#da4e78",
+      "#ca1246",
     ],
     "rothkoStroke": "#1b1818",
-    "dirtline": "#858080",
-    "dirtCircles": "#64331cff",
+    "dirtline": "#7a1f1f",
+    "dirtCircles": "#7a3656",
   },
-  // "Golden BU": {
-  //   "background": "#c7c6c5",
-  //   "primaries": [
-  //     "#86a8bb",
-  //     "#f7c331",
-  //   ],
-  //   "hatches": [
-  //     "#4ea1c7",
-  //     "#dbb345",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#616161",
-  //   "dirtCircles": "#818181ff",
-  // },
-  // "Aneignung": {
-  //   "background": "#612541",
-  //   "primaries": [
-  //     "#c2798e",
-  //     "#a3234a",
-  //   ],
-  //   "hatches": [
-  //     "#c2798e",
-  //     "#a3234a",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#404040",
-  //   "dirtCircles": "#7a3656",
-  // },
   // "MoltoVolto": {
   //   "background": "#cccdcd",
   //   "primaries": [

@@ -15,9 +15,9 @@ class Grid {
         this.count_of_points_x = Math.round(getRandomFromInterval(2, 5));  // 1-5
         this.count_of_points_y = Math.round(getRandomFromInterval(2, 5));  // 1-5
         this.grid_label = this.count_of_points_x + "x" + this.count_of_points_y;
-        // if (MODE > 1) {
-        console.log("Grid: " + this.grid_label);
-        // }
+        if (MODE > 1) {
+            console.log("Grid: " + this.grid_label);
+        }
 
         this.columns_count = this.count_of_points_x + 1;
         this.row_count = this.count_of_points_y + 1;
@@ -209,13 +209,17 @@ class Grid {
         if (fxrand() >= 0.5) {
             this.chosen_axis = "x"
             this.chosen = getRandomFromList(this.possible_pairings_x)
-            console.log("Pairing on the x axis with:");
-            console.log(this.chosen);
+            if (MODE > 1) {
+                console.log("Pairing on the x axis with:");
+                console.log(this.chosen);
+            }
         } else {
             this.chosen_axis = "y"
             this.chosen = getRandomFromList(this.possible_pairings_y)
-            console.log("Pairing on the y axis with:");
-            console.log(this.chosen);
+            if (MODE > 1) {
+                console.log("Pairing on the y axis with:");
+                console.log(this.chosen);
+            }
         }
     }
 
@@ -283,12 +287,16 @@ class Grid {
             this.paired_box = new Box(data);
         }
 
-        console.log("Adding the newly paired box: ");
-        console.log(this.paired_box);
+        if (MODE > 1) {
+            console.log("Adding the newly paired box: ");
+            console.log(this.paired_box);
+        }
 
         this.boxes.push(this.paired_box)
 
-        console.log("Remove original boxes from array.");
+        if (MODE > 1) {
+            console.log("Remove original boxes from array.");
+        }
         for (var i = this.boxes.length - 1; i >= 0; i--) {
             if (this.boxes[i].label == this.left_label) {
                 this.boxes.splice(i, 1);
@@ -300,7 +308,9 @@ class Grid {
     }
 
     remove_used_pairs() {
-        console.log("Remove used pairs from both pools.")
+        if (MODE > 1) {
+            console.log("Remove used pairs from both pools.")
+        }
         for (var i = this.possible_pairings_x.length - 1; i >= 0; i--) {
 
             if (
