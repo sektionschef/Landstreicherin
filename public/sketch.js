@@ -69,25 +69,22 @@ let PaperDimensions = {
 }
 
 const PALETTESYSTEM = {
-  "Dead": {
-    // "background": "#32746D",
-    "background": "#041311",
-    "primaries": [
-      "#9EC5AB",
-      "#104F55",
-    ],
-    "hatches": [
-      // "#88ac94",
-      // "#14545a",
-      "#104F55",
-      "#9EC5AB",
-    ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#504f4f",
-    "dirtCircles": "#32746D",
-  },
+  // "Devcon5": {
+  //   "background": "#041311",
+  //   "primaries": [
+  //     "#9EC5AB",
+  //     "#104F55",
+  //   ],
+  //   "hatches": [
+  //     "#104F55",
+  //     "#9EC5AB",
+  //   ],
+  //   "rothkoStroke": "#1b1818",
+  //   "dirtline": "#504f4f",
+  //   "dirtCircles": "#32746D",
+  // },
   // "Feinstaub": {
-  //   "background": "#b1b1b1",
+  //   "background": "#7c1717",
   //   "primaries": [
   //     "#ff993a",
   //     "#F52F57",
@@ -100,34 +97,34 @@ const PALETTESYSTEM = {
   //   "dirtline": "#db0000",
   //   "dirtCircles": "#747474",
   // },
-  // "Horsti": {
-  //   "background": "#7ca3bb",
+  // "Pfaffstätten": {
+  //   "background": "#09324b",
   //   "primaries": [
-  //     "#669BBC",
+  //     "#82b1ce",
   //     "#F3A712",
   //   ],
   //   "hatches": [
-  //     "#669BBC",
+  //     "#56a6d8",
   //     "#F3A712",
   //   ],
   //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#404040",
-  //   "dirtCircles": "#7ca3bb",
+  //   "dirtline": "#9c9c9c",
+  //   "dirtCircles": "#3180b1",
   // },
-  // "Suzy": {
-  //   "background": "#7c452cff",
-  //   "primaries": [
-  //     "#eb4a00ff",
-  //     "#3378a3ff",
-  //   ],
-  //   "hatches": [
-  //     "#c45927ff",
-  //     "#224f6bff",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#404040",
-  //   "dirtCircles": "#7c452cff",
-  // },
+  "Suzy": {
+    "background": "#490f00ff",
+    "primaries": [
+      "#eb4a00ff",
+      "#4793c2ff",
+    ],
+    "hatches": [
+      "#bd460fff",
+      "#30729bff",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#858080",
+    "dirtCircles": "#64331cff",
+  },
   // "Golden BU": {
   //   "background": "#c7c6c5",
   //   "primaries": [
@@ -406,7 +403,6 @@ function draw() {
   }
 
   if (ALLDONE == true) {
-    // dirtCircles.show();
     console.log("All done");
     noLoop();
     fxpreview();
