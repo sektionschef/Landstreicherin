@@ -11,8 +11,8 @@ body {
 canvas {
 	margin: auto;
 	display: block;
-	width: 600px;
-	height: 600px;
+	width: 700px;
+	height: 700px;
 }
 
 /* {
@@ -26,13 +26,31 @@ canvas {
 
 body {
 	-webkit-text-size-adjust: none;
-	color: #B2D665;
-	font-size: 1em;
+	color: #1f1f1f;
+	font-size: 0.5em;
 	font-family: "Helvetica Neue", Ubuntu, "WenQuanYi Micro Hei", Helvetica, "Hiragino Sans GB", "Microsoft JhengHei", "PMingLiU", Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
-	line-height: 1.6em;
+	line-height: 1em;
 	background-color: #eee;
+}
+
+h1 {
+	font-size: 2em;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: bold;
+}
+
+h2 {
+	font-size: 1.5em;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	margin-left: 0;
+	margin-right: 0;
+	font-weight: normal;
 }
 
 #Frames,
@@ -45,13 +63,13 @@ body {
 }
 
 #Frames {
-	margin: 5% 0;
+	margin: 2.5% 0;
 	width: 100%;
 }
 
 .Frame {
 	display: inline-block;
-	padding: 40px;
+	padding: 60px;
 	border-width: 20px;
 	border-style: solid;
 	border-color: #2F2D2D #434040 #4F4C4C #434040;

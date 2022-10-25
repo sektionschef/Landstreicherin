@@ -134,25 +134,30 @@ function scaleDynamicallyPaper() {
 
 function scaleDynamically() {
 
-    // if (windowHeight > windowWidth) {
-    //     if (MODE > 1) {
-    //         console.log("Width is smaller than height. Width dominates")
-    //     }
-    //     DOMINANTSIDE = Math.floor(windowWidth);
-    //     rescaling_width = Math.floor(windowWidth);
-    //     rescaling_height = Math.floor(windowWidth);
-    // } else {
-    //     if (MODE > 1) {
-    //         console.log("width is larger than height. Height dominates.")
-    //     }
-    //     DOMINANTSIDE = Math.floor(windowHeight);
-    //     rescaling_width = Math.floor(windowHeight);
-    //     rescaling_height = Math.floor(windowHeight);
-    // }
+    if (FRAMED == false) {
+        if (windowHeight > windowWidth) {
+            if (MODE > 1) {
+                console.log("Width is smaller than height. Width dominates")
+            }
+            DOMINANTSIDE = Math.floor(windowWidth);
+            rescaling_width = Math.floor(windowWidth);
+            rescaling_height = Math.floor(windowWidth);
+        } else {
+            if (MODE > 1) {
+                console.log("width is larger than height. Height dominates.")
+            }
+            DOMINANTSIDE = Math.floor(windowHeight);
+            rescaling_width = Math.floor(windowHeight);
+            rescaling_height = Math.floor(windowHeight);
+        }
+    } else {
 
-    rescaling_width = 600;
-    rescaling_height = 600;
-    DOMINANTSIDE = 600;
+        rescaling_width = FRAMEDWIDTH;
+        rescaling_height = FRAMEDWIDTH;
+        DOMINANTSIDE = FRAMEDWIDTH;
+    }
+
+
 
 }
 

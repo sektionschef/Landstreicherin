@@ -17,6 +17,8 @@ let ALLDONE = false;
 let DOMINANTSIDE;
 
 let RESCALINGCONSTANT = 948;  // the width the painting was designed in
+let FRAMEDWIDTH = 700;
+let FRAMED = true;
 
 let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
 let BRUSHSIZEMIN = 0.5;
@@ -49,62 +51,62 @@ let PaperDimensions = {
 }
 
 const PALETTESYSTEM = {
-  // "Devcon5": {
-  //   "background": "#041311",
-  //   "primaries": [
-  //     "#9EC5AB",
-  //     "#104F55",
-  //   ],
-  //   "hatches": [
-  //     "#104F55",
-  //     "#9EC5AB",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#504f4f",
-  //   "dirtCircles": "#32746D",
-  // },
-  // "Feinstaub": {
-  //   "background": "#7c1717",
-  //   "primaries": [
-  //     "#ff993a",
-  //     "#F52F57",
-  //   ],
-  //   "hatches": [
-  //     "#cf6426",
-  //     "#ec4163",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#db0000",
-  //   "dirtCircles": "#747474",
-  // },
-  // "Pfaffstätten": {
-  //   "background": "#09324b",
-  //   "primaries": [
-  //     "#82b1ce",
-  //     "#F3A712",
-  //   ],
-  //   "hatches": [
-  //     "#56a6d8",
-  //     "#F3A712",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#9c9c9c",
-  //   "dirtCircles": "#3180b1",
-  // },
-  // "Suzy": {
-  //   "background": "#490f00ff",
-  //   "primaries": [
-  //     "#eb4a00ff",
-  //     "#4793c2ff",
-  //   ],
-  //   "hatches": [
-  //     "#bd460fff",
-  //     "#30729bff",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#858080",
-  //   "dirtCircles": "#64331cff",
-  // },
+  "Devcon5": {
+    "background": "#041311",
+    "primaries": [
+      "#9EC5AB",
+      "#104F55",
+    ],
+    "hatches": [
+      "#104F55",
+      "#9EC5AB",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#504f4f",
+    "dirtCircles": "#32746D",
+  },
+  "Feinstaub": {
+    "background": "#7c1717",
+    "primaries": [
+      "#ff993a",
+      "#F52F57",
+    ],
+    "hatches": [
+      "#cf6426",
+      "#ec4163",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#db0000",
+    "dirtCircles": "#747474",
+  },
+  "Pfaffstätten": {
+    "background": "#09324b",
+    "primaries": [
+      "#82b1ce",
+      "#F3A712",
+    ],
+    "hatches": [
+      "#56a6d8",
+      "#F3A712",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#9c9c9c",
+    "dirtCircles": "#3180b1",
+  },
+  "Suzy": {
+    "background": "#490f00ff",
+    "primaries": [
+      "#eb4a00ff",
+      "#4793c2ff",
+    ],
+    "hatches": [
+      "#bd460fff",
+      "#30729bff",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#858080",
+    "dirtCircles": "#64331cff",
+  },
   "Aneignung": {
     "background": "#3b1628",
     "primaries": [
@@ -119,62 +121,62 @@ const PALETTESYSTEM = {
     "dirtline": "#7a1f1f",
     "dirtCircles": "#7a3656",
   },
-  // "MoltoVolto": {
-  //   "background": "#cccdcd",
-  //   "primaries": [
-  //     "#78a5a5",
-  //     "#776161",
-  //   ],
-  //   "hatches": [
-  //     "#709797",
-  //     "#6d5c5c",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#3d3b3b",
-  //   "dirtCircles": "#797979",
-  // },
-  // "Molto": {
-  //   "background": "#323a3a",
-  //   "primaries": [
-  //     "#20cccc",
-  //     "#be2020",
-  //   ],
-  //   "hatches": [
-  //     "#337c8f",
-  //     "#a70c0c",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#3d3b3b",
-  //   "dirtCircles": "#666666",
-  // },
-  // "Das Zeitliche": {
-  //   "background": "#2d3131",
-  //   "primaries": [
-  //     "#504242",
-  //     "#687980",
-  //   ],
-  //   "hatches": [
-  //     "#3d3d3dff",
-  //     "#556266ff",
-  //   ],
-  //   "rothkoStroke": "#1b1818",
-  //   "dirtline": "#757474",
-  //   "dirtCircles": "#666666",
-  // },
-  // "Frischkäse": {
-  //   "background": "#333338",
-  //   "primaries": [
-  //     "#d6a076",
-  //     "#6e6f85",
-  //   ],
-  //   "hatches": [
-  //     "#b18563",
-  //     "#363968",
-  //   ],
-  //   "rothkoStroke": "#3b3939",
-  //   "dirtline": "#757474",
-  //   "dirtCircles": "#666666",
-  // },
+  "MoltoVolto": {
+    "background": "#cccdcd",
+    "primaries": [
+      "#78a5a5",
+      "#776161",
+    ],
+    "hatches": [
+      "#709797",
+      "#6d5c5c",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#3d3b3b",
+    "dirtCircles": "#797979",
+  },
+  "Molto": {
+    "background": "#323a3a",
+    "primaries": [
+      "#20cccc",
+      "#be2020",
+    ],
+    "hatches": [
+      "#337c8f",
+      "#a70c0c",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#3d3b3b",
+    "dirtCircles": "#666666",
+  },
+  "Das Zeitliche": {
+    "background": "#2d3131",
+    "primaries": [
+      "#504242",
+      "#687980",
+    ],
+    "hatches": [
+      "#3d3d3dff",
+      "#556266ff",
+    ],
+    "rothkoStroke": "#1b1818",
+    "dirtline": "#757474",
+    "dirtCircles": "#666666",
+  },
+  "Frischkäse": {
+    "background": "#333338",
+    "primaries": [
+      "#d6a076",
+      "#6e6f85",
+    ],
+    "hatches": [
+      "#b18563",
+      "#363968",
+    ],
+    "rothkoStroke": "#3b3939",
+    "dirtline": "#757474",
+    "dirtCircles": "#666666",
+  },
 }
 
 choosePalette()
