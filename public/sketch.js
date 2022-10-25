@@ -226,6 +226,7 @@ function setup() {
   // canvas = createCanvas(rescaling_width, rescaling_height, WEBGL);
   canvas = createCanvas(rescaling_width, rescaling_height);
   canvas.id('badAssCanvas');
+  canvas.parent("canvasHolder");
 
   if (MODE > 1) {
     console.log("Display density: " + displayDensity());
