@@ -20,7 +20,7 @@ let DOMINANTSIDE;
 
 let RESCALINGCONSTANT = 948;  // the width the painting was designed in
 let FRAMEDWIDTH = 700;
-let FRAMED = true;
+let FRAMED = false;
 
 let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
 let BRUSHSIZEMIN = 0.5;
@@ -310,6 +310,7 @@ function setup() {
   if (NUMBER_OF_GRIDS >= 3) {
     grid3 = new Grid();
   }
+
 }
 
 

@@ -1,7 +1,10 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sneep</title><meta name="description" content="Painting created with p5.js."><meta name="author" content="Stefan Schwaha"><meta property="og:title" content="Sneep"><meta property="og:type" content="website"><meta property="og:url" content="https://digitalitility.com"><meta property="og:description" content="artwork - washed ashore of the tides of war."><link rel="icon" href="favicon.ico"><script id="fxhash-snippet">//---- do not edit the following code (you can indent as you wish)
+<!doctype html><html lang="en"><script>let TITLE = "Landstreicherin";
+  let ARTIST = "sektionschef";</script><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Landstreicherin</title><meta name="description" content="Painting created with p5.js."><meta name="author" content="Stefan Schwaha"><meta property="og:title" content="Landstreicherin"><meta property="og:type" content="website"><meta property="og:url" content="https://digitalitility.com"><meta property="og:description" content="artwork - washed ashore of the tides of war."><link rel="icon" href="favicon.ico"><script id="fxhash-snippet">//---- do not edit the following code (you can indent as you wish)
     let alphabet = "123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"
     var fxhash = "oo" + Array(49).fill(0).map(_ => alphabet[(Math.random() * alphabet.length) | 0]).join('')
     // var fxhash = "ooJoMhwdJp7dxNQudTnBTLEcwoEkvRz1e8V4PiaA3TDZy1yUx5p"  // black
+    // var fxhash = "ooNLJebZCC6mh9SaoupKL8f8iDkpf1UQGZ45QaDjP83mjhsoSuW"
+    // var fxhash = "oo8hjXgTDJWtUrTrqjfzWSMioCZNtJVLpHaSSTXb7PXxjxrCy3G"
     let b58dec = str => [...str].reduce((p, c) => p * alphabet.length + alphabet.indexOf(c) | 0, 0)
     let fxhashTrunc = fxhash.slice(2)
     let regex = new RegExp(".{" + ((fxhash.length / 4) | 0) + "}", 'g')
@@ -26,4 +29,5 @@
     function fxpreview() {
       console.log("fxhash: TRIGGER PREVIEW")
     }
-      //---- /do not edit the following code</script><script src="p5.min.js"></script><script src="utils.js" ) }}></script><script src="Hatches.js" ) }}></script><script src="DirtLines.js" ) }}></script><script src="DirtCircles.js" ) }}></script><script src="Corroded.js" ) }}></script><script src="RothkoRect.js" ) }}></script><script src="Brush.js" ) }}></script><script src="Grid.js" ) }}></script><script src="sketch.js" ) }}></script><link rel="stylesheet" href="styles.css"></head><body><div class="container"><div id="canvasHolder"></div></div><script defer="defer" src="./bundle.js"></script></body></html>
+      //---- /do not edit the following code</script><script src="p5.min.js"></script><script src="utils.js" ) }}></script><script src="Hatches.js" ) }}></script><script src="DirtLines.js" ) }}></script><script src="DirtCircles.js" ) }}></script><script src="Corroded.js" ) }}></script><script src="RothkoRect.js" ) }}></script><script src="Brush.js" ) }}></script><script src="Grid.js" ) }}></script><script src="sketch.js" ) }}></script><link rel="stylesheet" href="styles.css"></head><body><div id="Label"><h1 id="title"></h1><h2 id="artist"></h2></div><script defer="defer" src="./bundle.js"></script></body></html><script>document.getElementById("title").innerHTML = TITLE;
+  document.getElementById("artist").innerHTML = ARTIST;</script>

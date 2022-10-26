@@ -376,6 +376,7 @@ class Grid {
                 numberQuantisizer: 20, // 20
             });
 
+            // console.warn("before dirtlines:" + fxrand());
             box.dirtLines = new dirtLines(
                 {
                     custom_width: (box.c.x - box.a.x),
@@ -386,10 +387,11 @@ class Grid {
                     strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
                     strokeWeight: 0.2 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.0002,
                     strokeColorNoise: 15,
-                    numberQuantisizer: getP5RandomFromInterval(200, 600),  // 3
+                    numberQuantisizer: getRandomFromInterval(200, 600),  // 3
                     length: 20 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.042,  // 40
                 }
             );
+            // console.error(fxrand());
 
             box.dirtCircles = new dirtCircles(
                 {

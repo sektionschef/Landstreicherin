@@ -1,4 +1,3 @@
-
 class dirtLines {
 
     constructor(data) {
@@ -14,20 +13,20 @@ class dirtLines {
         this.length = data.length;
 
         this.area = this.custom_width * this.custom_height;
-        // this.shapeNumber = this.area / 1000 * this.numberQuantisizer;  // relative to size
         this.shapeNumber = Math.round(Math.round(this.custom_width / width * 100) * Math.round(this.custom_height / height * 100)) / 100 * this.numberQuantisizer;  // relative to size
+        console.error(this.shapeNumber);
 
         this.elements = [];
 
         for (var i = 0; i < this.shapeNumber; i++) {
 
-            this.start = createVector(getRandomFromInterval((0 + this.margin), (this.custom_width - this.margin)), getRandomFromInterval((0 + this.margin), (this.custom_height - this.margin)));
-            this.end = p5.Vector.add(this.start, createVector(getRandomFromInterval(-this.length, this.length), getRandomFromInterval(-this.length, this.length)));
+            this.start = createVector(getP5RandomFromInterval((0 + this.margin), (this.custom_width - this.margin)), getP5RandomFromInterval((0 + this.margin), (this.custom_height - this.margin)));
+            this.end = p5.Vector.add(this.start, createVector(getP5RandomFromInterval(-this.length, this.length), getP5RandomFromInterval(-this.length, this.length)));
 
             this.elements.push({
-                strokeColor: distortColorNew(this.strokeColor, this.strokeColorNoise),
+                strokeColor: distortColorNew(this.strokeColor, this.strokeColorNoise, false),
                 strokeWeight: this.strokeWeight,
-                // position: createVector(getRandomFromInterval(this.margin, this.custom_width - this.margin), getRandomFromInterval(this.margin, this.custom_height - this.margin))
+                // position: createVector(getP5RandomFromInterval(this.margin, this.custom_width - this.margin), getP5RandomFromInterval(this.margin, this.custom_height - this.margin))
                 start: this.start,
                 end: this.end
             })
