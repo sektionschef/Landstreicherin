@@ -4,6 +4,8 @@ const MODE = 1  // "FINE ART";
 // const MODE = 2  // DEBUG MESSAGES
 // const MODE = 5 // all debug messages
 
+
+
 const NOISESEED = hashFnv32a(fxhash);
 if (MODE > 1) {
   console.log("Noise seed: " + NOISESEED);
@@ -20,7 +22,7 @@ let DOMINANTSIDE;
 
 let RESCALINGCONSTANT = 948;  // the width the painting was designed in
 let FRAMEDWIDTH = 700;
-let FRAMED = true;
+let FRAMED = false;
 
 let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
 let BRUSHSIZEMIN = 0.5;
@@ -233,8 +235,11 @@ function setup() {
   canvas = createCanvas(rescaling_width, rescaling_height);
   canvas.id('badAssCanvas');
   if (FRAMED) {
-    canvas.parent("canvasHolder");
+    canvas.parent("canvasHolderFrame");
+  } else {
+    canvas.parent("canvasHolderPlain");
   }
+
 
   if (MODE > 1) {
     console.log("Display density: " + displayDensity());

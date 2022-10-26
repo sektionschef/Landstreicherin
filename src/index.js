@@ -60,3 +60,30 @@ console.log('');
 //   some pseudo random values: [${fxrand()}, ${fxrand()}, ${fxrand()}, ${fxrand()}, ${fxrand()}, ... ]\n
 // `
 // document.body.prepend(containero)
+
+
+
+// const badAssCanvasDiv = document.createElement("div");
+// const newContent = document.createTextNode("Hi there and greetings!");
+// badAssCanvasDiv.appendChild(newContent);
+// const labelDiv = document.getElementById("Label");
+// document.body.insertBefore(badAssCanvasDiv, labelDiv);
+
+
+const badAssCanvasDiv = document.createElement("div");
+badAssCanvasDiv.setAttribute("id", "canvasHolderPlain");
+// const newContent = document.createTextNode("Hi there and greetings!");
+// badAssCanvasDiv.appendChild(newContent);
+document.body.insertBefore(badAssCanvasDiv, document.getElementById("Label"));
+
+
+
+const framesUl = document.createElement("ul");
+framesUl.setAttribute("id", "Frames");
+const frameLi = document.createElement("li");
+frameLi.setAttribute("id", "Frame");
+const canvasHolderFrameDiv = document.createElement("div");
+canvasHolderFrameDiv.setAttribute("id", "canvasHolderFrame");
+frameLi.appendChild(canvasHolderFrameDiv);
+framesUl.appendChild(frameLi);
+document.body.insertBefore(framesUl, document.getElementById("Label"));
