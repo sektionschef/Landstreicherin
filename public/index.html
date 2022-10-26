@@ -30,7 +30,9 @@
     // var fxhash = "ooJoMhwdJp7dxNQudTnBTLEcwoEkvRz1e8V4PiaA3TDZy1yUx5p"  // black
     // var fxhash = "ooNLJebZCC6mh9SaoupKL8f8iDkpf1UQGZ45QaDjP83mjhsoSuW"
     // var fxhash = "oo8hjXgTDJWtUrTrqjfzWSMioCZNtJVLpHaSSTXb7PXxjxrCy3G"
-    var fxhash = "ooEGqaAxWyEVwruTEpunQQjW71FGuz1HWbFAvENdnC9NNqDRYvY"
+    // var fxhash = "ooEGqaAxWyEVwruTEpunQQjW71FGuz1HWbFAvENdnC9NNqDRYvY"
+    // var fxhash = "oorcbiugTcZBec4WU2c5bmNHzyhmXu5gFwoBPznrZAxBVbHa2HH"
+    // var fxhash = "ooViSFUgdewXMvRWRddApShZN62TM58tUBgXz31WQpcdSTKLyQu"
     let b58dec = str => [...str].reduce((p, c) => p * alphabet.length + alphabet.indexOf(c) | 0, 0)
     let fxhashTrunc = fxhash.slice(2)
     let regex = new RegExp(".{" + ((fxhash.length / 4) | 0) + "}", 'g')
@@ -77,8 +79,8 @@
 <body>
 
   <div id="Label">
-    <h1 id="title"></h1>
-    <h2 id="artist"></h2>
+    <!-- <h1 id="title"></h1>
+    <h2 id="artist"></h2> -->
   </div>
 
   <!-- <ul id="Frames">
@@ -91,7 +93,7 @@
 </html>
 
 
-<script>
+<!-- <script>
   document.getElementById("title").innerHTML = TITLE;
   document.getElementById("artist").innerHTML = ARTIST;
-</script>
+</script> -->
