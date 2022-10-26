@@ -181,14 +181,8 @@ const PALETTESYSTEM = {
   },
 }
 
-choosePalette()
+choosePalette();
 
-// if (FRAMED) {
-//   console.log("afaf");
-//   setFrameHTML();
-// } else {
-//   setPlainHTML();
-// }
 
 function choosePalette() {
 
@@ -206,6 +200,7 @@ function choosePalette() {
 }
 
 function preload() {
+
   font = loadFont('OpenSans-Regular.ttf');
 
   const queryString = window.location.search;
@@ -223,6 +218,18 @@ function preload() {
   //   INFINITY = (INFINITYSTRING === 'true');
   // }
   // console.log("INFINITY: " + INFINITY);
+
+  if (urlParams.has('framed')) {
+    if (urlParams.get("framed") === "true") {
+      FRAMED = true;
+    }
+  }
+
+  if (FRAMED) {
+    setFrameHTML();
+  } else {
+    setPlainHTML();
+  }
 }
 
 function setup() {
