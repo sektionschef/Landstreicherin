@@ -411,14 +411,17 @@ class Grid {
     }
 
 
-    show() {
+    show(startFrame, drawBackground = true) {
+        this.startFrame = startFrame;
         this.boxes_complete_status = [];
 
         for (let box of this.boxes) {
-            if (frameCount == 1) {
-                box.rothko.show();
-                box.dirtLines.show();
-                box.dirtCircles.show();
+            if (drawBackground) {
+                if (frameCount == this.startFrame) {
+                    box.rothko.show();
+                    box.dirtLines.show();
+                    box.dirtCircles.show();
+                }
             }
             box.show();
 
@@ -430,6 +433,9 @@ class Grid {
         }
 
         this.boxes_completely_run = this.boxes_complete_status.every(element => element === true);
+        if (this.boxes_completely_run && typeof this.frameCountFinished === "undefined") {
+            this.frameCountFinished = frameCount;  // save when finished
+        }
     }
 }
 

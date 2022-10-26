@@ -1,3 +1,5 @@
+console.log("asdfasf");
+
 const MODE = 1  // "FINE ART";
 // const MODE = 2  // DEBUG MESSAGES
 // const MODE = 5 // all debug messages
@@ -190,7 +192,9 @@ function choosePalette() {
   }
   // console.log(allPalettes);
   PALETTE_LABEL = getRandomFromList(allPalettes);
-  console.log("Palette: " + PALETTE_LABEL);
+  if (MODE > 1) {
+    console.log("Palette: " + PALETTE_LABEL);
+  }
   PALETTE = PALETTESYSTEM[PALETTE_LABEL];
 }
 
@@ -228,7 +232,9 @@ function setup() {
   // canvas = createCanvas(rescaling_width, rescaling_height, WEBGL);
   canvas = createCanvas(rescaling_width, rescaling_height);
   canvas.id('badAssCanvas');
-  canvas.parent("canvasHolder");
+  if (FRAMED) {
+    canvas.parent("canvasHolder");
+  }
 
   if (MODE > 1) {
     console.log("Display density: " + displayDensity());
@@ -315,25 +321,25 @@ function draw() {
   // ambientMaterial(255);
   // specularMaterial(255);
 
+  if (MODE == 5) {
+    background(200);
+  }
+
   if (frameCount == 1) {
     pixelDensity(CURRENTPIXELDENS);
 
     background(color(PALETTE.background));
-    corroded.show();
-    backgroundDirtCircles.show();
   }
 
-
-
-  if (MODE == 5) {
-    background(200);
+  if (frameCount == 10) {
+    corroded.show();
+    backgroundDirtCircles.show();
   }
 
   // hatchesHigh.show();
   // hatchesLong.show();
 
   // hatchesBug.show();
-
 
   // brush examples
   // brushX.update();
@@ -348,16 +354,21 @@ function draw() {
   // brushBug.update();
   // brushBug.display();
 
-  // console.warn("grid: " + fxrand());
-  // here
-  grid.show();
-  // console.error("grid e: " + fxrand());
+
+  if (frameCount >= 20) {
+    grid.show(20);
+  }
 
   if (NUMBER_OF_GRIDS >= 2) {
-    grid2.show();
+    if (grid.boxes_completely_run) {
+      grid2.show(grid.frameCountFinished, false);
+    }
   }
+
   if (NUMBER_OF_GRIDS >= 3) {
-    grid3.show();
+    if (grid.boxes_completely_run && grid2.boxes_completely_run) {
+      grid3.show(grid2.frameCountFinished, false);
+    }
   }
 
 
