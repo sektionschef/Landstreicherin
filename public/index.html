@@ -4,21 +4,23 @@
 
 <script>
   let TITLE = "Landstreicherin";
-  let ARTIST = "sektionschef";
+  let ARTIST = "Stefan Schwaha, @sektionschef";
+  let DESCRIPTION = "Javascript on pixel";
+  let URL = "https://digitalitility.com";
 </script>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Landstreicherin</title>
-  <meta name="description" content="Painting created with p5.js.">
-  <meta name="author" content="Stefan Schwaha">
+  <title>Title</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-  <meta property="og:title" content="Landstreicherin">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://digitalitility.com">
-  <meta property="og:description" content="artwork - washed ashore of the tides of war.">
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:description" content="">
   <!-- <meta property="og:image" content="thumbnail.png"> -->
 
   <link rel="icon" href="favicon.ico">
@@ -93,7 +95,16 @@
 </html>
 
 
-<!-- <script>
-  document.getElementById("title").innerHTML = TITLE;
-  document.getElementById("artist").innerHTML = ARTIST;
-</script> -->
+<script>
+  document.title = TITLE;
+  document.querySelector('meta[name="description"]').setAttribute("content", DESCRIPTION);
+  document.querySelector('meta[name="author"]').setAttribute("content", ARTIST);
+
+  document.querySelector('meta[property="og:title"]').setAttribute("content", TITLE);
+  document.querySelector('meta[property="og:type"]').setAttribute("content", "website");
+  document.querySelector('meta[property="og:url"]').setAttribute("content", URL);
+  document.querySelector('meta[property="og:description"]').setAttribute("content", DESCRIPTION);
+
+  // document.getElementById("title").innerHTML = TITLE;
+  // document.getElementById("artist").innerHTML = ARTIST;
+</script>
