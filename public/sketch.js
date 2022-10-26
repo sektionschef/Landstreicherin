@@ -1,5 +1,3 @@
-console.log("asdfasf");
-
 const MODE = 1  // "FINE ART";
 // const MODE = 2  // DEBUG MESSAGES
 // const MODE = 5 // all debug messages
@@ -22,7 +20,7 @@ let DOMINANTSIDE;
 
 let RESCALINGCONSTANT = 948;  // the width the painting was designed in
 let FRAMEDWIDTH = 700;
-let FRAMED = false;
+let FRAMED = true;
 
 let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
 let BRUSHSIZEMIN = 0.5;
@@ -184,6 +182,13 @@ const PALETTESYSTEM = {
 }
 
 choosePalette()
+
+// if (FRAMED) {
+//   console.log("afaf");
+//   setFrameHTML();
+// } else {
+//   setPlainHTML();
+// }
 
 function choosePalette() {
 

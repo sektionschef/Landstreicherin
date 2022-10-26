@@ -268,3 +268,25 @@ function getTimestamp() {
 
     return timestamp
 }
+
+
+function setPlainHTML() {
+    const badAssCanvasDiv = document.createElement("div");
+    badAssCanvasDiv.setAttribute("id", "canvasHolderPlain");
+    // const newContent = document.createTextNode("Hi there and greetings!");
+    // badAssCanvasDiv.appendChild(newContent);
+    document.body.insertBefore(badAssCanvasDiv, document.getElementById("Label"));
+}
+
+
+function setFrameHTML() {
+    const framesUl = document.createElement("ul");
+    framesUl.setAttribute("id", "Frames");
+    const frameLi = document.createElement("li");
+    frameLi.setAttribute("class", "Frame");
+    const canvasHolderFrameDiv = document.createElement("div");
+    canvasHolderFrameDiv.setAttribute("id", "canvasHolderFrame");
+    frameLi.appendChild(canvasHolderFrameDiv);
+    framesUl.appendChild(frameLi);
+    document.body.insertBefore(framesUl, document.getElementById("Label"));
+}
