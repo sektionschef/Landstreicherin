@@ -18,12 +18,8 @@
 // FEATURES
 
 window.$fxhashFeatures = {
-    "Number of grids": NUMBER_OF_GRIDS
-    // "Palette": PALETTE_LABEL,
-    // "Size of particles": APPLESIZELABEL,
-    // "Restitution": RESTITUTIONLabel,
-    // "Obstacles": OBSTACLESSWITCH,
-    // "Lighting": LIGHTING,
+    "Palette": PALETTE_LABEL,
+    "Number of grids": NUMBER_OF_GRIDS,
 }
 
 console.info(`fxhash: %c${fxhash}`, 'font-weight: bold');

@@ -7,6 +7,9 @@
   let ARTIST = "Stefan Schwaha, @sektionschef";
   let DESCRIPTION = "Javascript on pixel";
   let URL = "https://digitalitility.com";
+  let YEAR = "2022";
+  let PRICE = "ꜩ 3";
+  let EDITIONS = "100 editions"
 </script>
 
 <head>
@@ -81,8 +84,12 @@
 <body>
 
   <div id="Label">
-    <!-- <h1 id="title"></h1>
-    <h2 id="artist"></h2> -->
+    <div class="label-content">
+      <h1 id="title"></h1>
+      <p id="artist_year"></p>
+      <p id="description"></p>
+      <p id="price_editions"></p>
+    </div>
   </div>
 
   <!-- <ul id="Frames">
@@ -105,6 +112,8 @@
   document.querySelector('meta[property="og:url"]').setAttribute("content", URL);
   document.querySelector('meta[property="og:description"]').setAttribute("content", DESCRIPTION);
 
-  // document.getElementById("title").innerHTML = TITLE;
-  // document.getElementById("artist").innerHTML = ARTIST;
+  document.getElementById("title").innerHTML = TITLE;
+  document.getElementById("artist_year").innerHTML = ARTIST + ", " + YEAR;
+  document.getElementById("description").innerHTML = DESCRIPTION;
+  document.getElementById("price_editions").innerHTML = PRICE + ", " + EDITIONS;
 </script>

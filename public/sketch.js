@@ -22,7 +22,7 @@ let RESCALINGCONSTANT = 948;  // the width the painting was designed in
 let FRAMEDWIDTH = 700;
 let FRAMED = false;
 
-let NUMBER_OF_GRIDS = getRandomFromList([1, 2, 3]);
+let NUMBER_OF_GRIDS = getRandomFromList([2, 3]);
 let BRUSHSIZEMIN = 0.5;
 let BRUSHSIZEMAX = 1.5;
 let BRUSHFULLSPEEDMIN = 2;
@@ -54,13 +54,13 @@ let PaperDimensions = {
 
 const PALETTESYSTEM = {
   "Devcon5": {
-    "background": "#041311",
+    "background": "#030708",
     "primaries": [
       "#9EC5AB",
       "#104F55",
     ],
     "hatches": [
-      "#104F55",
+      "#166168",
       "#9EC5AB",
     ],
     "rothkoStroke": "#1b1818",
@@ -68,17 +68,17 @@ const PALETTESYSTEM = {
     "dirtCircles": "#32746D",
   },
   "Feinstaub": {
-    "background": "#7c1717",
+    "background": "#3d0909",
     "primaries": [
       "#ff993a",
       "#F52F57",
     ],
     "hatches": [
       "#cf6426",
-      "#ec4163",
+      "#8d0a24",
     ],
     "rothkoStroke": "#1b1818",
-    "dirtline": "#db0000",
+    "dirtline": "#a58b8b",
     "dirtCircles": "#747474",
   },
   "Pfaffstätten": {
@@ -116,8 +116,8 @@ const PALETTESYSTEM = {
       "#da4e78",
     ],
     "hatches": [
-      "#da4e78",
-      "#ca1246",
+      "#fa608e",
+      "#6e0221",
     ],
     "rothkoStroke": "#1b1818",
     "dirtline": "#7a1f1f",
@@ -126,58 +126,58 @@ const PALETTESYSTEM = {
   "MoltoVolto": {
     "background": "#cccdcd",
     "primaries": [
-      "#78a5a5",
-      "#776161",
+      "#68a1a1",
+      "#815353",
     ],
     "hatches": [
-      "#709797",
-      "#6d5c5c",
+      "#8ab9b9",
+      "#633d3d",
     ],
     "rothkoStroke": "#1b1818",
-    "dirtline": "#3d3b3b",
+    "dirtline": "#5e5252",
     "dirtCircles": "#797979",
   },
   "Molto": {
-    "background": "#323a3a",
+    "background": "#b9b9b9",
     "primaries": [
       "#20cccc",
-      "#be2020",
+      "#da4d4d",
     ],
     "hatches": [
-      "#337c8f",
-      "#a70c0c",
+      "#3895ac",
+      "#a82f2f",
     ],
     "rothkoStroke": "#1b1818",
-    "dirtline": "#3d3b3b",
-    "dirtCircles": "#666666",
+    "dirtline": "#919191",
+    "dirtCircles": "#555454",
   },
   "Das Zeitliche": {
-    "background": "#2d3131",
+    "background": "#1b1818",
     "primaries": [
-      "#504242",
+      "#524747",
       "#687980",
     ],
     "hatches": [
-      "#3d3d3dff",
+      "#423c3cff",
       "#556266ff",
     ],
-    "rothkoStroke": "#1b1818",
-    "dirtline": "#757474",
-    "dirtCircles": "#666666",
+    "rothkoStroke": "#272525",
+    "dirtline": "#413939",
+    "dirtCircles": "#424242",
   },
   "Frischkäse": {
-    "background": "#333338",
+    "background": "#c9c8ce",
     "primaries": [
       "#d6a076",
       "#6e6f85",
     ],
     "hatches": [
       "#b18563",
-      "#363968",
+      "#43477e",
     ],
     "rothkoStroke": "#3b3939",
-    "dirtline": "#757474",
-    "dirtCircles": "#666666",
+    "dirtline": "#707070",
+    "dirtCircles": "#5e5e5e",
   },
 }
 

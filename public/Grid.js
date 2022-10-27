@@ -384,7 +384,8 @@ class Grid {
                     margin: 0,
                     posX: box.a.x,
                     posY: box.a.y,
-                    strokeColor: distortColorNew(color(PALETTE.dirtline), 10),
+                    strokeColor: distortColorNew(color(PALETTE.dirtline), 10, false),
+                    // strokeColor: distortColorNew(hatchColor, 10),
                     strokeWeight: 0.2 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.0002,
                     strokeColorNoise: 15,
                     numberQuantisizer: getRandomFromInterval(200, 600),  // 3
