@@ -39,6 +39,7 @@
     // var fxhash = "oorcbiugTcZBec4WU2c5bmNHzyhmXu5gFwoBPznrZAxBVbHa2HH"
     // var fxhash = "ooViSFUgdewXMvRWRddApShZN62TM58tUBgXz31WQpcdSTKLyQu"
     // var fxhash = "ooJuts9iB4B6ndjJjBn5k4TFWzDwiRFt2koAUmYBQ881rgMH9Wv"  // nice
+    // var fxhash = "ooY71vCu4zKTNnH1ytiV667g8xASVhen3bhoyKtJRxPUcqPLqKP"  // cool
     let b58dec = str => [...str].reduce((p, c) => p * alphabet.length + alphabet.indexOf(c) | 0, 0)
     let fxhashTrunc = fxhash.slice(2)
     let regex = new RegExp(".{" + ((fxhash.length / 4) | 0) + "}", 'g')
