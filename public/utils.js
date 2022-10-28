@@ -275,7 +275,7 @@ function setPlainHTML() {
     badAssCanvasDiv.setAttribute("id", "canvasHolderPlain");
     // const newContent = document.createTextNode("Hi there and greetings!");
     // badAssCanvasDiv.appendChild(newContent);
-    document.body.insertBefore(badAssCanvasDiv, document.getElementById("Label"));
+    document.body.insertBefore(badAssCanvasDiv, document.getElementById("Konkas"));
 }
 
 
@@ -288,5 +288,30 @@ function setFrameHTML() {
     canvasHolderFrameDiv.setAttribute("id", "canvasHolderFrame");
     frameLi.appendChild(canvasHolderFrameDiv);
     framesUl.appendChild(frameLi);
-    document.body.insertBefore(framesUl, document.getElementById("Label"));
+    document.body.insertBefore(framesUl, document.getElementById("Konkas"));
 }
+
+function setLabelHTML() {
+    console.error("oida");
+    const labelDiv = document.createElement("div");
+    labelDiv.setAttribute("id", "Label");
+    const labelContentDiv = document.createElement("div");
+    labelContentDiv.setAttribute("class", "label-content");
+
+    const titleH1 = document.createElement("h1");
+    titleH1.setAttribute("id", "title");
+    const artistYearP = document.createElement("p");
+    artistYearP.setAttribute("id", "artist_year");
+    const descriptionP = document.createElement("p");
+    descriptionP.setAttribute("id", "description");
+    const priceEditionsP = document.createElement("p");
+    priceEditionsP.setAttribute("id", "price_editions");
+
+    labelContentDiv.appendChild(titleH1);
+    labelContentDiv.appendChild(artistYearP);
+    labelContentDiv.appendChild(descriptionP);
+    labelContentDiv.appendChild(priceEditionsP);
+    labelDiv.appendChild(labelContentDiv);
+    document.body.insertBefore(labelDiv, document.getElementById("Konkas"));
+}
+

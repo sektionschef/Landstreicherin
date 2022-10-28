@@ -19,7 +19,8 @@ let ALLDONE = false;
 let DOMINANTSIDE;
 
 let RESCALINGCONSTANT = 948;  // the width the painting was designed in
-let FRAMEDWIDTH = 700;
+// let FRAMEDWIDTH = 700;
+let FRAMEDWIDTH = 800;
 let FRAMED = false;
 
 let NUMBER_OF_GRIDS = getRandomFromList([2, 3]);
@@ -179,7 +180,50 @@ const PALETTESYSTEM = {
     "dirtline": "#707070",
     "dirtCircles": "#5e5e5e",
   },
+  "October": {
+    "background": "#c9c8ce",
+    "primaries": [
+      "#FF6D24",
+      "#663c28",
+    ],
+    "hatches": [
+      "#FF6D24",
+      "#663c28",
+    ],
+    "rothkoStroke": "#666666",
+    "dirtline": "#707070",
+    "dirtCircles": "#777777",
+  },
+  "Sebastian": {
+    "background": "#c9c8ce",
+    "primaries": [
+      "#272343",
+      "#c5c5c5",
+    ],
+    "hatches": [
+      "#272343",
+      "#c5c5c5",
+    ],
+    "rothkoStroke": "#666666",
+    "dirtline": "#707070",
+    "dirtCircles": "#777777",
+  },
+  "Kill or die": {
+    "background": "#929292",
+    "primaries": [
+      "#363636",
+      "#dfdfdf",
+    ],
+    "hatches": [
+      "#363636",
+      "#dfdfdf",
+    ],
+    "rothkoStroke": "#666666",
+    "dirtline": "#707070",
+    "dirtCircles": "#777777",
+  },
 }
+
 
 choosePalette();
 
@@ -227,9 +271,29 @@ function preload() {
 
   if (FRAMED) {
     setFrameHTML();
+    setLabelHTML();
   } else {
     setPlainHTML();
   }
+
+
+  document.title = TITLE;
+  document.querySelector('meta[name="description"]').setAttribute("content", DESCRIPTION);
+  document.querySelector('meta[name="author"]').setAttribute("content", ARTIST);
+
+  document.querySelector('meta[property="og:title"]').setAttribute("content", TITLE);
+  document.querySelector('meta[property="og:type"]').setAttribute("content", "website");
+  document.querySelector('meta[property="og:url"]').setAttribute("content", URL);
+  document.querySelector('meta[property="og:description"]').setAttribute("content", DESCRIPTION);
+
+  if (FRAMED) {
+    document.getElementById("title").innerHTML = TITLE;
+    document.getElementById("artist_year").innerHTML = ARTIST + ", " + YEAR;
+    document.getElementById("description").innerHTML = DESCRIPTION;
+    document.getElementById("price_editions").innerHTML = PRICE + ", " + EDITIONS;
+  }
+
+
 }
 
 function setup() {
@@ -404,7 +468,7 @@ function draw() {
     console.log("All done");
     noLoop();
     fxpreview();
-    console.warn(fxrand());
+    console.warn(Math.round(fxrand() * 1000) / 1000);
   }
 
 }

@@ -57,10 +57,3 @@ console.log('');
 // `
 // document.body.prepend(containero)
 
-
-
-if (FRAMED) {
-    setFrameHTML();
-} else {
-    setPlainHTML();
-}
