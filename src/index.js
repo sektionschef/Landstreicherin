@@ -20,6 +20,11 @@
 window.$fxhashFeatures = {
     "Palette": PALETTE_LABEL,
     "Number of grids": NUMBER_OF_GRIDS,
+    "Brushsize": BRUSHSIZELABEL,
+    "Brushspeed": BRUSHFULLSPEEDLABEL,
+    "Distance between lines": DISTANCE_BETWEEN_LINES_LABEL,
+    "Background noise": ROTHKOSTROKEOPACITYLABEL,
+    "Brush shape": BRUSHSHAPE,
 }
 
 console.info(`fxhash: %c${fxhash}`, 'font-weight: bold');
@@ -35,9 +40,15 @@ console.log(`rothkoStroke: %c   `, `background: ${PALETTESYSTEM[PALETTE_LABEL]['
 console.log(`dirtline: %c   `, `background: ${PALETTESYSTEM[PALETTE_LABEL]['dirtline']}; `);
 console.log(`dirtCircles: %c   `, `background: ${PALETTESYSTEM[PALETTE_LABEL]['dirtCircles']}; `);
 console.groupEnd();
-
 console.log(`Number of grids: %c${NUMBER_OF_GRIDS}`, 'font-weight: bold');
-console.log(`Brush size: %c${BRUSHSIZEMIN}-${BRUSHSIZEMAX}`, 'font-weight: bold');
+console.log(`Brush size: %c${BRUSHSIZELABEL}`, 'font-weight: bold');
+console.log(`Brush full speed label: %c${BRUSHFULLSPEEDLABEL}`, 'font-weight: bold');
+console.log(`Distance between lines: %c${DISTANCE_BETWEEN_LINES_LABEL}`, 'font-weight: bold');
+console.log(`Background noise: %c${ROTHKOSTROKEOPACITYLABEL}`, 'font-weight: bold');
+console.log(`Brush shape: %c${BRUSHSHAPE}`, 'font-weight: bold');
+console.log('');
+
+// console.log(`Brush size: %c${BRUSHSIZEMIN}-${BRUSHSIZEMAX}`, 'font-weight: bold');
 console.log(`Brush full speed: %c${BRUSHFULLSPEED}`, 'font-weight: bold');
 console.log(`Brush fibre size: %c${BRUSHFIBRESIZE}`, 'font-weight: bold');
 console.log(`Brush fibre color noise: %c${BRUSHFIBRECOLORNOISE}`, 'font-weight: bold');
