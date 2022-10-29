@@ -2,16 +2,6 @@
 
 <html lang="en">
 
-<script>
-  let TITLE = "Landstreicherin";
-  let ARTIST = "Stefan Schwaha, @sektionschef";
-  let DESCRIPTION = "Javascript on pixel";
-  let URL = "https://digitalitility.com";
-  let YEAR = "2022";
-  let PRICE = "ꜩ 3";
-  let EDITIONS = "100 editions"
-</script>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,6 +30,8 @@
     // var fxhash = "ooViSFUgdewXMvRWRddApShZN62TM58tUBgXz31WQpcdSTKLyQu"
     // var fxhash = "ooJuts9iB4B6ndjJjBn5k4TFWzDwiRFt2koAUmYBQ881rgMH9Wv"  // nice
     // var fxhash = "ooY71vCu4zKTNnH1ytiV667g8xASVhen3bhoyKtJRxPUcqPLqKP"  // cool
+    // var fxhash = "ooM9jwLXUcQ7qc52UVbzZ86gXcsu5mMzV7oUjCwKLv9FhyC8mUH"  // very cool
+    // var fxhash = "oo9x5N1esPt6ZwuVb5DxqrhS3CeKdFW1zu6i3pbsMbn6L7UrRpK"  // fett
     let b58dec = str => [...str].reduce((p, c) => p * alphabet.length + alphabet.indexOf(c) | 0, 0)
     let fxhashTrunc = fxhash.slice(2)
     let regex = new RegExp(".{" + ((fxhash.length / 4) | 0) + "}", 'g')

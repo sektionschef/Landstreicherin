@@ -2,8 +2,6 @@ const MODE = 1  // "FINE ART";
 // const MODE = 2  // DEBUG MESSAGES
 // const MODE = 5 // all debug messages
 
-
-
 const NOISESEED = hashFnv32a(fxhash);
 if (MODE > 1) {
   console.log("Noise seed: " + NOISESEED);
@@ -16,12 +14,19 @@ let rescaling_height;
 let PALETTE;
 let PALETTE_LABEL;
 let ALLDONE = false;
-let DOMINANTSIDE;
+let DOMINANTSIDE;  // side which is the limiting factor
 
 let RESCALINGCONSTANT = 948;  // the width the painting was designed in
-// let FRAMEDWIDTH = 700;
 let FRAMEDWIDTH = 800;
 let FRAMED = false;
+
+let TITLE = "Landstreicherin";
+let ARTIST = "Stefan Schwaha, @sektionschef";
+let DESCRIPTION = "Javascript on pixel";
+let URL = "https://digitalitility.com";
+let YEAR = "2022";
+let PRICE = "ꜩ 3";
+let EDITIONS = "100 editions";
 
 let NUMBER_OF_GRIDS = getRandomFromList([2, 3]);
 let BRUSHSIZEMIN = getRandomFromList([0.3, 0.4, 0.5, 0.6, 0.7]);  // 0.5
@@ -41,21 +46,6 @@ let ROTHKOSTROKEOPACITYLABEL = label_feature(ROTHKOSTROKEOPACITY, 5, 30);
 let BRUSHSHAPE = getRandomFromList(["Line", "Ellipse", "Triangle"]);
 let HATCHOFFSET = 2;
 let CURRENTPIXELDENS = 1;
-
-let PaperDimensions = {
-  "Quickie": {
-    width: 800,
-    height: 800
-  },
-  "Stammersdorf": {
-    width: 3840,
-    height: 2160
-  },
-  "1to1": {
-    width: 4000,
-    height: 4000
-  },
-}
 
 const PALETTESYSTEM = {
   "Devcon5": {
@@ -228,24 +218,7 @@ const PALETTESYSTEM = {
   },
 }
 
-
 choosePalette();
-
-
-function choosePalette() {
-
-  allPalettes = [];
-  for (let palette in PALETTESYSTEM) {
-    // console.log(palette)
-    allPalettes.push(palette)
-  }
-  // console.log(allPalettes);
-  PALETTE_LABEL = getRandomFromList(allPalettes);
-  if (MODE > 1) {
-    console.log("Palette: " + PALETTE_LABEL);
-  }
-  PALETTE = PALETTESYSTEM[PALETTE_LABEL];
-}
 
 function preload() {
 
@@ -279,25 +252,7 @@ function preload() {
   } else {
     setPlainHTML();
   }
-
-
-  document.title = TITLE;
-  document.querySelector('meta[name="description"]').setAttribute("content", DESCRIPTION);
-  document.querySelector('meta[name="author"]').setAttribute("content", ARTIST);
-
-  document.querySelector('meta[property="og:title"]').setAttribute("content", TITLE);
-  document.querySelector('meta[property="og:type"]').setAttribute("content", "website");
-  document.querySelector('meta[property="og:url"]').setAttribute("content", URL);
-  document.querySelector('meta[property="og:description"]').setAttribute("content", DESCRIPTION);
-
-  if (FRAMED) {
-    document.getElementById("title").innerHTML = TITLE;
-    document.getElementById("artist_year").innerHTML = ARTIST + ", " + YEAR;
-    document.getElementById("description").innerHTML = DESCRIPTION;
-    document.getElementById("price_editions").innerHTML = PRICE + ", " + EDITIONS;
-  }
-
-
+  setTagsHTML();
 }
 
 function setup() {
@@ -331,8 +286,6 @@ function setup() {
   BRUSHSIZEMAX = Math.round(BRUSHSIZEMAX / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
   BRUSHFIBRESIZE = Math.round(BRUSHFIBRESIZE / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
   HATCHOFFSET = Math.round(HATCHOFFSET / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
-  // DISTANCE_BETWEEN_LINES_MULTIPLIER = Math.round(DISTANCE_BETWEEN_LINES_MULTIPLIER / RESCALINGCONSTANT * DOMINANTSIDE);
-  // DISTANCE_BETWEEN_LINES = Math.round(BRUSHSIZEMAX * DISTANCE_BETWEEN_LINES_MULTIPLIER);
   DISTANCE_BETWEEN_LINES = Math.round(DISTANCE_BETWEEN_LINES / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
   HATCHOFFSET = Math.round(HATCHOFFSET / RESCALINGCONSTANT * DOMINANTSIDE * 100) / 100;
 

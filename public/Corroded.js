@@ -20,8 +20,6 @@ class Corroded {
 
         push();
         translate(this.posX, this.posY);
-        // background(this.background_color);
-        // background(0, 0);
         for (let x = 0; x < this.custom_width; x += this.scl) {
             for (let y = 0; y < this.custom_height; y += this.scl) {
                 stroke(200, 20);
@@ -34,14 +32,9 @@ class Corroded {
                 var x_ = getP5RandomFromInterval(x * 0.8, x * 1.2);
                 var y_ = getP5RandomFromInterval(y * 0.8, y * 1.2);
                 rect(x_, y_, r, r);
-                // rect(x, y, this.radius);
-
-                // circle(x, y, r);
             }
         }
         pop();
-
-        // return this.buffer;
     }
 
 }

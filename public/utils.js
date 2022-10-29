@@ -59,32 +59,6 @@ function distortColorNew(colorObject, diff, strict = true) {
     return resultingColor
 }
 
-// function brightenColor(colorObject, diff) {
-
-//     colorMode(HSB, 100);
-//     brightnessNew = brightness(colorObject) + getRandomFromInterval(-diff, diff);
-//     resultingColor = color(hue(colorObject), saturation(colorObject), brightnessNew, alpha(colorObject));
-
-//     colorMode(RGB, 255);
-//     // return resultingColor
-//     return colorObject
-// }
-
-// function brightenColorStatic(colorObject, diff) {
-//     colorMode(HSB);
-//     brightnessNew = brightness(colorObject) + diff;
-//     resultingColor = color(hue(colorObject), saturation(colorObject), brightnessNew);
-//     colorMode(RGB);
-//     return resultingColor
-// }
-
-// function saturateColorStatic(colorObject, diff) {
-//     colorMode(HSB);
-//     saturationNew = saturation(colorObject) + diff;
-//     resultingColor = color(hue(colorObject), saturationNew, brightness(colorObject));
-//     colorMode(RGB);
-//     return resultingColor
-// }
 
 function lessenColor(colorObject, diff) {
     let diff_constant = getRandomFromInterval(0, -diff)
@@ -269,6 +243,21 @@ function getTimestamp() {
     return timestamp
 }
 
+function choosePalette() {
+
+    allPalettes = [];
+    for (let palette in PALETTESYSTEM) {
+        // console.log(palette)
+        allPalettes.push(palette)
+    }
+    // console.log(allPalettes);
+    PALETTE_LABEL = getRandomFromList(allPalettes);
+    if (MODE > 1) {
+        console.log("Palette: " + PALETTE_LABEL);
+    }
+    PALETTE = PALETTESYSTEM[PALETTE_LABEL];
+}
+
 
 function setPlainHTML() {
     const badAssCanvasDiv = document.createElement("div");
@@ -292,7 +281,6 @@ function setFrameHTML() {
 }
 
 function setLabelHTML() {
-    console.error("oida");
     const labelDiv = document.createElement("div");
     labelDiv.setAttribute("id", "Label");
     const labelContentDiv = document.createElement("div");
@@ -313,5 +301,20 @@ function setLabelHTML() {
     labelContentDiv.appendChild(priceEditionsP);
     labelDiv.appendChild(labelContentDiv);
     document.body.insertBefore(labelDiv, document.getElementById("Konkas"));
+
+    document.getElementById("title").innerHTML = TITLE;
+    document.getElementById("artist_year").innerHTML = ARTIST + ", " + YEAR;
+    document.getElementById("description").innerHTML = DESCRIPTION;
+    document.getElementById("price_editions").innerHTML = PRICE + ", " + EDITIONS;
 }
 
+function setTagsHTML() {
+    document.title = TITLE;
+    document.querySelector('meta[name="description"]').setAttribute("content", DESCRIPTION);
+    document.querySelector('meta[name="author"]').setAttribute("content", ARTIST);
+
+    document.querySelector('meta[property="og:title"]').setAttribute("content", TITLE);
+    document.querySelector('meta[property="og:type"]').setAttribute("content", "website");
+    document.querySelector('meta[property="og:url"]').setAttribute("content", URL);
+    document.querySelector('meta[property="og:description"]').setAttribute("content", DESCRIPTION);
+}

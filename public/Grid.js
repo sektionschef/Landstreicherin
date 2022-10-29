@@ -5,8 +5,6 @@ class Grid {
         this.margin = 50 / RESCALINGCONSTANT * DOMINANTSIDE; // width * 0.05 // 50;
 
         this.boxes = [];
-        // this.virtual_boxes = [];
-        // this.real_boxes = [];
         this.possible_pairings_x = [];
         this.possible_pairings_y = [];
         this.boxes_complete_status = [];
@@ -27,7 +25,6 @@ class Grid {
         }
 
         this.pairing_count = Math.round(getRandomFromInterval(1, 4));
-        // this.pairing_count = 0;
         if (MODE > 1) {
             console.log("Number of pairing: " + this.pairing_count);
         }
@@ -60,9 +57,6 @@ class Grid {
         // points are dependent
 
         // start - generate a list from  0 to width
-        // this.pointsXPool = [...Array(width).keys()];
-        // this.pointsYPool = [...Array(height).keys()];
-
         this.standardStartX = 0;
         this.standardEndX = 100;
         this.standardPoolX = [...Array(this.standardEndX).keys()];
@@ -72,7 +66,6 @@ class Grid {
 
         this.marginStandard = Math.round(map(this.margin, 0, width, this.standardStartX, this.standardEndX));
         this.minimumDistanceStandard = Math.round(map(this.minimumDistance, 0, width, this.standardStartX, this.standardEndX));
-        // console.error(this.minimumDistanceStandard);
 
         // remove start and end of axis
         for (var i = this.standardPoolX.length - 1; i >= 0; i--) {
@@ -115,7 +108,6 @@ class Grid {
 
     getSinglePointX() {
 
-        // let chosen_one = getRandomFromList(this.pointsXPool);
         let chosen_oneStandard = getRandomFromList(this.standardPoolX);  // standard for resolution independence
         // console.log("original: " + chosen_one);
         let chosen_one = Math.round(map(chosen_oneStandard, this.standardStartX, this.standardEndX, 0, width));
@@ -126,22 +118,16 @@ class Grid {
         // remove near points
         for (var i = this.standardPoolX.length - 1; i >= 0; i--) {
             if (this.standardPoolX[i] >= (chosen_oneStandard - this.minimumDistanceStandard) && this.standardPoolX[i] <= (chosen_oneStandard + this.minimumDistanceStandard)) {
-                // console.warn(this.standardPoolX[i])
                 this.standardPoolX.splice(i, 1);
             }
         }
-        // console.log(this.standardPoolX);
         this.pointsX.push(chosen_one);
     }
 
     getSinglePointY() {
-        // let chosen_one = getRandomFromList(this.pointsYPool);
-        // console.log(chosen_one);
 
         let chosen_oneStandard = getRandomFromList(this.standardPoolY);
-        // console.log("original: " + chosen_one);
         let chosen_one = Math.round(map(chosen_oneStandard, this.standardStartY, this.standardEndY, 0, height));
-        // console.log(chosen_one);
 
         // remove near points
         for (var i = this.standardPoolY.length - 1; i >= 0; i--) {
@@ -150,7 +136,6 @@ class Grid {
                 this.standardPoolY.splice(i, 1);
             }
         }
-        // console.log(this.standardPoolY);
         this.pointsY.push(chosen_one);
     }
 
@@ -376,7 +361,6 @@ class Grid {
                 numberQuantisizer: 20, // 20
             });
 
-            // console.warn("before dirtlines:" + fxrand());
             box.dirtLines = new dirtLines(
                 {
                     custom_width: (box.c.x - box.a.x),
@@ -392,7 +376,6 @@ class Grid {
                     length: 20 / RESCALINGCONSTANT * DOMINANTSIDE, // width * 0.042,  // 40
                 }
             );
-            // console.error(fxrand());
 
             box.dirtCircles = new dirtCircles(
                 {

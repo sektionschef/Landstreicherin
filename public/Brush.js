@@ -1,7 +1,6 @@
 class Brush {
     constructor(start, end, colorObject) {
         this.fullspeed = BRUSHFULLSPEED // 2-5;
-        // this.radius = BRUSHRADIUS; // bei fullspeed 2 -0.1
         this.radiusMin = BRUSHSIZEMIN; // 1;
         this.radiusMax = BRUSHSIZEMAX; // 2;
         this.brushShape = BRUSHSHAPE;
@@ -40,10 +39,8 @@ class Brush {
         this.accBoost = p5.Vector.mult(p5.Vector.normalize(this.Distance), this.boost);
         this.sloBoost = p5.Vector.mult(this.accBoost, -1);
 
-
         // this.makeSomeNoise();
 
-        // console.warn("FXRANDO: " + fxrand());
         this.get_orientation();
     }
 
@@ -271,7 +268,7 @@ class Brush {
 
         this.brushSize = this.radius;
 
-        // push();
+        push();
         strokeWeight(this.strokeSize);
         for (var i = 0; i <= 5; i++) {
             // stroke(this.strokeColor);
@@ -291,7 +288,7 @@ class Brush {
                 console.warn("No brush shape specified, oida!")
             }
         }
-        // pop();
+        pop();
     }
 
 

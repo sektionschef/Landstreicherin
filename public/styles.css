@@ -1,3 +1,9 @@
+/* 
+with the help of: 
+frame: https://codepen.io/Kaiyuan/pen/DjBRbV and https://codepen.io/jdhaliwal/pen/wvKpBje 
+label: https://codepen.io/sdthornton/pen/wBZdXq and https://codepen.io/codingtuting/pen/XWrBgQz 
+*/
+
 html,
 body {
 	margin: 0px;
@@ -107,7 +113,7 @@ body {
 }
 
 
-
+/* FrameB is with passepartout */
 .FrameB {
 	display: inline-block;
 	padding: 60px;

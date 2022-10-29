@@ -14,7 +14,6 @@ class dirtLines {
 
         this.area = this.custom_width * this.custom_height;
         this.shapeNumber = Math.round(Math.round(this.custom_width / width * 100) * Math.round(this.custom_height / height * 100)) / 100 * this.numberQuantisizer;  // relative to size
-        // console.error(this.shapeNumber);
 
         this.elements = [];
 
@@ -26,7 +25,6 @@ class dirtLines {
             this.elements.push({
                 strokeColor: distortColorNew(this.strokeColor, this.strokeColorNoise, false),
                 strokeWeight: this.strokeWeight,
-                // position: createVector(getP5RandomFromInterval(this.margin, this.custom_width - this.margin), getP5RandomFromInterval(this.margin, this.custom_height - this.margin))
                 start: this.start,
                 end: this.end
             })
@@ -41,7 +39,6 @@ class dirtLines {
         for (var element of this.elements) {
             stroke(element.strokeColor);
             strokeWeight(element.strokeWeight);
-            // line(getRandomFromInterval(0, width), getRandomFromInterval(0, height), getRandomFromInterval(0, width), getRandomFromInterval(0, height));
             line(element.start.x, element.start.y, element.end.x, element.end.y);
         }
         pop();
