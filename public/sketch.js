@@ -425,7 +425,7 @@ function draw() {
     console.log("All done");
     noLoop();
     fxpreview();
-    console.warn(Math.round(fxrand() * 1000) / 1000);
+    // console.warn(Math.round(fxrand() * 1000) / 1000);
   }
 
 }
